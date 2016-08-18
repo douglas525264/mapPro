@@ -20,6 +20,7 @@
 		A50F0F661D6593C0003907F7 /* Commenddefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50F0F651D6593C0003907F7 /* Commenddefine.swift */; };
 		A50F0F681D659644003907F7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50F0F671D659644003907F7 /* MapKit.framework */; };
 		A50F0F6C1D659697003907F7 /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50F0F6B1D659697003907F7 /* MainMapViewController.swift */; };
+		A50F0FAD1D65ABD0003907F7 /* DXNetWorkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50F0FAC1D65ABD0003907F7 /* DXNetWorkTool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		A50F0F651D6593C0003907F7 /* Commenddefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commenddefine.swift; sourceTree = "<group>"; };
 		A50F0F671D659644003907F7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A50F0F6B1D659697003907F7 /* MainMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
+		A50F0FAC1D65ABD0003907F7 /* DXNetWorkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXNetWorkTool.swift; sourceTree = "<group>"; };
 		BB958AE2575A5953BEF3C265 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D8B98597C27137C70AF82827 /* Pods_SeeMoney.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeeMoney.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -291,6 +293,8 @@
 		A50F0F6E1D659874003907F7 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				A50F0FAB1D65AB97003907F7 /* NetWork */,
+				A50F0FAA1D65AB91003907F7 /* Map */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -300,6 +304,21 @@
 			children = (
 			);
 			name = viewModel;
+			sourceTree = "<group>";
+		};
+		A50F0FAA1D65AB91003907F7 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		A50F0FAB1D65AB97003907F7 /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+				A50F0FAC1D65ABD0003907F7 /* DXNetWorkTool.swift */,
+			);
+			name = NetWork;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -455,6 +474,7 @@
 			files = (
 				A50F0F661D6593C0003907F7 /* Commenddefine.swift in Sources */,
 				A50F0F291D658A3D003907F7 /* ViewController.swift in Sources */,
+				A50F0FAD1D65ABD0003907F7 /* DXNetWorkTool.swift in Sources */,
 				A50F0F271D658A3D003907F7 /* AppDelegate.swift in Sources */,
 				A50F0F641D65912D003907F7 /* RemoteSever.swift in Sources */,
 				A50F0F6C1D659697003907F7 /* MainMapViewController.swift in Sources */,
@@ -605,6 +625,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SeeMoney/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.douglas.SeeMoney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -620,6 +641,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SeeMoney/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.douglas.SeeMoney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
