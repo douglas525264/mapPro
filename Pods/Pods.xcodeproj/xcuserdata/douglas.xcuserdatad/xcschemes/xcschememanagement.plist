@@ -9,7 +9,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods.xcscheme</key>
+		<key>Pods-SeeMoney.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -19,20 +19,30 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Result.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>4DAF21F40DF431DFA8CFBD8E1E7F757E</key>
+		<key>0125B96860A9FC000BA36CAFAF9B2D09</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5856DDF3B50A61FBBCF584E32BA236EC</key>
+		<key>1C3436CEA5C3D39764C5F54374794ECB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>928353533005A4198EBDA5B700D37B64</key>
+		<key>9A54B0DA2F4E7DF1CF9035A5E2343E44</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B4E2159999F77A9DA3834FB35F7DB8ED</key>
 		<dict>
 			<key>primary</key>
 			<true/>
