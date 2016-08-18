@@ -1,0 +1,6 @@
+framework module Pods_SeeMoney {
+  umbrella header "Pods-SeeMoney-umbrella.h"
+
+  export *
+  module * { export * }
+}
