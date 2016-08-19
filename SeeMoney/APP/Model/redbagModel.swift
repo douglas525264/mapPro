@@ -15,12 +15,11 @@ enum bagStatus {
 }
 class redbagModel: NSObject {
 //    //红包唯一标识
-//    var redID:String!
-//    var title:String?
-//    var subtitle: String?
-//    var image:UIImage?
-//    
-//    internal var coordinate: CLLocationCoordinate2D
+    var redID:String!
+    var title:String?
+    var subtitle: String?
+    var image:UIImage?
+    var coordinate: CLLocationCoordinate2D =  CLLocationCoordinate2D()
     
 
 }
