@@ -1,0 +1,6 @@
+framework module ATMHud_dhoerl {
+  umbrella header "ATMHud@dhoerl-umbrella.h"
+
+  export *
+  module * { export * }
+}
