@@ -21,6 +21,16 @@
 		A50F0F681D659644003907F7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50F0F671D659644003907F7 /* MapKit.framework */; };
 		A50F0F6C1D659697003907F7 /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50F0F6B1D659697003907F7 /* MainMapViewController.swift */; };
 		A50F0FAD1D65ABD0003907F7 /* DXNetWorkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50F0FAC1D65ABD0003907F7 /* DXNetWorkTool.swift */; };
+		A542DCD31D66FE7800AFE9C1 /* redbagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD21D66FE7800AFE9C1 /* redbagModel.swift */; };
+		A542DCD61D66FE9800AFE9C1 /* RedBagManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD51D66FE9800AFE9C1 /* RedBagManager.swift */; };
+		A542DCD81D66FED400AFE9C1 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD71D66FED400AFE9C1 /* UserModel.swift */; };
+		A542DCDA1D67007B00AFE9C1 /* DXHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD91D67007B00AFE9C1 /* DXHelper.swift */; };
+		A542DCE31D67009400AFE9C1 /* UIActionSheet+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = A542DCDE1D67009400AFE9C1 /* UIActionSheet+Block.m */; };
+		A542DCE41D67009400AFE9C1 /* UIAlertView+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = A542DCE01D67009400AFE9C1 /* UIAlertView+Block.m */; };
+		A542DCE51D67009400AFE9C1 /* DMAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = A542DCE21D67009400AFE9C1 /* DMAlertAction.m */; };
+		A542DCEA1D6700F500AFE9C1 /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCE91D6700F500AFE9C1 /* SlideViewController.swift */; };
+		A542DCEC1D67010500AFE9C1 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCEB1D67010500AFE9C1 /* SettingViewController.swift */; };
+		A542DCEE1D67010F00AFE9C1 /* MoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCED1D67010F00AFE9C1 /* MoneyViewController.swift */; };
 		A56388EC1D66B7630008A8C2 /* DxDeveiceCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56388EB1D66B7630008A8C2 /* DxDeveiceCommon.swift */; };
 		A56388EE1D66DF290008A8C2 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56388ED1D66DF290008A8C2 /* MapManager.swift */; };
 /* End PBXBuildFile section */
@@ -63,6 +73,19 @@
 		A50F0F671D659644003907F7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A50F0F6B1D659697003907F7 /* MainMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
 		A50F0FAC1D65ABD0003907F7 /* DXNetWorkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXNetWorkTool.swift; sourceTree = "<group>"; };
+		A542DCD21D66FE7800AFE9C1 /* redbagModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = redbagModel.swift; sourceTree = "<group>"; };
+		A542DCD51D66FE9800AFE9C1 /* RedBagManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedBagManager.swift; sourceTree = "<group>"; };
+		A542DCD71D66FED400AFE9C1 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		A542DCD91D67007B00AFE9C1 /* DXHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXHelper.swift; sourceTree = "<group>"; };
+		A542DCDD1D67009400AFE9C1 /* UIActionSheet+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+Block.h"; sourceTree = "<group>"; };
+		A542DCDE1D67009400AFE9C1 /* UIActionSheet+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+Block.m"; sourceTree = "<group>"; };
+		A542DCDF1D67009400AFE9C1 /* UIAlertView+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Block.h"; sourceTree = "<group>"; };
+		A542DCE01D67009400AFE9C1 /* UIAlertView+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Block.m"; sourceTree = "<group>"; };
+		A542DCE11D67009400AFE9C1 /* DMAlertAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMAlertAction.h; sourceTree = "<group>"; };
+		A542DCE21D67009400AFE9C1 /* DMAlertAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMAlertAction.m; sourceTree = "<group>"; };
+		A542DCE91D6700F500AFE9C1 /* SlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideViewController.swift; sourceTree = "<group>"; };
+		A542DCEB1D67010500AFE9C1 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		A542DCED1D67010F00AFE9C1 /* MoneyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyViewController.swift; sourceTree = "<group>"; };
 		A56388EB1D66B7630008A8C2 /* DxDeveiceCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DxDeveiceCommon.swift; sourceTree = "<group>"; };
 		A56388ED1D66DF290008A8C2 /* MapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		BB958AE2575A5953BEF3C265 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -200,6 +223,8 @@
 		A50F0F571D659047003907F7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A542DCDB1D67009400AFE9C1 /* DMAlertAction */,
+				A542DCD91D67007B00AFE9C1 /* DXHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -245,6 +270,8 @@
 		A50F0F5C1D659047003907F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A542DCD21D66FE7800AFE9C1 /* redbagModel.swift */,
+				A542DCD71D66FED400AFE9C1 /* UserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -266,6 +293,9 @@
 		A50F0F5F1D659057003907F7 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				A542DCE81D6700D100AFE9C1 /* MoneyVC */,
+				A542DCE71D6700C400AFE9C1 /* SettingVC */,
+				A542DCE61D6700B300AFE9C1 /* SlidVC */,
 				A50F0F6D1D659869003907F7 /* Login */,
 				A50F0F6B1D659697003907F7 /* MainMapViewController.swift */,
 			);
@@ -297,6 +327,7 @@
 		A50F0F6E1D659874003907F7 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				A542DCD41D66FE8200AFE9C1 /* Redbag */,
 				A50F0FAB1D65AB97003907F7 /* NetWork */,
 				A50F0FAA1D65AB91003907F7 /* Map */,
 			);
@@ -325,6 +356,59 @@
 				A56388EB1D66B7630008A8C2 /* DxDeveiceCommon.swift */,
 			);
 			name = NetWork;
+			sourceTree = "<group>";
+		};
+		A542DCD41D66FE8200AFE9C1 /* Redbag */ = {
+			isa = PBXGroup;
+			children = (
+				A542DCD51D66FE9800AFE9C1 /* RedBagManager.swift */,
+			);
+			name = Redbag;
+			sourceTree = "<group>";
+		};
+		A542DCDB1D67009400AFE9C1 /* DMAlertAction */ = {
+			isa = PBXGroup;
+			children = (
+				A542DCDC1D67009400AFE9C1 /* Class */,
+				A542DCE11D67009400AFE9C1 /* DMAlertAction.h */,
+				A542DCE21D67009400AFE9C1 /* DMAlertAction.m */,
+			);
+			path = DMAlertAction;
+			sourceTree = "<group>";
+		};
+		A542DCDC1D67009400AFE9C1 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				A542DCDD1D67009400AFE9C1 /* UIActionSheet+Block.h */,
+				A542DCDE1D67009400AFE9C1 /* UIActionSheet+Block.m */,
+				A542DCDF1D67009400AFE9C1 /* UIAlertView+Block.h */,
+				A542DCE01D67009400AFE9C1 /* UIAlertView+Block.m */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		A542DCE61D6700B300AFE9C1 /* SlidVC */ = {
+			isa = PBXGroup;
+			children = (
+				A542DCE91D6700F500AFE9C1 /* SlideViewController.swift */,
+			);
+			name = SlidVC;
+			sourceTree = "<group>";
+		};
+		A542DCE71D6700C400AFE9C1 /* SettingVC */ = {
+			isa = PBXGroup;
+			children = (
+				A542DCEB1D67010500AFE9C1 /* SettingViewController.swift */,
+			);
+			name = SettingVC;
+			sourceTree = "<group>";
+		};
+		A542DCE81D6700D100AFE9C1 /* MoneyVC */ = {
+			isa = PBXGroup;
+			children = (
+				A542DCED1D67010F00AFE9C1 /* MoneyViewController.swift */,
+			);
+			name = MoneyVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -479,13 +563,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				A50F0F661D6593C0003907F7 /* Commenddefine.swift in Sources */,
+				A542DCDA1D67007B00AFE9C1 /* DXHelper.swift in Sources */,
+				A542DCD31D66FE7800AFE9C1 /* redbagModel.swift in Sources */,
+				A542DCEE1D67010F00AFE9C1 /* MoneyViewController.swift in Sources */,
 				A56388EC1D66B7630008A8C2 /* DxDeveiceCommon.swift in Sources */,
+				A542DCEA1D6700F500AFE9C1 /* SlideViewController.swift in Sources */,
+				A542DCEC1D67010500AFE9C1 /* SettingViewController.swift in Sources */,
 				A50F0F291D658A3D003907F7 /* ViewController.swift in Sources */,
+				A542DCD61D66FE9800AFE9C1 /* RedBagManager.swift in Sources */,
+				A542DCE31D67009400AFE9C1 /* UIActionSheet+Block.m in Sources */,
+				A542DCE41D67009400AFE9C1 /* UIAlertView+Block.m in Sources */,
 				A50F0FAD1D65ABD0003907F7 /* DXNetWorkTool.swift in Sources */,
+				A542DCE51D67009400AFE9C1 /* DMAlertAction.m in Sources */,
 				A56388EE1D66DF290008A8C2 /* MapManager.swift in Sources */,
 				A50F0F271D658A3D003907F7 /* AppDelegate.swift in Sources */,
 				A50F0F641D65912D003907F7 /* RemoteSever.swift in Sources */,
 				A50F0F6C1D659697003907F7 /* MainMapViewController.swift in Sources */,
+				A542DCD81D66FED400AFE9C1 /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,30 +1,21 @@
 //
-//  MainMapViewController.swift
+//  SlideViewController.swift
 //  SeeMoney
 //
-//  Created by douglas on 16/8/18.
+//  Created by douglas on 16/8/19.
 //  Copyright © 2016年 douglas. All rights reserved.
 //
 
 import UIKit
 
-class MainMapViewController: UIViewController {
-    
-    
-    
-    
-    
+class SlideViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        MapManager.sharedInstance.getAuthInfo()
-        self.view.addSubview(MapManager.sharedInstance.mapView)
-        createUI()
+
         // Do any additional setup after loading the view.
     }
-    func createUI(){
-      //  navigationController?.navigationBarHidden = true
-    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
