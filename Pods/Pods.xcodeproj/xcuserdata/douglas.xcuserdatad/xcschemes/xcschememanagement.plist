@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ATMHud@dhoerl.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SeeMoney.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0125B96860A9FC000BA36CAFAF9B2D09</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>1C3436CEA5C3D39764C5F54374794ECB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9A54B0DA2F4E7DF1CF9035A5E2343E44</key>
+		<key>471A087471B50BC265C7C73E2214AD73</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B4E2159999F77A9DA3834FB35F7DB8ED</key>
+		<key>68D23DB03294EE15A2E2D89FCB09AFF3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A0C3FA39CD11E3048BA18D77F52DF325</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CB65A7BEE6EA5942FB0723124C34CC75</key>
 		<dict>
 			<key>primary</key>
 			<true/>

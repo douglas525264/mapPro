@@ -85,11 +85,13 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-SeeMoney/AFNetworking.framework"
+  install_framework "Pods-SeeMoney/ATMHud_dhoerl.framework"
   install_framework "Pods-SeeMoney/ReactiveCocoa.framework"
   install_framework "Pods-SeeMoney/Result.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-SeeMoney/AFNetworking.framework"
+  install_framework "Pods-SeeMoney/ATMHud_dhoerl.framework"
   install_framework "Pods-SeeMoney/ReactiveCocoa.framework"
   install_framework "Pods-SeeMoney/Result.framework"
 fi

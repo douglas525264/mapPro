@@ -9,10 +9,16 @@
 import UIKit
 
 class MainMapViewController: UIViewController {
-
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        MapManager.sharedInstance.getAuthInfo()
+        self.view.addSubview(MapManager.sharedInstance.mapView)
         // Do any additional setup after loading the view.
     }
 

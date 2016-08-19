@@ -21,6 +21,8 @@
 		A50F0F681D659644003907F7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50F0F671D659644003907F7 /* MapKit.framework */; };
 		A50F0F6C1D659697003907F7 /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50F0F6B1D659697003907F7 /* MainMapViewController.swift */; };
 		A50F0FAD1D65ABD0003907F7 /* DXNetWorkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50F0FAC1D65ABD0003907F7 /* DXNetWorkTool.swift */; };
+		A56388EC1D66B7630008A8C2 /* DxDeveiceCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56388EB1D66B7630008A8C2 /* DxDeveiceCommon.swift */; };
+		A56388EE1D66DF290008A8C2 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56388ED1D66DF290008A8C2 /* MapManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		A50F0F671D659644003907F7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A50F0F6B1D659697003907F7 /* MainMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
 		A50F0FAC1D65ABD0003907F7 /* DXNetWorkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXNetWorkTool.swift; sourceTree = "<group>"; };
+		A56388EB1D66B7630008A8C2 /* DxDeveiceCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DxDeveiceCommon.swift; sourceTree = "<group>"; };
+		A56388ED1D66DF290008A8C2 /* MapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		BB958AE2575A5953BEF3C265 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D8B98597C27137C70AF82827 /* Pods_SeeMoney.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeeMoney.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -309,6 +313,7 @@
 		A50F0FAA1D65AB91003907F7 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				A56388ED1D66DF290008A8C2 /* MapManager.swift */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				A50F0FAC1D65ABD0003907F7 /* DXNetWorkTool.swift */,
+				A56388EB1D66B7630008A8C2 /* DxDeveiceCommon.swift */,
 			);
 			name = NetWork;
 			sourceTree = "<group>";
@@ -473,8 +479,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A50F0F661D6593C0003907F7 /* Commenddefine.swift in Sources */,
+				A56388EC1D66B7630008A8C2 /* DxDeveiceCommon.swift in Sources */,
 				A50F0F291D658A3D003907F7 /* ViewController.swift in Sources */,
 				A50F0FAD1D65ABD0003907F7 /* DXNetWorkTool.swift in Sources */,
+				A56388EE1D66DF290008A8C2 /* MapManager.swift in Sources */,
 				A50F0F271D658A3D003907F7 /* AppDelegate.swift in Sources */,
 				A50F0F641D65912D003907F7 /* RemoteSever.swift in Sources */,
 				A50F0F6C1D659697003907F7 /* MainMapViewController.swift in Sources */,
