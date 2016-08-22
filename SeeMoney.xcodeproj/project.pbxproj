@@ -32,6 +32,7 @@
 		A542DCEC1D67010500AFE9C1 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCEB1D67010500AFE9C1 /* SettingViewController.swift */; };
 		A542DCEE1D67010F00AFE9C1 /* MoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCED1D67010F00AFE9C1 /* MoneyViewController.swift */; };
 		A5630A361D6AEFF300CB95DC /* redbg2.png in Resources */ = {isa = PBXBuildFile; fileRef = A5630A351D6AEFF300CB95DC /* redbg2.png */; };
+		A5630A3B1D6B03B100CB95DC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5630A3A1D6B03B100CB95DC /* AudioToolbox.framework */; };
 		A56388EC1D66B7630008A8C2 /* DxDeveiceCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56388EB1D66B7630008A8C2 /* DxDeveiceCommon.swift */; };
 		A56388EE1D66DF290008A8C2 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56388ED1D66DF290008A8C2 /* MapManager.swift */; };
 /* End PBXBuildFile section */
@@ -88,6 +89,7 @@
 		A542DCEB1D67010500AFE9C1 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A542DCED1D67010F00AFE9C1 /* MoneyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyViewController.swift; sourceTree = "<group>"; };
 		A5630A351D6AEFF300CB95DC /* redbg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redbg2.png; sourceTree = "<group>"; };
+		A5630A3A1D6B03B100CB95DC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A56388EB1D66B7630008A8C2 /* DxDeveiceCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DxDeveiceCommon.swift; sourceTree = "<group>"; };
 		A56388ED1D66DF290008A8C2 /* MapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		BB958AE2575A5953BEF3C265 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5630A3B1D6B03B100CB95DC /* AudioToolbox.framework in Frameworks */,
 				A50F0F681D659644003907F7 /* MapKit.framework in Frameworks */,
 				652BE0D49D0956902C974CEC /* libPods.a in Frameworks */,
 				106E1989A0229361717D20C7 /* Pods_SeeMoney.framework in Frameworks */,
@@ -125,6 +128,7 @@
 		8CD89EB9AC2CD115B7080956 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5630A3A1D6B03B100CB95DC /* AudioToolbox.framework */,
 				A50F0F671D659644003907F7 /* MapKit.framework */,
 				2792FDE9D8FB28974CF9AD13 /* libPods.a */,
 				D8B98597C27137C70AF82827 /* Pods_SeeMoney.framework */,

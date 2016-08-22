@@ -15,9 +15,6 @@ class MainMapViewController: UIViewController,MKMapViewDelegate {
     var currentredBg:redbagModel?
     var currentLine:MKPolyline?
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,9 +48,10 @@ class MainMapViewController: UIViewController,MKMapViewDelegate {
         }
         RedBagManager.sharedInstance.scanRedbag(center!) { (redbags) in
             if redbags?.count > 0 {
+                DXHelper.shareInstance.makeAlert(String(format: "发现%ld个红包",(redbags?.count)!), dur: 1, isShake: true)
                 let coordinateSpan = MKCoordinateSpan(latitudeDelta: 0.0005, longitudeDelta: 0.0005)
                 let region = MKCoordinateRegion(center: center!, span: coordinateSpan)
-                mapView.setRegion(region, animated: true)
+                mapView.setRegion(region, animated:true)
                 MapManager.sharedInstance.addRedbags(redbags!)
                 
                 
@@ -81,25 +79,32 @@ class MainMapViewController: UIViewController,MKMapViewDelegate {
     }
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         if (view.annotation!.isKindOfClass(redbagModel)) {
-            let alertVc = UIAlertController(title: "提示", message: "我擦，发现一只大红包", preferredStyle: UIAlertControllerStyle.Alert);
-            let goActionAction = UIAlertAction(title: "前往", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction) in
-                MapManager.sharedInstance .drawLine(self.currentlocation!, to: (view.annotation?.coordinate)!, callBack: { (isOK : Bool, line:MKPolyline?) in
-                    if isOK {
+            
+            if self.currentLine == nil {
+                let alertVc = UIAlertController(title: "提示", message: "我擦，发现一只大红包", preferredStyle: UIAlertControllerStyle.Alert);
+                let goActionAction = UIAlertAction(title: "前往", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction) in
                     
-                        self.currentLine = line
-                    } else {
-                        print("路线规划失败了")
-                    }
+                    DXHelper.shareInstance.makeAlert("路线规划中", dur: 1, isShake: false)
+                    MapManager.sharedInstance .drawLine(self.currentlocation!, to: (view.annotation?.coordinate)!, callBack: { (isOK : Bool, line:MKPolyline?) in
+                        if isOK {
+                            
+                            self.currentLine = line
+                        } else {
+                            print("路线规划失败了")
+                        }
+                    })
                 })
-            })
-            let igNoreActionAction = UIAlertAction(title:"忽略", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction) in
-                MapManager.sharedInstance.removeBag(view.annotation as! redbagModel)
-            })
-            alertVc.addAction(goActionAction)
-            alertVc.addAction(igNoreActionAction)
-            self.presentViewController(alertVc, animated: true, completion: { 
-                
-            })
+                let igNoreActionAction = UIAlertAction(title:"忽略", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction) in
+                    MapManager.sharedInstance.removeBag(view.annotation as! redbagModel)
+                })
+                alertVc.addAction(goActionAction)
+                alertVc.addAction(igNoreActionAction)
+                self.presentViewController(alertVc, animated: true, completion: {
+                    
+                })
+  
+            }
+            
             
         }
     }

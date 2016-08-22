@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SeeMoney/APP/Controller/MainMapViewController.swift"
-            timestampString = "493551248.366408"
+            timestampString = "493553006.594783"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "mapView(_:didUpdateUserLocation:)"
             landmarkType = "5">
          </BreakpointContent>
