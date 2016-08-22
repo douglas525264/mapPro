@@ -12,7 +12,9 @@ import MapKit
 class MapManager: NSObject,CLLocationManagerDelegate {
     
     static let sharedInstance = MapManager()
-   lazy var locationManager:CLLocationManager = {
+    
+    var redBagsArr = [redbagModel]()
+    lazy var locationManager:CLLocationManager = {
     let ll = CLLocationManager()
     ll.delegate = self
     ll.desiredAccuracy = kCLLocationAccuracyBest
@@ -44,9 +46,70 @@ class MapManager: NSObject,CLLocationManagerDelegate {
         }
         self.locationManager.stopUpdatingHeading()
     }
+    
+    
     func getmapView() -> MKMapView {
         return mapView;
     }
+    //获取两点距离
+    func getDistance(from:CLLocationCoordinate2D, to:CLLocationCoordinate2D) -> Double {
+        let lfl = CLLocation(latitude: from.latitude , longitude: to.longitude);
+        let tfl = CLLocation(latitude: to.latitude, longitude: to.longitude);
+        return lfl.distanceFromLocation(tfl);
+        
+    }
+    //像地图中添加红包
+    func addRedbags(redBags:[redbagModel]) -> Void {
+        var newAdd = [redbagModel]()
+        for redb:redbagModel in redBags {
+            if redBagsArr.contains(redb) {
+                continue
+            }
+            redBagsArr.append(redb)
+            newAdd.append(redb)
+        }
+        if newAdd.count > 0 {
+            mapView.addAnnotations(newAdd)
+        }
+    }
+    //移除红包
+    func removeBag(redbg:redbagModel) -> Void {
+        if redBagsArr.contains(redbg) {
+            redBagsArr.removeAtIndex(redBagsArr.indexOf(redbg)!)
+            mapView .removeAnnotation(redbg)
+        }
+    }
+    
+    //划线
+    func drawLine(from:CLLocationCoordinate2D,to:CLLocationCoordinate2D,callBack:(isOK:Bool,line:MKPolyline?)->Void) -> Void
+    {
+        let fromPlacemark = MKPlacemark(coordinate: from, addressDictionary: nil)
+        let toPlacemark = MKPlacemark(coordinate: to, addressDictionary: nil)
+        let fromeItem = MKMapItem(placemark: fromPlacemark)
+        let toItem = MKMapItem(placemark: toPlacemark)
+        
+        let request = MKDirectionsRequest();
+        request.source = fromeItem;
+        request.destination = toItem;
+        request.requestsAlternateRoutes = true
+        
+        let directions = MKDirections(request:request )
+        directions.calculateDirectionsWithCompletionHandler { (response:MKDirectionsResponse?,error:NSError?) in
+            if (error == nil) {
+                let rout = response?.routes[0];
+                self.mapView.addOverlay(rout!.polyline)
+                callBack(isOK: true, line: rout?.polyline)
+
+                
+            }else {
+                callBack(isOK: false, line: nil);
+            }
+        }
+        
+        
+        
+    }
+    //mark - 代理
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
     }

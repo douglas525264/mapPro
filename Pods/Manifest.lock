@@ -17,6 +17,7 @@ PODS:
   - ATMHud@dhoerl (3.0.0):
     - ATMHud@dhoerl/Core (= 3.0.0)
   - ATMHud@dhoerl/Core (3.0.0)
+  - MBProgressHUD (0.9.2)
   - ReactiveCocoa (4.1.0):
     - ReactiveCocoa/UI (= 4.1.0)
     - Result (~> 2.0)
@@ -33,11 +34,13 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - ATMHud@dhoerl (~> 3.0.0)
+  - MBProgressHUD (~> 0.9.2)
   - ReactiveCocoa
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   ATMHud@dhoerl: df5862a0a76c7330aa78e3cd3504fa8221ee8a0d
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   ReactiveCocoa: d70004d7a366a7b8e87e60ce2347182c77701949
   Result: 9e75e1111c774c6ac594e14907b15057053a7959
 

@@ -14,7 +14,7 @@
 @implementation DMAlertAction
 
 
-+ (void)showAlertWithTitle:(NSString*)title msg:(NSString*)message chooseBlock:(void (^)(NSInteger buttonIdx))block  buttonsStatement:(NSString*)cancelString, ...
+- (void)showAlertWithTitle:(NSString*)title msg:(NSString*)message chooseBlock:(void (^)(NSInteger buttonIdx))block  buttonsStatement:(NSString*)cancelString, ...
 {
     
     NSMutableArray* argsArray = [[NSMutableArray alloc] initWithCapacity:2];

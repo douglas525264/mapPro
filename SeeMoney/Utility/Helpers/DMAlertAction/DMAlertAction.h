@@ -12,7 +12,7 @@
 @interface DMAlertAction : NSObject
 
 
-
+- (void)test;
 /**
  @brief  模式对话框，选择一项（UIAlertView与与UIAlertController封装，根据不同ios版本对应选择调用方法）
  @param title        标题
@@ -20,7 +20,8 @@
  @param block        返回点击的按钮index
  @param cancelString 取消按钮 文本，必须以nil结束
  */
-+ (void)showAlertWithTitle:(NSString*)title msg:(NSString*)msg chooseBlock:(void (^)(NSInteger buttonIdx))block  buttonsStatement:(NSString*)cancelString, ...;
+- (void)showAlertWithTitle:(NSString*)title msg:(NSString*)msg chooseBlock:(void (^)(NSInteger buttonIdx))block butt1onsStatement:(NSString*)cancelString, ...;
+- (void)showAlertWithTitle:(NSString*)title msg:(NSString*)msg chooseBlock:(void (^)(NSInteger buttonIdx))block  buttonsStatement:(NSString*)cancelString, ...;
 
 //增加延时消失入口
 
