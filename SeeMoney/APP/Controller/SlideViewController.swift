@@ -10,9 +10,11 @@ import UIKit
 
 class SlideViewController: UIViewController {
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.backgroundColor = RGB(0, g: 0, b: 0, a: 0.3)
         // Do any additional setup after loading the view.
     }
 

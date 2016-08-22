@@ -14,21 +14,35 @@ class MainMapViewController: UIViewController,MKMapViewDelegate {
     var currentlocation:CLLocationCoordinate2D?
     var currentredBg:redbagModel?
     var currentLine:MKPolyline?
+    var mapView:MKMapView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         MapManager.sharedInstance.getAuthInfo()
-        self.view.addSubview(MapManager.sharedInstance.mapView)
+        self.mapView = MapManager.sharedInstance.mapView
+        self.view.addSubview(self.mapView!)
         MapManager.sharedInstance.mapView.delegate = self;
         createUI()
         //MKUserLocation
         // Do any additional setup after loading the view.
     }
     func createUI(){
+        let leftItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Organize, target: self, action:#selector(MainMapViewController.leftBtnClick(_:)))
+        self.navigationItem.leftBarButtonItem = leftItem
+        self.view .sendSubviewToBack(self.mapView!)
       //  navigationController?.navigationBarHidden = true
     }
     
+    @IBOutlet weak var sendBtnClick: UIButton!
+    @IBAction func sendAction(sender: AnyObject) {
+        
+    }
+    @IBAction func searchBtnCLick(sender: AnyObject) {
+    }
+    func leftBtnClick(sender:AnyObject) {
+        self.navigationController?.pushViewController(SlideViewController(), animated: true)
+    }
     //delgate
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
        // userLocation.coordinate
