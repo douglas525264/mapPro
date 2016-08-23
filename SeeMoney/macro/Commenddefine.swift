@@ -14,6 +14,9 @@ let IS_IOS9 = (UIDevice.currentDevice().systemVersion as NSString).doubleValue >
 
 let IS_IPAD = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad)
 
+let ScreenWidth =  UIApplication.sharedApplication().keyWindow?.frame.width
+let ScreenHeight =  UIApplication.sharedApplication().keyWindow?.frame.height
+
 func RGB(r:CGFloat, g:CGFloat, b:CGFloat ,a:CGFloat ) -> UIColor {
     
     return UIColor.init(red: r/255, green: g/255, blue: b/255, alpha: a)

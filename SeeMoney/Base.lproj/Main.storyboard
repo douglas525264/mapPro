@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Main Nav View Controller-->
         <scene sceneID="1op-Lq-JEY">
             <objects>
-                <navigationController id="n74-zo-hoz" sceneMemberID="viewController">
+                <navigationController id="n74-zo-hoz" customClass="MainNavViewController" customModule="SeeMoney" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wJz-13-08c">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -21,6 +21,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nt2-E1-6DA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-611" y="608"/>
+        </scene>
+        <!--Slide View Controller-->
+        <scene sceneID="chC-KW-HBK">
+            <objects>
+                <viewController id="nKN-Mo-cxu" customClass="SlideViewController" customModule="SeeMoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yKc-ag-cvv"/>
+                        <viewControllerLayoutGuide type="bottom" id="d7A-dc-IRt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sL4-Au-ObS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KjM-HF-8Gg">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.3094507104" green="1" blue="0.13805990400000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KjM-HF-8Gg" firstAttribute="leading" secondItem="sL4-Au-ObS" secondAttribute="leadingMargin" constant="-20" id="EvQ-OY-LLW"/>
+                            <constraint firstItem="d7A-dc-IRt" firstAttribute="top" secondItem="KjM-HF-8Gg" secondAttribute="bottom" id="GjH-Yr-UGN"/>
+                            <constraint firstItem="KjM-HF-8Gg" firstAttribute="top" secondItem="sL4-Au-ObS" secondAttribute="topMargin" id="KJh-kU-5Fl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KjM-HF-8Gg" secondAttribute="trailing" constant="-20" id="U4V-u3-t5s"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OYA-Aw-Bq8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-624" y="1334"/>
         </scene>
         <!--捡钱-->
         <scene sceneID="tne-QT-ifu">
@@ -56,16 +86,54 @@
                                     <action selector="searchBtnCLick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cbp-sQ-bxQ"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UbU-tR-DtL">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZO-nC-FST">
+                                        <rect key="frame" x="17" y="23" width="37" height="37"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="37" id="ZPn-IC-Mhf"/>
+                                            <constraint firstAttribute="width" constant="37" id="xQo-ue-bRx"/>
+                                        </constraints>
+                                        <state key="normal" image="zapya_actionbar_profile"/>
+                                        <connections>
+                                            <action selector="leftAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fwa-X6-uI9"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="捡钱" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFi-gR-TE2">
+                                        <rect key="frame" x="201" y="35" width="198" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="198" id="3gt-qv-A6a"/>
+                                            <constraint firstAttribute="height" constant="21" id="ZAJ-7a-oEJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="WZO-nC-FST" firstAttribute="leading" secondItem="UbU-tR-DtL" secondAttribute="leading" constant="17" id="F8j-NY-rej"/>
+                                    <constraint firstItem="ZFi-gR-TE2" firstAttribute="centerX" secondItem="UbU-tR-DtL" secondAttribute="centerX" id="GMu-Qt-Lkx"/>
+                                    <constraint firstAttribute="height" constant="64" id="QMI-cl-5Ca"/>
+                                    <constraint firstItem="ZFi-gR-TE2" firstAttribute="top" secondItem="UbU-tR-DtL" secondAttribute="top" constant="35" id="bdn-8U-AKH"/>
+                                    <constraint firstItem="WZO-nC-FST" firstAttribute="top" secondItem="UbU-tR-DtL" secondAttribute="top" constant="23" id="tpO-hj-mdH"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sbI-31-KmK" secondAttribute="bottom" constant="48" id="7aC-xP-vkP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sbI-31-KmK" secondAttribute="trailing" constant="35" id="Hmk-oM-AFr"/>
+                            <constraint firstItem="UbU-tR-DtL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="HwJ-uO-4sE"/>
                             <constraint firstItem="4t6-KL-hkh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LAS-Cg-X5e"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UbU-tR-DtL" secondAttribute="trailing" constant="-20" id="OPa-K9-Ona"/>
+                            <constraint firstItem="UbU-tR-DtL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="SXG-45-bm8"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4t6-KL-hkh" secondAttribute="bottom" constant="48" id="mfg-EO-4gH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="捡钱" id="Flh-Z8-J15"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="sendBtnClick" destination="4t6-KL-hkh" id="8tW-rR-dX5"/>
                     </connections>
@@ -75,4 +143,7 @@
             <point key="canvasLocation" x="420" y="655"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="zapya_actionbar_profile" width="44" height="44"/>
+    </resources>
 </document>

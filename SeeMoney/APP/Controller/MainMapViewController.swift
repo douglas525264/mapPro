@@ -9,13 +9,13 @@
 import UIKit
 import MapKit
 import MBProgressHUD
-class MainMapViewController: UIViewController,MKMapViewDelegate {
+class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControllerDelegate {
     
     var currentlocation:CLLocationCoordinate2D?
     var currentredBg:redbagModel?
     var currentLine:MKPolyline?
     var mapView:MKMapView?
-    
+    lazy var slideVC:SlideViewController = SlideViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,20 +28,26 @@ class MainMapViewController: UIViewController,MKMapViewDelegate {
         // Do any additional setup after loading the view.
     }
     func createUI(){
+        
         let leftItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Organize, target: self, action:#selector(MainMapViewController.leftBtnClick(_:)))
         self.navigationItem.leftBarButtonItem = leftItem
         self.view .sendSubviewToBack(self.mapView!)
-      //  navigationController?.navigationBarHidden = true
+        self.slideVC.delegate = self
+        navigationController?.navigationBarHidden = true
     }
     
     @IBOutlet weak var sendBtnClick: UIButton!
     @IBAction func sendAction(sender: AnyObject) {
         
+        
+    }
+    @IBAction func leftAction(sender: AnyObject) {
+        self.slideVC.show(inView:self.view)
     }
     @IBAction func searchBtnCLick(sender: AnyObject) {
     }
     func leftBtnClick(sender:AnyObject) {
-        self.navigationController?.pushViewController(SlideViewController(), animated: true)
+        self.slideVC.show(inView:self.view)
     }
     //delgate
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
@@ -127,6 +133,26 @@ class MainMapViewController: UIViewController,MKMapViewDelegate {
         renderer.lineWidth = 5.0
         renderer.strokeColor = RGB(60, g: 150, b: 250, a: 0.8)
         return renderer
+    }
+    func founctionCallBackAtIndex(index: NSInteger) {
+        switch index {
+        case 5:
+            print("请登录")
+            break
+        case 0:
+            print("点赞去")
+            break
+        case 1:
+            print("钱包")
+            break
+        case 2:
+            print("设置")
+            self.navigationController?.pushViewController(MoneyViewController(), animated: true)
+            break
+            
+        default:
+            break
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -35,6 +35,8 @@
 		A5630A3B1D6B03B100CB95DC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5630A3A1D6B03B100CB95DC /* AudioToolbox.framework */; };
 		A56388EC1D66B7630008A8C2 /* DxDeveiceCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56388EB1D66B7630008A8C2 /* DxDeveiceCommon.swift */; };
 		A56388EE1D66DF290008A8C2 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56388ED1D66DF290008A8C2 /* MapManager.swift */; };
+		A5827B0D1D6C2C3000693921 /* DXSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5827B0C1D6C2C3000693921 /* DXSlideViewController.swift */; };
+		A5827B0F1D6C3F6900693921 /* MainNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5827B0E1D6C3F6900693921 /* MainNavViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +94,8 @@
 		A5630A3A1D6B03B100CB95DC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A56388EB1D66B7630008A8C2 /* DxDeveiceCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DxDeveiceCommon.swift; sourceTree = "<group>"; };
 		A56388ED1D66DF290008A8C2 /* MapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
+		A5827B0C1D6C2C3000693921 /* DXSlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXSlideViewController.swift; sourceTree = "<group>"; };
+		A5827B0E1D6C3F6900693921 /* MainNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavViewController.swift; sourceTree = "<group>"; };
 		BB958AE2575A5953BEF3C265 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D8B98597C27137C70AF82827 /* Pods_SeeMoney.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeeMoney.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -305,6 +309,7 @@
 				A542DCE61D6700B300AFE9C1 /* SlidVC */,
 				A50F0F6D1D659869003907F7 /* Login */,
 				A50F0F6B1D659697003907F7 /* MainMapViewController.swift */,
+				A5827B0E1D6C3F6900693921 /* MainNavViewController.swift */,
 			);
 			name = Sections;
 			sourceTree = "<group>";
@@ -398,6 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				A542DCE91D6700F500AFE9C1 /* SlideViewController.swift */,
+				A5827B0C1D6C2C3000693921 /* DXSlideViewController.swift */,
 			);
 			name = SlidVC;
 			sourceTree = "<group>";
@@ -572,6 +578,7 @@
 			files = (
 				A50F0F661D6593C0003907F7 /* Commenddefine.swift in Sources */,
 				A542DCDA1D67007B00AFE9C1 /* DXHelper.swift in Sources */,
+				A5827B0D1D6C2C3000693921 /* DXSlideViewController.swift in Sources */,
 				A542DCD31D66FE7800AFE9C1 /* redbagModel.swift in Sources */,
 				A542DCEE1D67010F00AFE9C1 /* MoneyViewController.swift in Sources */,
 				A56388EC1D66B7630008A8C2 /* DxDeveiceCommon.swift in Sources */,
@@ -584,6 +591,7 @@
 				A50F0FAD1D65ABD0003907F7 /* DXNetWorkTool.swift in Sources */,
 				A542DCE51D67009400AFE9C1 /* DMAlertAction.m in Sources */,
 				A56388EE1D66DF290008A8C2 /* MapManager.swift in Sources */,
+				A5827B0F1D6C3F6900693921 /* MainNavViewController.swift in Sources */,
 				A50F0F271D658A3D003907F7 /* AppDelegate.swift in Sources */,
 				A50F0F641D65912D003907F7 /* RemoteSever.swift in Sources */,
 				A50F0F6C1D659697003907F7 /* MainMapViewController.swift in Sources */,
