@@ -34,7 +34,12 @@ class DxDeveiceCommon: NSObject {
         var header = Dictionary<String,AnyObject>();
         header["X-IMEI"] = getDeviceImei()
         header["X-VN"] = getVersionCode()
-        
+        header["X-CHN"] = "i000001"
+        header["X-VC"]  = getVersionCode()
+        let me = UserManager.shareInstance.getMe()
+        if (me.token != nil) {
+            header["X-CK"] = me.token
+        }
         return header;
     }
     class func getCurrentLanguage()-> String {

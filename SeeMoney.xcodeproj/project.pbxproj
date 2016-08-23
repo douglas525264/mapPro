@@ -37,6 +37,7 @@
 		A56388EE1D66DF290008A8C2 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56388ED1D66DF290008A8C2 /* MapManager.swift */; };
 		A5827B0D1D6C2C3000693921 /* DXSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5827B0C1D6C2C3000693921 /* DXSlideViewController.swift */; };
 		A5827B0F1D6C3F6900693921 /* MainNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5827B0E1D6C3F6900693921 /* MainNavViewController.swift */; };
+		A5827B111D6C497900693921 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5827B101D6C497900693921 /* UserManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		A56388ED1D66DF290008A8C2 /* MapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		A5827B0C1D6C2C3000693921 /* DXSlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXSlideViewController.swift; sourceTree = "<group>"; };
 		A5827B0E1D6C3F6900693921 /* MainNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavViewController.swift; sourceTree = "<group>"; };
+		A5827B101D6C497900693921 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		BB958AE2575A5953BEF3C265 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D8B98597C27137C70AF82827 /* Pods_SeeMoney.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeeMoney.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -283,6 +285,7 @@
 			children = (
 				A542DCD21D66FE7800AFE9C1 /* redbagModel.swift */,
 				A542DCD71D66FED400AFE9C1 /* UserModel.swift */,
+				A5827B101D6C497900693921 /* UserManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				A542DCEA1D6700F500AFE9C1 /* SlideViewController.swift in Sources */,
 				A542DCEC1D67010500AFE9C1 /* SettingViewController.swift in Sources */,
 				A50F0F291D658A3D003907F7 /* ViewController.swift in Sources */,
+				A5827B111D6C497900693921 /* UserManager.swift in Sources */,
 				A542DCD61D66FE9800AFE9C1 /* RedBagManager.swift in Sources */,
 				A542DCE31D67009400AFE9C1 /* UIActionSheet+Block.m in Sources */,
 				A542DCE41D67009400AFE9C1 /* UIAlertView+Block.m in Sources */,

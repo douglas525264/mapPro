@@ -34,15 +34,21 @@ class DXNetWorkTool: NSObject {
         manager.responseSerializer = AFHTTPResponseSerializer()
         if let header1 = header  {
             for (key,value)  in header1 {
-                manager.responseSerializer.setValue(value, forKey: key);
+                manager.requestSerializer.setValue(value as? String, forHTTPHeaderField: key);
                 
             }
         }
         manager.POST(url, parameters: body, progress: nil, success: { (operation, response) in
-             print(response)
+             print("class + \(response?.classForCoder)")
+            let str = String(data: response as! NSData, encoding: NSUTF8StringEncoding)
+            let info = try? NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments)
+            print("Post get str : \(str)")
+            if info != nil {
+            completed((info as? Dictionary<String,AnyObject>)!,true,200)
+            } else {
             
-             completed(response as! Dictionary,true,200)
-            
+            fail(NSError(domain: "", code: 400, userInfo: nil))
+            }
             }, failure:  { (operation, response) in
                 fail(response)
         })
@@ -55,14 +61,24 @@ class DXNetWorkTool: NSObject {
         manager.responseSerializer = AFHTTPResponseSerializer()
         if let header1 = header  {
             for (key,value)  in header1 {
-                manager.responseSerializer.setValue(value, forKey: key);
+                manager.requestSerializer.setValue(value as? String, forHTTPHeaderField: key);
             }
         }
         manager.GET(url, parameters: body, progress: nil, success: { (operation, response) in
-            print(response)
-            completed(response as! Dictionary,true,200)
+            print("class + \(response?.classForCoder)")
+            let str = String(data: response as! NSData, encoding: NSUTF8StringEncoding)
+            let info = try? NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments)
+            print("GET get str : \(str)")
+            if info != nil{
+                completed((info as? Dictionary<String,AnyObject>)!,true,200)
+            } else {
+            
+                fail(NSError(domain: "", code: 400, userInfo: nil))
+            }
+            
             }, failure:  { (operation, response) in
-            fail(response)
+                fail(response)
+
         })
     }
 

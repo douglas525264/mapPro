@@ -24,6 +24,13 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         self.view.addSubview(self.mapView!)
         MapManager.sharedInstance.mapView.delegate = self;
         createUI()
+        //test
+//        UserManager.shareInstance.register("13520580108", psw: "1234567") { (isOK, userInfo) in
+//            
+//        }
+        UserManager.shareInstance.login("13520580107", psw: "123456") { (isOK, userInfo) in
+            
+        }
         //MKUserLocation
         // Do any additional setup after loading the view.
     }

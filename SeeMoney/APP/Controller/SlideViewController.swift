@@ -56,7 +56,16 @@ class SlideViewController: DXSlideViewController,UITableViewDelegate,UITableView
         loginBtn.frame = CGRectMake(0, headerImageView.frame.origin.y + headerImageView.frame.size.height, headerView.frame.size.width, 40)
         loginBtn.titleLabel?.textColor = UIColor.lightGrayColor()
         loginBtn.titleLabel?.font = UIFont.systemFontOfSize(12)
-        loginBtn.setTitle("点击登录", forState: UIControlState.Normal)
+        let me = UserManager.shareInstance.getMe()
+        switch me.loginStatus {
+        case UserLoginStatus.bagStatusHaslogin:
+            loginBtn.setTitle(me.username, forState: UIControlState.Normal)
+            break
+        default:
+            loginBtn.setTitle("未登录", forState: UIControlState.Normal)
+            break
+        }
+        
         loginBtn.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
         loginBtn.backgroundColor = UIColor.clearColor()
         headerView.addSubview(loginBtn)

@@ -1,0 +1,129 @@
+//
+//  UserManager.swift
+//  SeeMoney
+//
+//  Created by douglas on 16/8/23.
+//  Copyright © 2016年 douglas. All rights reserved.
+//
+
+import UIKit
+
+class UserManager: NSObject {
+
+   static let shareInstance = UserManager()
+   let UserName = "usernamekey"
+   let UserPsw = "userpswkey"
+   let UserAccountNum = "useraccountnumkey"
+   let UserGoldNum = "usergoldNumKey"
+   let UserToken = "usertokenkey"
+   let UserStatus = "userstatusKey"
+    func getMe() -> UserModel {
+        let me = UserModel()
+        let userde = NSUserDefaults.standardUserDefaults()
+        var username = userde.objectForKey(UserName);
+        if username == nil {
+            username = UIDevice.currentDevice().name
+        }
+        me.username = username as? String
+        
+        let psw = userde.objectForKey(UserPsw);
+        if psw != nil {
+           me.psw = psw as? String
+        }
+        
+        let token = userde.objectForKey(UserToken);
+        if token != nil {
+            me.token = token as? String
+        }
+        
+        let accountnum = userde.objectForKey(UserAccountNum)
+        if accountnum != nil {
+            let ac = accountnum as! NSInteger
+            
+            me.accountNum = ac
+        }
+        let goldnum = userde.objectForKey(UserGoldNum)
+        if goldnum != nil {
+            let gc = goldnum as! NSInteger
+            
+            me.goldCount = gc
+        }
+        let status = userde.objectForKey(UserGoldNum)
+        if status != nil {
+            let sc = status as! NSInteger
+            if sc == 1 {
+                me.loginStatus = UserLoginStatus.bagStatusHaslogin
+            }
+
+           
+        }
+
+//        let goldnum = userde.objectForKey(UserGoldNum) as! NSInteger
+//        if goldnum > 0 {
+//            me.goldCount = goldnum
+//        }
+//        let status = userde.objectForKey(UserStatus) as! NSInteger
+//        if status == 1 {
+//            me.loginStatus = UserLoginStatus.bagStatusHaslogin
+//        }
+
+
+        return me
+    }
+    func saveModel(user:UserModel) {
+        let userde = NSUserDefaults.standardUserDefaults()
+        if user.username != nil {
+            userde .setValue(user.username, forKey: UserName)
+        }
+        if user.psw != nil {
+            userde .setValue(user.psw, forKey: UserPsw)
+        }
+        if user.token != nil {
+            userde .setValue(user.token, forKey: UserToken)
+        }
+        if user.accountNum > 0{
+            userde .setValue(user.accountNum, forKey: UserAccountNum)
+        }
+        if user.goldCount > 0  {
+            
+            userde .setValue(user.goldCount, forKey: UserGoldNum)
+        }
+        if user.loginStatus == UserLoginStatus.bagStatusUnLogin{
+            userde.setValue(0, forKey: UserStatus)
+        }else {
+            userde.setValue(1, forKey: UserStatus)
+        }
+        userde.synchronize()
+        
+        
+        
+    }
+    func register(userName:String, psw:String,resgisterCallBack: (isOK : Bool, userInfo: Dictionary<String,AnyObject>) -> Void) {
+        print("registerURL: + \(registerURL)")
+        DXNetWorkTool.sharedInstance.post(registerURL, body: ["t":1,"code":userName,"pwd":psw], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>, isOK:Bool, code:Int) in
+            let token = info["token"];
+            let me = self.getMe()
+            me.token = token as? String
+            me.loginStatus = UserLoginStatus.bagStatusHaslogin
+            self.saveModel(me)
+            
+        }) { (error:NSError) in
+            
+        }
+    }
+    func login(userName:String, psw:String,resgisterCallBack: (isOK : Bool, userInfo: Dictionary<String,AnyObject>) -> Void) {
+        print("loginURL: + \(loginURL)")
+        DXNetWorkTool.sharedInstance.post(loginURL, body: ["t":1,"code":userName,"pwd":psw], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>, isOK:Bool, code:Int) in
+            let token = info["token"];
+            let me = self.getMe()
+            me.token = token as? String
+            me.loginStatus = UserLoginStatus.bagStatusHaslogin
+            self.saveModel(me)
+        }) { (error:NSError) in
+            
+        }
+    }
+
+    
+    
+}
