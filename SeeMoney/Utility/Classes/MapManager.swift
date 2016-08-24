@@ -21,6 +21,8 @@ class MapManager: NSObject,CLLocationManagerDelegate {
     ll.distanceFilter = 8.0
     return ll
     }()
+    
+    var currentLocation: CLLocationCoordinate2D?
     lazy var mapView:MKMapView = {
         let map = MKMapView(frame:(UIApplication.sharedApplication().keyWindow?.frame)!)
         map.showsUserLocation = true;
@@ -44,7 +46,7 @@ class MapManager: NSObject,CLLocationManagerDelegate {
             }
             
         }
-        self.locationManager.stopUpdatingHeading()
+        self.locationManager.startUpdatingLocation()
     }
     
     
@@ -111,7 +113,7 @@ class MapManager: NSObject,CLLocationManagerDelegate {
     }
     //mark - 代理
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
+        currentLocation = locations.first?.coordinate
     }
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("失败了")

@@ -27,7 +27,6 @@ class SlideViewController: DXSlideViewController,UITableViewDelegate,UITableView
     var loginBtn = UIButton(type: UIButtonType.Custom)
     var me = UserManager.shareInstance.getMe()
     
-    //var <#name#> = <#value#>
     
     override func viewDidLoad() {
         super.viewDidLoad()

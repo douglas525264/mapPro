@@ -46,7 +46,14 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     @IBOutlet weak var sendBtnClick: UIButton!
     @IBAction func sendAction(sender: AnyObject) {
         
-        
+        RedBagManager.sharedInstance.sendRedBag(10) { (isOK) in
+            if isOK {
+                DXHelper.shareInstance.makeAlert("发送成功", dur: 2, isShake: false)
+                let me = UserManager.shareInstance.getMe()
+                me.accountNum -= 10;
+                UserManager.shareInstance.saveModel(me)
+            }
+        }
     }
     @IBAction func leftAction(sender: AnyObject) {
         self.slideVC.show(inView:self.view)
@@ -156,10 +163,14 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
             break
         case 1:
             print("钱包")
+            let mainStory = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+            let lgVC = mainStory.instantiateViewControllerWithIdentifier("MoneyViewController")
+            self.navigationController?.pushViewController(lgVC, animated: true)
+
             break
         case 2:
             print("设置")
-            self.navigationController?.pushViewController(MoneyViewController(), animated: true)
+            self.navigationController?.pushViewController(SettingViewController(), animated: true)
             break
         case 3:
             print("退出登录")

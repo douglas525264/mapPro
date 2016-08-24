@@ -20,7 +20,8 @@ class redbagModel: NSObject, MKAnnotation{
     var subtitle: String?
     var image:UIImage?
     var status = bagStatus.bagStatusUnShow
-    
+    //来自某个用户
+    var from:UserModel?
   //  var coordinate: CLLocationCoordinate2D?
     var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D()
     

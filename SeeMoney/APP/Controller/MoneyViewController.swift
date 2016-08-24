@@ -10,12 +10,28 @@ import UIKit
 
 class MoneyViewController: UIViewController {
 
+    @IBOutlet weak var goldCountLable: UILabel!
+    @IBOutlet weak var accountNumLable: UILabel!
+    var nav = DXNavgationBar.getNav("钱包")
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.greenColor()
+        //self.view.backgroundColor = UIColor.greenColor()
+        let me = UserManager.shareInstance.getMe()
+        accountNumLable.text = String(format: "账户余额: %ld元", me.accountNum)
+        goldCountLable.text = String(format: "金币个数: %ld个", me.goldCount)
+        self.view .addSubview(self.nav)
+        self.nav.addBackBtn(self, backSelector: #selector(MoneyViewController.backClick(_:)))
         // Do any additional setup after loading the view.
     }
+    func backClick(sender:UIButton?) {
+     self.navigationController?.popViewControllerAnimated(true)
+    }
+    @IBAction func addAcountClick(sender: AnyObject) {
+        
+    }
 
+    @IBAction func tixianClick(sender: AnyObject) {
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

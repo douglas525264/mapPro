@@ -12,10 +12,14 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var pswTextFiled: UITextField!
     @IBOutlet weak var userNameTextfiled: UITextField!
+    var nav = DXNavgationBar.getNav("登录")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.userNameTextfiled.text = "18513581292"
         self.pswTextFiled.text = "123456"
+        self.view .addSubview(self.nav)
+        self.nav.addBackBtn(self, backSelector: #selector(LoginViewController.backaction(_:)))
         // Do any additional setup after loading the view.
     }
 

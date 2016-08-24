@@ -46,8 +46,8 @@ class DXNetWorkTool: NSObject {
             if info != nil {
             completed((info as? Dictionary<String,AnyObject>)!,true,200)
             } else {
-            
-            fail(NSError(domain: "", code: 400, userInfo: nil))
+            completed(Dictionary<String,AnyObject>(),true,200)
+           // fail(NSError(domain: "", code: 400, userInfo: nil))
             }
             }, failure:  { (operation, response) in
                 fail(response)

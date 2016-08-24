@@ -12,12 +12,13 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var usernameTextfiled: UITextField!
 
     @IBOutlet weak var pswTextFiled: UITextField!
-    
+    var nav = DXNavgationBar.getNav("注册")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.view .addSubview(self.nav)
+        self.nav.addBackBtn(self, backSelector: #selector(RegisterViewController.backAction(_:)))
         
         // Do any additional setup after loading the view.
     }
