@@ -22,6 +22,7 @@ class redbagModel: NSObject, MKAnnotation{
     var status = bagStatus.bagStatusUnShow
     //来自某个用户
     var from:UserModel?
+    var num : Double = 0
   //  var coordinate: CLLocationCoordinate2D?
     var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D()
     

@@ -59,6 +59,15 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         self.slideVC.show(inView:self.view)
     }
     @IBAction func searchBtnCLick(sender: AnyObject) {
+        RedBagManager.sharedInstance.remogteSearch(self.currentlocation!) { (redbags) in
+            if redbags?.count > 0 {
+                DXHelper.shareInstance.makeAlert(String(format: "发现%ld个红包",(redbags?.count)!), dur: 1, isShake: true)
+                MapManager.sharedInstance.addRedbags(redbags!)
+                
+                
+            }
+
+        }
     }
     func leftBtnClick(sender:AnyObject) {
         self.slideVC.show(inView:self.view)
@@ -72,6 +81,10 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         if (currentredBg != nil) {
             let dis = MapManager.sharedInstance.getDistance(center!, to: currentredBg!.coordinate)
             if dis < 5 {
+                let me = UserManager.shareInstance.getMe()
+                me.accountNum += (self.currentredBg?.num)!
+                UserManager.shareInstance.saveModel(me)
+                DXHelper.shareInstance.makeAlert(String(format: "恭喜您捡到%.2f元",(self.currentredBg?.num)!), dur: 1, isShake: true)
                 MapManager.sharedInstance.removeBag(self.currentredBg!)
                 if (currentLine != nil) {
                     mapView.removeOverlay(currentLine!)

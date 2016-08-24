@@ -104,7 +104,7 @@ class SlideViewController: DXSlideViewController,UITableViewDelegate,UITableView
             cell?.imageView?.image = UIImage(named: "zapya_ios_profile_evaluate")
             break
         case 1:
-            let str = String(format: "钱包(%ld元)",me.accountNum)
+            let str = String(format: "钱包(%.2f元)",me.accountNum)
             cell?.textLabel?.text = str
             cell?.imageView?.image = UIImage(named: "zapya_slidemenu_icon_setting")
             break

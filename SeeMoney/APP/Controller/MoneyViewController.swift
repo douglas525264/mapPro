@@ -17,8 +17,8 @@ class MoneyViewController: UIViewController {
         super.viewDidLoad()
         //self.view.backgroundColor = UIColor.greenColor()
         let me = UserManager.shareInstance.getMe()
-        accountNumLable.text = String(format: "账户余额: %ld元", me.accountNum)
-        goldCountLable.text = String(format: "金币个数: %ld个", me.goldCount)
+        accountNumLable.text = String(format: "账户余额: %.2f元", me.accountNum)
+        goldCountLable.text = String(format: "金币个数: %.2f个", me.goldCount)
         self.view .addSubview(self.nav)
         self.nav.addBackBtn(self, backSelector: #selector(MoneyViewController.backClick(_:)))
         // Do any additional setup after loading the view.

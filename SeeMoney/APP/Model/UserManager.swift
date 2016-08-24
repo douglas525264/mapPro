@@ -45,13 +45,13 @@ class UserManager: NSObject {
         
         let accountnum = userde.objectForKey(UserAccountNum)
         if accountnum != nil {
-            let ac = accountnum as! NSInteger
+            let ac = accountnum as! Double
             
             me.accountNum = ac
         }
         let goldnum = userde.objectForKey(UserGoldNum)
         if goldnum != nil {
-            let gc = goldnum as! NSInteger
+            let gc = goldnum as! Double
             
             me.goldCount = gc
         }

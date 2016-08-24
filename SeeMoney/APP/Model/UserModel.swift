@@ -15,8 +15,8 @@ class UserModel: NSObject {
 
     var username : String?
     var psw : String?
-    var accountNum = 100
-    var goldCount = 100
+    var accountNum : Double = 100
+    var goldCount : Double = 100
     var loginStatus:UserLoginStatus = UserLoginStatus.bagStatusUnLogin
     var token:String?
     

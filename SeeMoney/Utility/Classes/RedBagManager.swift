@@ -29,7 +29,7 @@ class RedBagManager: NSObject {
         }
         finishedBlock(redbags: resultarr)
     }
-    
+    //发红包
     func sendRedBag(num:CGFloat,finishedBlock:(isOK:Bool) -> Void) -> Void {
         print("sendredBagURL: + \(sendRedbagURL)")
         let location = MapManager.sharedInstance.currentLocation
@@ -42,5 +42,35 @@ class RedBagManager: NSObject {
         }
 
         
+    }
+    //远程搜索
+    func remogteSearch(location:CLLocationCoordinate2D,finishedBlock:(redbags:[redbagModel]?) -> Void) {
+        
+        let search = String(format: searchredBgURl, location.latitude,location.longitude)
+        print("sendredBagURL: + \(search)")
+        DXNetWorkTool.sharedInstance.get(search, body:  Dictionary<String, AnyObject>(), header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info : Dictionary<String, AnyObject>, isOK : Bool, code:Int) in
+            
+            let arr :[AnyObject] = info["es"] as! [AnyObject]
+            for item  in arr {
+                let dic = item as?  Dictionary<String, AnyObject>
+                if (dic != nil) {
+                    
+                    let locationInfo = dic!["loc"] as? Dictionary<String, AnyObject>
+                    
+                    let redbag = redbagModel(redId: "001", title: dic!["title"] as? String, subTitle: "", image: UIImage(named: "redbg2"), coo: CLLocationCoordinate2DMake(locationInfo!["lat"] as! CLLocationDegrees, locationInfo!["lnt"] as! CLLocationDegrees));
+                    redbag.num = dic!["amount"] as! Double
+                    self.redbags .append(redbag)
+                    
+                }
+            }
+            if arr.count > 0 {
+            
+                self.scanRedbag(location, finishedBlock: finishedBlock)
+            }
+            
+            
+        }) { (error : NSError) in
+            finishedBlock(redbags: [redbagModel]())
+        }
     }
 }
