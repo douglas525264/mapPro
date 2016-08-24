@@ -11,10 +11,11 @@ public protocol SlideViewControllerDelegate : NSObjectProtocol {
     
     // Center latitude and longitude of the annotation view.
     // The implementation of this property must be KVO compliant.
-    func founctionCallBackAtIndex(index:NSInteger)    // Title and subtitle for use by selection UI.
+    func founctionCallBackAtIndex(index:NSInteger)
+    // Title and subtitle for use by selection UI.
 }
 
-class SlideViewController: DXSlideViewController,UITableViewDelegate,UITableViewDataSource {
+class SlideViewController: DXSlideViewController,UITableViewDelegate,UITableViewDataSource,UserManagerDlegate {
     weak var delegate: SlideViewControllerDelegate?
     lazy var tableView:UITableView = {
         let table = UITableView(frame: CGRectZero, style: UITableViewStyle.Plain)
@@ -24,12 +25,13 @@ class SlideViewController: DXSlideViewController,UITableViewDelegate,UITableView
     var headerView = UIView()
     var headerImageView = UIImageView()
     var loginBtn = UIButton(type: UIButtonType.Custom)
+    var me = UserManager.shareInstance.getMe()
     
     //var <#name#> = <#value#>
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        UserManager.shareInstance.delegate = self;
        self.createLocalUI()
         // Do any additional setup after loading the view.
     }
@@ -92,7 +94,7 @@ class SlideViewController: DXSlideViewController,UITableViewDelegate,UITableView
         return 1
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return (me.loginStatus == UserLoginStatus.bagStatusHaslogin) ? 4:3
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -103,19 +105,39 @@ class SlideViewController: DXSlideViewController,UITableViewDelegate,UITableView
             cell?.imageView?.image = UIImage(named: "zapya_ios_profile_evaluate")
             break
         case 1:
-            cell?.textLabel?.text = "钱包"
+            let str = String(format: "钱包(%ld元)",me.accountNum)
+            cell?.textLabel?.text = str
             cell?.imageView?.image = UIImage(named: "zapya_slidemenu_icon_setting")
             break
         case 2:
             cell?.textLabel?.text = "设置"
             cell?.imageView?.image = UIImage(named: "zapya_slidemenu_icon_setting")
             break
-        case 3:break
+        case 3:
+            cell?.textLabel?.text = "退出登录"
+            cell?.imageView?.image = UIImage(named: "zapya_slidemenu_icon_setting")
+            break
         default:break
             
         }
         cell?.textLabel?.textColor = UIColor.lightGrayColor()
         return cell!
+    }
+    func userStatusChange(user:UserModel) {
+        
+        self.refreashUI()
+    }
+    func refreashUI() {
+        me = UserManager.shareInstance.getMe()
+        switch me.loginStatus {
+        case UserLoginStatus.bagStatusHaslogin:
+            loginBtn.setTitle(me.username, forState: UIControlState.Normal)
+            break
+        default:
+            loginBtn.setTitle("未登录", forState: UIControlState.Normal)
+            break
+        }
+        self.tableView.reloadData()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

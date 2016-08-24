@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol UserManagerDlegate : NSObjectProtocol{
+    
+    func userStatusChange(user: UserModel) -> Void
+
+}
 class UserManager: NSObject {
 
    static let shareInstance = UserManager()
@@ -17,6 +22,8 @@ class UserManager: NSObject {
    let UserGoldNum = "usergoldNumKey"
    let UserToken = "usertokenkey"
    let UserStatus = "userstatusKey"
+   var delegate:UserManagerDlegate?
+    
     func getMe() -> UserModel {
         let me = UserModel()
         let userde = NSUserDefaults.standardUserDefaults()
@@ -48,7 +55,7 @@ class UserManager: NSObject {
             
             me.goldCount = gc
         }
-        let status = userde.objectForKey(UserGoldNum)
+        let status = userde.objectForKey(UserStatus)
         if status != nil {
             let sc = status as! NSInteger
             if sc == 1 {
@@ -95,7 +102,7 @@ class UserManager: NSObject {
         }
         userde.synchronize()
         
-        
+        self.notStatus()
         
     }
     func register(userName:String, psw:String,resgisterCallBack: (isOK : Bool, userInfo: Dictionary<String,AnyObject>) -> Void) {
@@ -105,25 +112,35 @@ class UserManager: NSObject {
             let me = self.getMe()
             me.token = token as? String
             me.loginStatus = UserLoginStatus.bagStatusHaslogin
+            me.psw = psw
             self.saveModel(me)
-            
+           
+            resgisterCallBack(isOK: true, userInfo: info)
         }) { (error:NSError) in
-            
+            resgisterCallBack(isOK: false, userInfo:[String:AnyObject]())
         }
     }
-    func login(userName:String, psw:String,resgisterCallBack: (isOK : Bool, userInfo: Dictionary<String,AnyObject>) -> Void) {
+    func login(userName:String, psw:String,loginCallBack: (isOK : Bool, userInfo: Dictionary<String,AnyObject>) -> Void) {
         print("loginURL: + \(loginURL)")
         DXNetWorkTool.sharedInstance.post(loginURL, body: ["t":1,"code":userName,"pwd":psw], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>, isOK:Bool, code:Int) in
             let token = info["token"];
             let me = self.getMe()
             me.token = token as? String
+            me.psw = psw
             me.loginStatus = UserLoginStatus.bagStatusHaslogin
             self.saveModel(me)
+      
+            loginCallBack(isOK: true, userInfo: info)
         }) { (error:NSError) in
-            
+            loginCallBack(isOK: false, userInfo:[String:AnyObject]())
         }
     }
 
     
-    
+    func notStatus() -> Void {
+        if self.delegate != nil {
+            self.delegate?.userStatusChange(self.getMe())
+        }
+    }
 }
+

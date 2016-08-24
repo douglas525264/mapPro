@@ -28,9 +28,9 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
 //        UserManager.shareInstance.register("13520580108", psw: "1234567") { (isOK, userInfo) in
 //            
 //        }
-        UserManager.shareInstance.login("13520580107", psw: "123456") { (isOK, userInfo) in
+      //  UserManager.shareInstance.login("18513581292", psw: "123456") { (isOK, userInfo) in
             
-        }
+    //    }
         //MKUserLocation
         // Do any additional setup after loading the view.
     }
@@ -145,6 +145,11 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         switch index {
         case 5:
             print("请登录")
+            if UserManager.shareInstance.getMe().loginStatus == UserLoginStatus.bagStatusUnLogin {
+                let mainStory = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+                let lgVC = mainStory.instantiateViewControllerWithIdentifier("LoginViewController")
+                self.navigationController?.pushViewController(lgVC, animated: true)
+            }
             break
         case 0:
             print("点赞去")
@@ -155,6 +160,12 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         case 2:
             print("设置")
             self.navigationController?.pushViewController(MoneyViewController(), animated: true)
+            break
+        case 3:
+            print("退出登录")
+            let me = UserManager.shareInstance.getMe()
+            me.loginStatus = UserLoginStatus.bagStatusUnLogin
+            UserManager.shareInstance.saveModel(me)
             break
             
         default:

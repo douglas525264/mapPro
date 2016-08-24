@@ -11,7 +11,7 @@ import Foundation
 let schema = "http://"
 //warning : default is POST
 let registerURL = schema + "hongbao.api.drqmobile.com/v1/user"
-let loginURL = schema + "hongbao.api.drqmobile.com/v1/user/longin"
+let loginURL = schema + "hongbao.api.drqmobile.com/v1/user/login"
 let sendRedbagURL = schema + "hongbao.api.drqmobile.com/v1/envolope"
 //GET
 let searchredBgURl = schema + " hongbao.api.drqmobile.com/v1/envolope?lat=<?>&lnt=<?>"

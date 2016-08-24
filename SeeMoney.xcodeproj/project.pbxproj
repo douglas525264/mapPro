@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		106E1989A0229361717D20C7 /* Pods_SeeMoney.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B98597C27137C70AF82827 /* Pods_SeeMoney.framework */; };
 		652BE0D49D0956902C974CEC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2792FDE9D8FB28974CF9AD13 /* libPods.a */; };
+		A50288931D6D54690086CD80 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50288921D6D54690086CD80 /* LoginViewController.swift */; };
+		A50288951D6D54740086CD80 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50288941D6D54740086CD80 /* RegisterViewController.swift */; };
 		A50F0F271D658A3D003907F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50F0F261D658A3D003907F7 /* AppDelegate.swift */; };
 		A50F0F291D658A3D003907F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50F0F281D658A3D003907F7 /* ViewController.swift */; };
 		A50F0F2C1D658A3D003907F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A50F0F2A1D658A3D003907F7 /* Main.storyboard */; };
@@ -60,6 +62,8 @@
 /* Begin PBXFileReference section */
 		2792FDE9D8FB28974CF9AD13 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		883EDF7CCA4EC7F5F2DF1906 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		A50288921D6D54690086CD80 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A50288941D6D54740086CD80 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		A50F0F231D658A3C003907F7 /* SeeMoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeeMoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A50F0F261D658A3D003907F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../../AppDelegate.swift; sourceTree = "<group>"; };
 		A50F0F281D658A3D003907F7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -335,6 +339,8 @@
 		A50F0F6D1D659869003907F7 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				A50288921D6D54690086CD80 /* LoginViewController.swift */,
+				A50288941D6D54740086CD80 /* RegisterViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -589,9 +595,11 @@
 				A542DCEC1D67010500AFE9C1 /* SettingViewController.swift in Sources */,
 				A50F0F291D658A3D003907F7 /* ViewController.swift in Sources */,
 				A5827B111D6C497900693921 /* UserManager.swift in Sources */,
+				A50288931D6D54690086CD80 /* LoginViewController.swift in Sources */,
 				A542DCD61D66FE9800AFE9C1 /* RedBagManager.swift in Sources */,
 				A542DCE31D67009400AFE9C1 /* UIActionSheet+Block.m in Sources */,
 				A542DCE41D67009400AFE9C1 /* UIAlertView+Block.m in Sources */,
+				A50288951D6D54740086CD80 /* RegisterViewController.swift in Sources */,
 				A50F0FAD1D65ABD0003907F7 /* DXNetWorkTool.swift in Sources */,
 				A542DCE51D67009400AFE9C1 /* DMAlertAction.m in Sources */,
 				A56388EE1D66DF290008A8C2 /* MapManager.swift in Sources */,

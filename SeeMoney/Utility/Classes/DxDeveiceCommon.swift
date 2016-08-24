@@ -37,7 +37,7 @@ class DxDeveiceCommon: NSObject {
         header["X-CHN"] = "i000001"
         header["X-VC"]  = getVersionCode()
         let me = UserManager.shareInstance.getMe()
-        if (me.token != nil) {
+        if (me.token != nil && me.loginStatus == UserLoginStatus.bagStatusHaslogin) {
             header["X-CK"] = me.token
         }
         return header;
