@@ -31,7 +31,9 @@ class SlideViewController: DXSlideViewController,UITableViewDelegate,UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         UserManager.shareInstance.delegate = self;
+        self.refreashUI()
        self.createLocalUI()
+       
         // Do any additional setup after loading the view.
     }
     func createLocalUI() {

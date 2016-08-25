@@ -16,6 +16,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     var currentLine:MKPolyline?
     var mapView:MKMapView?
     lazy var slideVC:SlideViewController = SlideViewController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,19 +42,64 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         self.view .sendSubviewToBack(self.mapView!)
         self.slideVC.delegate = self
         navigationController?.navigationBarHidden = true
+        self.closeBtn.hidden = true
     }
     
+    @IBOutlet weak var closeBtn: UIButton!
     @IBOutlet weak var sendBtnClick: UIButton!
     @IBAction func sendAction(sender: AnyObject) {
         
-        RedBagManager.sharedInstance.sendRedBag(10) { (isOK) in
-            if isOK {
-                DXHelper.shareInstance.makeAlert("发送成功", dur: 2, isShake: false)
-                let me = UserManager.shareInstance.getMe()
-                me.accountNum -= 10;
-                UserManager.shareInstance.saveModel(me)
-            }
+        let alertVc = UIAlertController(title: "提示", message: "发红包", preferredStyle: UIAlertControllerStyle.Alert);
+        alertVc .addTextFieldWithConfigurationHandler { (text:UITextField) in
+            text.placeholder = "金额"
+            text.secureTextEntry = false
+            text.keyboardType = UIKeyboardType.NamePhonePad
         }
+        let sureAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) { (ac:UIAlertAction) in
+            let textFiled = alertVc.textFields?.first
+            let num = Float((textFiled?.text)!)
+            
+            RedBagManager.sharedInstance.sendRedBag(num!) { (isOK) in
+                if isOK {
+                    DXHelper.shareInstance.makeAlert("发送成功", dur: 2, isShake: false)
+                    let me = UserManager.shareInstance.getMe()
+                    me.accountNum -= 10;
+                    UserManager.shareInstance.saveModel(me)
+                }
+            }
+            
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Default) { (ac:UIAlertAction) in
+            
+        }
+        alertVc.addAction(sureAction)
+        alertVc.addAction(cancelAction)
+        self.presentViewController(alertVc, animated: true, completion: {
+            
+        })
+    }
+  
+    @IBAction func closeAction(sender: AnyObject) {
+        let alertVc = UIAlertController(title: "提示", message: "确定取消导航吗", preferredStyle: UIAlertControllerStyle.Alert);
+        let sureAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) { (ac:UIAlertAction) in
+            if (self.currentLine != nil) {
+                self.mapView!.removeOverlay(self.currentLine!)
+            }
+            self.currentLine = nil
+            self.currentredBg = nil
+            self.closeBtn.hidden = true
+
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Default) { (ac:UIAlertAction) in
+            
+        }
+        alertVc.addAction(sureAction)
+        alertVc.addAction(cancelAction)
+        self.presentViewController(alertVc, animated: true, completion: {
+            
+        })
+
+        
     }
     @IBAction func leftAction(sender: AnyObject) {
         self.slideVC.show(inView:self.view)
@@ -79,19 +125,8 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         let center = userLocation.location?.coordinate
         self.currentlocation = center
         if (currentredBg != nil) {
-            let dis = MapManager.sharedInstance.getDistance(center!, to: currentredBg!.coordinate)
-            if dis < 5 {
-                let me = UserManager.shareInstance.getMe()
-                me.accountNum += (self.currentredBg?.num)!
-                UserManager.shareInstance.saveModel(me)
-                DXHelper.shareInstance.makeAlert(String(format: "恭喜您捡到%.2f元",(self.currentredBg?.num)!), dur: 1, isShake: true)
-                MapManager.sharedInstance.removeBag(self.currentredBg!)
-                if (currentLine != nil) {
-                    mapView.removeOverlay(currentLine!)
-                }
-                currentLine = nil
-                currentredBg = nil
-            }
+            
+           self.needGetRedbag()
         }
         RedBagManager.sharedInstance.scanRedbag(center!) { (redbags) in
             if redbags?.count > 0 {
@@ -127,19 +162,27 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         if (view.annotation!.isKindOfClass(redbagModel)) {
             
+            
+            
+            
             if self.currentLine == nil {
                 let alertVc = UIAlertController(title: "提示", message: "我擦，发现一只大红包", preferredStyle: UIAlertControllerStyle.Alert);
                 let goActionAction = UIAlertAction(title: "前往", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction) in
                     
-                    DXHelper.shareInstance.makeAlert("路线规划中", dur: 1, isShake: false)
+                    
+                    self.currentredBg = view.annotation as? redbagModel
+                    if !self.needGetRedbag() {
+                    DXHelper.shareInstance.makeAlert("路线规划中...", dur: 1, isShake: false)
                     MapManager.sharedInstance .drawLine(self.currentlocation!, to: (view.annotation?.coordinate)!, callBack: { (isOK : Bool, line:MKPolyline?) in
                         if isOK {
-                            
+                            self.closeBtn.hidden = false
                             self.currentLine = line
+                            DXHelper.shareInstance.makeAlert("进入导航模式，点击左上角X关闭导航" , dur: 2, isShake: false)
                         } else {
-                            print("路线规划失败了")
+                            print("路线规划失败了,请稍后重试~")
                         }
                     })
+                    }
                 })
                 let igNoreActionAction = UIAlertAction(title:"忽略", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction) in
                     MapManager.sharedInstance.removeBag(view.annotation as! redbagModel)
@@ -154,6 +197,25 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
             
             
         }
+    }
+    func needGetRedbag() -> Bool{
+        let dis = MapManager.sharedInstance.getDistance(self.currentlocation!, to: currentredBg!.coordinate)
+        if dis < 15 {
+            let me = UserManager.shareInstance.getMe()
+            me.accountNum += (self.currentredBg?.num)!
+            UserManager.shareInstance.saveModel(me)
+            DXHelper.shareInstance.makeAlert(String(format: "恭喜您捡到%.2f元",(self.currentredBg?.num)!), dur: 1, isShake: true)
+            MapManager.sharedInstance.removeBag(self.currentredBg!)
+            if (currentLine != nil) {
+                self.mapView!.removeOverlay(currentLine!)
+            }
+            currentLine = nil
+            currentredBg = nil
+            self.closeBtn.hidden = true
+            return true
+        }
+        return false
+
     }
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)

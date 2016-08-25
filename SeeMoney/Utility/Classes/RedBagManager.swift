@@ -30,16 +30,16 @@ class RedBagManager: NSObject {
         finishedBlock(redbags: resultarr)
     }
     //发红包
-    func sendRedBag(num:CGFloat,finishedBlock:(isOK:Bool) -> Void) -> Void {
+    func sendRedBag(num:Float,finishedBlock:(isOK:Bool) -> Void) -> Void {
         print("sendredBagURL: + \(sendRedbagURL)")
-        let location = MapManager.sharedInstance.currentLocation
-        if location != nil {
-            DXNetWorkTool.sharedInstance.post(sendRedbagURL, body:["t":1,"amount":20,"lat":(location?.latitude)!,"lnt":(location?.longitude)!,"title":"测试红包","size":num], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>, isOK:Bool, code:Int) in
+        let location = MapManager.sharedInstance.getmapView().userLocation.coordinate
+  
+            DXNetWorkTool.sharedInstance.post(sendRedbagURL, body:["t":1,"amount":num,"lat":(location.latitude),"lnt":(location.longitude),"title":"测试红包","size":10], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>, isOK:Bool, code:Int) in
                 finishedBlock(isOK: true)
                 }, fail: { (error:NSError) in
                 finishedBlock(isOK: false)
             })
-        }
+        
 
         
     }

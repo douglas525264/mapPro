@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		106E1989A0229361717D20C7 /* Pods_SeeMoney.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B98597C27137C70AF82827 /* Pods_SeeMoney.framework */; };
-		652BE0D49D0956902C974CEC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2792FDE9D8FB28974CF9AD13 /* libPods.a */; };
 		A50288931D6D54690086CD80 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50288921D6D54690086CD80 /* LoginViewController.swift */; };
 		A50288951D6D54740086CD80 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50288941D6D54740086CD80 /* RegisterViewController.swift */; };
 		A50288971D6D80E20086CD80 /* DXNavgationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50288961D6D80E20086CD80 /* DXNavgationBar.swift */; };
@@ -115,7 +114,6 @@
 			files = (
 				A5630A3B1D6B03B100CB95DC /* AudioToolbox.framework in Frameworks */,
 				A50F0F681D659644003907F7 /* MapKit.framework in Frameworks */,
-				652BE0D49D0956902C974CEC /* libPods.a in Frameworks */,
 				106E1989A0229361717D20C7 /* Pods_SeeMoney.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,7 +444,7 @@
 				A50F0F1F1D658A3C003907F7 /* Sources */,
 				A50F0F201D658A3C003907F7 /* Frameworks */,
 				A50F0F211D658A3C003907F7 /* Resources */,
-				0E3091284BB98A6F97C35B1D /* Embed Pods Frameworks */,
+				7DF6D2B353AC9FF905F2D471 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -566,7 +564,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0E3091284BB98A6F97C35B1D /* Embed Pods Frameworks */ = {
+		7DF6D2B353AC9FF905F2D471 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -761,6 +759,7 @@
 				INFOPLIST_FILE = SeeMoney/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.douglas.SeeMoney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -778,6 +777,7 @@
 				INFOPLIST_FILE = SeeMoney/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.douglas.SeeMoney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
