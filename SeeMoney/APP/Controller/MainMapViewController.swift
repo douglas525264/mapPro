@@ -107,6 +107,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     @IBAction func searchBtnCLick(sender: AnyObject) {
         RedBagManager.sharedInstance.remogteSearch(self.currentlocation!) { (redbags) in
             if redbags?.count > 0 {
+                
                 DXHelper.shareInstance.makeAlert(String(format: "发现%ld个红包",(redbags?.count)!), dur: 1, isShake: true)
                 MapManager.sharedInstance.addRedbags(redbags!)
                 
@@ -172,13 +173,20 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
                     
                     self.currentredBg = view.annotation as? redbagModel
                     if !self.needGetRedbag() {
-                    DXHelper.shareInstance.makeAlert("路线规划中...", dur: 1, isShake: false)
+                    let hud = MBProgressHUD.showHUDAddedTo(UIApplication.sharedApplication().keyWindow, animated: true)
+                    hud.labelText = "路线规划中..."
+                    hud.mode = MBProgressHUDMode.CustomView
+                    hud.removeFromSuperViewOnHide = true
+                   // DXHelper.shareInstance.makeAlert("路线规划中...", dur: 1, isShake: false)
                     MapManager.sharedInstance .drawLine(self.currentlocation!, to: (view.annotation?.coordinate)!, callBack: { (isOK : Bool, line:MKPolyline?) in
                         if isOK {
                             self.closeBtn.hidden = false
                             self.currentLine = line
+                            hud.hide(true)
                             DXHelper.shareInstance.makeAlert("进入导航模式，点击左上角X关闭导航" , dur: 2, isShake: false)
+                            
                         } else {
+                            hud.hide(true)
                             print("路线规划失败了,请稍后重试~")
                         }
                     })

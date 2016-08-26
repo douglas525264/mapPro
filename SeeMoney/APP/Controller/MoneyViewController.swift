@@ -32,6 +32,10 @@ class MoneyViewController: UIViewController {
 
     @IBAction func tixianClick(sender: AnyObject) {
     }
+    deinit {
+    
+        print("MoneyViewController has deinit")
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
