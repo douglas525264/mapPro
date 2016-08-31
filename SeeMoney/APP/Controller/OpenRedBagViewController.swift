@@ -57,14 +57,16 @@ class OpenRedBagViewController: UIViewController {
             let me = UserManager.shareInstance.getMe()
              me.accountNum += (self.redBag?.num)!
              UserManager.shareInstance.saveModel(me)
-
+            
             let story = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
             
             let detailVc   = story.instantiateViewControllerWithIdentifier("RedBagDetailViewController") as! RedBagDetailViewController
+            self.redBag?.status = bagStatus.bagStatusHasOpen
             detailVc.redBag = self.redBag
             self.parentVc?.presentViewController(detailVc, animated: true, completion: { 
                 self.view.removeFromSuperview()
             })
+            MapManager.sharedInstance.removeBag(self.redBag!)
         }
     }
     @IBAction func closeBtnClick(sender: AnyObject) {
