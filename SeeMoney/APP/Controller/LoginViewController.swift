@@ -25,7 +25,8 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var forgetBtnClick: UIButton!
     @IBAction func loginbtnClick(sender: AnyObject) {
-        UserManager.shareInstance.login(userNameTextfiled.text!, psw:pswTextFiled.text!) { (isOK, userInfo) in
+        UserManager.shareInstance.login(userNameTextfiled.text!, psw:pswTextFiled.text!) {
+            (isOK, userInfo) in
             if isOK {
             
                 self.navigationController?.popViewControllerAnimated(true)

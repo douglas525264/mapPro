@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import MBProgressHUD
+
 class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControllerDelegate {
     
     var currentlocation:CLLocationCoordinate2D?
@@ -16,7 +17,8 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     var currentLine:MKPolyline?
     var mapView:MKMapView?
     lazy var slideVC:SlideViewController = SlideViewController()
-
+    var redVC :OpenRedBagViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +45,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         self.slideVC.delegate = self
         navigationController?.navigationBarHidden = true
         self.closeBtn.hidden = true
+        
     }
     
     @IBOutlet weak var closeBtn: UIButton!
@@ -105,13 +108,21 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         self.slideVC.show(inView:self.view)
     }
     @IBAction func searchBtnCLick(sender: AnyObject) {
+        let hud = MBProgressHUD.showHUDAddedTo(UIApplication.sharedApplication().keyWindow, animated: true)
+        hud.labelText = "搜索中,请耐心等待..."
+        hud.mode = MBProgressHUDMode.CustomView
+        hud.removeFromSuperViewOnHide = true
+
         RedBagManager.sharedInstance.remogteSearch(self.currentlocation!) { (redbags) in
+            hud.hide(true)
             if redbags?.count > 0 {
                 
                 DXHelper.shareInstance.makeAlert(String(format: "发现%ld个红包",(redbags?.count)!), dur: 1, isShake: true)
                 MapManager.sharedInstance.addRedbags(redbags!)
                 
                 
+            }else {
+                DXHelper.shareInstance.makeAlert("在您附近未发现红包，请随处走走", dur: 1, isShake: true)
             }
 
         }
@@ -164,15 +175,15 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         if (view.annotation!.isKindOfClass(redbagModel)) {
             
             
-            
-            
+             self.currentredBg = view.annotation as? redbagModel
+            if !self.needGetRedbag() {
             if self.currentLine == nil {
                 let alertVc = UIAlertController(title: "提示", message: "我擦，发现一只大红包", preferredStyle: UIAlertControllerStyle.Alert);
                 let goActionAction = UIAlertAction(title: "前往", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction) in
                     
                     
-                    self.currentredBg = view.annotation as? redbagModel
-                    if !self.needGetRedbag() {
+                   
+                    
                     let hud = MBProgressHUD.showHUDAddedTo(UIApplication.sharedApplication().keyWindow, animated: true)
                     hud.labelText = "路线规划中..."
                     hud.mode = MBProgressHUDMode.CustomView
@@ -190,7 +201,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
                             print("路线规划失败了,请稍后重试~")
                         }
                     })
-                    }
+                    
                 })
                 let igNoreActionAction = UIAlertAction(title:"忽略", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction) in
                     MapManager.sharedInstance.removeBag(view.annotation as! redbagModel)
@@ -202,6 +213,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
                 })
   
             }
+            }
             
             
         }
@@ -209,17 +221,28 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     func needGetRedbag() -> Bool{
         let dis = MapManager.sharedInstance.getDistance(self.currentlocation!, to: currentredBg!.coordinate)
         if dis < 15 {
-            let me = UserManager.shareInstance.getMe()
-            me.accountNum += (self.currentredBg?.num)!
-            UserManager.shareInstance.saveModel(me)
-            DXHelper.shareInstance.makeAlert(String(format: "恭喜您捡到%.2f元",(self.currentredBg?.num)!), dur: 1, isShake: true)
-            MapManager.sharedInstance.removeBag(self.currentredBg!)
-            if (currentLine != nil) {
-                self.mapView!.removeOverlay(currentLine!)
+            
+            let story = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+            let redVC = story.instantiateViewControllerWithIdentifier("OpenRedBagViewController")
+            self.redVC = redVC as? OpenRedBagViewController
+            if self.redVC != nil{
+                self.redVC?.parentVc = self
+                self.redVC?.redBag = self.currentredBg
+                self.redVC?.show(inView: self.view)
             }
             currentLine = nil
             currentredBg = nil
-            self.closeBtn.hidden = true
+//            let me = UserManager.shareInstance.getMe()
+//            me.accountNum += (self.currentredBg?.num)!
+//            UserManager.shareInstance.saveModel(me)
+//            DXHelper.shareInstance.makeAlert(String(format: "恭喜您捡到%.2f元",(self.currentredBg?.num)!), dur: 1, isShake: true)
+//            MapManager.sharedInstance.removeBag(self.currentredBg!)
+//            if (currentLine != nil) {
+//                self.mapView!.removeOverlay(currentLine!)
+//            }
+//            currentLine = nil
+//            currentredBg = nil
+//            self.closeBtn.hidden = true
             return true
         }
         return false

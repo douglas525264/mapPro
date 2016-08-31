@@ -11,6 +11,10 @@
 		A50288931D6D54690086CD80 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50288921D6D54690086CD80 /* LoginViewController.swift */; };
 		A50288951D6D54740086CD80 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50288941D6D54740086CD80 /* RegisterViewController.swift */; };
 		A50288971D6D80E20086CD80 /* DXNavgationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50288961D6D80E20086CD80 /* DXNavgationBar.swift */; };
+		A50E682F1D76AF8000891625 /* SMError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50E682E1D76AF8000891625 /* SMError.swift */; };
+		A50E68321D76C1D700891625 /* OpenRedBagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50E68311D76C1D700891625 /* OpenRedBagViewController.swift */; };
+		A50E68351D76C1F000891625 /* RedBagDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50E68341D76C1F000891625 /* RedBagDetailViewController.swift */; };
+		A50E68371D76C59D00891625 /* RedBagHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50E68361D76C59D00891625 /* RedBagHeaderView.swift */; };
 		A50F0F271D658A3D003907F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50F0F261D658A3D003907F7 /* AppDelegate.swift */; };
 		A50F0F291D658A3D003907F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50F0F281D658A3D003907F7 /* ViewController.swift */; };
 		A50F0F2C1D658A3D003907F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A50F0F2A1D658A3D003907F7 /* Main.storyboard */; };
@@ -65,6 +69,10 @@
 		A50288921D6D54690086CD80 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A50288941D6D54740086CD80 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		A50288961D6D80E20086CD80 /* DXNavgationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXNavgationBar.swift; sourceTree = "<group>"; };
+		A50E682E1D76AF8000891625 /* SMError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMError.swift; sourceTree = "<group>"; };
+		A50E68311D76C1D700891625 /* OpenRedBagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenRedBagViewController.swift; sourceTree = "<group>"; };
+		A50E68341D76C1F000891625 /* RedBagDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedBagDetailViewController.swift; sourceTree = "<group>"; };
+		A50E68361D76C59D00891625 /* RedBagHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedBagHeaderView.swift; sourceTree = "<group>"; };
 		A50F0F231D658A3C003907F7 /* SeeMoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeeMoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A50F0F261D658A3D003907F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../../AppDelegate.swift; sourceTree = "<group>"; };
 		A50F0F281D658A3D003907F7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +161,15 @@
 				BB958AE2575A5953BEF3C265 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		A50E68301D76C1A100891625 /* redBag */ = {
+			isa = PBXGroup;
+			children = (
+				A50E68311D76C1D700891625 /* OpenRedBagViewController.swift */,
+				A50E68341D76C1F000891625 /* RedBagDetailViewController.swift */,
+			);
+			name = redBag;
 			sourceTree = "<group>";
 		};
 		A50F0F1A1D658A3C003907F7 = {
@@ -298,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				A50288961D6D80E20086CD80 /* DXNavgationBar.swift */,
+				A50E68361D76C59D00891625 /* RedBagHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -312,6 +330,7 @@
 		A50F0F5F1D659057003907F7 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				A50E68301D76C1A100891625 /* redBag */,
 				A542DCE81D6700D100AFE9C1 /* MoneyVC */,
 				A542DCE71D6700C400AFE9C1 /* SettingVC */,
 				A542DCE61D6700B300AFE9C1 /* SlidVC */,
@@ -376,6 +395,7 @@
 			children = (
 				A50F0FAC1D65ABD0003907F7 /* DXNetWorkTool.swift */,
 				A56388EB1D66B7630008A8C2 /* DxDeveiceCommon.swift */,
+				A50E682E1D76AF8000891625 /* SMError.swift */,
 			);
 			name = NetWork;
 			sourceTree = "<group>";
@@ -591,8 +611,12 @@
 				A5827B0D1D6C2C3000693921 /* DXSlideViewController.swift in Sources */,
 				A542DCD31D66FE7800AFE9C1 /* redbagModel.swift in Sources */,
 				A542DCEE1D67010F00AFE9C1 /* MoneyViewController.swift in Sources */,
+				A50E68321D76C1D700891625 /* OpenRedBagViewController.swift in Sources */,
+				A50E682F1D76AF8000891625 /* SMError.swift in Sources */,
 				A56388EC1D66B7630008A8C2 /* DxDeveiceCommon.swift in Sources */,
 				A542DCEA1D6700F500AFE9C1 /* SlideViewController.swift in Sources */,
+				A50E68351D76C1F000891625 /* RedBagDetailViewController.swift in Sources */,
+				A50E68371D76C59D00891625 /* RedBagHeaderView.swift in Sources */,
 				A542DCEC1D67010500AFE9C1 /* SettingViewController.swift in Sources */,
 				A50F0F291D658A3D003907F7 /* ViewController.swift in Sources */,
 				A5827B111D6C497900693921 /* UserManager.swift in Sources */,

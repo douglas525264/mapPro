@@ -13,6 +13,10 @@ enum bagStatus {
     case bagStatusHasShow
     case bagStatusHasOpen
 }
+enum redBagType {
+    case redBagTypeGold
+    case redBagTypeMoney
+}
 class redbagModel: NSObject, MKAnnotation{
 //    //红包唯一标识
     var redID:String?
@@ -22,6 +26,8 @@ class redbagModel: NSObject, MKAnnotation{
     var status = bagStatus.bagStatusUnShow
     //来自某个用户
     var from:UserModel?
+    var bagType = redBagType.redBagTypeMoney
+    
     var num : Double = 0
   //  var coordinate: CLLocationCoordinate2D?
     var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D()

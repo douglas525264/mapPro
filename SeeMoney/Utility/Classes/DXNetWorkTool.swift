@@ -8,8 +8,8 @@
 
 import UIKit
 import AFNetworking
-typealias completedBlock = (Dictionary<String,AnyObject>,Bool,Int) -> () //或者 () -> Void
-typealias failBlock = (NSError)->();
+typealias completedBlock = (Dictionary<String,AnyObject>?,Bool,Int) -> () //或者 () -> Void
+typealias failBlock = (SMError)->();
 //返回值是String
 typealias funcBlockA = (Int,Int) -> String
 //返回值是一个函数指针，入参为String
@@ -44,13 +44,31 @@ class DXNetWorkTool: NSObject {
             let info = try? NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments)
             print("Post get str : \(str)")
             if info != nil {
-            completed((info as? Dictionary<String,AnyObject>)!,true,200)
+                
+                let code = info!["code"] as! NSInteger
+                
+                if code == 200 {
+                    let json = info!["json"]
+                  //  print(json!!.description)
+                    if !(json is NSNull) {
+                        completed((json as? Dictionary<String,AnyObject>)!,true,200)
+                    } else {
+                        completed(nil,true,200)
+                    }
+                   
+                } else {
+                    let err = SMError()
+                    err.code = code
+                    fail(err)
+                }
+
+            
             } else {
-            completed(Dictionary<String,AnyObject>(),true,200)
+            fail(SMError())
            // fail(NSError(domain: "", code: 400, userInfo: nil))
             }
             }, failure:  { (operation, response) in
-                fail(response)
+                fail(SMError())
         })
     }
     func get(url:String,body:Dictionary<String,AnyObject>?,header:Dictionary<String,AnyObject>?,completed:completedBlock,fail:failBlock) {
@@ -69,15 +87,25 @@ class DXNetWorkTool: NSObject {
             let str = String(data: response as! NSData, encoding: NSUTF8StringEncoding)
             let info = try? NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments)
             print("GET get str : \(str)")
-            if info != nil{
-                completed((info as? Dictionary<String,AnyObject>)!,true,200)
+            if info != nil {
+                
+                let code = info!["code"] as! NSInteger
+                
+                if code == 200 {
+                    completed((info!["json"] as? Dictionary<String,AnyObject>)!,true,200)
+                } else {
+                    let err = SMError()
+                    err.code = code
+                    fail(err)
+                }
+                
+                
             } else {
-            
-                fail(NSError(domain: "", code: 400, userInfo: nil))
+                fail(SMError())
+                // fail(NSError(domain: "", code: 400, userInfo: nil))
             }
-            
             }, failure:  { (operation, response) in
-                fail(response)
+                fail(SMError())
 
         })
     }

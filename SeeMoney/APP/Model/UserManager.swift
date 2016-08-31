@@ -107,31 +107,34 @@ class UserManager: NSObject {
     }
     func register(userName:String, psw:String,resgisterCallBack: (isOK : Bool, userInfo: Dictionary<String,AnyObject>) -> Void) {
         print("registerURL: + \(registerURL)")
-        DXNetWorkTool.sharedInstance.post(registerURL, body: ["t":1,"code":userName,"pwd":psw], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>, isOK:Bool, code:Int) in
-            let token = info["token"];
+        DXNetWorkTool.sharedInstance.post(registerURL, body: ["t":1,"code":userName,"pwd":psw], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
+            let token = info!["token"];
             let me = self.getMe()
             me.token = token as? String
             me.loginStatus = UserLoginStatus.bagStatusHaslogin
             me.psw = psw
             self.saveModel(me)
            
-            resgisterCallBack(isOK: true, userInfo: info)
-        }) { (error:NSError) in
+            resgisterCallBack(isOK: true, userInfo: info!)
+        }) { (error:SMError) in
             resgisterCallBack(isOK: false, userInfo:[String:AnyObject]())
         }
     }
     func login(userName:String, psw:String,loginCallBack: (isOK : Bool, userInfo: Dictionary<String,AnyObject>) -> Void) {
         print("loginURL: + \(loginURL)")
-        DXNetWorkTool.sharedInstance.post(loginURL, body: ["t":1,"code":userName,"pwd":psw], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>, isOK:Bool, code:Int) in
-            let token = info["token"];
-            let me = self.getMe()
-            me.token = token as? String
-            me.psw = psw
-            me.loginStatus = UserLoginStatus.bagStatusHaslogin
-            self.saveModel(me)
-      
-            loginCallBack(isOK: true, userInfo: info)
-        }) { (error:NSError) in
+        DXNetWorkTool.sharedInstance.post(loginURL, body: ["t":1,"code":userName,"pwd":psw], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
+            
+                let token = info!["token"];
+                let me = self.getMe()
+                me.token = token as? String
+                me.psw = psw
+                me.loginStatus = UserLoginStatus.bagStatusHaslogin
+                self.saveModel(me)
+                
+                loginCallBack(isOK: true, userInfo: info!)
+
+            
+        }) { (error:SMError) in
             loginCallBack(isOK: false, userInfo:[String:AnyObject]())
         }
     }

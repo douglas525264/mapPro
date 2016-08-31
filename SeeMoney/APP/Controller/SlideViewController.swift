@@ -9,10 +9,9 @@
 import UIKit
 public protocol SlideViewControllerDelegate : NSObjectProtocol {
     
-    // Center latitude and longitude of the annotation view.
-    // The implementation of this property must be KVO compliant.
+
     func founctionCallBackAtIndex(index:NSInteger)
-    // Title and subtitle for use by selection UI.
+ 
 }
 
 class SlideViewController: DXSlideViewController,UITableViewDelegate,UITableViewDataSource,UserManagerDlegate {

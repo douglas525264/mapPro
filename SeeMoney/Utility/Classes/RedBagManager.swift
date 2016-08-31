@@ -34,9 +34,9 @@ class RedBagManager: NSObject {
         print("sendredBagURL: + \(sendRedbagURL)")
         let location = MapManager.sharedInstance.getmapView().userLocation.coordinate
   
-            DXNetWorkTool.sharedInstance.post(sendRedbagURL, body:["t":1,"amount":num,"lat":(location.latitude),"lnt":(location.longitude),"title":"测试红包","size":10], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>, isOK:Bool, code:Int) in
+            DXNetWorkTool.sharedInstance.post(sendRedbagURL, body:["t":1,"amount":num,"lat":(location.latitude),"lnt":(location.longitude),"title":"测试红包","size":10], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
                 finishedBlock(isOK: true)
-                }, fail: { (error:NSError) in
+                }, fail: { (error:SMError) in
                 finishedBlock(isOK: false)
             })
         
@@ -48,9 +48,9 @@ class RedBagManager: NSObject {
         
         let search = String(format: searchredBgURl, location.latitude,location.longitude)
         print("sendredBagURL: + \(search)")
-        DXNetWorkTool.sharedInstance.get(search, body:  Dictionary<String, AnyObject>(), header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info : Dictionary<String, AnyObject>, isOK : Bool, code:Int) in
+        DXNetWorkTool.sharedInstance.get(search, body:  Dictionary<String, AnyObject>(), header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info : Dictionary<String, AnyObject>?, isOK : Bool, code:Int) in
             
-            let arr :[AnyObject] = info["es"] as! [AnyObject]
+            let arr :[AnyObject] = info!["es"] as! [AnyObject]
             for item  in arr {
                 let dic = item as?  Dictionary<String, AnyObject>
                 if (dic != nil) {
@@ -66,11 +66,13 @@ class RedBagManager: NSObject {
             if arr.count > 0 {
             
                 self.scanRedbag(location, finishedBlock: finishedBlock)
+            }else {
+            finishedBlock(redbags: [redbagModel]())
             }
             
             
-        }) { (error : NSError) in
-            finishedBlock(redbags: [redbagModel]())
+        }) { (error : SMError) in
+            
         }
     }
 }
