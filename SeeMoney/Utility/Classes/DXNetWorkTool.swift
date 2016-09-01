@@ -27,6 +27,8 @@ class DXNetWorkTool: NSObject {
     }
     //POST
     func post(url:String,body:Dictionary<String,AnyObject>?,header:Dictionary<String,AnyObject>?,completed:completedBlock,fail:failBlock) {
+        print("header : \(header)")
+        print("body : \(body)")
         let manager = AFHTTPSessionManager();
         
         manager.requestSerializer = AFJSONRequestSerializer()

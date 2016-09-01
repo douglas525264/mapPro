@@ -39,6 +39,10 @@ class OpenRedBagViewController: UIViewController {
         bgBtn.frame = self.view.bounds
         bgBtn.addTarget(self, action: #selector(OpenRedBagViewController.oneTapClick(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.insertSubview(bgBtn, atIndex: 0)
+        self.bgHeaderView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.bgHeaderView.frame.height)
+        
+        self.bgBottomView.frame = CGRectMake(0, self.view.bounds.size.height, self.view.bounds.size.width, 0)
+
         
 
         
@@ -54,19 +58,34 @@ class OpenRedBagViewController: UIViewController {
     @IBAction func openBtnCLick(sender: AnyObject) {
         //这里需要执行 开红包动画 或者 利用转场动画实现
         if self.parentVc != nil {
-            let me = UserManager.shareInstance.getMe()
-             me.accountNum += (self.redBag?.num)!
-             UserManager.shareInstance.saveModel(me)
             
-            let story = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-            
-            let detailVc   = story.instantiateViewControllerWithIdentifier("RedBagDetailViewController") as! RedBagDetailViewController
-            self.redBag?.status = bagStatus.bagStatusHasOpen
-            detailVc.redBag = self.redBag
-            self.parentVc?.presentViewController(detailVc, animated: true, completion: { 
-                self.view.removeFromSuperview()
+            RedBagManager.sharedInstance.pick((self.redBag?.redID)!, type: "1", finishedBlock: { (isOK, info) in
+                if isOK {
+                    let me = UserManager.shareInstance.getMe()
+                    me.accountNum += (self.redBag?.num)!
+                    UserManager.shareInstance.saveModel(me)
+                    
+                    let story = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+                    
+                    let detailVc   = story.instantiateViewControllerWithIdentifier("RedBagDetailViewController") as! RedBagDetailViewController
+                    self.redBag?.status = bagStatus.bagStatusHasOpen
+                    detailVc.redBag = self.redBag
+                    
+                    self.bgView.autoresizesSubviews = false
+                    UIView.animateWithDuration(0.5, animations: {
+                        
+                        self.openBtn.alpha = 0
+                        }, completion: { (com : Bool) in
+                            self.parentVc?.presentViewController(detailVc, animated: false, completion: {
+                                self.view.removeFromSuperview()
+                            })
+                            
+                    })
+                    MapManager.sharedInstance.removeBag(self.redBag!)
+
+                }
             })
-            MapManager.sharedInstance.removeBag(self.redBag!)
+            
         }
     }
     @IBAction func closeBtnClick(sender: AnyObject) {

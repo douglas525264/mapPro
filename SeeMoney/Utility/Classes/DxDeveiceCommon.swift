@@ -40,6 +40,11 @@ class DxDeveiceCommon: NSObject {
         if (me.token != nil && me.loginStatus == UserLoginStatus.bagStatusHaslogin) {
             header["X-CK"] = me.token
         }
+        let currentPoint = MapManager.sharedInstance.mapView.userLocation.coordinate
+        let lat = NSNumber(double: currentPoint.latitude).stringValue
+        let lon = NSNumber(double: currentPoint.longitude).stringValue
+        header["X-LAT"] = lat
+        header["X-LNT"] = lon
         return header;
     }
     class func getCurrentLanguage()-> String {

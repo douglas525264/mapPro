@@ -43,6 +43,16 @@ class RedBagManager: NSObject {
 
         
     }
+    func pick(redId:String,type:String,finishedBlock:(isOK:Bool,info:String?) -> Void) {
+        
+        print("redId : \(redId)")
+        
+        DXNetWorkTool.sharedInstance.post(pickRedbagURL, body: ["id":redId,"type":1], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
+            finishedBlock(isOK: true,info: nil)
+        }) { (error:SMError) in
+            finishedBlock(isOK: false,info: error.des)
+        }
+    }
     //远程搜索
     func remogteSearch(location:CLLocationCoordinate2D,finishedBlock:(redbags:[redbagModel]?) -> Void) {
         
@@ -57,7 +67,7 @@ class RedBagManager: NSObject {
                     
                     let locationInfo = dic!["loc"] as? Dictionary<String, AnyObject>
                     
-                    let redbag = redbagModel(redId: "001", title: dic!["title"] as? String, subTitle: "", image: UIImage(named: "redbg2"), coo: CLLocationCoordinate2DMake(locationInfo!["lat"] as! CLLocationDegrees, locationInfo!["lnt"] as! CLLocationDegrees));
+                    let redbag = redbagModel(redId: dic!["id"] as? String, title: dic!["title"] as? String, subTitle: "", image: UIImage(named: "redbg2"), coo: CLLocationCoordinate2DMake(locationInfo!["lat"] as! CLLocationDegrees, locationInfo!["lnt"] as! CLLocationDegrees));
                     redbag.num = dic!["amount"] as! Double
                     self.redbags .append(redbag)
                     
