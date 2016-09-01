@@ -220,7 +220,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     }
     func needGetRedbag() -> Bool{
         let dis = MapManager.sharedInstance.getDistance(self.currentlocation!, to: currentredBg!.coordinate)
-        if dis < 15 {
+        if dis < 500 {
             
             let story = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
             let redVC = story.instantiateViewControllerWithIdentifier("OpenRedBagViewController")

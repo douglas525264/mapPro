@@ -23,13 +23,14 @@ class RedBagHeaderView: UIView {
     }
     override func drawRect(rect: CGRect) {
         // Drawing code
+        let height = rect.size.height - 35
         let context = UIGraphicsGetCurrentContext();
         CGContextMoveToPoint(context, 0, 0)
         CGContextAddLineToPoint(context, rect.size.width, 0)
-        CGContextAddLineToPoint(context, rect.size.width, rect.size.height - 15)
+        CGContextAddLineToPoint(context, rect.size.width, height - 15)
 //        CGContextAddLineToPoint(context, 0, rect.size.height - 15)
 //        CGContextAddLineToPoint(context, 0,0)
-        CGContextAddQuadCurveToPoint(context, rect.size.width/2, rect.size.height + 15, 0, rect.size.height - 15)
+        CGContextAddQuadCurveToPoint(context, rect.size.width/2, height + 15, 0, height - 15)
         CGContextClosePath(context);
       //  CGContextSetLineWidth(context, 1)
         

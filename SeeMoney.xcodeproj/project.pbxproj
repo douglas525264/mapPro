@@ -27,6 +27,8 @@
 		A50F0F681D659644003907F7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50F0F671D659644003907F7 /* MapKit.framework */; };
 		A50F0F6C1D659697003907F7 /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50F0F6B1D659697003907F7 /* MainMapViewController.swift */; };
 		A50F0FAD1D65ABD0003907F7 /* DXNetWorkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50F0FAC1D65ABD0003907F7 /* DXNetWorkTool.swift */; };
+		A513F5431D7824140001EAE8 /* RedBgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513F5421D7824140001EAE8 /* RedBgView.swift */; };
+		A513F5451D78268D0001EAE8 /* RedBgView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A513F5441D78268D0001EAE8 /* RedBgView.xib */; };
 		A542DCD31D66FE7800AFE9C1 /* redbagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD21D66FE7800AFE9C1 /* redbagModel.swift */; };
 		A542DCD61D66FE9800AFE9C1 /* RedBagManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD51D66FE9800AFE9C1 /* RedBagManager.swift */; };
 		A542DCD81D66FED400AFE9C1 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD71D66FED400AFE9C1 /* UserModel.swift */; };
@@ -91,6 +93,8 @@
 		A50F0F671D659644003907F7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A50F0F6B1D659697003907F7 /* MainMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
 		A50F0FAC1D65ABD0003907F7 /* DXNetWorkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXNetWorkTool.swift; sourceTree = "<group>"; };
+		A513F5421D7824140001EAE8 /* RedBgView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedBgView.swift; sourceTree = "<group>"; };
+		A513F5441D78268D0001EAE8 /* RedBgView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RedBgView.xib; sourceTree = "<group>"; };
 		A542DCD21D66FE7800AFE9C1 /* redbagModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = redbagModel.swift; sourceTree = "<group>"; };
 		A542DCD51D66FE9800AFE9C1 /* RedBagManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedBagManager.swift; sourceTree = "<group>"; };
 		A542DCD71D66FED400AFE9C1 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -314,8 +318,10 @@
 		A50F0F5D1D659047003907F7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A513F5421D7824140001EAE8 /* RedBgView.swift */,
 				A50288961D6D80E20086CD80 /* DXNavgationBar.swift */,
 				A50E68361D76C59D00891625 /* RedBagHeaderView.swift */,
+				A513F5441D78268D0001EAE8 /* RedBgView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -562,6 +568,7 @@
 			files = (
 				A50F0F311D658A3D003907F7 /* LaunchScreen.storyboard in Resources */,
 				A50F0F2E1D658A3D003907F7 /* Assets.xcassets in Resources */,
+				A513F5451D78268D0001EAE8 /* RedBgView.xib in Resources */,
 				A50F0F2C1D658A3D003907F7 /* Main.storyboard in Resources */,
 				A5630A361D6AEFF300CB95DC /* redbg2.png in Resources */,
 			);
@@ -608,6 +615,7 @@
 			files = (
 				A50F0F661D6593C0003907F7 /* Commenddefine.swift in Sources */,
 				A542DCDA1D67007B00AFE9C1 /* DXHelper.swift in Sources */,
+				A513F5431D7824140001EAE8 /* RedBgView.swift in Sources */,
 				A5827B0D1D6C2C3000693921 /* DXSlideViewController.swift in Sources */,
 				A542DCD31D66FE7800AFE9C1 /* redbagModel.swift in Sources */,
 				A542DCEE1D67010F00AFE9C1 /* MoneyViewController.swift in Sources */,

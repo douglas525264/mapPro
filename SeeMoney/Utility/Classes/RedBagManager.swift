@@ -98,4 +98,5 @@ class RedBagManager: NSObject {
             
         }
     }
+    
 }

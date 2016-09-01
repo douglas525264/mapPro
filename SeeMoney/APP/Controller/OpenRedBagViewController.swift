@@ -10,42 +10,24 @@ import UIKit
 
 class OpenRedBagViewController: UIViewController {
 
-    @IBOutlet weak var bgView: UIView!
-    @IBOutlet weak var bgBottomView: UIView!
-    @IBOutlet weak var bgHeaderView: UIView!
-    @IBOutlet weak var closeBtn: UIButton!
-    @IBOutlet weak var detailLable: UILabel!
-    @IBOutlet weak var openBtn: UIButton!
+
     weak var parentVc:UIViewController?
     var redBag:redbagModel?
-    
+    var bgView:RedBgView?
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.bgHeaderView.backgroundColor = UIColor.clearColor()
-        self.bgHeaderView.layer.shadowColor = UIColor.blackColor().CGColor
-        self.bgHeaderView.layer.shadowRadius = 2
-        self.bgHeaderView.layer.shadowOffset = CGSizeMake(0, 1)
-        self.bgHeaderView.layer.shadowOpacity = 0.2
-        self.bgBottomView.backgroundColor = RGB(214, g: 79, b: 71, a: 1)
-        self.openBtn.backgroundColor = RGB(220, g: 187, b: 135, a: 1)
-        self.openBtn.layer.cornerRadius = 35
-    
-        self.openBtn.layer.masksToBounds = true
-        self.detailLable.textColor = RGB(254, g: 225, b: 180, a: 1)
         self.view.backgroundColor = RGB(0, g: 0, b: 0, a: 0.6)
-        self.bgView.layer.cornerRadius = 5
-        self.bgView.layer.masksToBounds = true
         let bgBtn = UIButton(type: UIButtonType.Custom)
         bgBtn.frame = self.view.bounds
         bgBtn.addTarget(self, action: #selector(OpenRedBagViewController.oneTapClick(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.insertSubview(bgBtn, atIndex: 0)
-        self.bgHeaderView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.bgHeaderView.frame.height)
-        
-        self.bgBottomView.frame = CGRectMake(0, self.view.bounds.size.height, self.view.bounds.size.width, 0)
-
-        
-
-        
+       self.bgView = NSBundle.mainBundle().loadNibNamed("RedBgView", owner: self, options: nil).last as? RedBgView
+        self.bgView?.frame = CGRectMake(30, 150, self.view.frame.size.width - 60, self.view.frame.size.height - 150 - 80)
+        self.bgView?.parentVC = self
+        self.bgView?.closeBtn.addTarget(self, action:  #selector(OpenRedBagViewController.closeBtnClick(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        self.bgView?.openBtn.addTarget(self, action:  #selector(OpenRedBagViewController.openBtnCLick(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        self.view .addSubview(self.bgView!)
+       // self.bgView?.backgroundColor = UIColor.orangeColor()
         //self.closeBtn .setTitleColor(RGB(0, g: 0, b: 0, a: 0.6), forState: UIControlState.Normal)
         // Do any additional setup after loading the view.
     }
@@ -55,12 +37,14 @@ class OpenRedBagViewController: UIViewController {
     func oneTapClick(sender:AnyObject) {
         self.view.removeFromSuperview()
     }
-    @IBAction func openBtnCLick(sender: AnyObject) {
+    func openBtnCLick(sender: AnyObject) {
         //这里需要执行 开红包动画 或者 利用转场动画实现
         if self.parentVc != nil {
-            
+            self.bgView?.showBtnAnimation()
             RedBagManager.sharedInstance.pick((self.redBag?.redID)!, type: "1", finishedBlock: { (isOK, info) in
+                self.bgView?.stopBtnAnimation()
                 if isOK {
+                    
                     let me = UserManager.shareInstance.getMe()
                     me.accountNum += (self.redBag?.num)!
                     UserManager.shareInstance.saveModel(me)
@@ -71,24 +55,25 @@ class OpenRedBagViewController: UIViewController {
                     self.redBag?.status = bagStatus.bagStatusHasOpen
                     detailVc.redBag = self.redBag
                     
-                    self.bgView.autoresizesSubviews = false
-                    UIView.animateWithDuration(0.5, animations: {
-                        
-                        self.openBtn.alpha = 0
-                        }, completion: { (com : Bool) in
-                            self.parentVc?.presentViewController(detailVc, animated: false, completion: {
-                                self.view.removeFromSuperview()
-                            })
-                            
+                    self.bgView?.scaleBgView({ (isOk) in
+                        self.parentVc?.presentViewController(detailVc, animated: false, completion: {
+                            self.view.removeFromSuperview()
+                        })
                     })
+
+                    
+                
                     MapManager.sharedInstance.removeBag(self.redBag!)
 
+                }else {
+                
+                    DXHelper.shareInstance.makeAlert("没打开", dur: 1, isShake: false)
                 }
             })
             
         }
     }
-    @IBAction func closeBtnClick(sender: AnyObject) {
+    func closeBtnClick(sender: AnyObject) {
         self.view.removeFromSuperview()
     }
     override func didReceiveMemoryWarning() {
