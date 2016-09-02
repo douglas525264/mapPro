@@ -60,8 +60,13 @@ class RedBgView: UIView {
             var frame = self.frame
             frame.size.width = (self.parentVC?.view.bounds.width)!
             frame.origin.x = 0
-            UIView.animateWithDuration(0.8, animations: {
-                self.frame = (self.parentVC?.view.bounds)!
+            self.frame = frame
+            UIView.animateWithDuration(0.7, animations: {
+                
+                var lastfrom = self.parentVC?.view.bounds
+                lastfrom?.size.height *= 1.7
+                lastfrom?.origin.y = -(0.35 * (self.parentVC?.view.bounds.size.height)!)
+                self.frame = lastfrom!
                 self.openBtn.alpha = 0;
                 self.closeBtn.alpha = 0;
                 self.deView.alpha = 0;
