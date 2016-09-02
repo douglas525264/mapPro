@@ -86,6 +86,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
                     let me = UserManager.shareInstance.getMe()
                     me.accountNum -= 10;
                     UserManager.shareInstance.saveModel(me)
+                    self.searchRedBag(true)
                 }
             }
             
