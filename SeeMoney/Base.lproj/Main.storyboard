@@ -554,6 +554,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="closeBtn" destination="QoD-G5-Ou9" id="0ic-pK-nXQ"/>
+                        <outlet property="headerView" destination="UbU-tR-DtL" id="FnX-6E-sHh"/>
                         <outlet property="sendBtnClick" destination="4t6-KL-hkh" id="8tW-rR-dX5"/>
                     </connections>
                 </viewController>

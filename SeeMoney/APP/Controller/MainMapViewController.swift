@@ -12,6 +12,7 @@ import MBProgressHUD
 
 class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControllerDelegate {
     
+    @IBOutlet weak var headerView: UIView!
     var currentlocation:CLLocationCoordinate2D?
     var currentredBg:redbagModel?
     var currentLine:MKPolyline?
@@ -21,7 +22,8 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     var lastRefreashTime:NSDate?
     var timer:NSTimer?
     var hasSearch = false
-    
+    var aplicationInBg : Bool = false
+    var fetchDis:Double = 15
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +37,16 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         self.timer?.fire()
 
         createUI()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainMapViewController.appEnterForeground), name: UIApplicationWillEnterForegroundNotification, object: nil)
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainMapViewController.appBecomeActive), name: UIApplicationDidBecomeActiveNotification, object: nil)
+         let stap = UITapGestureRecognizer(target: self, action: #selector(MainMapViewController.changeSeeDis))
+        stap.numberOfTapsRequired = 12
+        
+        let ftap = UITapGestureRecognizer(target: self, action: #selector(MainMapViewController.changeFetchDis))
+        ftap.numberOfTapsRequired = 13
+        ftap.numberOfTouchesRequired = 2
+        self.headerView.addGestureRecognizer(stap)
+        self.headerView.addGestureRecognizer(ftap)
         //test
 //        UserManager.shareInstance.register("13520580108", psw: "1234567") { (isOK, userInfo) in
 //            
@@ -45,6 +57,14 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         //MKUserLocation
         // Do any additional setup after loading the view.
     }
+    func appEnterForeground() -> Void {
+        aplicationInBg = true
+        
+    }
+    func appBecomeActive() -> Void {
+        aplicationInBg = false
+    }
+
     func bgRefreash() -> Void {
         if self.currentlocation != nil {
           self.searchRedBag(true)
@@ -74,10 +94,11 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         alertVc .addTextFieldWithConfigurationHandler { (text:UITextField) in
             text.placeholder = "金额"
             text.secureTextEntry = false
-            text.keyboardType = UIKeyboardType.NamePhonePad
+            text.keyboardType = UIKeyboardType.NumberPad
         }
         let sureAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) { (ac:UIAlertAction) in
             let textFiled = alertVc.textFields?.first
+            if textFiled?.text != nil {
             let num = Float((textFiled?.text)!)
             
             RedBagManager.sharedInstance.sendRedBag(num!) { (isOK) in
@@ -88,6 +109,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
                     UserManager.shareInstance.saveModel(me)
                     self.searchRedBag(true)
                 }
+            }
             }
             
         }
@@ -100,7 +122,59 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
             
         })
     }
-  
+    func changeSeeDis() -> Void {
+        let alertVc = UIAlertController(title: "提示", message: "修改可见距离", preferredStyle: UIAlertControllerStyle.Alert);
+        alertVc .addTextFieldWithConfigurationHandler { (text:UITextField) in
+            text.placeholder = "距离:m"
+            text.secureTextEntry = false
+            text.keyboardType = UIKeyboardType.NumberPad
+        }
+        let sureAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) { (ac:UIAlertAction) in
+            let textFiled = alertVc.textFields?.first
+            if textFiled?.text != nil {
+            let num = Double(((textFiled?.text))!)
+            
+            RedBagManager.sharedInstance.searchDis = num!
+            }
+            
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Default) { (ac:UIAlertAction) in
+            
+        }
+        alertVc.addAction(sureAction)
+        alertVc.addAction(cancelAction)
+        self.presentViewController(alertVc, animated: true, completion: {
+            
+        })
+
+    }
+    func changeFetchDis() -> Void {
+        let alertVc = UIAlertController(title: "提示", message: "修改抓取距离", preferredStyle: UIAlertControllerStyle.Alert);
+        alertVc .addTextFieldWithConfigurationHandler { (text:UITextField) in
+            text.placeholder = "距离:m"
+            text.secureTextEntry = false
+            text.keyboardType = UIKeyboardType.NumberPad
+        }
+        let sureAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) { (ac:UIAlertAction) in
+            let textFiled = alertVc.textFields?.first
+            if textFiled?.text != nil {
+                let num = Double(((textFiled?.text))!)
+                
+                self.fetchDis = num!
+            }
+            
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Default) { (ac:UIAlertAction) in
+            
+        }
+        alertVc.addAction(sureAction)
+        alertVc.addAction(cancelAction)
+        self.presentViewController(alertVc, animated: true, completion: {
+            
+        })
+        
+
+    }
     @IBAction func closeAction(sender: AnyObject) {
         let alertVc = UIAlertController(title: "提示", message: "确定取消导航吗", preferredStyle: UIAlertControllerStyle.Alert);
         let sureAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) { (ac:UIAlertAction) in
@@ -144,7 +218,38 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
             if !isInBagGround {hud!.hide(true)}
             
             if redbags?.count > 0 {
-                
+                if self.aplicationInBg {
+                    //本地通知
+                    /*
+                     
+                     UILocalNotification*notification = [[UILocalNotification alloc]init];
+                     NSDate * pushDate = [NSDate dateWithTimeIntervalSinceNow:2];
+                     if (notification != nil) {
+                     notification.fireDate = pushDate;
+                     notification.timeZone = [NSTimeZone defaultTimeZone];
+                     notification.repeatInterval = kCFCalendarUnitDay;
+                     notification.soundName = UILocalNotificationDefaultSoundName;
+                     // NSInteger count = [UIApplication sharedApplication].applicationIconBadgeNumber;
+                     notification.applicationIconBadgeNumber = [[ZYConversationManager shareInstance] getUnreadMsgCount] + 1;
+                     
+                     notification.alertBody = [NSString stringWithFormat:@"%@ %@", msgArr.firstObject, msgArr.lastObject];
+                     NSDictionary*info = @{@"type":@"friend_request"};
+                     notification.userInfo = info;
+                     
+                     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+                     }
+
+                     */
+                    
+                    let not = UILocalNotification()
+                    let pushDate = NSDate(timeIntervalSinceNow: 1)
+                    not.fireDate = pushDate
+                    not.timeZone = NSTimeZone.defaultTimeZone()
+                    not.repeatInterval = NSCalendarUnit.Day
+                    not.soundName = UILocalNotificationDefaultSoundName
+                    not.alertBody = String(format: "发现%ld个红包",(redbags?.count)!)
+                    UIApplication.sharedApplication().scheduleLocalNotification(not)
+                }
                 DXHelper.shareInstance.makeAlert(String(format: "发现%ld个红包",(redbags?.count)!), dur: 1, isShake: true)
                 MapManager.sharedInstance.addRedbags(redbags!)
                 
@@ -253,7 +358,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     }
     func needGetRedbag() -> Bool{
         let dis = MapManager.sharedInstance.getDistance(self.currentlocation!, to: currentredBg!.coordinate)
-        if dis < 500 {
+        if dis < fetchDis {
             
             let story = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
             let redVC = story.instantiateViewControllerWithIdentifier("OpenRedBagViewController")

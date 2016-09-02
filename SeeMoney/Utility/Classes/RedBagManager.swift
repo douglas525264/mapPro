@@ -10,7 +10,8 @@ import UIKit
 import MapKit
 class RedBagManager: NSObject {
     static let sharedInstance = RedBagManager()
-   lazy  var redbags:[redbagModel] = {
+    var searchDis : Double = 500
+    lazy  var redbags:[redbagModel] = {
         var arr = [redbagModel]();
 //        let redbag = redbagModel(redId: "001", title: "红包", subTitle: "", image: UIImage(named: "redbg2"), coo: CLLocationCoordinate2DMake(39.97633, 116.33900))
 //        arr .append(redbag)
@@ -22,7 +23,7 @@ class RedBagManager: NSObject {
         var resultarr = [redbagModel]()
         for redbag in self.redbags {
            let dis = MapManager.sharedInstance.getDistance(location, to: redbag.coordinate)
-            if (dis < 500 && redbag.status == bagStatus.bagStatusUnShow) {
+            if (dis < searchDis && redbag.status == bagStatus.bagStatusUnShow) {
                 
                resultarr .append(redbag)
                 redbag.status = bagStatus.bagStatusHasShow
@@ -32,7 +33,7 @@ class RedBagManager: NSObject {
         //移除地图距离过远
         for redbag in MapManager.sharedInstance.redBagsArr {
             let dis = MapManager.sharedInstance.getDistance(location, to: redbag.coordinate)
-            if (dis > 500) {
+            if (dis > searchDis) {
                 MapManager.sharedInstance.removeBag(redbag)
       
             }
@@ -77,7 +78,7 @@ class RedBagManager: NSObject {
                 if (dic != nil) {
                     
                     let locationInfo = dic!["loc"] as? Dictionary<String, AnyObject>
-                    let type = dic!["t"] as! NSInteger
+                    let type = dic!["type"] as! NSInteger
                     
                     let redbag = redbagModel(redId: dic!["id"] as? String, title: dic!["title"] as? String, subTitle: "", image: UIImage(named: "redbg2"), coo: CLLocationCoordinate2DMake(locationInfo!["lat"] as! CLLocationDegrees, locationInfo!["lnt"] as! CLLocationDegrees));
                     if type == 1 {
