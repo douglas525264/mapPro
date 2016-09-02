@@ -17,6 +17,8 @@ class RedBgView: UIView {
     @IBOutlet weak var closeBtn: UIButton!
     @IBOutlet weak var TestLable: UILabel!
     weak var parentVC:UIViewController?
+    var minAnimationTime = 3
+    var startTime:NSDate?
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -50,10 +52,24 @@ class RedBgView: UIView {
         ani.repeatCount = 1000
         ani.autoreverses = true
         self.openBtn.layer.addAnimation(ani, forKey: kCAAnimationRotateAuto)
+        self.startTime = NSDate()
         
     }
-    func stopBtnAnimation() -> Void {
-        self.openBtn.layer.removeAnimationForKey(kCAAnimationRotateAuto)
+    func stopBtnAnimation(finishedBlock:()->Void) -> Void {
+        let currentdate = NSDate()
+        let jiange =   currentdate.timeIntervalSince1970 - self.startTime!.timeIntervalSince1970
+        if jiange < 2  {
+            
+         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2*Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+            self.openBtn.layer.removeAnimationForKey(kCAAnimationRotateAuto)
+            finishedBlock()
+         })
+        }else {
+            self.openBtn.layer.removeAnimationForKey(kCAAnimationRotateAuto)
+            finishedBlock()
+
+        }
+        
     }
     func scaleBgView(finished:(isOk:Bool)->Void) -> Void {
         if self.parentVC != nil {

@@ -42,33 +42,45 @@ class OpenRedBagViewController: UIViewController {
         if self.parentVc != nil {
             self.bgView?.showBtnAnimation()
             RedBagManager.sharedInstance.pick((self.redBag?.redID)!, type: "1", finishedBlock: { (isOK, info) in
-                self.bgView?.stopBtnAnimation()
-                if isOK {
-                    
-                    let me = UserManager.shareInstance.getMe()
-                    me.accountNum += (self.redBag?.num)!
-                    UserManager.shareInstance.saveModel(me)
-                    
-                    let story = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-                    
-                    let detailVc   = story.instantiateViewControllerWithIdentifier("RedBagDetailViewController") as! RedBagDetailViewController
-                    self.redBag?.status = bagStatus.bagStatusHasOpen
-                    detailVc.redBag = self.redBag
-                    
-                    self.bgView?.scaleBgView({ (isOk) in
-                        self.parentVc?.presentViewController(detailVc, animated: false, completion: {
-                            self.view.removeFromSuperview()
+                
+                self.bgView?.stopBtnAnimation({ 
+                    if isOK {
+                        
+                        let me = UserManager.shareInstance.getMe()
+                        switch self.redBag!.bagType {
+                        case redBagType.redBagTypeGold:
+                            me.goldCount += (self.redBag?.num)!
+                            break
+                        default:
+                            me.accountNum += (self.redBag?.num)!
+                            break
+                        
+                        }
+                        
+                        UserManager.shareInstance.saveModel(me)
+                        
+                        let story = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+                        
+                        let detailVc   = story.instantiateViewControllerWithIdentifier("RedBagDetailViewController") as! RedBagDetailViewController
+                        self.redBag?.status = bagStatus.bagStatusHasOpen
+                        detailVc.redBag = self.redBag
+                        
+                        self.bgView?.scaleBgView({ (isOk) in
+                            self.parentVc?.presentViewController(detailVc, animated: false, completion: {
+                                self.view.removeFromSuperview()
+                            })
                         })
-                    })
+                        
+                        
+                        
+                        MapManager.sharedInstance.removeBag(self.redBag!)
+                        
+                    }else {
+                        
+                        DXHelper.shareInstance.makeAlert("没打开", dur: 1, isShake: false)
+                    }
 
-                    
-                
-                    MapManager.sharedInstance.removeBag(self.redBag!)
-
-                }else {
-                
-                    DXHelper.shareInstance.makeAlert("没打开", dur: 1, isShake: false)
-                }
+                })
             })
             
         }
