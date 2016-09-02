@@ -12,8 +12,8 @@ class RedBagManager: NSObject {
     static let sharedInstance = RedBagManager()
    lazy  var redbags:[redbagModel] = {
         var arr = [redbagModel]();
-        let redbag = redbagModel(redId: "001", title: "红包", subTitle: "", image: UIImage(named: "redbg2"), coo: CLLocationCoordinate2DMake(39.97633, 116.33900))
-        arr .append(redbag)
+//        let redbag = redbagModel(redId: "001", title: "红包", subTitle: "", image: UIImage(named: "redbg2"), coo: CLLocationCoordinate2DMake(39.97633, 116.33900))
+//        arr .append(redbag)
         return arr
     }()
     //用于本地检索

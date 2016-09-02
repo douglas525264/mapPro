@@ -18,6 +18,10 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     var mapView:MKMapView?
     lazy var slideVC:SlideViewController = SlideViewController()
     var redVC :OpenRedBagViewController?
+    var lastRefreashTime:NSDate?
+    var timer:NSTimer?
+    var hasSearch = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +30,10 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         self.mapView = MapManager.sharedInstance.mapView
         self.view.addSubview(self.mapView!)
         MapManager.sharedInstance.mapView.delegate = self;
+
+        self.timer =  NSTimer.scheduledTimerWithTimeInterval(3*60*60, target: self, selector:  #selector(MainMapViewController.bgRefreash), userInfo: nil, repeats: true)
+        self.timer?.fire()
+
         createUI()
         //test
 //        UserManager.shareInstance.register("13520580108", psw: "1234567") { (isOK, userInfo) in
@@ -37,6 +45,14 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         //MKUserLocation
         // Do any additional setup after loading the view.
     }
+    func bgRefreash() -> Void {
+        if self.currentlocation != nil {
+          self.searchRedBag(true)
+            hasSearch = true
+        }
+        
+    }
+
     func createUI(){
         
         let leftItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Organize, target: self, action:#selector(MainMapViewController.leftBtnClick(_:)))
@@ -50,6 +66,8 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     
     @IBOutlet weak var closeBtn: UIButton!
     @IBOutlet weak var sendBtnClick: UIButton!
+    
+    
     @IBAction func sendAction(sender: AnyObject) {
         
         let alertVc = UIAlertController(title: "提示", message: "发红包", preferredStyle: UIAlertControllerStyle.Alert);
@@ -108,13 +126,22 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         self.slideVC.show(inView:self.view)
     }
     @IBAction func searchBtnCLick(sender: AnyObject) {
-        let hud = MBProgressHUD.showHUDAddedTo(UIApplication.sharedApplication().keyWindow, animated: true)
-        hud.labelText = "搜索中,请耐心等待..."
-        hud.mode = MBProgressHUDMode.CustomView
-        hud.removeFromSuperViewOnHide = true
+        self.searchRedBag(false)
+    }
+    
+    func searchRedBag(isInBagGround:Bool){
+        var hud:MBProgressHUD?
+        if !isInBagGround {
+           hud = MBProgressHUD.showHUDAddedTo(UIApplication.sharedApplication().keyWindow, animated: true)
+            hud!.labelText = "搜索中,请耐心等待..."
+            hud!.mode = MBProgressHUDMode.CustomView
+            hud!.removeFromSuperViewOnHide = true
 
+        }
+        
         RedBagManager.sharedInstance.remogteSearch(self.currentlocation!) { (redbags) in
-            hud.hide(true)
+            if !isInBagGround {hud!.hide(true)}
+            
             if redbags?.count > 0 {
                 
                 DXHelper.shareInstance.makeAlert(String(format: "发现%ld个红包",(redbags?.count)!), dur: 1, isShake: true)
@@ -124,8 +151,10 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
             }else {
                 DXHelper.shareInstance.makeAlert("在您附近未发现红包，请随处走走", dur: 1, isShake: true)
             }
-
+            
         }
+
+    
     }
     func leftBtnClick(sender:AnyObject) {
         self.slideVC.show(inView:self.view)
@@ -136,6 +165,9 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         userLocation.title = "我的位置"
         let center = userLocation.location?.coordinate
         self.currentlocation = center
+        if !hasSearch {
+            self.bgRefreash()
+        }
         if (currentredBg != nil) {
             
            self.needGetRedbag()
@@ -232,17 +264,6 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
             }
             currentLine = nil
             currentredBg = nil
-//            let me = UserManager.shareInstance.getMe()
-//            me.accountNum += (self.currentredBg?.num)!
-//            UserManager.shareInstance.saveModel(me)
-//            DXHelper.shareInstance.makeAlert(String(format: "恭喜您捡到%.2f元",(self.currentredBg?.num)!), dur: 1, isShake: true)
-//            MapManager.sharedInstance.removeBag(self.currentredBg!)
-//            if (currentLine != nil) {
-//                self.mapView!.removeOverlay(currentLine!)
-//            }
-//            currentLine = nil
-//            currentredBg = nil
-//            self.closeBtn.hidden = true
             return true
         }
         return false
