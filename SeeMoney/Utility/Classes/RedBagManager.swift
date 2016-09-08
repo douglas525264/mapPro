@@ -73,6 +73,7 @@ class RedBagManager: NSObject {
         DXNetWorkTool.sharedInstance.get(search, body:  Dictionary<String, AnyObject>(), header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info : Dictionary<String, AnyObject>?, isOK : Bool, code:Int) in
             
             let arr :[AnyObject] = info!["es"] as! [AnyObject]
+            let cArr :[AnyObject] = info!["cs"] as! [AnyObject]
             for item  in arr {
                 let dic = item as?  Dictionary<String, AnyObject>
                 if (dic != nil) {
@@ -96,6 +97,36 @@ class RedBagManager: NSObject {
                     
                 }
             }
+            for item  in cArr {
+                let dic = item as?  Dictionary<String, AnyObject>
+                if (dic != nil) {
+                    
+                    let locationInfo = dic!["loc"] as? Dictionary<String, AnyObject>
+                    let type = 0
+                    var title = dic?["title"]
+                    if title != nil {
+                    
+                        
+                    } else {
+                        title = ""
+                    }
+                    let redbag = redbagModel(redId: dic!["id"] as? String, title: title as? String , subTitle: "", image: UIImage(named: "redbg2"), coo: CLLocationCoordinate2DMake(locationInfo!["lat"] as! CLLocationDegrees, locationInfo!["lnt"] as! CLLocationDegrees));
+                    if type == 1 {
+                        
+                        redbag.bagType = redBagType.redBagTypeMoney
+                    } else {
+                        redbag.bagType = redBagType.redBagTypeGold
+                        
+                    }
+                    redbag.num = dic!["amount"] as! Double
+                    
+                    if (!self.redbags.contains(redbag)) {
+                        self.redbags .append(redbag)
+                    }
+                    
+                }
+            }
+
             if arr.count > 0 {
             
                 self.scanRedbag(location, finishedBlock: finishedBlock)

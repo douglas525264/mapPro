@@ -300,7 +300,8 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
             }
             let model = annotation as! redbagModel
             mv?.image = model.image
-            mv?.canShowCallout = true
+            
+            //mv?.canShowCallout = true
             mv?.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
             return mv
             
@@ -354,6 +355,9 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
             }
             
             
+        }else {
+        
+           DXHelper.shareInstance.makeAlert("您已经处于导航模式中。。。" , dur: 2, isShake: false)
         }
     }
     func needGetRedbag() -> Bool{

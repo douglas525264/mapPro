@@ -14,9 +14,12 @@ enum UserLoginStatus {
 class UserModel: NSObject {
 
     var username : String?
+    var userID : String?
     var psw : String?
+    var gender = 0
     var accountNum : Double = 100
     var goldCount : Double = 100
+    var distanceView : Double = 500
     var loginStatus:UserLoginStatus = UserLoginStatus.bagStatusUnLogin
     var token:String?
     

@@ -21,6 +21,9 @@ class UserManager: NSObject {
    let UserAccountNum = "useraccountnumkey"
    let UserGoldNum = "usergoldNumKey"
    let UserToken = "usertokenkey"
+   let UserGender = "usergenderkey"
+   let UserSeeDis = "UserDiskey"
+   let UserID = "useridkey"
    let UserStatus = "userstatusKey"
    var delegate:UserManagerDlegate?
     
@@ -42,6 +45,11 @@ class UserManager: NSObject {
         if token != nil {
             me.token = token as? String
         }
+        let uid = userde.objectForKey(UserID);
+        if uid != nil {
+            me.userID = uid as? String
+        }
+
         
         let accountnum = userde.objectForKey(UserAccountNum)
         if accountnum != nil {
@@ -55,6 +63,20 @@ class UserManager: NSObject {
             
             me.goldCount = gc
         }
+        let gender = userde.objectForKey(UserGender)
+        if gender != nil {
+            let ge = gender as! NSInteger
+            
+            me.gender = ge
+        }
+        let sdis = userde.objectForKey(UserSeeDis)
+        if gender != nil {
+            let sd = sdis as! Double
+            
+            me.distanceView = sd
+        }
+
+
         let status = userde.objectForKey(UserStatus)
         if status != nil {
             let sc = status as! NSInteger
@@ -88,12 +110,23 @@ class UserManager: NSObject {
         if user.token != nil {
             userde .setValue(user.token, forKey: UserToken)
         }
+        if user.userID != nil {
+            userde .setValue(user.userID, forKey: UserID)
+        }
         if user.accountNum > 0{
             userde .setValue(user.accountNum, forKey: UserAccountNum)
         }
         if user.goldCount > 0  {
             
             userde .setValue(user.goldCount, forKey: UserGoldNum)
+        }
+        if user.gender > 0  {
+            
+            userde .setValue(user.gender, forKey: UserGender)
+        }
+        if user.distanceView > 0  {
+            
+            userde .setValue(user.distanceView, forKey: UserSeeDis)
         }
         if user.loginStatus == UserLoginStatus.bagStatusUnLogin{
             userde.setValue(0, forKey: UserStatus)
@@ -129,6 +162,17 @@ class UserManager: NSObject {
                 me.token = token as? String
                 me.psw = psw
                 me.loginStatus = UserLoginStatus.bagStatusHaslogin
+            
+                let profile = info!["profile"] as? Dictionary<String,AnyObject>
+            
+                if profile != nil {
+                    
+                    me.userID = profile!["userid"] as? String
+                    me.username = profile!["nick"] as? String
+                    me.gender = profile!["gender"] as! NSInteger
+                    me.accountNum = profile!["corn"] as! Double
+                    me.distanceView = profile!["dis_v"] as! Double
+                }
                 self.saveModel(me)
                 
                 loginCallBack(isOK: true, userInfo: info!)
