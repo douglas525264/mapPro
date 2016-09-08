@@ -16,7 +16,19 @@ class RedBagDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if self.redBag != nil {
-            self.numLable.text = String(format: "%.2f元", (self.redBag?.num)!)
+            switch self.redBag!.bagType {
+                
+            case redBagType.redBagTypeGold:
+                self.numLable.text = String(format: "%.0f 个金币", (self.redBag?.num)!)
+                break;
+            case redBagType.redBagTypeMoney:
+                self.numLable.text = String(format: "%.2f元", (self.redBag?.num)!)
+                break;
+                
+            default:
+                break;
+            }
+            
         }
         // Do any additional setup after loading the view.
     }

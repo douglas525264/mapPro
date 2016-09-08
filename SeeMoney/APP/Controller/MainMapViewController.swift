@@ -23,7 +23,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     var timer:NSTimer?
     var hasSearch = false
     var aplicationInBg : Bool = false
-    var fetchDis:Double = 15
+    var fetchDis:Double = 100
     
     override func viewDidLoad() {
         super.viewDidLoad()
