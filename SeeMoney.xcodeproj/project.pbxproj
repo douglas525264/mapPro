@@ -530,6 +530,7 @@
 					A50F0F221D658A3C003907F7 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = B6H7GPKGQJ;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -538,10 +539,12 @@
 					};
 					A50F0F361D658A3D003907F7 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = A50F0F221D658A3C003907F7;
 					};
 					A50F0F411D658A3D003907F7 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = A50F0F221D658A3C003907F7;
 					};
 				};
@@ -801,6 +804,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "11c7e2de-521e-4955-baf5-0fe7f2b0abd9";
 				SWIFT_OBJC_BRIDGING_HEADER = /Users/douglas/Desktop/SeeMoney/SeeMoney/Utility/Helpers/DMAlertAction/DMAlertAction.h;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -819,6 +823,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "11c7e2de-521e-4955-baf5-0fe7f2b0abd9";
 				SWIFT_OBJC_BRIDGING_HEADER = /Users/douglas/Desktop/SeeMoney/SeeMoney/Utility/Helpers/DMAlertAction/DMAlertAction.h;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -830,6 +835,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.douglas.test.SeeMoneyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SeeMoney.app/SeeMoney";
 			};
 			name = Debug;
@@ -842,6 +848,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.douglas.test.SeeMoneyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SeeMoney.app/SeeMoney";
 			};
 			name = Release;
@@ -853,6 +860,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.douglas.test.SeeMoneyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = SeeMoney;
 			};
 			name = Debug;
@@ -864,6 +872,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.douglas.test.SeeMoneyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = SeeMoney;
 			};
 			name = Release;

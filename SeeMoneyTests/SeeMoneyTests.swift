@@ -7,7 +7,8 @@
 //
 
 import XCTest
-@testable import SeeMoney
+
+
 
 class SeeMoneyTests: XCTestCase {
     

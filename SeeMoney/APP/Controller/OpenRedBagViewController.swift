@@ -21,7 +21,7 @@ class OpenRedBagViewController: UIViewController {
         bgBtn.frame = self.view.bounds
         bgBtn.addTarget(self, action: #selector(OpenRedBagViewController.oneTapClick(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.insertSubview(bgBtn, atIndex: 0)
-       self.bgView = NSBundle.mainBundle().loadNibNamed("RedBgView", owner: self, options: nil).last as? RedBgView
+       self.bgView = NSBundle.mainBundle().loadNibNamed("RedBgView", owner: self, options: nil)!.last as? RedBgView
         self.bgView?.frame = CGRectMake(30, 150, self.view.frame.size.width - 60, self.view.frame.size.height - 150 - 80)
         self.bgView?.parentVC = self
         self.bgView?.closeBtn.addTarget(self, action:  #selector(OpenRedBagViewController.closeBtnClick(_:)), forControlEvents: UIControlEvents.TouchUpInside)

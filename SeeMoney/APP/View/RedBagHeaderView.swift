@@ -25,18 +25,18 @@ class RedBagHeaderView: UIView {
         // Drawing code
         let height = rect.size.height - 35
         let context = UIGraphicsGetCurrentContext();
-        CGContextMoveToPoint(context, 0, 0)
-        CGContextAddLineToPoint(context, rect.size.width, 0)
-        CGContextAddLineToPoint(context, rect.size.width, height - 15)
+        CGContextMoveToPoint(context!, 0, 0)
+        CGContextAddLineToPoint(context!, rect.size.width, 0)
+        CGContextAddLineToPoint(context!, rect.size.width, height - 15)
 //        CGContextAddLineToPoint(context, 0, rect.size.height - 15)
 //        CGContextAddLineToPoint(context, 0,0)
-        CGContextAddQuadCurveToPoint(context, rect.size.width/2, height + 15, 0, height - 15)
-        CGContextClosePath(context);
+        CGContextAddQuadCurveToPoint(context!, rect.size.width/2, height + 15, 0, height - 15)
+        CGContextClosePath(context!);
       //  CGContextSetLineWidth(context, 1)
         
-        CGContextSetFillColorWithColor(context,RGB(233, g: 85, b: 78, a: 1).CGColor);
+        CGContextSetFillColorWithColor(context!,RGB(233, g: 85, b: 78, a: 1).CGColor);
         
-        CGContextFillPath(context);
+        CGContextFillPath(context!);
         //CGContextDrawPath(context, CGPathDrawingMode.Stroke)
 
         
