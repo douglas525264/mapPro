@@ -31,6 +31,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         MapManager.sharedInstance.getAuthInfo()
         self.mapView = MapManager.sharedInstance.mapView
         self.view.addSubview(self.mapView!)
+        
         MapManager.sharedInstance.mapView.delegate = self;
 
         self.timer =  NSTimer.scheduledTimerWithTimeInterval(3*60*60, target: self, selector:  #selector(MainMapViewController.bgRefreash), userInfo: nil, repeats: true)
@@ -39,6 +40,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         createUI()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainMapViewController.appEnterForeground), name: UIApplicationWillEnterForegroundNotification, object: nil)
          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainMapViewController.appBecomeActive), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        
          let stap = UITapGestureRecognizer(target: self, action: #selector(MainMapViewController.changeSeeDis))
         stap.numberOfTapsRequired = 12
         
@@ -47,15 +49,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         ftap.numberOfTouchesRequired = 2
         self.headerView.addGestureRecognizer(stap)
         self.headerView.addGestureRecognizer(ftap)
-        //test
-//        UserManager.shareInstance.register("13520580108", psw: "1234567") { (isOK, userInfo) in
-//            
-//        }
-      //  UserManager.shareInstance.login("18513581292", psw: "123456") { (isOK, userInfo) in
-            
-    //    }
-        //MKUserLocation
-        // Do any additional setup after loading the view.
+
     }
     func appEnterForeground() -> Void {
         aplicationInBg = true
@@ -122,6 +116,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
             
         })
     }
+    
     func changeSeeDis() -> Void {
         let alertVc = UIAlertController(title: "提示", message: "修改可见距离", preferredStyle: UIAlertControllerStyle.Alert);
         alertVc .addTextFieldWithConfigurationHandler { (text:UITextField) in
@@ -148,6 +143,8 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         })
 
     }
+    
+    
     func changeFetchDis() -> Void {
         let alertVc = UIAlertController(title: "提示", message: "修改抓取距离", preferredStyle: UIAlertControllerStyle.Alert);
         alertVc .addTextFieldWithConfigurationHandler { (text:UITextField) in
@@ -267,6 +264,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     }
     //delgate
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+        print("mapView : \(userLocation.coordinate.longitude) \(userLocation.coordinate.latitude)")
        // userLocation.coordinate
         userLocation.title = "我的位置"
         let center = userLocation.location?.coordinate
@@ -385,6 +383,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         renderer.strokeColor = RGB(60, g: 150, b: 250, a: 0.8)
         return renderer
     }
+    
     func founctionCallBackAtIndex(index: NSInteger) {
         switch index {
         case 5:

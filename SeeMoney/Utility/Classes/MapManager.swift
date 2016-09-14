@@ -115,6 +115,9 @@ class MapManager: NSObject,CLLocationManagerDelegate {
     //mark - 代理
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentLocation = locations.first?.coordinate
+        if currentLocation != nil {
+            print("LocationManagerGetLocation : \(currentLocation?.longitude) \(currentLocation?.latitude)")
+        }
     }
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("失败了")

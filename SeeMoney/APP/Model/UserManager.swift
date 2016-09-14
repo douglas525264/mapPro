@@ -189,5 +189,12 @@ class UserManager: NSObject {
             self.delegate?.userStatusChange(self.getMe())
         }
     }
+    func isLogin() -> Bool {
+        let me = self.getMe()
+        if me.loginStatus == UserLoginStatus.bagStatusHaslogin{
+            return true
+        }
+        return false
+    }
 }
 

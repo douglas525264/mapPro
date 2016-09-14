@@ -82,13 +82,13 @@ class RedBagManager: NSObject {
                     let type = dic!["type"] as! NSInteger
                     
                     let redbag = redbagModel(redId: dic!["id"] as? String, title: dic!["title"] as? String, subTitle: "", image: UIImage(named: "redbg2"), coo: CLLocationCoordinate2DMake(locationInfo!["lat"] as! CLLocationDegrees, locationInfo!["lnt"] as! CLLocationDegrees));
-                    if type == 1 {
+//                    if type == 1 {
                     
                         redbag.bagType = redBagType.redBagTypeMoney
-                    } else {
-                        redbag.bagType = redBagType.redBagTypeGold
-                    
-                    }
+//                    } else {
+//                        redbag.bagType = redBagType.redBagTypeGold
+//                    
+//                    }
                     redbag.num = dic!["amount"] as! Double
                     
                     if (!self.redbags.contains(redbag)) {
