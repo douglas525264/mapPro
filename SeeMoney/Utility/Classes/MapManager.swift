@@ -95,7 +95,7 @@ class MapManager: NSObject,CLLocationManagerDelegate {
         request.source = fromeItem;
         request.destination = toItem;
         request.requestsAlternateRoutes = true
-        
+        request.transportType = MKDirectionsTransportType.Walking
         let directions = MKDirections(request:request )
         directions.calculateDirectionsWithCompletionHandler { (response:MKDirectionsResponse?,error:NSError?) in
             if (error == nil) {

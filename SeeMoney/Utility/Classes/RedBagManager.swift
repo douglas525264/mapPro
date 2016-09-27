@@ -79,7 +79,7 @@ class RedBagManager: NSObject {
                 if (dic != nil) {
                     
                     let locationInfo = dic!["loc"] as? Dictionary<String, AnyObject>
-                    let type = dic!["type"] as! NSInteger
+                   // let type = dic!["type"] as! NSInteger
                     
                     let redbag = redbagModel(redId: dic!["id"] as? String, title: dic!["title"] as? String, subTitle: "", image: UIImage(named: "redbg2"), coo: CLLocationCoordinate2DMake(locationInfo!["lat"] as! CLLocationDegrees, locationInfo!["lnt"] as! CLLocationDegrees));
 //                    if type == 1 {
