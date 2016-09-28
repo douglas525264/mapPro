@@ -34,8 +34,8 @@ class RedBagDetailViewController: UIViewController {
     }
     @IBOutlet weak var backBtn: UIButton!
 
-    @IBAction func backBtnClick(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true) { 
+    @IBAction func backBtnClick(_ sender: AnyObject) {
+        self.dismiss(animated: true) { 
             
         }
     }

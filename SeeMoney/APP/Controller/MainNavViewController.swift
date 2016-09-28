@@ -12,15 +12,15 @@ class MainNavViewController: UINavigationController,UINavigationControllerDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.interactivePopGestureRecognizer?.enabled = false
+        self.interactivePopGestureRecognizer?.isEnabled = false
         self.interactivePopGestureRecognizer?.delegate = self
         self.delegate = self
         // Do any additional setup after loading the view.
     }
-    func navigationController(navigationController: UINavigationController, didShowViewController viewController: UIViewController, animated: Bool) {
-        self.interactivePopGestureRecognizer?.enabled = true
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        self.interactivePopGestureRecognizer?.isEnabled = true
     }
-    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return self.viewControllers.count > 1
     }
     override func didReceiveMemoryWarning() {

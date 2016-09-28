@@ -25,9 +25,9 @@ class MapManager: NSObject,CLLocationManagerDelegate {
     var currentLocation: CLLocationCoordinate2D?
     lazy var mapView:MKMapView = {
         
-        let map = MKMapView(frame:(UIApplication.sharedApplication().keyWindow?.frame)!)
+        let map = MKMapView(frame:(UIApplication.shared.keyWindow?.frame)!)
         map.showsUserLocation = true;
-        map.userTrackingMode = MKUserTrackingMode.Follow
+        map.userTrackingMode = MKUserTrackingMode.follow
         return map
 
     }()
@@ -37,7 +37,7 @@ class MapManager: NSObject,CLLocationManagerDelegate {
             print("定位没有打开呀")
         }
         
-        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined) {
+        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.notDetermined) {
             if #available(iOS 9.0, *) {
                 //self.locationManager?.requestLocation()
                 self.locationManager.requestAlwaysAuthorization()
@@ -58,7 +58,7 @@ class MapManager: NSObject,CLLocationManagerDelegate {
     func getDistance(from:CLLocationCoordinate2D, to:CLLocationCoordinate2D) -> Double {
         let lfl = CLLocation(latitude: from.latitude , longitude: to.longitude);
         let tfl = CLLocation(latitude: to.latitude, longitude: to.longitude);
-        return lfl.distanceFromLocation(tfl);
+        return lfl.distance(from: tfl);
         
     }
     //像地图中添加红包
@@ -78,13 +78,13 @@ class MapManager: NSObject,CLLocationManagerDelegate {
     //移除红包
     func removeBag(redbg:redbagModel) -> Void {
         if redBagsArr.contains(redbg) {
-            redBagsArr.removeAtIndex(redBagsArr.indexOf(redbg)!)
+            redBagsArr.remove(at: redBagsArr.index(of: redbg)!)
             mapView .removeAnnotation(redbg)
         }
     }
     
     //划线
-    func drawLine(from:CLLocationCoordinate2D,to:CLLocationCoordinate2D,callBack:(isOK:Bool,line:MKPolyline?)->Void) -> Void
+    func drawLine(from:CLLocationCoordinate2D,to:CLLocationCoordinate2D,callBack:@escaping (_ isOK : Bool,_ line:MKPolyline?)->Void) -> Void
     {
         let fromPlacemark = MKPlacemark(coordinate: from, addressDictionary: nil)
         let toPlacemark = MKPlacemark(coordinate: to, addressDictionary: nil)
@@ -95,31 +95,31 @@ class MapManager: NSObject,CLLocationManagerDelegate {
         request.source = fromeItem;
         request.destination = toItem;
         request.requestsAlternateRoutes = true
-        request.transportType = MKDirectionsTransportType.Walking
+        request.transportType = MKDirectionsTransportType.walking
         let directions = MKDirections(request:request )
-        directions.calculateDirectionsWithCompletionHandler { (response:MKDirectionsResponse?,error:NSError?) in
+        directions.calculate { (response:MKDirectionsResponse?, error:Error?) in
             if (error == nil) {
                 let rout = response?.routes[0];
-                self.mapView.addOverlay(rout!.polyline)
-                callBack(isOK: true, line: rout?.polyline)
-
+                self.mapView.add(rout!.polyline)
+                callBack(true,rout?.polyline)
+                
                 
             }else {
-                callBack(isOK: false, line: nil);
+                callBack(false, nil);
             }
+ 
         }
-        
         
         
     }
     //mark - 代理
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentLocation = locations.first?.coordinate
         if currentLocation != nil {
             print("LocationManagerGetLocation : \(currentLocation?.longitude) \(currentLocation?.latitude)")
         }
     }
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("失败了")
     }
     

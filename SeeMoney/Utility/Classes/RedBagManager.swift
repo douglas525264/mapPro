@@ -18,11 +18,11 @@ class RedBagManager: NSObject {
         return arr
     }()
     //用于本地检索
-    func scanRedbag(location:CLLocationCoordinate2D,finishedBlock:(redbags:[redbagModel]?) -> Void) -> Void {
+    func scanRedbag(_ location:CLLocationCoordinate2D,finishedBlock:(_ redbags:[redbagModel]?) -> Void) -> Void {
         
         var resultarr = [redbagModel]()
         for redbag in self.redbags {
-           let dis = MapManager.sharedInstance.getDistance(location, to: redbag.coordinate)
+           let dis = MapManager.sharedInstance.getDistance(from: location, to: redbag.coordinate)
             if (dis < searchDis && redbag.status == bagStatus.bagStatusUnShow) {
                 
                resultarr .append(redbag)
@@ -32,41 +32,41 @@ class RedBagManager: NSObject {
         }
         //移除地图距离过远
         for redbag in MapManager.sharedInstance.redBagsArr {
-            let dis = MapManager.sharedInstance.getDistance(location, to: redbag.coordinate)
+            let dis = MapManager.sharedInstance.getDistance(from: location, to: redbag.coordinate)
             if (dis > searchDis) {
-                MapManager.sharedInstance.removeBag(redbag)
+                MapManager.sharedInstance.removeBag(redbg: redbag)
       
             }
 
         }
-        finishedBlock(redbags: resultarr)
+        finishedBlock(resultarr)
     }
     //发红包
-    func sendRedBag(num:Float,finishedBlock:(isOK:Bool) -> Void) -> Void {
+    func sendRedBag(_ num:Float,finishedBlock:@escaping (_ isOK:Bool) -> Void) -> Void {
         print("sendredBagURL: + \(sendRedbagURL)")
         let location = MapManager.sharedInstance.getmapView().userLocation.coordinate
   
-            DXNetWorkTool.sharedInstance.post(sendRedbagURL, body:["t":1,"amount":num,"lat":(location.latitude),"lnt":(location.longitude),"title":"测试红包","size":10], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
-                finishedBlock(isOK: true)
+            DXNetWorkTool.sharedInstance.post(sendRedbagURL, body:["t":1 as AnyObject,"amount":num as AnyObject,"lat":(location.latitude as AnyObject),"lnt":(location.longitude as AnyObject),"title":"测试红包" as AnyObject,"size":10 as AnyObject], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
+                finishedBlock(true)
                 }, fail: { (error:SMError) in
-                finishedBlock(isOK: false)
+                finishedBlock(false)
             })
         
 
         
     }
-    func pick(redId:String,type:String,finishedBlock:(isOK:Bool,info:String?) -> Void) {
+    func pick(_ redId:String,type:String,finishedBlock:@escaping (_ isOK:Bool,_ info:String?) -> Void) {
         
         print("redId : \(redId)")
         
-        DXNetWorkTool.sharedInstance.post(pickRedbagURL, body: ["id":redId,"type":1], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
-            finishedBlock(isOK: true,info: nil)
+        DXNetWorkTool.sharedInstance.post(pickRedbagURL, body: ["id":redId as AnyObject,"type":1 as AnyObject], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
+            finishedBlock(true,nil)
         }) { (error:SMError) in
-            finishedBlock(isOK: false,info: error.des)
+            finishedBlock(false,error.des)
         }
     }
     //远程搜索
-    func remogteSearch(location:CLLocationCoordinate2D,finishedBlock:(redbags:[redbagModel]?) -> Void) {
+    func remogteSearch(_ location:CLLocationCoordinate2D,finishedBlock:@escaping (_ redbags:[redbagModel]?) -> Void) {
         
         let search = String(format: searchredBgURl, location.latitude,location.longitude)
         print("sendredBagURL: + \(search)")
@@ -108,7 +108,7 @@ class RedBagManager: NSObject {
                     
                         
                     } else {
-                        title = ""
+                        title = "" as AnyObject?
                     }
                     let redbag = redbagModel(redId: dic!["id"] as? String, title: title as? String , subTitle: "", image: UIImage(named: "redbg2"), coo: CLLocationCoordinate2DMake(locationInfo!["lat"] as! CLLocationDegrees, locationInfo!["lnt"] as! CLLocationDegrees));
                     if type == 1 {
@@ -131,7 +131,7 @@ class RedBagManager: NSObject {
             
                 self.scanRedbag(location, finishedBlock: finishedBlock)
             }else {
-            finishedBlock(redbags: [redbagModel]())
+            finishedBlock([redbagModel]())
             }
             
             

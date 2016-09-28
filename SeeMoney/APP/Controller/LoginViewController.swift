@@ -24,12 +24,12 @@ class LoginViewController: UIViewController {
     }
 
     @IBOutlet weak var forgetBtnClick: UIButton!
-    @IBAction func loginbtnClick(sender: AnyObject) {
+    @IBAction func loginbtnClick(_ sender: AnyObject) {
         UserManager.shareInstance.login(userNameTextfiled.text!, psw:pswTextFiled.text!) {
             (isOK, userInfo) in
             if isOK {
             
-                self.navigationController?.popViewControllerAnimated(true)
+                self.navigationController?.popViewController(animated: true)
             } else {
             
                 DXHelper.shareInstance.makeAlert("我草,登录失败了，这不科学", dur: 1, isShake: false)
@@ -37,9 +37,9 @@ class LoginViewController: UIViewController {
         }
         
     }
-    @IBAction func backaction(sender: AnyObject) {
+    @IBAction func backaction(_ sender: AnyObject) {
         
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

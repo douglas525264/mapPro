@@ -20,13 +20,13 @@ typealias funcBlockC = (Int,Int) -> (String)->String
 class DXNetWorkTool: NSObject {
     
     static let sharedInstance = DXNetWorkTool()
-    private override init() {}
+    fileprivate override init() {}
     func justATest() {
         
         print("TTTTTT")
     }
     //POST
-    func post(url:String,body:Dictionary<String,AnyObject>?,header:Dictionary<String,AnyObject>?,completed:completedBlock,fail:failBlock) {
+    func post(_ url:String,body:Dictionary<String,AnyObject>?,header:Dictionary<String,AnyObject>?,completed:@escaping completedBlock,fail:@escaping failBlock) {
         print("header : \(header)")
         print("body : \(body)")
         let manager = AFHTTPSessionManager();
@@ -40,17 +40,17 @@ class DXNetWorkTool: NSObject {
                 
             }
         }
-        manager.POST(url, parameters: body, progress: nil, success: { (operation, response) in
-             print("class + \(response?.classForCoder)")
-            let str = String(data: response as! NSData, encoding: NSUTF8StringEncoding)
-            let info = try? NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments)
+        manager.post(url, parameters: body, progress: nil, success: { (operation, response) in
+             print("class + \((response as AnyObject).classForCoder)")
+            let str = String(data: response as! Data, encoding: String.Encoding.utf8)
+            let info = try? JSONSerialization.jsonObject(with: response as! Data, options: JSONSerialization.ReadingOptions.allowFragments)
             print("Post get str : \(str)")
             if info != nil {
-                
-                let code = info!["code"] as! NSInteger
+                let dicInfo = info as? Dictionary<String,AnyObject>
+                let code = dicInfo!["code"] as! NSInteger
                 
                 if code == 200 {
-                    let json = info!["json"]
+                    let json = dicInfo!["json"]
                   //  print(json!!.description)
                     if !(json is NSNull) {
                         completed((json as? Dictionary<String,AnyObject>)!,true,200)
@@ -73,7 +73,7 @@ class DXNetWorkTool: NSObject {
                 fail(SMError())
         })
     }
-    func get(url:String,body:Dictionary<String,AnyObject>?,header:Dictionary<String,AnyObject>?,completed:completedBlock,fail:failBlock) {
+    func get(_ url:String,body:Dictionary<String,AnyObject>?,header:Dictionary<String,AnyObject>?,completed:@escaping completedBlock,fail:@escaping failBlock) {
         let manager = AFHTTPSessionManager();
         
         manager.requestSerializer = AFJSONRequestSerializer()
@@ -84,17 +84,18 @@ class DXNetWorkTool: NSObject {
                 manager.requestSerializer.setValue(value as? String, forHTTPHeaderField: key);
             }
         }
-        manager.GET(url, parameters: body, progress: nil, success: { (operation, response) in
-            print("class + \(response?.classForCoder)")
-            let str = String(data: response as! NSData, encoding: NSUTF8StringEncoding)
-            let info = try? NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments)
+        manager.get(url, parameters: body, progress: nil, success: { (operation, response) in
+            print("class + \((response as AnyObject).classForCoder)")
+            let str = String(data: response as! Data, encoding: String.Encoding.utf8)
+            let info = try? JSONSerialization.jsonObject(with: response as! Data, options: JSONSerialization.ReadingOptions.allowFragments)
             print("GET get str : \(str)")
             if info != nil {
+                let infoDic = info as? Dictionary<String,AnyObject>
                 
-                let code = info!["code"] as! NSInteger
+                let code = infoDic!["code"] as! NSInteger
                 
                 if code == 200 {
-                    completed((info!["json"] as? Dictionary<String,AnyObject>)!,true,200)
+                    completed((infoDic!["json"] as? Dictionary<String,AnyObject>)!,true,200)
                 } else {
                     let err = SMError()
                     err.code = code

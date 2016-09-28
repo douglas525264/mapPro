@@ -12,14 +12,14 @@ class SettingViewController: UIViewController {
     var nav = DXNavgationBar.getNav("设置")
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
         self.view .addSubview(self.nav)
         self.nav.addBackBtn(self, backSelector: #selector(MoneyViewController.backClick(_:)))
         // Do any additional setup after loading the view.
     }
     
-    func backClick(sender:UIButton?) {
-        self.navigationController?.popViewControllerAnimated(true)
+    func backClick(_ sender:UIButton?) {
+        self.navigationController?.popViewController(animated: true)
     }
 
     override func didReceiveMemoryWarning() {

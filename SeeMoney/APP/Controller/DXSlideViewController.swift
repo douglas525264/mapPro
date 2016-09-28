@@ -11,8 +11,8 @@ import UIKit
 class DXSlideViewController: UIViewController {
 
     let slideW = 0.75
-    lazy var bgView = UIView(frame: CGRectMake(0, 0, ScreenWidth!, ScreenHeight!))
-    lazy var slideView : UIView  = UIView(frame: CGRectMake(0, 0, ScreenWidth! * 0.75, ScreenHeight!))
+    lazy var bgView = UIView(frame: CGRect(x: 0, y: 0, width: ScreenWidth!, height: ScreenHeight!))
+    lazy var slideView : UIView  = UIView(frame: CGRect(x: 0, y: 0, width: ScreenWidth! * 0.75, height: ScreenHeight!))
     
     
     
@@ -24,15 +24,15 @@ class DXSlideViewController: UIViewController {
     }
     
     func createUI() -> Void {
-        self.view.backgroundColor = UIColor.clearColor()
+        self.view.backgroundColor = UIColor.clear
         self.view.addSubview(bgView)
         self.view.addSubview(slideView)
-        slideView.frame = CGRectMake(-slideView.frame.size.width, 0, slideView.frame.size.width, slideView.frame.size.height)
+        slideView.frame = CGRect(x: -slideView.frame.size.width, y: 0, width: slideView.frame.size.width, height: slideView.frame.size.height)
         bgView.backgroundColor = RGB(0, g: 0, b: 0, a: 1)
         bgView.alpha = 0.1
         
         slideView.backgroundColor = RGB(255, g: 255, b: 255, a: 1)
-        slideView.addObserver(self, forKeyPath: "frame", options: NSKeyValueObservingOptions.New, context: nil);
+        slideView.addObserver(self, forKeyPath: "frame", options: NSKeyValueObservingOptions.new, context: nil);
         
         //        slideView.rac_observeKeyPath("frame", options: NSKeyValueObservingOptions.New, observer: self) { (value:AnyObject!, dic:[NSObject : AnyObject]!, a:Bool, b:Bool) in
         //            self.bgView.alpha = 0.2 + 0.4 * (self.slideView.frame.origin.x + self.slideView.frame.width)/self.slideView.frame.width;
@@ -47,7 +47,7 @@ class DXSlideViewController: UIViewController {
     }
     func show(){
         
-        UIApplication.sharedApplication().keyWindow?.addSubview(self.view)
+        UIApplication.shared.keyWindow?.addSubview(self.view)
         fixPosition(true) {
             
         }
@@ -59,24 +59,24 @@ class DXSlideViewController: UIViewController {
             
         }
     }
-    func fixPosition(isShow:Bool,finishedBlock:()->Void){
+    func fixPosition(_ isShow:Bool,finishedBlock:@escaping ()->Void){
         if isShow {
-            UIView.animateWithDuration(0.55, animations: {
-                self.slideView.frame = CGRectMake(0, 0, self.slideView.frame.size.width, self.slideView.frame.size.height)
+            UIView.animate(withDuration: 0.55, animations: {
+                self.slideView.frame = CGRect(x: 0, y: 0, width: self.slideView.frame.size.width, height: self.slideView.frame.size.height)
                 }, completion: { (isOK : Bool) in
                     finishedBlock()
             })
             
         } else {
             
-            UIView.animateWithDuration(0.55, animations: {
-                self.slideView.frame = CGRectMake(-self.slideView.frame.size.width, 0, self.slideView.frame.size.width, self.slideView.frame.size.height)
+            UIView.animate(withDuration: 0.55, animations: {
+                self.slideView.frame = CGRect(x: -self.slideView.frame.size.width, y: 0, width: self.slideView.frame.size.width, height: self.slideView.frame.size.height)
                 }, completion: { (isOK : Bool) in
                     finishedBlock()
             })
         }
     }
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         self.bgView.alpha = 0.1 + 0.3 * (self.slideView.frame.origin.x + self.slideView.frame.width)/self.slideView.frame.width;
     }
     func dismiss(){
@@ -85,15 +85,15 @@ class DXSlideViewController: UIViewController {
         }
         
     }
-    func oneTap(sender:UIGestureRecognizer) {
+    func oneTap(_ sender:UIGestureRecognizer) {
         self.dismiss()
     }
-    func longpress(sender:UIPanGestureRecognizer) {
-        let point = sender.translationInView(sender.view)
-        sender.setTranslation(CGPointZero, inView: sender.view)
+    func longpress(_ sender:UIPanGestureRecognizer) {
+        let point = sender.translation(in: sender.view)
+        sender.setTranslation(CGPoint.zero, in: sender.view)
         
         switch sender.state {
-        case UIGestureRecognizerState.Began,UIGestureRecognizerState.Changed:
+        case UIGestureRecognizerState.began,UIGestureRecognizerState.changed:
             
             var frame = self.slideView.frame
             frame.origin.x += point.x
@@ -102,7 +102,7 @@ class DXSlideViewController: UIViewController {
             }
             
             break
-        case UIGestureRecognizerState.Ended:
+        case UIGestureRecognizerState.ended:
             print(self.slideView.frame)
             
             if -self.slideView.frame.origin.x > self.slideView.frame.width * 0.5 {

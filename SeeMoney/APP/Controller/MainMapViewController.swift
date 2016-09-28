@@ -9,6 +9,26 @@
 import UIKit
 import MapKit
 import MBProgressHUD
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControllerDelegate {
     
@@ -19,8 +39,8 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     var mapView:MKMapView?
     lazy var slideVC:SlideViewController = SlideViewController()
     var redVC :OpenRedBagViewController?
-    var lastRefreashTime:NSDate?
-    var timer:NSTimer?
+    var lastRefreashTime:Date?
+    var timer:Timer?
     var hasSearch = false
     var aplicationInBg : Bool = false
     var fetchDis:Double = 100
@@ -34,12 +54,12 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         
         MapManager.sharedInstance.mapView.delegate = self;
 
-        self.timer =  NSTimer.scheduledTimerWithTimeInterval(3*60*60, target: self, selector:  #selector(MainMapViewController.bgRefreash), userInfo: nil, repeats: true)
+        self.timer =  Timer.scheduledTimer(timeInterval: 3*60*60, target: self, selector:  #selector(MainMapViewController.bgRefreash), userInfo: nil, repeats: true)
         self.timer?.fire()
 
         createUI()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainMapViewController.appEnterForeground), name: UIApplicationWillEnterForegroundNotification, object: nil)
-         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainMapViewController.appBecomeActive), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainMapViewController.appEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(MainMapViewController.appBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         
          let stap = UITapGestureRecognizer(target: self, action: #selector(MainMapViewController.changeSeeDis))
         stap.numberOfTapsRequired = 12
@@ -69,12 +89,12 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
 
     func createUI(){
         
-        let leftItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Organize, target: self, action:#selector(MainMapViewController.leftBtnClick(_:)))
+        let leftItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.organize, target: self, action:#selector(MainMapViewController.leftBtnClick(_:)))
         self.navigationItem.leftBarButtonItem = leftItem
-        self.view .sendSubviewToBack(self.mapView!)
+        self.view .sendSubview(toBack: self.mapView!)
         self.slideVC.delegate = self
-        navigationController?.navigationBarHidden = true
-        self.closeBtn.hidden = true
+        navigationController?.isNavigationBarHidden = true
+        self.closeBtn.isHidden = true
         
     }
     
@@ -82,15 +102,15 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     @IBOutlet weak var sendBtnClick: UIButton!
     
     
-    @IBAction func sendAction(sender: AnyObject) {
+    @IBAction func sendAction(_ sender: AnyObject) {
         
-        let alertVc = UIAlertController(title: "提示", message: "发红包", preferredStyle: UIAlertControllerStyle.Alert);
-        alertVc .addTextFieldWithConfigurationHandler { (text:UITextField) in
+        let alertVc = UIAlertController(title: "提示", message: "发红包", preferredStyle: UIAlertControllerStyle.alert);
+        alertVc .addTextField { (text:UITextField) in
             text.placeholder = "金额"
-            text.secureTextEntry = false
-            text.keyboardType = UIKeyboardType.NumberPad
+            text.isSecureTextEntry = false
+            text.keyboardType = UIKeyboardType.numberPad
         }
-        let sureAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) { (ac:UIAlertAction) in
+        let sureAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.default) { (ac:UIAlertAction) in
             let textFiled = alertVc.textFields?.first
             if textFiled?.text != nil {
             let num = Float((textFiled?.text)!)
@@ -107,24 +127,24 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
             }
             
         }
-        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Default) { (ac:UIAlertAction) in
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.default) { (ac:UIAlertAction) in
             
         }
         alertVc.addAction(sureAction)
         alertVc.addAction(cancelAction)
-        self.presentViewController(alertVc, animated: true, completion: {
+        self.present(alertVc, animated: true, completion: {
             
         })
     }
     
     func changeSeeDis() -> Void {
-        let alertVc = UIAlertController(title: "提示", message: "修改可见距离", preferredStyle: UIAlertControllerStyle.Alert);
-        alertVc .addTextFieldWithConfigurationHandler { (text:UITextField) in
+        let alertVc = UIAlertController(title: "提示", message: "修改可见距离", preferredStyle: UIAlertControllerStyle.alert);
+        alertVc .addTextField { (text:UITextField) in
             text.placeholder = "距离:m"
-            text.secureTextEntry = false
-            text.keyboardType = UIKeyboardType.NumberPad
+            text.isSecureTextEntry = false
+            text.keyboardType = UIKeyboardType.numberPad
         }
-        let sureAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) { (ac:UIAlertAction) in
+        let sureAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.default) { (ac:UIAlertAction) in
             let textFiled = alertVc.textFields?.first
             if textFiled?.text != nil {
             let num = Double(((textFiled?.text))!)
@@ -133,12 +153,12 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
             }
             
         }
-        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Default) { (ac:UIAlertAction) in
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.default) { (ac:UIAlertAction) in
             
         }
         alertVc.addAction(sureAction)
         alertVc.addAction(cancelAction)
-        self.presentViewController(alertVc, animated: true, completion: {
+        self.present(alertVc, animated: true, completion: {
             
         })
 
@@ -146,13 +166,13 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     
     
     func changeFetchDis() -> Void {
-        let alertVc = UIAlertController(title: "提示", message: "修改抓取距离", preferredStyle: UIAlertControllerStyle.Alert);
-        alertVc .addTextFieldWithConfigurationHandler { (text:UITextField) in
+        let alertVc = UIAlertController(title: "提示", message: "修改抓取距离", preferredStyle: UIAlertControllerStyle.alert);
+        alertVc .addTextField { (text:UITextField) in
             text.placeholder = "距离:m"
-            text.secureTextEntry = false
-            text.keyboardType = UIKeyboardType.NumberPad
+            text.isSecureTextEntry = false
+            text.keyboardType = UIKeyboardType.numberPad
         }
-        let sureAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) { (ac:UIAlertAction) in
+        let sureAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.default) { (ac:UIAlertAction) in
             let textFiled = alertVc.textFields?.first
             if textFiled?.text != nil {
                 let num = Double(((textFiled?.text))!)
@@ -161,52 +181,52 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
             }
             
         }
-        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Default) { (ac:UIAlertAction) in
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.default) { (ac:UIAlertAction) in
             
         }
         alertVc.addAction(sureAction)
         alertVc.addAction(cancelAction)
-        self.presentViewController(alertVc, animated: true, completion: {
+        self.present(alertVc, animated: true, completion: {
             
         })
         
 
     }
-    @IBAction func closeAction(sender: AnyObject) {
-        let alertVc = UIAlertController(title: "提示", message: "确定取消导航吗", preferredStyle: UIAlertControllerStyle.Alert);
-        let sureAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) { (ac:UIAlertAction) in
+    @IBAction func closeAction(_ sender: AnyObject) {
+        let alertVc = UIAlertController(title: "提示", message: "确定取消导航吗", preferredStyle: UIAlertControllerStyle.alert);
+        let sureAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.default) { (ac:UIAlertAction) in
             if (self.currentLine != nil) {
-                self.mapView!.removeOverlay(self.currentLine!)
+                self.mapView!.remove(self.currentLine!)
             }
             self.currentLine = nil
             self.currentredBg = nil
-            self.closeBtn.hidden = true
+            self.closeBtn.isHidden = true
 
         }
-        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Default) { (ac:UIAlertAction) in
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.default) { (ac:UIAlertAction) in
             
         }
         alertVc.addAction(sureAction)
         alertVc.addAction(cancelAction)
-        self.presentViewController(alertVc, animated: true, completion: {
+        self.present(alertVc, animated: true, completion: {
             
         })
 
         
     }
-    @IBAction func leftAction(sender: AnyObject) {
+    @IBAction func leftAction(_ sender: AnyObject) {
         self.slideVC.show(inView:self.view)
     }
-    @IBAction func searchBtnCLick(sender: AnyObject) {
+    @IBAction func searchBtnCLick(_ sender: AnyObject) {
         self.searchRedBag(false)
     }
     
-    func searchRedBag(isInBagGround:Bool){
+    func searchRedBag(_ isInBagGround:Bool){
         var hud:MBProgressHUD?
         if !isInBagGround {
-           hud = MBProgressHUD.showHUDAddedTo(UIApplication.sharedApplication().keyWindow, animated: true)
+           hud = MBProgressHUD.showAdded(to: UIApplication.shared.keyWindow, animated: true)
             hud!.labelText = "搜索中,请耐心等待..."
-            hud!.mode = MBProgressHUDMode.CustomView
+            hud!.mode = MBProgressHUDMode.customView
             hud!.removeFromSuperViewOnHide = true
 
         }
@@ -239,16 +259,16 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
                      */
                     
                     let not = UILocalNotification()
-                    let pushDate = NSDate(timeIntervalSinceNow: 1)
+                    let pushDate = Date(timeIntervalSinceNow: 1)
                     not.fireDate = pushDate
-                    not.timeZone = NSTimeZone.defaultTimeZone()
-                    not.repeatInterval = NSCalendarUnit.Day
+                    not.timeZone = TimeZone.current
+                    not.repeatInterval = NSCalendar.Unit.day
                     not.soundName = UILocalNotificationDefaultSoundName
                     not.alertBody = String(format: "发现%ld个红包",(redbags?.count)!)
-                    UIApplication.sharedApplication().scheduleLocalNotification(not)
+                    UIApplication.shared.scheduleLocalNotification(not)
                 }
                 DXHelper.shareInstance.makeAlert(String(format: "发现%ld个红包",(redbags?.count)!), dur: 1, isShake: true)
-                MapManager.sharedInstance.addRedbags(redbags!)
+                MapManager.sharedInstance.addRedbags(redBags: redbags!)
                 
                 
             }else {
@@ -259,11 +279,11 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
 
     
     }
-    func leftBtnClick(sender:AnyObject) {
+    func leftBtnClick(_ sender:AnyObject) {
         self.slideVC.show(inView:self.view)
     }
     //delgate
-    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         print("mapView : \(userLocation.coordinate.longitude) \(userLocation.coordinate.latitude)")
        // userLocation.coordinate
         userLocation.title = "我的位置"
@@ -274,7 +294,12 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         }
         if (currentredBg != nil) {
             
-           self.needGetRedbag()
+           let res = self.needGetRedbag()
+            if res {
+                print("get OK")
+            } else {
+                print("get false")
+            }
         }
         RedBagManager.sharedInstance.scanRedbag(center!) { (redbags) in
             if redbags?.count > 0 {
@@ -282,17 +307,17 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
                 let coordinateSpan = MKCoordinateSpan(latitudeDelta: 0.0005, longitudeDelta: 0.0005)
                 let region = MKCoordinateRegion(center: center!, span: coordinateSpan)
                 mapView.setRegion(region, animated:true)
-                MapManager.sharedInstance.addRedbags(redbags!)
+                MapManager.sharedInstance.addRedbags(redBags: redbags!)
                 
                 
             }
         }
         
     }
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        if (annotation .isKindOfClass(redbagModel)) {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if (annotation .isKind(of: redbagModel.self)) {
           let mapId = "mapID"
-            var mv = mapView.dequeueReusableAnnotationViewWithIdentifier(mapId)
+            var mv = mapView.dequeueReusableAnnotationView(withIdentifier: mapId)
             if mv == nil {
                 mv = MKAnnotationView(annotation: annotation, reuseIdentifier: mapId)
             }
@@ -308,44 +333,44 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         }
         return nil
     }
-    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
-        if (view.annotation!.isKindOfClass(redbagModel)) {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if (view.annotation!.isKind(of: redbagModel.self)) {
             
             
              self.currentredBg = view.annotation as? redbagModel
             if !self.needGetRedbag() {
             if self.currentLine == nil {
-                let alertVc = UIAlertController(title: "提示", message: "我擦，发现一只大红包", preferredStyle: UIAlertControllerStyle.Alert);
-                let goActionAction = UIAlertAction(title: "前往", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction) in
+                let alertVc = UIAlertController(title: "提示", message: "我擦，发现一只大红包", preferredStyle: UIAlertControllerStyle.alert);
+                let goActionAction = UIAlertAction(title: "前往", style: UIAlertActionStyle.default, handler: { (action:UIAlertAction) in
                     
                     
                    
                     
-                    let hud = MBProgressHUD.showHUDAddedTo(UIApplication.sharedApplication().keyWindow, animated: true)
-                    hud.labelText = "路线规划中..."
-                    hud.mode = MBProgressHUDMode.CustomView
-                    hud.removeFromSuperViewOnHide = true
+                    let hud = MBProgressHUD.showAdded(to: UIApplication.shared.keyWindow, animated: true)
+                    hud?.labelText = "路线规划中..."
+                    hud?.mode = MBProgressHUDMode.customView
+                    hud?.removeFromSuperViewOnHide = true
                    // DXHelper.shareInstance.makeAlert("路线规划中...", dur: 1, isShake: false)
-                    MapManager.sharedInstance .drawLine(self.currentlocation!, to: (view.annotation?.coordinate)!, callBack: { (isOK : Bool, line:MKPolyline?) in
+                    MapManager.sharedInstance .drawLine(from: self.currentlocation!, to: (view.annotation?.coordinate)!, callBack: { (isOK : Bool, line:MKPolyline?) in
                         if isOK {
-                            self.closeBtn.hidden = false
+                            self.closeBtn.isHidden = false
                             self.currentLine = line
-                            hud.hide(true)
+                            hud?.hide(true)
                             DXHelper.shareInstance.makeAlert("进入导航模式，点击左上角X关闭导航" , dur: 2, isShake: false)
                             
                         } else {
-                            hud.hide(true)
+                            hud?.hide(true)
                             print("路线规划失败了,请稍后重试~")
                         }
                     })
                     
                 })
-                let igNoreActionAction = UIAlertAction(title:"忽略", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction) in
-                    MapManager.sharedInstance.removeBag(view.annotation as! redbagModel)
+                let igNoreActionAction = UIAlertAction(title:"忽略", style: UIAlertActionStyle.default, handler: { (action:UIAlertAction) in
+                    MapManager.sharedInstance.removeBag(redbg: view.annotation as! redbagModel)
                 })
                 alertVc.addAction(goActionAction)
                 alertVc.addAction(igNoreActionAction)
-                self.presentViewController(alertVc, animated: true, completion: {
+                self.present(alertVc, animated: true, completion: {
                     
                 })
   
@@ -359,11 +384,11 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         }
     }
     func needGetRedbag() -> Bool{
-        let dis = MapManager.sharedInstance.getDistance(self.currentlocation!, to: currentredBg!.coordinate)
+        let dis = MapManager.sharedInstance.getDistance(from: self.currentlocation!, to: currentredBg!.coordinate)
         if dis < fetchDis {
             
-            let story = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-            let redVC = story.instantiateViewControllerWithIdentifier("OpenRedBagViewController")
+            let story = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let redVC = story.instantiateViewController(withIdentifier: "OpenRedBagViewController")
             self.redVC = redVC as? OpenRedBagViewController
             if self.redVC != nil{
                 self.redVC?.parentVc = self
@@ -377,20 +402,20 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         return false
 
     }
-    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
         renderer.lineWidth = 5.0
         renderer.strokeColor = RGB(60, g: 150, b: 250, a: 0.8)
         return renderer
     }
     
-    func founctionCallBackAtIndex(index: NSInteger) {
+    func founctionCallBackAtIndex(_ index: NSInteger) {
         switch index {
         case 5:
             print("请登录")
             if UserManager.shareInstance.getMe().loginStatus == UserLoginStatus.bagStatusUnLogin {
-                let mainStory = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-                let lgVC = mainStory.instantiateViewControllerWithIdentifier("LoginViewController")
+                let mainStory = UIStoryboard(name: "Main", bundle: Bundle.main)
+                let lgVC = mainStory.instantiateViewController(withIdentifier: "LoginViewController")
                 self.navigationController?.pushViewController(lgVC, animated: true)
             }
             break
@@ -399,8 +424,8 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
             break
         case 1:
             print("钱包")
-            let mainStory = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-            let lgVC = mainStory.instantiateViewControllerWithIdentifier("MoneyViewController")
+            let mainStory = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let lgVC = mainStory.instantiateViewController(withIdentifier: "MoneyViewController")
             self.navigationController?.pushViewController(lgVC, animated: true)
 
             break

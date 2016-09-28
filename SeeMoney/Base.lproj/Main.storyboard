@@ -168,8 +168,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="用户名：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFx-0p-NGi">
-                                <frame key="frameInset" minX="125" minY="105" width="69" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户名：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFx-0p-NGi">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="8zl-JJ-qXr"/>
                                     <constraint firstAttribute="width" constant="69" id="Tp2-dj-d1Y"/>
@@ -257,7 +256,7 @@
                             <constraint firstItem="IOo-AF-XyU" firstAttribute="centerX" secondItem="Wx3-TF-TZl" secondAttribute="centerX" id="OVz-mJ-e27"/>
                             <constraint firstItem="qzH-dX-q0P" firstAttribute="centerX" secondItem="Wx3-TF-TZl" secondAttribute="centerX" id="Tht-NL-PYa"/>
                             <constraint firstItem="iiI-xa-z9L" firstAttribute="leading" secondItem="Wx3-TF-TZl" secondAttribute="leadingMargin" constant="105" id="Vyl-wb-ubD"/>
-                            <constraint firstItem="DFx-0p-NGi" firstAttribute="leading" secondItem="Wx3-TF-TZl" secondAttribute="leadingMargin" constant="105" id="azM-kK-GAx"/>
+                            <constraint firstItem="DFx-0p-NGi" firstAttribute="leading" secondItem="Wx3-TF-TZl" secondAttribute="leadingMargin" constant="109" id="azM-kK-GAx"/>
                             <constraint firstItem="g97-s7-2TF" firstAttribute="centerX" secondItem="Wx3-TF-TZl" secondAttribute="centerX" id="drc-13-BjO"/>
                             <constraint firstItem="g97-s7-2TF" firstAttribute="top" secondItem="IOo-AF-XyU" secondAttribute="bottom" constant="37" id="mGA-cG-MT2"/>
                             <constraint firstItem="qzH-dX-q0P" firstAttribute="top" secondItem="KGa-qU-QC1" secondAttribute="bottom" constant="15" id="wDv-Ue-qUe"/>
@@ -371,7 +370,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r7a-w0-BCO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="843" y="1329"/>
+            <point key="canvasLocation" x="1102" y="1334"/>
         </scene>
         <!--Money View Controller-->
         <scene sceneID="CWH-11-6CC">
@@ -385,8 +384,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="账户余额: 100元" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zhs-X6-2Jc">
-                                <frame key="frameInset" minX="148" minY="121" width="304" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账户余额: 100元" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zhs-X6-2Jc">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="304" id="WAF-IG-j2n"/>
                                     <constraint firstAttribute="height" constant="21" id="huF-wW-ZI2"/>
@@ -436,7 +434,7 @@
                             <constraint firstItem="pbS-Nq-4j0" firstAttribute="centerX" secondItem="f1L-3U-hCT" secondAttribute="centerX" constant="129" id="QMY-X4-rts"/>
                             <constraint firstItem="oO1-0V-pTB" firstAttribute="centerX" secondItem="f1L-3U-hCT" secondAttribute="centerX" constant="-107" id="WqC-DN-Wpv"/>
                             <constraint firstItem="Zhs-X6-2Jc" firstAttribute="top" secondItem="YJa-Rf-yJy" secondAttribute="bottom" constant="101" id="Y37-wU-Dn4"/>
-                            <constraint firstItem="Zhs-X6-2Jc" firstAttribute="centerX" secondItem="f1L-3U-hCT" secondAttribute="centerX" id="bFD-Ze-EFT"/>
+                            <constraint firstItem="Zhs-X6-2Jc" firstAttribute="centerX" secondItem="f1L-3U-hCT" secondAttribute="centerX" constant="112.5" id="bFD-Ze-EFT"/>
                             <constraint firstItem="tfA-yx-M5y" firstAttribute="top" secondItem="Zhs-X6-2Jc" secondAttribute="bottom" constant="16" id="rRP-bp-zTz"/>
                         </constraints>
                     </view>
@@ -447,7 +445,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aee-lI-R5b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1295" y="1792"/>
+            <point key="canvasLocation" x="1847" y="1342"/>
         </scene>
         <!--捡钱-->
         <scene sceneID="tne-QT-ifu">
@@ -461,8 +459,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4t6-KL-hkh">
-                                <frame key="frameInset" minX="277" minY="522" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4t6-KL-hkh">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ud9-Pk-uEl"/>
                                     <constraint firstAttribute="width" constant="46" id="x3V-M8-fhl"/>
@@ -470,17 +467,6 @@
                                 <state key="normal" title="发一个"/>
                                 <connections>
                                     <action selector="sendAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NyE-f8-rf7"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbI-31-KmK">
-                                <frame key="frameInset" minX="499" minY="522" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="9pe-nK-oi5"/>
-                                    <constraint firstAttribute="height" constant="30" id="Yu0-J2-Skv"/>
-                                </constraints>
-                                <state key="normal" title="搜索"/>
-                                <connections>
-                                    <action selector="searchBtnCLick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cbp-sQ-bxQ"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UbU-tR-DtL">
@@ -532,17 +518,27 @@
                                     <action selector="closeAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XeH-8I-T8M"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbI-31-KmK">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="9pe-nK-oi5"/>
+                                    <constraint firstAttribute="height" constant="30" id="Yu0-J2-Skv"/>
+                                </constraints>
+                                <state key="normal" title="搜索"/>
+                                <connections>
+                                    <action selector="searchBtnCLick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cbp-sQ-bxQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sbI-31-KmK" secondAttribute="bottom" constant="48" id="7aC-xP-vkP"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="sbI-31-KmK" secondAttribute="trailing" constant="35" id="Hmk-oM-AFr"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sbI-31-KmK" secondAttribute="bottom" constant="71" id="7aC-xP-vkP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sbI-31-KmK" secondAttribute="trailing" constant="27" id="Hmk-oM-AFr"/>
                             <constraint firstItem="UbU-tR-DtL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="HwJ-uO-4sE"/>
-                            <constraint firstItem="4t6-KL-hkh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LAS-Cg-X5e"/>
+                            <constraint firstItem="4t6-KL-hkh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-0.5" id="LAS-Cg-X5e"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UbU-tR-DtL" secondAttribute="trailing" constant="-20" id="OPa-K9-Ona"/>
                             <constraint firstItem="UbU-tR-DtL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="SXG-45-bm8"/>
                             <constraint firstItem="QoD-G5-Ou9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="hPs-ue-vIl"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4t6-KL-hkh" secondAttribute="bottom" constant="48" id="mfg-EO-4gH"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4t6-KL-hkh" secondAttribute="bottom" constant="71" id="mfg-EO-4gH"/>
                             <constraint firstItem="QoD-G5-Ou9" firstAttribute="top" secondItem="UbU-tR-DtL" secondAttribute="bottom" constant="8" id="oRO-RM-1CS"/>
                         </constraints>
                     </view>
@@ -556,7 +552,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="420" y="655"/>
+            <point key="canvasLocation" x="420" y="608"/>
         </scene>
     </scenes>
     <resources>

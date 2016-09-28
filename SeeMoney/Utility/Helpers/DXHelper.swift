@@ -21,10 +21,10 @@ class DXHelper: NSObject {
        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     }
     
-    func makeAlert(title:String, dur:NSTimeInterval, isShake:Bool) -> Void {
+    func makeAlert(_ title:String, dur:TimeInterval, isShake:Bool) -> Void {
         self.atmhud.setCaption(title)
         self.atmhud.minShowTime = dur
-        self.atmhud .showInView(UIApplication.sharedApplication().keyWindow)
+        self.atmhud .show(in: UIApplication.shared.keyWindow)
         self.atmhud.hide()
         if isShake { makeShake() }
         

@@ -7,12 +7,32 @@
 //
 
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class DXNavgationBar: UIView {
 
-    class func getNav(title:String?) -> DXNavgationBar{
-        let nav = DXNavgationBar(frame: CGRectMake(0,0,ScreenWidth!,64))
-        nav.backgroundColor = UIColor.lightGrayColor()
+    class func getNav(_ title:String?) -> DXNavgationBar{
+        let nav = DXNavgationBar(frame: CGRect(x: 0,y: 0,width: ScreenWidth!,height: 64))
+        nav.backgroundColor = UIColor.lightGray
         nav.title = title
         return nav
     }
@@ -31,10 +51,10 @@ class DXNavgationBar: UIView {
     }
     lazy var titlelable: UILabel = {
         
-        let la = UILabel(frame: CGRectMake(0,0,80,40))
-        la.font = UIFont.systemFontOfSize(16)
-        la.textColor = UIColor.whiteColor()
-        la.textAlignment = NSTextAlignment.Center
+        let la = UILabel(frame: CGRect(x: 0,y: 0,width: 80,height: 40))
+        la.font = UIFont.systemFont(ofSize: 16)
+        la.textColor = UIColor.white
+        la.textAlignment = NSTextAlignment.center
         return la
     }()
     var leftItems:[UIBarButtonItem]?{
@@ -49,7 +69,7 @@ class DXNavgationBar: UIView {
         didSet{
             var i = 0
             for item in self.leftItems! {
-                item.customView?.frame = CGRectMake(0 + 40 * CGFloat(i), (self.frame.height - 20)/2, 40, 40)
+                item.customView?.frame = CGRect(x: 0 + 40 * CGFloat(i), y: (self.frame.height - 20)/2, width: 40, height: 40)
                 self .addSubview(item.customView!)
                 i += 1
             }
@@ -67,16 +87,16 @@ class DXNavgationBar: UIView {
         didSet{
             var i = 0
             for item in self.rightItems! {
-                item.customView?.frame = CGRectMake(self.frame.width - (0 + 40 * CGFloat(i)), (self.frame.height - 20)/2 - 20, 40, 40)
+                item.customView?.frame = CGRect(x: self.frame.width - (0 + 40 * CGFloat(i)), y: (self.frame.height - 20)/2 - 20, width: 40, height: 40)
                 self .addSubview(item.customView!)
                 i += 1
             }
         }
     }
-    func addBackBtn(target: AnyObject? ,backSelector:Selector) {
-        let backBtn = UIButton(type: UIButtonType.Custom)
-        backBtn.setImage(UIImage(named: "radarBackBg"), forState: UIControlState.Normal)
-        backBtn.addTarget(target, action: backSelector, forControlEvents: UIControlEvents.TouchUpInside)
+    func addBackBtn(_ target: AnyObject? ,backSelector:Selector) {
+        let backBtn = UIButton(type: UIButtonType.custom)
+        backBtn.setImage(UIImage(named: "radarBackBg"), for: UIControlState())
+        backBtn.addTarget(target, action: backSelector, for: UIControlEvents.touchUpInside)
         let backItem = UIBarButtonItem(customView: backBtn)
         self.leftItems = [backItem]
         

@@ -21,22 +21,23 @@ class RedBagHeaderView: UIView {
         super.awakeFromNib()
      
     }
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         // Drawing code
         let height = rect.size.height - 35
         let context = UIGraphicsGetCurrentContext();
-        CGContextMoveToPoint(context!, 0, 0)
-        CGContextAddLineToPoint(context!, rect.size.width, 0)
-        CGContextAddLineToPoint(context!, rect.size.width, height - 15)
+        context!.move(to: CGPoint(x: 0, y: 0))
+        context!.addLine(to: CGPoint(x: rect.size.width, y: 0))
+        context!.addLine(to: CGPoint(x: rect.size.width, y: height - 15))
 //        CGContextAddLineToPoint(context, 0, rect.size.height - 15)
 //        CGContextAddLineToPoint(context, 0,0)
-        CGContextAddQuadCurveToPoint(context!, rect.size.width/2, height + 15, 0, height - 15)
-        CGContextClosePath(context!);
+        context?.addQuadCurve(to: CGPoint(x:rect.size.width/2, y: height + 15), control: CGPoint(x: 0, y: height - 15))
+      //  CGContextAddQuadCurveToPoint(context!, rect.size.width/2, height + 15, 0, height - 15)
+        context!.closePath();
       //  CGContextSetLineWidth(context, 1)
         
-        CGContextSetFillColorWithColor(context!,RGB(233, g: 85, b: 78, a: 1).CGColor);
+        context!.setFillColor(RGB(233, g: 85, b: 78, a: 1).cgColor);
         
-        CGContextFillPath(context!);
+        context!.fillPath();
         //CGContextDrawPath(context, CGPathDrawingMode.Stroke)
 
         

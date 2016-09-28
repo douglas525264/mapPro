@@ -27,7 +27,7 @@ class redbagModel: NSObject, MKAnnotation{
     //来自某个用户
     var from:UserModel?
     var bagType = redBagType.redBagTypeMoney
-    override func isEqual(object: AnyObject?) -> Bool {
+    override func isEqual(_ object: Any?) -> Bool {
         if let other = object as? redbagModel {
             return other.redID == self.redID
         }

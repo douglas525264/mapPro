@@ -23,14 +23,14 @@ class MoneyViewController: UIViewController {
         self.nav.addBackBtn(self, backSelector: #selector(MoneyViewController.backClick(_:)))
         // Do any additional setup after loading the view.
     }
-    func backClick(sender:UIButton?) {
-     self.navigationController?.popViewControllerAnimated(true)
+    func backClick(_ sender:UIButton?) {
+     self.navigationController?.popViewController(animated: true)
     }
-    @IBAction func addAcountClick(sender: AnyObject) {
+    @IBAction func addAcountClick(_ sender: AnyObject) {
         
     }
 
-    @IBAction func tixianClick(sender: AnyObject) {
+    @IBAction func tixianClick(_ sender: AnyObject) {
     }
     deinit {
     

@@ -22,7 +22,7 @@ class RegisterViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-    @IBAction func registerBtnClick(sender: AnyObject) {
+    @IBAction func registerBtnClick(_ sender: AnyObject) {
         
         if usernameTextfiled.text == nil || pswTextFiled.text  == nil {
             DXHelper.shareInstance.makeAlert("请输入参数", dur: 1, isShake: false)
@@ -31,7 +31,7 @@ class RegisterViewController: UIViewController {
         UserManager.shareInstance.register(usernameTextfiled.text!, psw:pswTextFiled.text!) { (isOK, userInfo) in
             if isOK {
                 
-                self.navigationController?.popViewControllerAnimated(true)
+                self.navigationController?.popViewController(animated: true)
             } else {
                 
                 DXHelper.shareInstance.makeAlert("我草,注册失败了，这不科学", dur: 1, isShake: false)
@@ -41,8 +41,8 @@ class RegisterViewController: UIViewController {
     }
 
 
-    @IBAction func backAction(sender: AnyObject) {
-        self.navigationController?.popViewControllerAnimated(true)
+    @IBAction func backAction(_ sender: AnyObject) {
+        self.navigationController?.popViewController(animated: true)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

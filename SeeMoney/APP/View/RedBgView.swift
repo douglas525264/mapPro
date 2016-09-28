@@ -18,7 +18,7 @@ class RedBgView: UIView {
     @IBOutlet weak var TestLable: UILabel!
     weak var parentVC:UIViewController?
     var minAnimationTime = 3
-    var startTime:NSDate?
+    var startTime:Date?
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -27,10 +27,10 @@ class RedBgView: UIView {
     }
     */
     override func awakeFromNib() {
-        self.bgHeaderView.backgroundColor = UIColor.clearColor()
-        self.bgHeaderView.layer.shadowColor = UIColor.blackColor().CGColor
+        self.bgHeaderView.backgroundColor = UIColor.clear
+        self.bgHeaderView.layer.shadowColor = UIColor.black.cgColor
         self.bgHeaderView.layer.shadowRadius = 2
-        self.bgHeaderView.layer.shadowOffset = CGSizeMake(0, 1)
+        self.bgHeaderView.layer.shadowOffset = CGSize(width: 0, height: 1)
         self.bgHeaderView.layer.shadowOpacity = 0.2
         self.bottomView.backgroundColor = RGB(214, g: 79, b: 71, a: 1)
         self.openBtn.backgroundColor = RGB(220, g: 187, b: 135, a: 1)
@@ -47,37 +47,37 @@ class RedBgView: UIView {
         //self.TestLable.frame = self.openBtn.frame
       //  self.TestLable.frame = self.openBtn.frame
         let ani = CABasicAnimation(keyPath: "transform")
-        ani.toValue = NSValue(CATransform3D: CATransform3DMakeRotation(3.1415926, 0, 1, 0))
+        ani.toValue = NSValue(caTransform3D: CATransform3DMakeRotation(3.1415926, 0, 1, 0))
         ani.duration = 1
         ani.repeatCount = 1000
         ani.autoreverses = true
-        self.openBtn.layer.addAnimation(ani, forKey: kCAAnimationRotateAuto)
-        self.startTime = NSDate()
+        self.openBtn.layer.add(ani, forKey: kCAAnimationRotateAuto)
+        self.startTime = Date()
         
     }
-    func stopBtnAnimation(finishedBlock:()->Void) -> Void {
-        let currentdate = NSDate()
+    func stopBtnAnimation(_ finishedBlock:@escaping ()->Void) -> Void {
+        let currentdate = Date()
         let jiange =   currentdate.timeIntervalSince1970 - self.startTime!.timeIntervalSince1970
         if jiange < 2  {
             
-         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2*Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
-            self.openBtn.layer.removeAnimationForKey(kCAAnimationRotateAuto)
+         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(2*Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: {
+            self.openBtn.layer.removeAnimation(forKey: kCAAnimationRotateAuto)
             finishedBlock()
          })
         }else {
-            self.openBtn.layer.removeAnimationForKey(kCAAnimationRotateAuto)
+            self.openBtn.layer.removeAnimation(forKey: kCAAnimationRotateAuto)
             finishedBlock()
 
         }
         
     }
-    func scaleBgView(finished:(isOk:Bool)->Void) -> Void {
+    func scaleBgView(_ finished:@escaping (_ isOk:Bool)->Void) -> Void {
         if self.parentVC != nil {
             var frame = self.frame
             frame.size.width = (self.parentVC?.view.bounds.width)!
             frame.origin.x = 0
             self.frame = frame
-            UIView.animateWithDuration(0.7, animations: {
+            UIView.animate(withDuration: 0.7, animations: {
                 
                 var lastfrom = self.parentVC?.view.bounds
                 lastfrom?.size.height *= 1.7
@@ -87,7 +87,7 @@ class RedBgView: UIView {
                 self.closeBtn.alpha = 0;
                 self.deView.alpha = 0;
                 }, completion: { (ok:Bool) in
-                 finished(isOk: ok)
+                 finished(ok)
             })
            
             

@@ -10,7 +10,7 @@ import UIKit
 
 protocol UserManagerDlegate : NSObjectProtocol{
     
-    func userStatusChange(user: UserModel) -> Void
+    func userStatusChange(_ user: UserModel) -> Void
 
 }
 class UserManager: NSObject {
@@ -29,47 +29,47 @@ class UserManager: NSObject {
     
     func getMe() -> UserModel {
         let me = UserModel()
-        let userde = NSUserDefaults.standardUserDefaults()
-        var username = userde.objectForKey(UserName);
+        let userde = UserDefaults.standard
+        var username = userde.object(forKey: UserName);
         if username == nil {
-            username = UIDevice.currentDevice().name
+            username = UIDevice.current.name
         }
         me.username = username as? String
         
-        let psw = userde.objectForKey(UserPsw);
+        let psw = userde.object(forKey: UserPsw);
         if psw != nil {
            me.psw = psw as? String
         }
         
-        let token = userde.objectForKey(UserToken);
+        let token = userde.object(forKey: UserToken);
         if token != nil {
             me.token = token as? String
         }
-        let uid = userde.objectForKey(UserID);
+        let uid = userde.object(forKey: UserID);
         if uid != nil {
             me.userID = uid as? String
         }
 
         
-        let accountnum = userde.objectForKey(UserAccountNum)
+        let accountnum = userde.object(forKey: UserAccountNum)
         if accountnum != nil {
             let ac = accountnum as! Double
             
             me.accountNum = ac
         }
-        let goldnum = userde.objectForKey(UserGoldNum)
+        let goldnum = userde.object(forKey: UserGoldNum)
         if goldnum != nil {
             let gc = goldnum as! Double
             
             me.goldCount = gc
         }
-        let gender = userde.objectForKey(UserGender)
+        let gender = userde.object(forKey: UserGender)
         if gender != nil {
             let ge = gender as! NSInteger
             
             me.gender = ge
         }
-        let sdis = userde.objectForKey(UserSeeDis)
+        let sdis = userde.object(forKey: UserSeeDis)
         if gender != nil {
             let sd = sdis as! Double
             
@@ -77,7 +77,7 @@ class UserManager: NSObject {
         }
 
 
-        let status = userde.objectForKey(UserStatus)
+        let status = userde.object(forKey: UserStatus)
         if status != nil {
             let sc = status as! NSInteger
             if sc == 1 {
@@ -99,8 +99,8 @@ class UserManager: NSObject {
 
         return me
     }
-    func saveModel(user:UserModel) {
-        let userde = NSUserDefaults.standardUserDefaults()
+    func saveModel(_ user:UserModel) {
+        let userde = UserDefaults.standard
         if user.username != nil {
             userde .setValue(user.username, forKey: UserName)
         }
@@ -138,9 +138,9 @@ class UserManager: NSObject {
         self.notStatus()
         
     }
-    func register(userName:String, psw:String,resgisterCallBack: (isOK : Bool, userInfo: Dictionary<String,AnyObject>) -> Void) {
+    func register(_ userName:String, psw:String,resgisterCallBack: @escaping (_ isOK : Bool, _ userInfo: Dictionary<String,AnyObject>) -> Void) {
         print("registerURL: + \(registerURL)")
-        DXNetWorkTool.sharedInstance.post(registerURL, body: ["t":1,"code":userName,"pwd":psw], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
+        DXNetWorkTool.sharedInstance.post(registerURL, body: ["t":1 as AnyObject,"code":userName as AnyObject,"pwd":psw as AnyObject], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
             let token = info!["token"];
             let me = self.getMe()
             me.token = token as? String
@@ -148,14 +148,14 @@ class UserManager: NSObject {
             me.psw = psw
             self.saveModel(me)
            
-            resgisterCallBack(isOK: true, userInfo: info!)
+            resgisterCallBack(true, info!)
         }) { (error:SMError) in
-            resgisterCallBack(isOK: false, userInfo:[String:AnyObject]())
+            resgisterCallBack(false, [String:AnyObject]())
         }
     }
-    func login(userName:String, psw:String,loginCallBack: (isOK : Bool, userInfo: Dictionary<String,AnyObject>) -> Void) {
+    func login(_ userName:String, psw:String,loginCallBack: @escaping (_ isOK : Bool, _ userInfo: Dictionary<String,AnyObject>) -> Void) {
         print("loginURL: + \(loginURL)")
-        DXNetWorkTool.sharedInstance.post(loginURL, body: ["t":1,"code":userName,"pwd":psw], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
+        DXNetWorkTool.sharedInstance.post(loginURL, body: ["t":1 as AnyObject,"code":userName as AnyObject,"pwd":psw as AnyObject], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
             
                 let token = info!["token"];
                 let me = self.getMe()
@@ -175,11 +175,11 @@ class UserManager: NSObject {
                 }
                 self.saveModel(me)
                 
-                loginCallBack(isOK: true, userInfo: info!)
+                loginCallBack(true, info!)
 
             
         }) { (error:SMError) in
-            loginCallBack(isOK: false, userInfo:[String:AnyObject]())
+            loginCallBack(false, [String:AnyObject]())
         }
     }
 
