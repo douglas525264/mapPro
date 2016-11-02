@@ -11,7 +11,7 @@ import UIKit
 let IS_IOS7 = (UIDevice.current.systemVersion as NSString).doubleValue >= 7.0
 let IS_IOS8 = (UIDevice.current.systemVersion as NSString).doubleValue >= 8.0
 let IS_IOS9 = (UIDevice.current.systemVersion as NSString).doubleValue >= 9.0
-
+let IS_IOS10 = (UIDevice.current.systemVersion as NSString).doubleValue >= 10.0
 let IS_IPAD = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad)
 
 let ScreenWidth =  UIApplication.shared.keyWindow?.frame.width

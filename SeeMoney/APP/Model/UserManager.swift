@@ -146,7 +146,19 @@ class UserManager: NSObject {
             me.token = token as? String
             me.loginStatus = UserLoginStatus.bagStatusHaslogin
             me.psw = psw
+            let profile = info!["profile"] as? Dictionary<String,AnyObject>
+            
+            if profile != nil {
+                
+                me.userID = profile!["userid"] as? String
+                me.username = profile!["nick"] as? String
+                me.gender = profile!["gender"] as! NSInteger
+                me.accountNum = profile!["corn"] as! Double
+                me.distanceView = profile!["dis_v"] as! Double
+            }
+            
             self.saveModel(me)
+            self.sendTag()
            
             resgisterCallBack(true, info!)
         }) { (error:SMError) in
@@ -158,6 +170,7 @@ class UserManager: NSObject {
         DXNetWorkTool.sharedInstance.post(loginURL, body: ["t":1 as AnyObject,"code":userName as AnyObject,"pwd":psw as AnyObject], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
             
                 let token = info!["token"];
+            
                 let me = self.getMe()
                 me.token = token as? String
                 me.psw = psw
@@ -173,17 +186,24 @@ class UserManager: NSObject {
                     me.accountNum = profile!["corn"] as! Double
                     me.distanceView = profile!["dis_v"] as! Double
                 }
+            
                 self.saveModel(me)
-                
+                self.sendTag()
                 loginCallBack(true, info!)
-
+            
             
         }) { (error:SMError) in
             loginCallBack(false, [String:AnyObject]())
         }
     }
 
-    
+    func sendTag() -> Void {
+        let me = self.getMe()
+        var hasSet = Set<String>()
+        hasSet.insert("beijing")
+        
+        JPUSHService .setTags(hasSet, aliasInbackground: me.userID)
+    }
     func notStatus() -> Void {
         if self.delegate != nil {
             self.delegate?.userStatusChange(self.getMe())

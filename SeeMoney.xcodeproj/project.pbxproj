@@ -29,6 +29,16 @@
 		A50F0FAD1D65ABD0003907F7 /* DXNetWorkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50F0FAC1D65ABD0003907F7 /* DXNetWorkTool.swift */; };
 		A513F5431D7824140001EAE8 /* RedBgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513F5421D7824140001EAE8 /* RedBgView.swift */; };
 		A513F5451D78268D0001EAE8 /* RedBgView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A513F5441D78268D0001EAE8 /* RedBgView.xib */; };
+		A51EB2881DBF48AE007E25B2 /* jpush-ios-2.2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EB2861DBF48AE007E25B2 /* jpush-ios-2.2.0.a */; };
+		A51EB28A1DBF48DF007E25B2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EB2891DBF48DF007E25B2 /* CFNetwork.framework */; };
+		A51EB28C1DBF48E7007E25B2 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EB28B1DBF48E7007E25B2 /* CoreFoundation.framework */; };
+		A51EB28E1DBF48F2007E25B2 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EB28D1DBF48F2007E25B2 /* CoreTelephony.framework */; };
+		A51EB2901DBF48FA007E25B2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EB28F1DBF48FA007E25B2 /* SystemConfiguration.framework */; };
+		A51EB2921DBF5659007E25B2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EB2911DBF5659007E25B2 /* CoreGraphics.framework */; };
+		A51EB2941DBF5661007E25B2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EB2931DBF5661007E25B2 /* Security.framework */; };
+		A51EB2961DBF5676007E25B2 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EB2951DBF5676007E25B2 /* UserNotifications.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		A51EB2991DBF6BAC007E25B2 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EB2981DBF6BAC007E25B2 /* libresolv.tbd */; };
+		A51EB29B1DBF6BE4007E25B2 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EB29A1DBF6BE4007E25B2 /* libz.tbd */; };
 		A542DCD31D66FE7800AFE9C1 /* redbagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD21D66FE7800AFE9C1 /* redbagModel.swift */; };
 		A542DCD61D66FE9800AFE9C1 /* RedBagManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD51D66FE9800AFE9C1 /* RedBagManager.swift */; };
 		A542DCD81D66FED400AFE9C1 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD71D66FED400AFE9C1 /* UserModel.swift */; };
@@ -46,6 +56,7 @@
 		A5827B0D1D6C2C3000693921 /* DXSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5827B0C1D6C2C3000693921 /* DXSlideViewController.swift */; };
 		A5827B0F1D6C3F6900693921 /* MainNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5827B0E1D6C3F6900693921 /* MainNavViewController.swift */; };
 		A5827B111D6C497900693921 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5827B101D6C497900693921 /* UserManager.swift */; };
+		A59F10E01DC051B60023832D /* NotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A59F10DF1DC051B60023832D /* NotManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +106,19 @@
 		A50F0FAC1D65ABD0003907F7 /* DXNetWorkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXNetWorkTool.swift; sourceTree = "<group>"; };
 		A513F5421D7824140001EAE8 /* RedBgView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedBgView.swift; sourceTree = "<group>"; };
 		A513F5441D78268D0001EAE8 /* RedBgView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RedBgView.xib; sourceTree = "<group>"; };
+		A51EB2861DBF48AE007E25B2 /* jpush-ios-2.2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.2.0.a"; sourceTree = "<group>"; };
+		A51EB2871DBF48AE007E25B2 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		A51EB2891DBF48DF007E25B2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A51EB28B1DBF48E7007E25B2 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		A51EB28D1DBF48F2007E25B2 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		A51EB28F1DBF48FA007E25B2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A51EB2911DBF5659007E25B2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A51EB2931DBF5661007E25B2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		A51EB2951DBF5676007E25B2 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		A51EB2971DBF670A007E25B2 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		A51EB2981DBF6BAC007E25B2 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		A51EB29A1DBF6BE4007E25B2 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		A523240B1DBF123A00FA0543 /* SeeMoney.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeeMoney.entitlements; sourceTree = "<group>"; };
 		A542DCD21D66FE7800AFE9C1 /* redbagModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = redbagModel.swift; sourceTree = "<group>"; };
 		A542DCD51D66FE9800AFE9C1 /* RedBagManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedBagManager.swift; sourceTree = "<group>"; };
 		A542DCD71D66FED400AFE9C1 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -115,6 +139,8 @@
 		A5827B0C1D6C2C3000693921 /* DXSlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXSlideViewController.swift; sourceTree = "<group>"; };
 		A5827B0E1D6C3F6900693921 /* MainNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavViewController.swift; sourceTree = "<group>"; };
 		A5827B101D6C497900693921 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		A59F10DE1DC051B60023832D /* NotManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotManager.h; sourceTree = "<group>"; };
+		A59F10DF1DC051B60023832D /* NotManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotManager.m; sourceTree = "<group>"; };
 		BB958AE2575A5953BEF3C265 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D8B98597C27137C70AF82827 /* Pods_SeeMoney.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeeMoney.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -124,9 +150,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A51EB29B1DBF6BE4007E25B2 /* libz.tbd in Frameworks */,
+				A51EB2991DBF6BAC007E25B2 /* libresolv.tbd in Frameworks */,
+				A51EB2961DBF5676007E25B2 /* UserNotifications.framework in Frameworks */,
+				A51EB2941DBF5661007E25B2 /* Security.framework in Frameworks */,
+				A51EB2921DBF5659007E25B2 /* CoreGraphics.framework in Frameworks */,
+				A51EB2901DBF48FA007E25B2 /* SystemConfiguration.framework in Frameworks */,
+				A51EB28E1DBF48F2007E25B2 /* CoreTelephony.framework in Frameworks */,
+				A51EB28C1DBF48E7007E25B2 /* CoreFoundation.framework in Frameworks */,
+				A51EB28A1DBF48DF007E25B2 /* CFNetwork.framework in Frameworks */,
 				A5630A3B1D6B03B100CB95DC /* AudioToolbox.framework in Frameworks */,
 				A50F0F681D659644003907F7 /* MapKit.framework in Frameworks */,
 				106E1989A0229361717D20C7 /* Pods_SeeMoney.framework in Frameworks */,
+				A51EB2881DBF48AE007E25B2 /* jpush-ios-2.2.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +186,15 @@
 		8CD89EB9AC2CD115B7080956 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A51EB29A1DBF6BE4007E25B2 /* libz.tbd */,
+				A51EB2981DBF6BAC007E25B2 /* libresolv.tbd */,
+				A51EB2951DBF5676007E25B2 /* UserNotifications.framework */,
+				A51EB2931DBF5661007E25B2 /* Security.framework */,
+				A51EB2911DBF5659007E25B2 /* CoreGraphics.framework */,
+				A51EB28F1DBF48FA007E25B2 /* SystemConfiguration.framework */,
+				A51EB28D1DBF48F2007E25B2 /* CoreTelephony.framework */,
+				A51EB28B1DBF48E7007E25B2 /* CoreFoundation.framework */,
+				A51EB2891DBF48DF007E25B2 /* CFNetwork.framework */,
 				A5630A3A1D6B03B100CB95DC /* AudioToolbox.framework */,
 				A50F0F671D659644003907F7 /* MapKit.framework */,
 				2792FDE9D8FB28974CF9AD13 /* libPods.a */,
@@ -201,6 +246,7 @@
 		A50F0F251D658A3D003907F7 /* SeeMoney */ = {
 			isa = PBXGroup;
 			children = (
+				A523240B1DBF123A00FA0543 /* SeeMoney.entitlements */,
 				A50F0F541D659047003907F7 /* Utility */,
 				A50F0F591D659047003907F7 /* macro */,
 				A50F0F5A1D659047003907F7 /* APP */,
@@ -269,6 +315,8 @@
 		A50F0F581D659047003907F7 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				A51EB2851DBF48AE007E25B2 /* Lib */,
+				A51EB2971DBF670A007E25B2 /* Bridging-Header.h */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
@@ -351,6 +399,8 @@
 			isa = PBXGroup;
 			children = (
 				A50F0F261D658A3D003907F7 /* AppDelegate.swift */,
+				A59F10DE1DC051B60023832D /* NotManager.h */,
+				A59F10DF1DC051B60023832D /* NotManager.m */,
 			);
 			name = APPdelegate;
 			sourceTree = "<group>";
@@ -404,6 +454,15 @@
 				A50E682E1D76AF8000891625 /* SMError.swift */,
 			);
 			name = NetWork;
+			sourceTree = "<group>";
+		};
+		A51EB2851DBF48AE007E25B2 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				A51EB2861DBF48AE007E25B2 /* jpush-ios-2.2.0.a */,
+				A51EB2871DBF48AE007E25B2 /* JPUSHService.h */,
+			);
+			path = Lib;
 			sourceTree = "<group>";
 		};
 		A542DCD41D66FE8200AFE9C1 /* Redbag */ = {
@@ -536,6 +595,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 					A50F0F361D658A3D003907F7 = {
@@ -631,6 +693,7 @@
 				A50E68321D76C1D700891625 /* OpenRedBagViewController.swift in Sources */,
 				A50E682F1D76AF8000891625 /* SMError.swift in Sources */,
 				A56388EC1D66B7630008A8C2 /* DxDeveiceCommon.swift in Sources */,
+				A59F10E01DC051B60023832D /* NotManager.m in Sources */,
 				A542DCEA1D6700F500AFE9C1 /* SlideViewController.swift in Sources */,
 				A50E68351D76C1F000891625 /* RedBagDetailViewController.swift in Sources */,
 				A50E68371D76C59D00891625 /* RedBagHeaderView.swift in Sources */,
@@ -795,18 +858,23 @@
 			baseConfigurationReference = 883EDF7CCA4EC7F5F2DF1906 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SeeMoney/SeeMoney.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: DEWMOBILE USA INC.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SeeMoney/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/Lib",
+				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.douglas.Seem;
+				PRODUCT_BUNDLE_IDENTIFIER = com.douglas.seemoney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/douglas/Desktop/SeeMoney/SeeMoney/Utility/Helpers/DMAlertAction/DMAlertAction.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "SeeMoney/Utility/Libs/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -816,18 +884,23 @@
 			baseConfigurationReference = BB958AE2575A5953BEF3C265 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SeeMoney/SeeMoney.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: DEWMOBILE USA INC.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SeeMoney/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/Lib",
+				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.douglas.Seem;
+				PRODUCT_BUNDLE_IDENTIFIER = com.douglas.seemoney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/douglas/Desktop/SeeMoney/SeeMoney/Utility/Helpers/DMAlertAction/DMAlertAction.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "SeeMoney/Utility/Libs/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -21,12 +21,14 @@ class OpenRedBagViewController: UIViewController {
         bgBtn.frame = self.view.bounds
         bgBtn.addTarget(self, action: #selector(OpenRedBagViewController.oneTapClick(_:)), for: UIControlEvents.touchUpInside)
         self.view.insertSubview(bgBtn, at: 0)
-       self.bgView = Bundle.main.loadNibNamed("RedBgView", owner: self, options: nil)!.last as? RedBgView
+        
+        self.bgView = Bundle.main.loadNibNamed("RedBgView", owner: self, options: nil)!.last as? RedBgView
         self.bgView?.frame = CGRect(x: 30, y: 150, width: self.view.frame.size.width - 60, height: self.view.frame.size.height - 150 - 80)
         self.bgView?.parentVC = self
         self.bgView?.closeBtn.addTarget(self, action:  #selector(OpenRedBagViewController.closeBtnClick(_:)), for: UIControlEvents.touchUpInside)
         self.bgView?.openBtn.addTarget(self, action:  #selector(OpenRedBagViewController.openBtnCLick(_:)), for: UIControlEvents.touchUpInside)
         self.view .addSubview(self.bgView!)
+        
        // self.bgView?.backgroundColor = UIColor.orangeColor()
         //self.closeBtn .setTitleColor(RGB(0, g: 0, b: 0, a: 0.6), forState: UIControlState.Normal)
         // Do any additional setup after loading the view.
@@ -41,6 +43,7 @@ class OpenRedBagViewController: UIViewController {
         //这里需要执行 开红包动画 或者 利用转场动画实现
         if self.parentVc != nil {
             self.bgView?.showBtnAnimation()
+            
             RedBagManager.sharedInstance.pick((self.redBag?.redID)!, type: "1", finishedBlock: { (isOK, info) in
                 
                 self.bgView?.stopBtnAnimation({ 
