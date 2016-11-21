@@ -9,13 +9,25 @@
 import Foundation
 
 let schema = "http://"
+let host = "hongbao.api.drqmobile.com/"
 //warning : default is POST
-let registerURL = schema + "hongbao.api.drqmobile.com/v1/user"
-let loginURL = schema + "hongbao.api.drqmobile.com/v1/user/login"
-let sendRedbagURL = schema + "hongbao.api.drqmobile.com/v1/envolope"
+let registerURL = schema + host + "v1/user"
+let loginURL = schema + host + "v1/user/login"
+let sendRedbagURL = schema + host + "v1/envolope"
 //GET  /v1/envolope/pick
-let searchredBgURl = schema + "hongbao.api.drqmobile.com/v1/envolope?lat=%.14f&lnt=%.14f"
+let searchredBgURl = schema + host + "v1/envolope?lat=%.14f&lnt=%.14f"
 //POST
-let pickRedbagURL = schema + "hongbao.api.drqmobile.com/v1/envolope/pick"
+let pickRedbagURL = schema + host + "v1/envolope/pick"
 
-        
+//User GET
+let getUserProfile = schema + host + "v1/user/profile"
+//User Put
+let resetUserprofile = schema + host + "v1/user/profile"
+//获取验证码
+
+let getcodeUrl = schema + host + "v1/verification"
+
+//道具相关
+//List GET
+let toolList = schema + host + "v1/tools/show";
+let buytool = schema + host + "/v1/tools/buy";

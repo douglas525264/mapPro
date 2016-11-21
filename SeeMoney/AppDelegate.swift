@@ -74,7 +74,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,JPUSHRegisterDelegate,UNUs
             }*/
         
              NotManager.registerNot(withDlegate: self)
-             JPUSHService.setup(withOption: launchOptions, appKey: "78fecb328e06d3d8a7affd04", channel: "Publish channel", apsForProduction: false)
+            let defCenter = NotificationCenter.default;
+            defCenter.addObserver(self, selector:#selector(AppDelegate.networkDidReceiveMessage(_:)), name: NSNotification.Name.jpfNetworkDidReceiveMessage, object: nil)
+            JPUSHService.setup(withOption: launchOptions, appKey: "78fecb328e06d3d8a7affd04", channel: "Publish channel", apsForProduction: false)
 
         
             
@@ -89,6 +91,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,JPUSHRegisterDelegate,UNUs
     @available(iOS 10.0, *)
     func jpushNotificationCenter(_ center: UNUserNotificationCenter!, willPresent notification: UNNotification!, withCompletionHandler completionHandler: ( (Int) -> Void)!) {
         completionHandler(1|2|3);
+    }
+    func networkDidReceiveMessage(_ not: Notification) -> Void {
+        print("get msg")
     }
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
