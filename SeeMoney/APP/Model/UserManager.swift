@@ -151,6 +151,15 @@ class UserManager: NSObject {
             print("您还未登录，不能调取信息");
         }
     }
+    func asyToSever() -> Void {
+        if self.isLogin() {
+           
+            
+        } else {
+            
+            print("您还未登录，不能调取信息");
+        }
+    }
     func register(_ userName:String, psw:String,resgisterCallBack: @escaping (_ isOK : Bool, _ userInfo: Dictionary<String,AnyObject>) -> Void) {
         print("registerURL: + \(registerURL)")
         DXNetWorkTool.sharedInstance.post(registerURL, body: ["t":1 as AnyObject,"code":userName as AnyObject,"pwd":psw as AnyObject], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
@@ -178,6 +187,7 @@ class UserManager: NSObject {
             resgisterCallBack(false, [String:AnyObject]())
         }
     }
+    
     func login(_ userName:String, psw:String,loginCallBack: @escaping (_ isOK : Bool, _ userInfo: Dictionary<String,AnyObject>) -> Void) {
         print("loginURL: + \(loginURL)")
         DXNetWorkTool.sharedInstance.post(loginURL, body: ["t":1 as AnyObject,"code":userName as AnyObject,"pwd":psw as AnyObject], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in

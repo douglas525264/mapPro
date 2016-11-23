@@ -112,6 +112,107 @@ class DXNetWorkTool: NSObject {
 
         })
     }
+    func put(_ url:String,body:Dictionary<String,AnyObject>?,header:Dictionary<String,AnyObject>?,completed:@escaping completedBlock,fail:@escaping failBlock) -> Void {
+        print("header : \(header)")
+        print("body : \(body)")
+        let manager = AFHTTPSessionManager();
+        
+        manager.requestSerializer = AFJSONRequestSerializer()
+        manager.requestSerializer.timeoutInterval = 10
+        manager.responseSerializer = AFHTTPResponseSerializer()
+        if let header1 = header  {
+            for (key,value)  in header1 {
+                manager.requestSerializer.setValue(value as? String, forHTTPHeaderField: key);
+                
+            }
+        }
+        manager.put(url, parameters: body, success: { (operation, response) -> Void in
+            print("class + \((response as AnyObject).classForCoder)")
+            
+            let str = String(data: response as! Data, encoding: String.Encoding.utf8)
+            
+            let info = try? JSONSerialization.jsonObject(with: response as! Data, options: JSONSerialization.ReadingOptions.allowFragments)
+            
+            print("GET get str : \(str)")
+            if info != nil {
+                let infoDic = info as? Dictionary<String,AnyObject>
+                
+                let code = infoDic!["code"] as! NSInteger
+                
+                if code == 200 {
+                    completed((infoDic!["json"] as? Dictionary<String,AnyObject>)!,true,200)
+                } else {
+                    let err = SMError()
+                    err.code = code
+                    fail(err)
+                }
+                
+                
+            } else {
+                fail(SMError())
+                // fail(NSError(domain: "", code: 400, userInfo: nil))
+            }
+
+        
+        }, failure: { (operation,error) -> Void in
+        
+            fail(SMError())
+        })
+    }
+    func upload(_ data : NSData ,url:String,body:Dictionary<String,AnyObject>?,header:Dictionary<String,AnyObject>?,completed:@escaping completedBlock,fail:@escaping failBlock) -> Void {
+        print("header : \(header)")
+        print("body : \(body)")
+        let manager = AFHTTPSessionManager();
+        
+        manager.requestSerializer = AFJSONRequestSerializer()
+        manager.requestSerializer.timeoutInterval = 10
+        manager.responseSerializer = AFHTTPResponseSerializer()
+        if let header1 = header  {
+            for (key,value)  in header1 {
+                manager.requestSerializer.setValue(value as? String, forHTTPHeaderField: key);
+                
+            }
+        }
+        manager.post(url, parameters: body, constructingBodyWith: {(formatdata : AFMultipartFormData) -> Void in
+        
+        }, progress: { (progress : Progress) -> Void in
+            print("progress : %@",progress)
+        
+        },  success: { (operation, response) in
+            
+            print("class + \((response as AnyObject).classForCoder)")
+            
+            let str = String(data: response as! Data, encoding: String.Encoding.utf8)
+            
+            let info = try? JSONSerialization.jsonObject(with: response as! Data, options: JSONSerialization.ReadingOptions.allowFragments)
+            
+            print("GET get str : \(str)")
+            if info != nil {
+                let infoDic = info as? Dictionary<String,AnyObject>
+                
+                let code = infoDic!["code"] as! NSInteger
+                
+                if code == 200 {
+                    completed((infoDic!["json"] as? Dictionary<String,AnyObject>)!,true,200)
+                } else {
+                    let err = SMError()
+                    err.code = code
+                    fail(err)
+                }
+                
+                
+            } else {
+                fail(SMError())
+                // fail(NSError(domain: "", code: 400, userInfo: nil))
+            }
+
+            
+        }, failure:  { (operation, response) in
+            
+            fail(SMError())
+            
+        })
+    }
 
     
 }
