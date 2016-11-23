@@ -140,8 +140,26 @@ class UserManager: NSObject {
     }
     func updateInfo() -> Void {
         if self.isLogin() {
-            DXNetWorkTool.sharedInstance.post(getUserProfile, body: nil, header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
+            
+            
+            
+            DXNetWorkTool.sharedInstance.get(getUserProfile, body: nil, header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
+              
+                let me = self.getMe()
+                let profile = info
                 
+                if profile != nil {
+                    
+                    me.userID = profile!["userid"] as? String
+                    me.username = profile!["nick"] as? String
+                    me.gender = profile!["gender"] as! NSInteger
+                    me.accountNum = profile!["account"] as! Double
+                    me.goldCount = profile!["corn"] as! Double
+                    me.distanceView = profile!["dis_v"] as! Double
+
+                    self.saveModel(me)
+                }
+
                 }, fail: { (error:SMError) in
                  //更新失败
             })
@@ -151,9 +169,20 @@ class UserManager: NSObject {
             print("您还未登录，不能调取信息");
         }
     }
-    func asyToSever() -> Void {
+    func asyToSever(_ paramters : Dictionary<String,AnyObject>, finishedBlock : @escaping (_ isOK :Bool) -> Void ) -> Void {
         if self.isLogin() {
            
+            DXNetWorkTool.sharedInstance.put(getUserProfile, body: paramters, header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
+                if isOK {
+                    finishedBlock(true);
+                
+                }else {
+                finishedBlock(false);
+                }
+            }, fail: { (error:SMError) in
+                //更新失败
+                finishedBlock(false);
+            })
             
         } else {
             
@@ -175,7 +204,8 @@ class UserManager: NSObject {
                 me.userID = profile!["userid"] as? String
                 me.username = profile!["nick"] as? String
                 me.gender = profile!["gender"] as! NSInteger
-                me.accountNum = profile!["corn"] as! Double
+                me.accountNum = profile!["account"] as! Double
+                me.goldCount = profile!["corn"] as! Double
                 me.distanceView = profile!["dis_v"] as! Double
             }
             
@@ -206,7 +236,8 @@ class UserManager: NSObject {
                     me.userID = profile!["userid"] as? String
                     me.username = profile!["nick"] as? String
                     me.gender = profile!["gender"] as! NSInteger
-                    me.accountNum = profile!["corn"] as! Double
+                    me.accountNum = profile!["account"] as! Double
+                    me.goldCount = profile!["corn"] as! Double
                     me.distanceView = profile!["dis_v"] as! Double
                 }
             

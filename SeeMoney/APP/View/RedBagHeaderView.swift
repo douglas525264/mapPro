@@ -30,7 +30,7 @@ class RedBagHeaderView: UIView {
         context!.addLine(to: CGPoint(x: rect.size.width, y: height - 15))
 //        CGContextAddLineToPoint(context, 0, rect.size.height - 15)
 //        CGContextAddLineToPoint(context, 0,0)
-        context?.addQuadCurve(to: CGPoint(x:rect.size.width/2, y: height + 15), control: CGPoint(x: 0, y: height - 15))
+        context?.addQuadCurve(to: CGPoint(x: 0, y: height - 15), control: CGPoint(x:rect.size.width/2, y: height + 15))
       //  CGContextAddQuadCurveToPoint(context!, rect.size.width/2, height + 15, 0, height - 15)
         context!.closePath();
       //  CGContextSetLineWidth(context, 1)
