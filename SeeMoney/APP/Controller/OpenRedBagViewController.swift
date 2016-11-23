@@ -77,6 +77,7 @@ class OpenRedBagViewController: UIViewController {
                         
                         
                         MapManager.sharedInstance.removeBag(redbg: self.redBag!)
+                        UserManager.shareInstance.updateInfo();
                         
                     }else {
                         

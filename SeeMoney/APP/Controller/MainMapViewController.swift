@@ -120,8 +120,10 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
                     DXHelper.shareInstance.makeAlert("发送成功", dur: 2, isShake: false)
                     let me = UserManager.shareInstance.getMe()
                     me.accountNum -= 10;
+                    
                     UserManager.shareInstance.saveModel(me)
                     self.searchRedBag(true)
+                    UserManager.shareInstance.updateInfo();
                 }
             }
             }

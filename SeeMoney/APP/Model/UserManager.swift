@@ -138,6 +138,19 @@ class UserManager: NSObject {
         self.notStatus()
         
     }
+    func updateInfo() -> Void {
+        if self.isLogin() {
+            DXNetWorkTool.sharedInstance.post(getUserProfile, body: nil, header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
+                
+                }, fail: { (error:SMError) in
+                 //更新失败
+            })
+        
+        } else {
+        
+            print("您还未登录，不能调取信息");
+        }
+    }
     func register(_ userName:String, psw:String,resgisterCallBack: @escaping (_ isOK : Bool, _ userInfo: Dictionary<String,AnyObject>) -> Void) {
         print("registerURL: + \(registerURL)")
         DXNetWorkTool.sharedInstance.post(registerURL, body: ["t":1 as AnyObject,"code":userName as AnyObject,"pwd":psw as AnyObject], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
@@ -209,6 +222,7 @@ class UserManager: NSObject {
             self.delegate?.userStatusChange(self.getMe())
         }
     }
+    
     func isLogin() -> Bool {
         let me = self.getMe()
         if me.loginStatus == UserLoginStatus.bagStatusHaslogin{

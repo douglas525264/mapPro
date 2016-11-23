@@ -20,6 +20,11 @@ class UserModel: NSObject {
     var accountNum : Double = 100
     var goldCount : Double = 100
     var distanceView : Double = 500
+    //ext
+    //远程捡取个数
+    var pickCount : Double = 1
+    //喇叭个数
+    var voiceCount : Double = 5
     var loginStatus:UserLoginStatus = UserLoginStatus.bagStatusUnLogin
     var token:String?
     
