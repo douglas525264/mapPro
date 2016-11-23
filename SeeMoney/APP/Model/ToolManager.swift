@@ -11,7 +11,7 @@ import UIKit
 class ToolManager: NSObject {
     static let shareInstance = ToolManager()
     
-    func getToolList(_ finishedBlock : (_ result : Array<ToolModel>?) -> Void) -> Void {
+    func getToolList(_ finishedBlock : @escaping(_ result : Array<ToolModel>?) -> Void) -> Void {
         DXNetWorkTool.sharedInstance.get(toolList, body: nil, header:  DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
             
             
@@ -21,7 +21,7 @@ class ToolManager: NSObject {
             
         }
     }
-    func buyTool(_ type:ToolType, _ count : Int ,finishedBlock : () -> Void) -> Void {
+    func buyTool(_ type:ToolType, _ count : Int ,finishedBlock : @escaping () -> Void) -> Void {
         DXNetWorkTool.sharedInstance.post(buytool, body: nil, header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
             
             
