@@ -44,7 +44,7 @@ class OpenRedBagViewController: UIViewController {
         if self.parentVc != nil {
             self.bgView?.showBtnAnimation()
             
-            RedBagManager.sharedInstance.pick((self.redBag?.redID)!, type: "1", finishedBlock: { (isOK, info) in
+            RedBagManager.sharedInstance.pick((self.redBag?.redID)!, type: (redBag?.bagType)! , finishedBlock: { (isOK, info) in
                 
                 self.bgView?.stopBtnAnimation({ 
                     if isOK {

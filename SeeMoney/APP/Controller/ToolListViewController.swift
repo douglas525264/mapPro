@@ -1,26 +1,30 @@
 //
-//  SettingViewController.swift
+//  ToolListViewController.swift
 //  SeeMoney
 //
-//  Created by douglas on 16/8/19.
+//  Created by douglas on 2016/11/24.
 //  Copyright © 2016年 douglas. All rights reserved.
 //
 
 import UIKit
 
-class SettingViewController: UIViewController {
-    var nav = DXNavgationBar.getNav("设置")
+class ToolListViewController: UIViewController {
+    var nav = DXNavgationBar.getNav("道具")
+    let tableview = {
+    
+        var temp =  UITableView(frame: self.view.frame, style: UITableViewStyle.plain);
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         self.view .addSubview(self.nav)
-        self.nav.addBackBtn(self, backSelector: #selector(SettingViewController.backClick(_:)))
+        self.nav.addBackBtn(self, backSelector: #selector(ToolListViewController.backClick(_:)))
+
         // Do any additional setup after loading the view.
     }
-    
     func backClick(_ sender:UIButton?) {
         
-        self.navigationController?.popViewController(animated: true);
+        self.navigationController!.popViewController(animated: true);
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,7 +37,7 @@ class SettingViewController: UIViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }

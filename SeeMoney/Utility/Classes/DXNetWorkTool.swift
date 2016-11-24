@@ -32,7 +32,7 @@ class DXNetWorkTool: NSObject {
         let manager = AFHTTPSessionManager();
         
         manager.requestSerializer = AFJSONRequestSerializer()
-        manager.requestSerializer.timeoutInterval = 10
+        manager.requestSerializer.timeoutInterval = 3
         manager.responseSerializer = AFHTTPResponseSerializer()
         if let header1 = header  {
             for (key,value)  in header1 {
@@ -77,7 +77,7 @@ class DXNetWorkTool: NSObject {
         let manager = AFHTTPSessionManager();
         
         manager.requestSerializer = AFJSONRequestSerializer()
-        manager.requestSerializer.timeoutInterval = 10
+        manager.requestSerializer.timeoutInterval = 3
         manager.responseSerializer = AFHTTPResponseSerializer()
         if let header1 = header  {
             for (key,value)  in header1 {
@@ -118,7 +118,7 @@ class DXNetWorkTool: NSObject {
         let manager = AFHTTPSessionManager();
         
         manager.requestSerializer = AFJSONRequestSerializer()
-        manager.requestSerializer.timeoutInterval = 10
+        manager.requestSerializer.timeoutInterval = 3
         manager.responseSerializer = AFHTTPResponseSerializer()
         if let header1 = header  {
             for (key,value)  in header1 {
@@ -165,7 +165,7 @@ class DXNetWorkTool: NSObject {
         let manager = AFHTTPSessionManager();
         
         manager.requestSerializer = AFJSONRequestSerializer()
-        manager.requestSerializer.timeoutInterval = 10
+        manager.requestSerializer.timeoutInterval = 3
         manager.responseSerializer = AFHTTPResponseSerializer()
         if let header1 = header  {
             for (key,value)  in header1 {

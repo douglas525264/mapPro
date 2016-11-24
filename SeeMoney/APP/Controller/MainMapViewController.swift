@@ -473,6 +473,10 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
             self.navigationController?.pushViewController(SettingViewController(), animated: true)
             break
         case 3:
+            print("道具")
+            self.navigationController?.pushViewController(ToolListViewController(), animated: true)
+            break
+        case 4:
             print("退出登录")
             let me = UserManager.shareInstance.getMe()
             me.loginStatus = UserLoginStatus.bagStatusUnLogin

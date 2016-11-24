@@ -46,7 +46,7 @@ class RedBagManager: NSObject {
         print("sendredBagURL: + \(sendRedbagURL)")
         let location = MapManager.sharedInstance.getmapView().userLocation.coordinate
   
-            DXNetWorkTool.sharedInstance.post(sendRedbagURL, body:["t":1 as AnyObject,"amount":num as AnyObject,"lat":(location.latitude as AnyObject),"lnt":(location.longitude as AnyObject),"title":"测试红包" as AnyObject,"size":10 as AnyObject], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
+            DXNetWorkTool.sharedInstance.post(sendRedbagURL, body:["type":1 as AnyObject,"amount":num as AnyObject,"lat":(location.latitude as AnyObject),"lnt":(location.longitude as AnyObject),"title":"测试红包" as AnyObject,"size":10 as AnyObject], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
                 finishedBlock(true)
                 }, fail: { (error:SMError) in
                 finishedBlock(false)
@@ -55,11 +55,11 @@ class RedBagManager: NSObject {
 
         
     }
-    func pick(_ redId:String,type:String,finishedBlock:@escaping (_ isOK:Bool,_ info:String?) -> Void) {
+    func pick(_ redId:String,type:redBagType,finishedBlock:@escaping (_ isOK:Bool,_ info:String?) -> Void) {
         
         print("redId : \(redId)")
         
-        DXNetWorkTool.sharedInstance.post(pickRedbagURL, body: ["id":redId as AnyObject,"type":1 as AnyObject], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
+        DXNetWorkTool.sharedInstance.post(pickRedbagURL, body: ["id":redId as AnyObject,"type":(type == redBagType.redBagTypeMoney ? 1 : 2) as AnyObject], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
             finishedBlock(true,nil)
         }) { (error:SMError) in
             finishedBlock(false,error.des)

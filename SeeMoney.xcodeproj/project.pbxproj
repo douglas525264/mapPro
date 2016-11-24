@@ -29,6 +29,7 @@
 		A50F0FAD1D65ABD0003907F7 /* DXNetWorkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50F0FAC1D65ABD0003907F7 /* DXNetWorkTool.swift */; };
 		A513F5431D7824140001EAE8 /* RedBgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513F5421D7824140001EAE8 /* RedBgView.swift */; };
 		A513F5451D78268D0001EAE8 /* RedBgView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A513F5441D78268D0001EAE8 /* RedBgView.xib */; };
+		A5199DDC1DE696CD002DE684 /* ToolListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5199DDB1DE696CD002DE684 /* ToolListViewController.swift */; };
 		A51B96951DE5451A006E57FC /* ToolModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51B96941DE5451A006E57FC /* ToolModel.swift */; };
 		A51B96971DE5453A006E57FC /* ToolManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51B96961DE5453A006E57FC /* ToolManager.swift */; };
 		A51EB2881DBF48AE007E25B2 /* jpush-ios-2.2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EB2861DBF48AE007E25B2 /* jpush-ios-2.2.0.a */; };
@@ -108,6 +109,7 @@
 		A50F0FAC1D65ABD0003907F7 /* DXNetWorkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXNetWorkTool.swift; sourceTree = "<group>"; };
 		A513F5421D7824140001EAE8 /* RedBgView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedBgView.swift; sourceTree = "<group>"; };
 		A513F5441D78268D0001EAE8 /* RedBgView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RedBgView.xib; sourceTree = "<group>"; };
+		A5199DDB1DE696CD002DE684 /* ToolListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolListViewController.swift; sourceTree = "<group>"; };
 		A51B96941DE5451A006E57FC /* ToolModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolModel.swift; sourceTree = "<group>"; };
 		A51B96961DE5453A006E57FC /* ToolManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolManager.swift; sourceTree = "<group>"; };
 		A51EB2861DBF48AE007E25B2 /* jpush-ios-2.2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.2.0.a"; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 		A50F0F5F1D659057003907F7 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				A5199DDA1DE696B6002DE684 /* Tool */,
 				A50E68301D76C1A100891625 /* redBag */,
 				A542DCE81D6700D100AFE9C1 /* MoneyVC */,
 				A542DCE71D6700C400AFE9C1 /* SettingVC */,
@@ -460,6 +463,14 @@
 				A50E682E1D76AF8000891625 /* SMError.swift */,
 			);
 			name = NetWork;
+			sourceTree = "<group>";
+		};
+		A5199DDA1DE696B6002DE684 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				A5199DDB1DE696CD002DE684 /* ToolListViewController.swift */,
+			);
+			name = Tool;
 			sourceTree = "<group>";
 		};
 		A51EB2851DBF48AE007E25B2 /* Lib */ = {
@@ -710,6 +721,7 @@
 				A50288931D6D54690086CD80 /* LoginViewController.swift in Sources */,
 				A542DCD61D66FE9800AFE9C1 /* RedBagManager.swift in Sources */,
 				A542DCE31D67009400AFE9C1 /* UIActionSheet+Block.m in Sources */,
+				A5199DDC1DE696CD002DE684 /* ToolListViewController.swift in Sources */,
 				A542DCE41D67009400AFE9C1 /* UIAlertView+Block.m in Sources */,
 				A50288951D6D54740086CD80 /* RegisterViewController.swift in Sources */,
 				A50288971D6D80E20086CD80 /* DXNavgationBar.swift in Sources */,

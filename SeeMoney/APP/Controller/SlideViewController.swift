@@ -94,7 +94,7 @@ class SlideViewController: DXSlideViewController,UITableViewDelegate,UITableView
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (me.loginStatus == UserLoginStatus.bagStatusHaslogin) ? 4:3
+        return (me.loginStatus == UserLoginStatus.bagStatusHaslogin) ? 5:3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -114,6 +114,10 @@ class SlideViewController: DXSlideViewController,UITableViewDelegate,UITableView
             cell?.imageView?.image = UIImage(named: "zapya_slidemenu_icon_setting")
             break
         case 3:
+            cell?.textLabel?.text = "道具"
+            cell?.imageView?.image = UIImage(named: "zapya_slidemenu_icon_setting")
+            break
+        case 4:
             cell?.textLabel?.text = "退出登录"
             cell?.imageView?.image = UIImage(named: "zapya_slidemenu_icon_setting")
             break
