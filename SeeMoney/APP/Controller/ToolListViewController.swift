@@ -10,10 +10,10 @@ import UIKit
 
 class ToolListViewController: UIViewController {
     var nav = DXNavgationBar.getNav("道具")
-    let tableview = {
-    
-        var temp =  UITableView(frame: self.view.frame, style: UITableViewStyle.plain);
-    }
+//    let tableview = {
+//    
+//        var temp =  UITableView(frame: self.view.frame, style: UITableViewStyle.plain);
+//    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
