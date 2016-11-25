@@ -9,7 +9,9 @@
 import UIKit
 import MapKit
 class RedBagManager: NSObject {
+    
     static let sharedInstance = RedBagManager()
+    
     var searchDis : Double = 500
     lazy  var redbags:[redbagModel] = {
         var arr = [redbagModel]();
@@ -45,8 +47,8 @@ class RedBagManager: NSObject {
     func sendRedBag(_ num:Float,finishedBlock:@escaping (_ isOK:Bool) -> Void) -> Void {
         print("sendredBagURL: + \(sendRedbagURL)")
         let location = MapManager.sharedInstance.getmapView().userLocation.coordinate
-  
-            DXNetWorkTool.sharedInstance.post(sendRedbagURL, body:["type":1 as AnyObject,"amount":num as AnyObject,"lat":(location.latitude as AnyObject),"lnt":(location.longitude as AnyObject),"title":"测试红包" as AnyObject,"size":10 as AnyObject], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
+        
+        DXNetWorkTool.sharedInstance.post(sendRedbagURL, body:["type":1 as AnyObject,"amount":num as AnyObject,"lat":(location.latitude as AnyObject),"lnt":(location.longitude as AnyObject),"title":"测试红包" as AnyObject,"size":10 as AnyObject], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
                 finishedBlock(true)
                 }, fail: { (error:SMError) in
                 finishedBlock(false)

@@ -80,6 +80,7 @@ class MapManager: NSObject,CLLocationManagerDelegate {
         if redBagsArr.contains(redbg) {
             redBagsArr.remove(at: redBagsArr.index(of: redbg)!)
             mapView .removeAnnotation(redbg)
+           
         }
     }
     

@@ -8,25 +8,57 @@
 
 import UIKit
 
-class ToolListViewController: UIViewController {
+class ToolListViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var nav = DXNavgationBar.getNav("道具")
-//    let tableview = {
-//    
-//        var temp =  UITableView(frame: self.view.frame, style: UITableViewStyle.plain);
-//    }
+    
+    var tableview : UITableView = UITableView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), style: UITableViewStyle.plain) {
+    
+        willSet(newTable){
+            
+            newTable.delegate = self
+            newTable.dataSource = self
+            newTable.frame = self.view.bounds
+            self.view .addSubview(newTable);
+            
+        }
+    }
+    
+    var sourceArr = [ToolModel]()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         self.view .addSubview(self.nav)
         self.nav.addBackBtn(self, backSelector: #selector(ToolListViewController.backClick(_:)))
-
+        
         // Do any additional setup after loading the view.
     }
     func backClick(_ sender:UIButton?) {
         
         self.navigationController!.popViewController(animated: true);
     }
-
+    
+    func createUI() -> Void{
+    
+        
+    }
+    func loaddata() -> Void {
+    
+        
+    }
+    //MARK - UITableViewDataSource
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sourceArr.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        return UITableViewCell()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
