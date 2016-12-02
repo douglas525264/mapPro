@@ -7,8 +7,8 @@
 //
 
 import UIKit
-enum ToolType {
-    case pickTool
+enum ToolType : Int {
+    case pickTool = 1
     
 }
 class ToolModel: NSObject {
