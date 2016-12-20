@@ -32,8 +32,10 @@ class DXNavgationBar: UIView {
 
     class func getNav(_ title:String?) -> DXNavgationBar{
         let nav = DXNavgationBar(frame: CGRect(x: 0,y: 0,width: ScreenWidth!,height: 64))
-        nav.backgroundColor = UIColor.lightGray
+        nav.backgroundColor = UIColor.black
         nav.title = title
+        nav.addSubview(nav.bgView)
+        nav.bgView.frame = nav.bounds
         return nav
     }
     var title:String? {
@@ -49,6 +51,13 @@ class DXNavgationBar: UIView {
             
         }
     }
+    lazy var bgView: UIVisualEffectView  = {
+        
+        let effect = UIBlurEffect(style: UIBlurEffectStyle.light)
+        let eview = UIVisualEffectView(effect: effect)
+        
+        return eview
+    }()
     lazy var titlelable: UILabel = {
         
         let la = UILabel(frame: CGRect(x: 0,y: 0,width: 80,height: 40))

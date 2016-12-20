@@ -273,7 +273,7 @@ class UserManager: NSObject {
         }
     }
     func getAvatar(iconid : String,finishedBlock:@escaping (_ isOK : Bool, _ userInfo: Dictionary<String,AnyObject>?) -> Void) -> Void {
-        DXNetWorkTool.sharedInstance.get(getAvatarURL, body:["y":iconid as AnyObject!] , header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
+        DXNetWorkTool.sharedInstance.get(getAvatarURL, body:["id":iconid as AnyObject!] , header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
             
             //            let token = info!["token"];
             //

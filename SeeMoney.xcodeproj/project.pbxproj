@@ -59,6 +59,7 @@
 		A5827B0D1D6C2C3000693921 /* DXSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5827B0C1D6C2C3000693921 /* DXSlideViewController.swift */; };
 		A5827B0F1D6C3F6900693921 /* MainNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5827B0E1D6C3F6900693921 /* MainNavViewController.swift */; };
 		A5827B111D6C497900693921 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5827B101D6C497900693921 /* UserManager.swift */; };
+		A59BFC761E09397F00FC39D5 /* DXNewSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59BFC751E09397F00FC39D5 /* DXNewSlideViewController.swift */; };
 		A59F10E01DC051B60023832D /* NotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A59F10DF1DC051B60023832D /* NotManager.m */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +146,7 @@
 		A5827B0C1D6C2C3000693921 /* DXSlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXSlideViewController.swift; sourceTree = "<group>"; };
 		A5827B0E1D6C3F6900693921 /* MainNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavViewController.swift; sourceTree = "<group>"; };
 		A5827B101D6C497900693921 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		A59BFC751E09397F00FC39D5 /* DXNewSlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXNewSlideViewController.swift; sourceTree = "<group>"; };
 		A59F10DE1DC051B60023832D /* NotManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotManager.h; sourceTree = "<group>"; };
 		A59F10DF1DC051B60023832D /* NotManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotManager.m; sourceTree = "<group>"; };
 		BB958AE2575A5953BEF3C265 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -516,6 +518,7 @@
 			children = (
 				A542DCE91D6700F500AFE9C1 /* SlideViewController.swift */,
 				A5827B0C1D6C2C3000693921 /* DXSlideViewController.swift */,
+				A59BFC751E09397F00FC39D5 /* DXNewSlideViewController.swift */,
 			);
 			name = SlidVC;
 			sourceTree = "<group>";
@@ -702,6 +705,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A50F0F661D6593C0003907F7 /* Commenddefine.swift in Sources */,
+				A59BFC761E09397F00FC39D5 /* DXNewSlideViewController.swift in Sources */,
 				A542DCDA1D67007B00AFE9C1 /* DXHelper.swift in Sources */,
 				A513F5431D7824140001EAE8 /* RedBgView.swift in Sources */,
 				A5827B0D1D6C2C3000693921 /* DXSlideViewController.swift in Sources */,
