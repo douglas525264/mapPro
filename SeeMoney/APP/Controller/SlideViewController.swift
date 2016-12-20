@@ -49,6 +49,7 @@ class SlideViewController: DXSlideViewController,UITableViewDelegate,UITableView
         self.tableView.tableHeaderView = headerView
         headerImageView.frame = CGRect(x: headerView.frame.size.width/2 - 30, y: (headerView.frame.size.height - 20)/2 - 30 + 20, width: 60, height: 60)
         headerImageView.image = UIImage(named: "zapya_sidebar_head_superman")
+        
         headerView .addSubview(headerImageView)
         let bottomLine = UILabel(frame: CGRect(x: 20, y: self.headerView.frame.size.height - 5, width: headerView.frame.size.width - 40, height: 0.5))
         bottomLine.alpha = 0.6

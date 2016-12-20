@@ -69,6 +69,22 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         ftap.numberOfTouchesRequired = 2
         self.headerView.addGestureRecognizer(stap)
         self.headerView.addGestureRecognizer(ftap)
+        
+        UserManager.shareInstance.getAvatar(iconid: "7000000032", finishedBlock: {(isOK : Bool, info : Dictionary<String,AnyObject>?) in
+        
+        
+        } )
+      /*  let  testAvatar = UIImage(named: "zapya_sidebar_head_superman")
+        UserManager.shareInstance.uploadAvatar(testAvatar!, finishedBlock: { (isOK : Bool) in
+            if isOK {
+                print("上传成功了")
+            } else {
+            
+                print("失败了")
+            }
+            
+        
+        })*/
 
     }
     func appEnterForeground() -> Void {

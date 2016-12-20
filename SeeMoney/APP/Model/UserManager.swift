@@ -24,6 +24,7 @@ class UserManager: NSObject {
    let UserGender = "usergenderkey"
    let UserSeeDis = "UserDiskey"
    let UserID = "useridkey"
+   let IconID = "iconidkey"
    let UserStatus = "userstatusKey"
    var delegate:UserManagerDlegate?
     
@@ -48,6 +49,10 @@ class UserManager: NSObject {
         let uid = userde.object(forKey: UserID);
         if uid != nil {
             me.userID = uid as? String
+        }
+        let iconid = userde.object(forKey: IconID);
+        if iconid != nil {
+            me.iconID = iconid as? String
         }
 
         
@@ -112,6 +117,9 @@ class UserManager: NSObject {
         }
         if user.userID != nil {
             userde .setValue(user.userID, forKey: UserID)
+        }
+        if user.iconID != nil {
+            userde .setValue(user.iconID, forKey: IconID)
         }
         if user.accountNum > 0{
             userde .setValue(user.accountNum, forKey: UserAccountNum)
@@ -239,6 +247,7 @@ class UserManager: NSObject {
                     me.accountNum = profile!["account"] as! Double
                     me.goldCount = profile!["corn"] as! Double
                     me.distanceView = profile!["dis_v"] as! Double
+                    me.iconID = profile!["iconid"] as? String
                 }
             
                 self.saveModel(me)
@@ -263,7 +272,70 @@ class UserManager: NSObject {
             self.delegate?.userStatusChange(self.getMe())
         }
     }
-    
+    func getAvatar(iconid : String,finishedBlock:@escaping (_ isOK : Bool, _ userInfo: Dictionary<String,AnyObject>?) -> Void) -> Void {
+        DXNetWorkTool.sharedInstance.get(getAvatarURL, body:["y":iconid as AnyObject!] , header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
+            
+            //            let token = info!["token"];
+            //
+            //            let me = self.getMe()
+            //            me.token = token as? String
+            //            me.psw = psw
+            //            me.loginStatus = UserLoginStatus.bagStatusHaslogin
+            //
+            //            let profile = info!["profile"] as? Dictionary<String,AnyObject>
+            //
+            //            if profile != nil {
+            //
+            //            me.userID = profile!["userid"] as? String
+            //            me.username = profile!["nick"] as? String
+            //            me.gender = profile!["gender"] as! NSInteger
+            //            me.accountNum = profile!["account"] as! Double
+            //            me.goldCount = profile!["corn"] as! Double
+            //            me.distanceView = profile!["dis_v"] as! Double
+            //            }
+            //            
+            //            self.saveModel(me)
+            //            self.sendTag()
+            finishedBlock(true,info)
+            
+            
+        }) { (error:SMError) in
+            finishedBlock(false,nil)
+        }
+
+    }
+    func uploadAvatar(_ avatar : UIImage, finishedBlock:@escaping (_ isOK : Bool) ->()) -> Void {
+        DXNetWorkTool.sharedInstance.upload(UIImagePNGRepresentation(avatar)!, url: uploadAvatarURL, body: nil, header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
+            
+//            let token = info!["token"];
+//            
+//            let me = self.getMe()
+//            me.token = token as? String
+//            me.psw = psw
+//            me.loginStatus = UserLoginStatus.bagStatusHaslogin
+//            
+//            let profile = info!["profile"] as? Dictionary<String,AnyObject>
+//            
+//            if profile != nil {
+//            
+//            me.userID = profile!["userid"] as? String
+//            me.username = profile!["nick"] as? String
+//            me.gender = profile!["gender"] as! NSInteger
+//            me.accountNum = profile!["account"] as! Double
+//            me.goldCount = profile!["corn"] as! Double
+//            me.distanceView = profile!["dis_v"] as! Double
+//            }
+//            
+//            self.saveModel(me)
+//            self.sendTag()
+            finishedBlock(true)
+            
+            
+        }) { (error:SMError) in
+            finishedBlock(false)
+        }
+
+    }
     func isLogin() -> Bool {
         let me = self.getMe()
         if me.loginStatus == UserLoginStatus.bagStatusHaslogin{

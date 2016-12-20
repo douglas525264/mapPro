@@ -23,6 +23,9 @@ let pickRedbagURL = schema + host + "v1/envolope/pick"
 let getUserProfile = schema + host + "v1/user/profile"
 //User Put
 let resetUserprofile = schema + host + "v1/user/profile"
+
+let uploadAvatarURL = schema + host + "v1/user/profile/icon"
+let getAvatarURL = schema + host + "v1/user/profile/icon"
 //获取验证码
 
 let getcodeUrl = schema + host + "v1/verification"
@@ -31,3 +34,5 @@ let getcodeUrl = schema + host + "v1/verification"
 //List GET
 let toolList = schema + host + "v1/tools/show";
 let buytool = schema + host + "/v1/tools/buy";
+
+

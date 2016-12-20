@@ -159,9 +159,10 @@ class DXNetWorkTool: NSObject {
             fail(SMError())
         })
     }
-    func upload(_ data : NSData ,url:String,body:Dictionary<String,AnyObject>?,header:Dictionary<String,AnyObject>?,completed:@escaping completedBlock,fail:@escaping failBlock) -> Void {
+    func upload(_ data : Data ,url:String,body:Dictionary<String,AnyObject>?,header:Dictionary<String,AnyObject>?,completed:@escaping completedBlock,fail:@escaping failBlock) -> Void {
         print("header : \(header)")
         print("body : \(body)")
+        print("URL : \(url)")
         let manager = AFHTTPSessionManager();
         
         manager.requestSerializer = AFJSONRequestSerializer()
@@ -174,7 +175,9 @@ class DXNetWorkTool: NSObject {
             }
         }
         manager.post(url, parameters: body, constructingBodyWith: {(formatdata : AFMultipartFormData) -> Void in
-        
+            
+            formatdata.appendPart(withFileData: data, name: "file", fileName: "avatar", mimeType: "png")
+            
         }, progress: { (progress : Progress) -> Void in
             print("progress : %@",progress)
         
@@ -187,25 +190,25 @@ class DXNetWorkTool: NSObject {
             let info = try? JSONSerialization.jsonObject(with: response as! Data, options: JSONSerialization.ReadingOptions.allowFragments)
             
             print("GET get str : \(str)")
-            if info != nil {
-                let infoDic = info as? Dictionary<String,AnyObject>
-                
-                let code = infoDic!["code"] as! NSInteger
-                
-                if code == 200 {
-                    completed((infoDic!["json"] as? Dictionary<String,AnyObject>)!,true,200)
-                } else {
-                    let err = SMError()
-                    err.code = code
-                    fail(err)
-                }
-                
-                
-            } else {
-                fail(SMError())
-                // fail(NSError(domain: "", code: 400, userInfo: nil))
-            }
-
+//            if info != nil {
+//                let infoDic = info as? Dictionary<String,AnyObject>
+//                
+//                let code = infoDic!["code"] as! NSInteger
+//                
+//                if code == 200 {
+//                    completed((infoDic!["json"] as? Dictionary<String,AnyObject>)!,true,200)
+//                } else {
+//                    let err = SMError()
+//                    err.code = code
+//                    fail(err)
+//                }
+//                
+//                
+//            } else {
+//                fail(SMError())
+//                // fail(NSError(domain: "", code: 400, userInfo: nil))
+//            }
+//
             
         }, failure:  { (operation, response) in
             

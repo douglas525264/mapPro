@@ -15,6 +15,7 @@ class UserModel: NSObject {
 
     var username : String?
     var userID : String?
+    var iconID : String?
     var psw : String?
     var gender = 0
     var accountNum : Double = 100
