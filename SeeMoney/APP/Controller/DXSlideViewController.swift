@@ -38,10 +38,10 @@ class DXSlideViewController: UIViewController {
         //            self.bgView.alpha = 0.2 + 0.4 * (self.slideView.frame.origin.x + self.slideView.frame.width)/self.slideView.frame.width;
         //        }
         
-        let onetapGes = UITapGestureRecognizer(target: self, action: #selector(SlideViewController.oneTap(_:)));
+        let onetapGes = UITapGestureRecognizer(target: self, action: #selector(DXSlideViewController.oneTap(_:)));
         onetapGes.numberOfTapsRequired = 1;
         bgView.addGestureRecognizer(onetapGes)
-        let panGes = UIPanGestureRecognizer(target: self, action:  #selector(SlideViewController.longpress(_:)))
+        let panGes = UIPanGestureRecognizer(target: self, action:  #selector(DXSlideViewController.longpress(_:)))
         self.view.addGestureRecognizer(panGes)
         
     }
@@ -52,6 +52,7 @@ class DXSlideViewController: UIViewController {
             
         }
     }
+    
     func show(inView view:UIView) {
     
         view.addSubview(self.view)

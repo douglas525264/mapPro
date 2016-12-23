@@ -44,7 +44,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     var hasSearch = false
     var aplicationInBg : Bool = false
     var fetchDis:Double = 100
-    
+    lazy var nav1 = DXNavgationBar.getNav("探包宝")
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,8 +69,10 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         ftap.numberOfTouchesRequired = 2
         self.headerView.addGestureRecognizer(stap)
         self.headerView.addGestureRecognizer(ftap)
+        self.headerView.isHidden = true;
+  
         
-        UserManager.shareInstance.getAvatar(iconid: "7000000020", finishedBlock: {(isOK : Bool, info : Dictionary<String,AnyObject>?) in
+        /*UserManager.shareInstance.getAvatar(iconid: "7000000020", finishedBlock: {(isOK : Bool, info : Dictionary<String,AnyObject>?) in
             if info != nil {
                 let str : String = info!["thumb"] as! String
                 let data = str.data(using: String.Encoding.utf8)
@@ -83,7 +85,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
             }
            
         
-        } )
+        } )*/
       /*  let  testAvatar = UIImage(named: "zapya_sidebar_head_superman")
         UserManager.shareInstance.uploadAvatar(testAvatar!, finishedBlock: { (isOK : Bool) in
             if isOK {
@@ -97,6 +99,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         })*/
 
     }
+    
     func appEnterForeground() -> Void {
         aplicationInBg = true
         
@@ -114,9 +117,14 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     }
 
     func createUI(){
-        
-        let leftItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.organize, target: self, action:#selector(MainMapViewController.leftBtnClick(_:)))
-        self.navigationItem.leftBarButtonItem = leftItem
+        self.view.addSubview(self.nav1);
+        self.nav1.titlelable.font = UIFont.boldSystemFont(ofSize: 17)
+       // let leftItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.organize, target: self, action:#selector(MainMapViewController.leftBtnClick(_:)))
+        let avatarBtn = UIButton(frame: CGRect(x: 10, y: 0, width: 30, height: 30))
+        avatarBtn.addTarget(self, action: #selector(MainMapViewController.leftBtnClick(_:)), for: UIControlEvents.touchUpInside)
+        avatarBtn.setImage(UIImage(named :"tab_myinfo_icon"), for: UIControlState.normal)
+        let leftItem = UIBarButtonItem(customView: avatarBtn)
+        self.nav1.leftItems = [leftItem]
         self.view .sendSubview(toBack: self.mapView!)
         self.slideVC.delegate = self
         navigationController?.isNavigationBarHidden = true
@@ -513,6 +521,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
             break
         }
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
