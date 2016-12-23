@@ -13,7 +13,18 @@ public protocol SlideViewControllerDelegate : NSObjectProtocol {
     func founctionCallBackAtIndex(_ index:NSInteger)
  
 }
-
+enum SettingCommend:Int {
+    case SettingCommendMyTools = 1
+    case SettingCommendMyMoney = 2
+    case SettingCommendLikeBaoBao
+    case SettingCommendFeedBack
+    case SettingCommendGuid
+    case SettingCommendSetting
+    case SettingCommendAbout
+    case SettingCommendChangeAvatar
+    case SettingCommendLogin
+    case SettingCommendChangeNick
+}
 class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableViewDataSource,UserManagerDlegate {
     weak var delegate: SlideViewControllerDelegate?
     lazy var tableView:UITableView = {
@@ -83,13 +94,14 @@ class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableV
         loginBtn.setTitleColor(UIColor.lightGray, for: UIControlState())
         loginBtn.backgroundColor = UIColor.clear
         headerView.addSubview(loginBtn)
-       // let oneTap = UITapGestureRecognizer(target: self, action: #selector(SlideViewController.loginBtnClick))
-       // headerView .addGestureRecognizer(oneTap)
+
         let myToolBtn = SlideBtn(type: .custom)
         var width = self.slideView.frame.size.width/2 - 40
         width = width > 160 ? 160 : width
         myToolBtn.frame = CGRect(x: self.slideView.frame.size.width/2 - width - 20, y: headerView.frame.size.height - 20 - 40, width: width, height: 35)
+        myToolBtn.tag = 0;
         myToolBtn.setTitle("我的道具", for: .normal)
+        myToolBtn.addTarget(self, action: #selector(SlideViewController.normalBtnClick(_:)), for: .touchUpInside)
         myToolBtn.setTitleColor(UIColor.white, for: .normal)
         myToolBtn.layer.borderWidth = 0.5
         myToolBtn.layer.borderColor = UIColor.white.cgColor
@@ -99,6 +111,7 @@ class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableV
         headerView .addSubview(myToolBtn)
         
         let myMoneyBtn = SlideBtn(type: .custom)
+        myMoneyBtn.addTarget(self, action: #selector(SlideViewController.normalBtnClick(_:)), for: .touchUpInside)
         myMoneyBtn.frame = CGRect(x: self.slideView.frame.size.width/2 + 20, y: headerView.frame.size.height - 20 - 40, width: width, height: 35)
         myMoneyBtn.setTitle("我的钱包", for: .normal)
         myMoneyBtn.setTitleColor(UIColor.white, for: .normal)
@@ -107,7 +120,9 @@ class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableV
         myMoneyBtn.layer.cornerRadius = 5
         myMoneyBtn.setImage(UIImage(named : "icon-qianbao"), for: .normal)
         myMoneyBtn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        myMoneyBtn.tag = 1;
         headerView .addSubview(myMoneyBtn)
+        
 
         
         let closeBtn = UIButton(type:.custom)
@@ -121,21 +136,51 @@ class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableV
         
         headerView.sendSubview(toBack: bgImageView)
     }
+    
      func dismiss1() {
         super.dismiss()
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
     }
+    
     func loginBtnClick() {
         
-        if (self.delegate != nil) {
-            self.delegate?.founctionCallBackAtIndex(5)
-        }
-
+    }
+    func normalBtnClick(_ sender : UIButton) {
+        getCommend(sender.tag == 0 ? .SettingCommendMyTools : .SettingCommendMyMoney)
     }
     
     //MARK - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (self.delegate != nil) {
-            self.delegate?.founctionCallBackAtIndex((indexPath as NSIndexPath).row)
+        switch indexPath.section {
+        case 0:
+            if indexPath.row == 0{
+               getCommend(.SettingCommendLikeBaoBao)
+            }
+            if indexPath.row == 1 {
+               getCommend(.SettingCommendFeedBack)
+                
+            }
+            break
+        case 1:
+            if indexPath.row == 0{
+               getCommend(.SettingCommendGuid)
+            }
+            if indexPath.row == 1 {
+                getCommend(.SettingCommendSetting)
+                
+            }
+            break
+        case 2:
+            if indexPath.row == 0{
+                getCommend(.SettingCommendAbout)
+            }
+            if indexPath.row == 1 {
+                
+                
+            }
+            break
+
+        default: break
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -207,6 +252,7 @@ class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableV
             
         }
         cell?.textLabel?.textColor = UIColor.black
+        cell?.textLabel?.font = UIFont.systemFont(ofSize: 14)
         return cell!
     }
     func userStatusChange(_ user:UserModel) {
@@ -235,6 +281,42 @@ class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableV
             bgImageView.frame = CGRect(x: 0, y: self.headerView.frame.size.height - 260, width: self.slideView.frame.size.width, height: 260)
         }
     }
+    func getCommend(_ commend : SettingCommend) {
+        switch commend {
+        case .SettingCommendLikeBaoBao:
+            
+            break
+        case .SettingCommendMyTools:
+            
+            break
+        case .SettingCommendMyMoney:
+            
+            break
+        case .SettingCommendFeedBack:
+            
+            break
+        case .SettingCommendGuid:
+            
+            break
+        case .SettingCommendSetting:
+            
+            break
+        case .SettingCommendAbout:
+            
+            break
+        case .SettingCommendChangeAvatar:
+            
+            break
+        case .SettingCommendLogin:
+            
+            break
+        case .SettingCommendChangeNick:
+            
+            break
+            
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

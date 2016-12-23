@@ -44,6 +44,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     var hasSearch = false
     var aplicationInBg : Bool = false
     var fetchDis:Double = 100
+    static var shareInstance:MainMapViewController?
     lazy var nav1 = DXNavgationBar.getNav("探包宝")
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +57,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
 
         self.timer =  Timer.scheduledTimer(timeInterval: 3*60*60, target: self, selector:  #selector(MainMapViewController.bgRefreash), userInfo: nil, repeats: true)
         self.timer?.fire()
-
+        MainMapViewController.shareInstance = self;
         createUI()
         NotificationCenter.default.addObserver(self, selector: #selector(MainMapViewController.appEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
          NotificationCenter.default.addObserver(self, selector: #selector(MainMapViewController.appBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
@@ -317,6 +318,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     }
     func leftBtnClick(_ sender:AnyObject) {
         self.slideVC.show(inView:self.view)
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
     }
     //delgate
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
