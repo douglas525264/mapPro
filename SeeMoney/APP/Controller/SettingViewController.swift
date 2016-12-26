@@ -21,8 +21,9 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
     func createUI() {
         self.view.backgroundColor = UIColor.white
         self.view .addSubview(self.nav)
-        self.view.backgroundColor = bgColor
+        
         self.nav.addBackBtn(self, backSelector: #selector(SettingViewController.backClick(_:)))
+        self.view.backgroundColor = bgColor
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView .register(UITableViewCell().classForCoder, forCellReuseIdentifier:"SettingTableCell")
