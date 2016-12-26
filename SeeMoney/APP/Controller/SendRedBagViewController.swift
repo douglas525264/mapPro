@@ -9,11 +9,19 @@
 import UIKit
 
 class SendRedBagViewController: UIViewController {
-
+    var nav = DXNavgationBar.getNav("发红包")
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = bgColor
+        self.view .addSubview(nav)
+        self.nav.addBackBtn(self, backSelector: #selector(SendRedBagViewController.backClick(_:)))
         // Do any additional setup after loading the view.
+    }
+    func backClick(_ sender:UIButton?) {
+        
+        if self.navigationController?.popViewController(animated: true) != nil {
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {

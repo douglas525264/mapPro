@@ -20,7 +20,10 @@ class SettingViewController: UIViewController {
     
     func backClick(_ sender:UIButton?) {
         
-        self.navigationController?.popViewController(animated: true);
+        if self.navigationController?.popViewController(animated: true) != nil {
+            
+        }
+
     }
 
     override func didReceiveMemoryWarning() {

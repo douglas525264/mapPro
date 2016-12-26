@@ -16,7 +16,7 @@ let IS_IPAD = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad)
 
 let ScreenWidth =  UIApplication.shared.keyWindow?.frame.width
 let ScreenHeight =  UIApplication.shared.keyWindow?.frame.height
-
+let bgColor =  RGB(246, g: 246, b: 246, a: 1)
 func RGB(_ r:CGFloat, g:CGFloat, b:CGFloat ,a:CGFloat ) -> UIColor {
     
     return UIColor.init(red: r/255, green: g/255, blue: b/255, alpha: a)

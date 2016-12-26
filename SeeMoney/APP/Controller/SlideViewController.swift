@@ -139,7 +139,7 @@ class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableV
         closeBtn.addTarget(self, action: #selector(SlideViewController.dismiss1), for: UIControlEvents.touchUpInside)
         self.view .addSubview(closeBtn)
         
-        self.slideView.backgroundColor = RGB(246, g: 246, b: 246, a: 1)
+        self.slideView.backgroundColor = bgColor
         
         headerView.sendSubview(toBack: bgImageView)
     }
@@ -307,7 +307,7 @@ class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableV
             
             break
         case .SettingCommendMyTools:
-            
+            MainMapViewController.shareInstance?.push(toVC: MyToolViewController(), animated: true)
             break
         case .SettingCommendMyMoney:
             print("钱包")
@@ -320,13 +320,13 @@ class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableV
             
             break
         case .SettingCommendGuid:
-            
+            MainMapViewController.shareInstance?.push(toVC: AboutViewController(), animated: true)
             break
         case .SettingCommendSetting:
             MainMapViewController.shareInstance?.push(toVC: SettingViewController(), animated: true)
             break
         case .SettingCommendAbout:
-            MainMapViewController.shareInstance?.push(toVC: SettingViewController(), animated: true)
+            MainMapViewController.shareInstance?.push(toVC: AboutViewController(), animated: true)
             break
         case .SettingCommendChangeAvatar:
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
