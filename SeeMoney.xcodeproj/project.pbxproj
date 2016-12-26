@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		106E1989A0229361717D20C7 /* Pods_SeeMoney.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B98597C27137C70AF82827 /* Pods_SeeMoney.framework */; };
+		21925C0FD999D7F08613D103 /* Pods_SeeMoney.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00E654EE85FAD8C6C279B019 /* Pods_SeeMoney.framework */; };
 		A50288931D6D54690086CD80 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50288921D6D54690086CD80 /* LoginViewController.swift */; };
 		A50288951D6D54740086CD80 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50288941D6D54740086CD80 /* RegisterViewController.swift */; };
 		A50288971D6D80E20086CD80 /* DXNavgationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50288961D6D80E20086CD80 /* DXNavgationBar.swift */; };
@@ -82,8 +82,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2792FDE9D8FB28974CF9AD13 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		883EDF7CCA4EC7F5F2DF1906 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		00E654EE85FAD8C6C279B019 /* Pods_SeeMoney.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeeMoney.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		41DD9A03920379887970A1E2 /* Pods-SeeMoney.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeeMoney.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeeMoney/Pods-SeeMoney.debug.xcconfig"; sourceTree = "<group>"; };
 		A50288921D6D54690086CD80 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A50288941D6D54740086CD80 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		A50288961D6D80E20086CD80 /* DXNavgationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXNavgationBar.swift; sourceTree = "<group>"; };
@@ -151,8 +151,7 @@
 		A59BFC751E09397F00FC39D5 /* DXNewSlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXNewSlideViewController.swift; sourceTree = "<group>"; };
 		A59F10DE1DC051B60023832D /* NotManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotManager.h; sourceTree = "<group>"; };
 		A59F10DF1DC051B60023832D /* NotManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotManager.m; sourceTree = "<group>"; };
-		BB958AE2575A5953BEF3C265 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		D8B98597C27137C70AF82827 /* Pods_SeeMoney.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeeMoney.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2C54D77B21C367F8445FBE6 /* Pods-SeeMoney.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeeMoney.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeeMoney/Pods-SeeMoney.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,8 +170,8 @@
 				A51EB28A1DBF48DF007E25B2 /* CFNetwork.framework in Frameworks */,
 				A5630A3B1D6B03B100CB95DC /* AudioToolbox.framework in Frameworks */,
 				A50F0F681D659644003907F7 /* MapKit.framework in Frameworks */,
-				106E1989A0229361717D20C7 /* Pods_SeeMoney.framework in Frameworks */,
 				A51EB2881DBF48AE007E25B2 /* jpush-ios-2.2.0.a in Frameworks */,
+				21925C0FD999D7F08613D103 /* Pods_SeeMoney.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +192,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0BA44B301461E58553BC4C6B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				41DD9A03920379887970A1E2 /* Pods-SeeMoney.debug.xcconfig */,
+				C2C54D77B21C367F8445FBE6 /* Pods-SeeMoney.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8CD89EB9AC2CD115B7080956 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,19 +215,9 @@
 				A51EB2891DBF48DF007E25B2 /* CFNetwork.framework */,
 				A5630A3A1D6B03B100CB95DC /* AudioToolbox.framework */,
 				A50F0F671D659644003907F7 /* MapKit.framework */,
-				2792FDE9D8FB28974CF9AD13 /* libPods.a */,
-				D8B98597C27137C70AF82827 /* Pods_SeeMoney.framework */,
+				00E654EE85FAD8C6C279B019 /* Pods_SeeMoney.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A33C682561BE79EEFA24DFC8 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				883EDF7CCA4EC7F5F2DF1906 /* Pods.debug.xcconfig */,
-				BB958AE2575A5953BEF3C265 /* Pods.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		A50E68301D76C1A100891625 /* redBag */ = {
@@ -238,8 +236,8 @@
 				A50F0F3A1D658A3D003907F7 /* SeeMoneyTests */,
 				A50F0F451D658A3D003907F7 /* SeeMoneyUITests */,
 				A50F0F241D658A3C003907F7 /* Products */,
-				A33C682561BE79EEFA24DFC8 /* Pods */,
 				8CD89EB9AC2CD115B7080956 /* Frameworks */,
+				0BA44B301461E58553BC4C6B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -549,10 +547,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A50F0F4B1D658A3D003907F7 /* Build configuration list for PBXNativeTarget "SeeMoney" */;
 			buildPhases = (
+				AD60B949F8E868CF2C90B8DB /* [CP] Check Pods Manifest.lock */,
 				A50F0F1F1D658A3C003907F7 /* Sources */,
 				A50F0F201D658A3C003907F7 /* Frameworks */,
 				A50F0F211D658A3C003907F7 /* Resources */,
-				B48C23893D7F8E0B78EAA9DC /* Embed Pods Frameworks */,
+				CE0E1C0E8C9479888413BF42 /* [CP] Embed Pods Frameworks */,
+				3CED66CA364DAEF526B748EF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -685,14 +685,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B48C23893D7F8E0B78EAA9DC /* Embed Pods Frameworks */ = {
+		3CED66CA364DAEF526B748EF /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SeeMoney/Pods-SeeMoney-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD60B949F8E868CF2C90B8DB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CE0E1C0E8C9479888413BF42 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -883,7 +913,7 @@
 		};
 		A50F0F4C1D658A3D003907F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 883EDF7CCA4EC7F5F2DF1906 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 41DD9A03920379887970A1E2 /* Pods-SeeMoney.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SeeMoney/SeeMoney.entitlements;
@@ -909,7 +939,7 @@
 		};
 		A50F0F4D1D658A3D003907F7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB958AE2575A5953BEF3C265 /* Pods.release.xcconfig */;
+			baseConfigurationReference = C2C54D77B21C367F8445FBE6 /* Pods-SeeMoney.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SeeMoney/SeeMoney.entitlements;

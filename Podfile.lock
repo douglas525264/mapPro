@@ -17,16 +17,24 @@ PODS:
   - ATMHud@dhoerl (3.0.0):
     - ATMHud@dhoerl/Core (= 3.0.0)
   - ATMHud@dhoerl/Core (3.0.0)
+  - HappyDNS (0.3.10)
   - MBProgressHUD (0.9.2)
+  - Qiniu (7.1.4):
+    - AFNetworking (~> 3)
+    - HappyDNS (~> 0.3)
 
 DEPENDENCIES:
-  - AFNetworking (~> 3.1.0)
   - ATMHud@dhoerl (~> 3.0.0)
   - MBProgressHUD (~> 0.9.2)
+  - Qiniu (~> 7.1.4)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   ATMHud@dhoerl: df5862a0a76c7330aa78e3cd3504fa8221ee8a0d
+  HappyDNS: 06a9fed2796663fd87626dbf02552933265bf059
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  Qiniu: a4c962782035ee25b9da3e195181d8c384bb75be
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 5dc37e608eb4539f58f89ef042ef4ff6c8ad451b
+
+COCOAPODS: 1.1.1

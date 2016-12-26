@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>HappyDNS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -24,20 +29,35 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Qiniu.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0437E8EE963B1D265F68D7D868ECED3C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1C3436CEA5C3D39764C5F54374794ECB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>471A087471B50BC265C7C73E2214AD73</key>
+		<key>89C6A6ED90EC9F8C09B70499ABE2C607</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5F48947E123E2193DC6DEA92AB10F2CC</key>
+		<key>9CDA37259236AE7C05DEA5DE56082F4B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DCA96536FA512F26D0A2E33F3768569C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
