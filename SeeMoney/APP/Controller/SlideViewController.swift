@@ -25,7 +25,7 @@ enum SettingCommend:Int {
     case SettingCommendLogin
     case SettingCommendChangeNick
 }
-class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableViewDataSource,UserManagerDlegate {
+class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableViewDataSource,UserManagerDlegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate {
     weak var delegate: SlideViewControllerDelegate?
     lazy var tableView:UITableView = {
         let table = UITableView(frame: CGRect.zero, style: UITableViewStyle.grouped)
@@ -74,12 +74,16 @@ class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableV
         
         headerImageView.frame = CGRect(x: headerView.frame.size.width/2 - 30, y: (headerView.frame.size.height - 20)/2 - 30 + 20 - 30, width: 60, height: 60)
         headerImageView.image = UIImage(named: "zapya_sidebar_head_superman")
-        
+        let oneTap = UITapGestureRecognizer()
+        oneTap.numberOfTapsRequired = 1
+        oneTap.addTarget(self, action: #selector(SlideViewController.avatarTap(_:)))
+        headerImageView.addGestureRecognizer(oneTap)
         headerView .addSubview(headerImageView)
         
         
         loginBtn.frame = CGRect(x: 0, y: headerImageView.frame.origin.y + headerImageView.frame.size.height, width: headerView.frame.size.width, height: 40)
         loginBtn.titleLabel?.textColor = UIColor.lightGray
+        loginBtn.addTarget(self, action: #selector(SlideViewController.loginBtnClick), for: .touchUpInside)
         loginBtn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         let me = UserManager.shareInstance.getMe()
         switch me.loginStatus {
@@ -141,9 +145,22 @@ class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableV
         super.dismiss()
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
     }
-    
-    func loginBtnClick() {
+    func avatarTap(_ sender : UIGestureRecognizer) -> Void {
+        if UserManager.shareInstance.getMe().loginStatus == UserLoginStatus.bagStatusUnLogin {
         
+            getCommend(.SettingCommendLogin)
+        } else {
+            getCommend(.SettingCommendChangeAvatar)
+        }
+    }
+    func loginBtnClick() {
+        if UserManager.shareInstance.getMe().loginStatus == UserLoginStatus.bagStatusUnLogin {
+            
+            getCommend(.SettingCommendLogin)
+        } else {
+            getCommend(.SettingCommendChangeNick)
+        }
+
     }
     func normalBtnClick(_ sender : UIButton) {
         getCommend(sender.tag == 0 ? .SettingCommendMyTools : .SettingCommendMyMoney)
@@ -290,6 +307,10 @@ class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableV
             
             break
         case .SettingCommendMyMoney:
+            print("钱包")
+            let mainStory = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let lgVC = mainStory.instantiateViewController(withIdentifier: "MoneyViewController")
+            MainMapViewController.shareInstance?.push(toVC: lgVC, animated: true)
             
             break
         case .SettingCommendFeedBack:
@@ -299,24 +320,69 @@ class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableV
             
             break
         case .SettingCommendSetting:
-            
+            MainMapViewController.shareInstance?.push(toVC: SettingViewController(), animated: true)
             break
         case .SettingCommendAbout:
-            
+            MainMapViewController.shareInstance?.push(toVC: SettingViewController(), animated: true)
             break
         case .SettingCommendChangeAvatar:
             
             break
         case .SettingCommendLogin:
-            
+            let mainStory = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let lgVC = mainStory.instantiateViewController(withIdentifier: "LoginViewController")
+            MainMapViewController.shareInstance?.navigationController?.pushViewController(lgVC, animated: true)
             break
         case .SettingCommendChangeNick:
+            //修改昵称
+            let alertVc = UIAlertController(title: "修改昵称"  , message: "在下面框中输入昵称", preferredStyle: UIAlertControllerStyle.alert);
+            alertVc.addTextField(configurationHandler: { (te:UITextField) in
+                te.placeholder = "请输入昵称"
+            })
+            let alertOKAc = UIAlertAction(title: "修改", style:UIAlertActionStyle.default , handler: { (ac : UIAlertAction) in
+                let me = UserManager.shareInstance.getMe()
+                let nameTextFile = alertVc.textFields?.first
+                
+                if let newName = nameTextFile?.text {
+                    
+                    me.username = newName;
+                    //UserManager.shareInstance.asyToSever(["nick":me.username as AnyObject ,"gender":1 as AnyObject] fi)
+                    UserManager.shareInstance.asyToSever(["nick":me.username as AnyObject ,"gender":1 as AnyObject], finishedBlock: { (isOK : Bool) in
+                        if isOK {
+                            
+                            UserManager.shareInstance.saveModel(me);
+                        } else {
+                            print("上传失败")
+                        }
+                    })
+                }
+                
+            })
+            let alertcancel = UIAlertAction(title: "取消", style:UIAlertActionStyle.default , handler: { (ac : UIAlertAction) in
+                
+            })
+            alertVc.addAction(alertOKAc);
+            alertVc.addAction(alertcancel);
             
+            
+            MainMapViewController.shareInstance?.present(alertVc, animated: true, completion: {
+                
+            });
+
             break
             
         }
     }
     
+    func loadSource(type : UIImagePickerControllerSourceType) {
+        let picker = UIImagePickerController()
+        picker.sourceType = type
+        picker.delegate = self
+        picker.allowsEditing = true;
+        MainMapViewController.shareInstance?.present(picker, animated: true, completion: { 
+            
+        })
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

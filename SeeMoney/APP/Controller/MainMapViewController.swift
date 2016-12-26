@@ -100,7 +100,14 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         })*/
 
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if self.slideVC.isShow {
+            UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+        } else {
+           UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
+        }
+    }
     func appEnterForeground() -> Void {
         aplicationInBg = true
         
@@ -457,40 +464,6 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
                 self.navigationController?.pushViewController(lgVC, animated: true)
             }else {
             
-                //修改昵称
-                let alertVc = UIAlertController(title: "msg", message: "msg", preferredStyle: UIAlertControllerStyle.alert);
-                alertVc.addTextField(configurationHandler: { (te:UITextField) in
-                    te.placeholder = "请输入昵称"
-                })
-                let alertOKAc = UIAlertAction(title: "修改", style:UIAlertActionStyle.default , handler: { (ac : UIAlertAction) in
-                    let me = UserManager.shareInstance.getMe()
-                    let nameTextFile = alertVc.textFields?.first
-                    
-                    if let newName = nameTextFile?.text {
-                    
-                        me.username = newName;
-                        //UserManager.shareInstance.asyToSever(["nick":me.username as AnyObject ,"gender":1 as AnyObject] fi)
-                        UserManager.shareInstance.asyToSever(["nick":me.username as AnyObject ,"gender":1 as AnyObject], finishedBlock: { (isOK : Bool) in
-                            if isOK {
-                            
-                                UserManager.shareInstance.saveModel(me);
-                            } else {
-                                print("上传失败")
-                            }
-                        })
-                    }
-                    
-                })
-                let alertcancel = UIAlertAction(title: "取消", style:UIAlertActionStyle.default , handler: { (ac : UIAlertAction) in
-                    
-                })
-                alertVc.addAction(alertOKAc);
-                alertVc.addAction(alertcancel);
-                
-                
-                self.present(alertVc, animated: true, completion: { 
-                    
-                });
                 
             }
             break
@@ -523,7 +496,10 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
             break
         }
     }
-    
+    func push(toVC vc: UIViewController, animated:Bool) {
+        self.navigationController?.pushViewController(vc, animated: animated);
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

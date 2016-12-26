@@ -10,6 +10,7 @@ import UIKit
 
 class DXNewSlideViewController: UIViewController {
     lazy var slideView : UIView  = UIView(frame: CGRect(x: 0, y: -ScreenHeight!, width: ScreenWidth!, height: ScreenHeight!))
+    var isShow : Bool  = false
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear
@@ -20,7 +21,7 @@ class DXNewSlideViewController: UIViewController {
         
         view.addSubview(self.view)
         fixPosition(true) {
-            
+            self.isShow = true;
         }
     }
     func fixPosition(_ isShow:Bool,finishedBlock:@escaping ()->Void){
@@ -43,6 +44,7 @@ class DXNewSlideViewController: UIViewController {
     func dismiss(){
         fixPosition(false) {
             self.view.removeFromSuperview()
+            self.isShow = false
         }
         
     }
