@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SeeMoney/APP/Controller/SlideViewController.swift"
-            timestampString = "504432861.649373"
+            timestampString = "504436588.118851"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "332"
-            endingLineNumber = "332"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
             landmarkName = "getCommend(_:)"
             landmarkType = "7">
          </BreakpointContent>

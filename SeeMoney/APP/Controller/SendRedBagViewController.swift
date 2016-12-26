@@ -20,7 +20,7 @@ class SendRedBagViewController: UIViewController {
     func backClick(_ sender:UIButton?) {
         
         if self.navigationController?.popViewController(animated: true) != nil {
-            
+        
         }
     }
 

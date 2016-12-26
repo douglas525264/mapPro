@@ -487,9 +487,6 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
             break
         case 4:
             print("退出登录")
-            let me = UserManager.shareInstance.getMe()
-            me.loginStatus = UserLoginStatus.bagStatusUnLogin
-            UserManager.shareInstance.saveModel(me)
             break
             
         default:

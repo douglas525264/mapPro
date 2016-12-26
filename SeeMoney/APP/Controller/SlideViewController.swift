@@ -273,6 +273,7 @@ class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableV
         }
         cell?.textLabel?.textColor = UIColor.black
         cell?.textLabel?.font = UIFont.systemFont(ofSize: 14)
+        cell?.accessoryType = .disclosureIndicator
         return cell!
     }
     func userStatusChange(_ user:UserModel) {
@@ -323,7 +324,10 @@ class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableV
             MainMapViewController.shareInstance?.push(toVC: AboutViewController(), animated: true)
             break
         case .SettingCommendSetting:
-            MainMapViewController.shareInstance?.push(toVC: SettingViewController(), animated: true)
+            let mainStory = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let setVC = mainStory.instantiateViewController(withIdentifier: "SettingViewController")
+            
+            MainMapViewController.shareInstance?.push(toVC: setVC, animated: true)
             break
         case .SettingCommendAbout:
             MainMapViewController.shareInstance?.push(toVC: AboutViewController(), animated: true)
