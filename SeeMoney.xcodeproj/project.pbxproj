@@ -57,6 +57,9 @@
 		A5630A3B1D6B03B100CB95DC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5630A3A1D6B03B100CB95DC /* AudioToolbox.framework */; };
 		A56388EC1D66B7630008A8C2 /* DxDeveiceCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56388EB1D66B7630008A8C2 /* DxDeveiceCommon.swift */; };
 		A56388EE1D66DF290008A8C2 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56388ED1D66DF290008A8C2 /* MapManager.swift */; };
+		A570A17A1E11094E00D0FDCE /* MyToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570A1791E11094E00D0FDCE /* MyToolViewController.swift */; };
+		A570A17D1E11096D00D0FDCE /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570A17C1E11096D00D0FDCE /* AboutViewController.swift */; };
+		A570A1821E1109BA00D0FDCE /* SendRedBagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570A1811E1109BA00D0FDCE /* SendRedBagViewController.swift */; };
 		A5827B0D1D6C2C3000693921 /* DXSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5827B0C1D6C2C3000693921 /* DXSlideViewController.swift */; };
 		A5827B0F1D6C3F6900693921 /* MainNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5827B0E1D6C3F6900693921 /* MainNavViewController.swift */; };
 		A5827B111D6C497900693921 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5827B101D6C497900693921 /* UserManager.swift */; };
@@ -145,6 +148,9 @@
 		A5630A3A1D6B03B100CB95DC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A56388EB1D66B7630008A8C2 /* DxDeveiceCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DxDeveiceCommon.swift; sourceTree = "<group>"; };
 		A56388ED1D66DF290008A8C2 /* MapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
+		A570A1791E11094E00D0FDCE /* MyToolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyToolViewController.swift; sourceTree = "<group>"; };
+		A570A17C1E11096D00D0FDCE /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		A570A1811E1109BA00D0FDCE /* SendRedBagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendRedBagViewController.swift; sourceTree = "<group>"; };
 		A5827B0C1D6C2C3000693921 /* DXSlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXSlideViewController.swift; sourceTree = "<group>"; };
 		A5827B0E1D6C3F6900693921 /* MainNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavViewController.swift; sourceTree = "<group>"; };
 		A5827B101D6C497900693921 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -223,6 +229,7 @@
 		A50E68301D76C1A100891625 /* redBag */ = {
 			isa = PBXGroup;
 			children = (
+				A570A1801E1109A700D0FDCE /* send */,
 				A50E68311D76C1D700891625 /* OpenRedBagViewController.swift */,
 				A50E68341D76C1F000891625 /* RedBagDetailViewController.swift */,
 			);
@@ -394,6 +401,8 @@
 		A50F0F5F1D659057003907F7 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				A570A17E1E11097200D0FDCE /* FeedBack */,
+				A570A17B1E11095C00D0FDCE /* About */,
 				A5199DDA1DE696B6002DE684 /* Tool */,
 				A50E68301D76C1A100891625 /* redBag */,
 				A542DCE81D6700D100AFE9C1 /* MoneyVC */,
@@ -471,6 +480,7 @@
 			isa = PBXGroup;
 			children = (
 				A5199DDB1DE696CD002DE684 /* ToolListViewController.swift */,
+				A570A1791E11094E00D0FDCE /* MyToolViewController.swift */,
 			);
 			name = Tool;
 			sourceTree = "<group>";
@@ -538,6 +548,29 @@
 				A542DCED1D67010F00AFE9C1 /* MoneyViewController.swift */,
 			);
 			name = MoneyVC;
+			sourceTree = "<group>";
+		};
+		A570A17B1E11095C00D0FDCE /* About */ = {
+			isa = PBXGroup;
+			children = (
+				A570A17C1E11096D00D0FDCE /* AboutViewController.swift */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
+		A570A17E1E11097200D0FDCE /* FeedBack */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = FeedBack;
+			sourceTree = "<group>";
+		};
+		A570A1801E1109A700D0FDCE /* send */ = {
+			isa = PBXGroup;
+			children = (
+				A570A1811E1109BA00D0FDCE /* SendRedBagViewController.swift */,
+			);
+			name = send;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -749,6 +782,8 @@
 				A50E68321D76C1D700891625 /* OpenRedBagViewController.swift in Sources */,
 				A50E682F1D76AF8000891625 /* SMError.swift in Sources */,
 				A56388EC1D66B7630008A8C2 /* DxDeveiceCommon.swift in Sources */,
+				A570A17A1E11094E00D0FDCE /* MyToolViewController.swift in Sources */,
+				A570A1821E1109BA00D0FDCE /* SendRedBagViewController.swift in Sources */,
 				A59F10E01DC051B60023832D /* NotManager.m in Sources */,
 				A542DCEA1D6700F500AFE9C1 /* SlideViewController.swift in Sources */,
 				A50E68351D76C1F000891625 /* RedBagDetailViewController.swift in Sources */,
@@ -770,6 +805,7 @@
 				A5827B0F1D6C3F6900693921 /* MainNavViewController.swift in Sources */,
 				A50F0F271D658A3D003907F7 /* AppDelegate.swift in Sources */,
 				A50F0F641D65912D003907F7 /* RemoteSever.swift in Sources */,
+				A570A17D1E11096D00D0FDCE /* AboutViewController.swift in Sources */,
 				A50F0F6C1D659697003907F7 /* MainMapViewController.swift in Sources */,
 				A542DCD81D66FED400AFE9C1 /* UserModel.swift in Sources */,
 			);

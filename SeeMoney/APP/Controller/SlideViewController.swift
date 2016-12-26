@@ -78,6 +78,9 @@ class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableV
         oneTap.numberOfTapsRequired = 1
         oneTap.addTarget(self, action: #selector(SlideViewController.avatarTap(_:)))
         headerImageView.addGestureRecognizer(oneTap)
+        headerImageView.isUserInteractionEnabled = true
+        headerImageView.layer.cornerRadius = 30
+        headerImageView.layer.masksToBounds = true
         headerView .addSubview(headerImageView)
         
         
@@ -326,7 +329,11 @@ class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableV
             MainMapViewController.shareInstance?.push(toVC: SettingViewController(), animated: true)
             break
         case .SettingCommendChangeAvatar:
-            
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                self.loadSource(type: .photoLibrary)
+            } else {
+                print("相册不可用")
+            }
             break
         case .SettingCommendLogin:
             let mainStory = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -382,6 +389,14 @@ class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableV
         MainMapViewController.shareInstance?.present(picker, animated: true, completion: { 
             
         })
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image  = info[UIImagePickerControllerEditedImage] as? UIImage;
+        if (image != nil)  {
+            //上传图片 等待回调刷新UI
+            self.headerImageView.image = image
+        }
+        picker.dismiss(animated: true, completion: nil)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
