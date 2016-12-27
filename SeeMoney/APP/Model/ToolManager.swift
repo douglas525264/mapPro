@@ -20,11 +20,7 @@ class ToolManager: NSObject {
                 for item in toolsArr {
                     
                     let toolM = ToolModel()
-                    toolM.iconUrl = item["icon"] as! String?
-                    toolM.des = item["name"] as! String!
-                    toolM.price = item["price"] as! NSInteger!
-                    toolM.type = ToolType(rawValue: item["type"] as! Int)!
-                    toolM.id =  String(describing: item["id"])
+                    toolM.config(item as Dictionary<String, AnyObject>)
                     resultArr.append(toolM)
                 }
             }

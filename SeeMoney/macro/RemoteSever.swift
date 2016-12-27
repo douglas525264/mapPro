@@ -34,5 +34,5 @@ let getcodeUrl = schema + host + "v1/verification"
 //List GET
 let toolList = schema + host + "v1/tools/show";
 let buytool = schema + host + "v1/tools/buy";
-
+let gettoken = schema + host + "v1/upload/token"
 

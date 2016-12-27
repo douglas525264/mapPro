@@ -26,6 +26,8 @@ class UserManager: NSObject {
    let UserID = "useridkey"
    let IconID = "iconidkey"
    let UserStatus = "userstatusKey"
+   let UserTools = "usertoolskey"
+    
    var delegate:UserManagerDlegate?
     
     func getMe() -> UserModel {
@@ -91,6 +93,7 @@ class UserManager: NSObject {
 
            
         }
+        me.toolsInfo = userde.object(forKey: UserTools) as! Array<Any>?
 
 //        let goldnum = userde.objectForKey(UserGoldNum) as! NSInteger
 //        if goldnum > 0 {
@@ -141,8 +144,11 @@ class UserManager: NSObject {
         }else {
             userde.setValue(1, forKey: UserStatus)
         }
-        userde.synchronize()
         
+        if user.toolsInfo != nil {
+            userde.set(user.toolsInfo, forKey: UserTools)
+        }
+        userde.synchronize()
         self.notStatus()
         
     }
@@ -164,7 +170,7 @@ class UserManager: NSObject {
                     me.accountNum = profile!["account"] as! Double
                     me.goldCount = profile!["corn"] as! Double
                     me.distanceView = profile!["dis_v"] as! Double
-
+                    me.toolsInfo = profile!["tools"] as? Array<Any>
                     self.saveModel(me)
                 }
 

@@ -16,67 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,JPUSHRegisterDelegate,UNUs
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        /*
-         
-         if ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0) {
-         JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
-         entity.types = UNAuthorizationOptionAlert|UNAuthorizationOptionBadge|UNAuthorizationOptionSound;
-         [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
-         }
-         else if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
-         //可以添加自定义categories
-         [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
-         UIUserNotificationTypeSound |
-         UIUserNotificationTypeAlert)
-         categories:nil];
-         }
-         else {
-         //categories 必须为nil
-         [JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-         UIRemoteNotificationTypeSound |
-         UIRemoteNotificationTypeAlert)
-         categories:nil];
-         }
-         
-         //Required
-         // init Push(2.1.5版本的SDK新增的注册方法，改成可上报IDFA，如果没有使用IDFA直接传nil  )
-         // 如需继续使用pushConfig.plist文件声明appKey等配置内容，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化。
-         [JPUSHService setupWithOption:launchOptions appKey:appKey
-         channel:channel
-         apsForProduction:isProduction
-         advertisingIdentifier:advertisingId];
-         */
- 
-            // 使用 UNUserNotificationCenter 来管理通知
-           /* if #available(iOS 10.0, *) {
-                let center = UNUserNotificationCenter.current()
-                //监听回调事件
-                center.delegate = self;
-                
-                //iOS 10 使用以下方法注册，才能得到授权
-                center.requestAuthorization(options: [UNAuthorizationOptions.alert,UNAuthorizationOptions.badge], completionHandler: { (granted:Bool, error:Error?) -> Void in
-                    if (granted) {
-                        //点击允许
-                        print("注册通知成功")
-                        //获取当前的通知设置，UNNotificationSettings 是只读对象，不能直接修改，只能通过以下方法获取
-                        center.getNotificationSettings(completionHandler: { (settings:UNNotificationSettings) in
-                            print("2222222222")
-                        })
-                    } else {
-                        //点击不允许
-                        print("注册通知失败")
-                    }
-                })
-                UIApplication.shared.registerForRemoteNotifications()
-
-            } else {
-                // Fallback on earlier versions
-            }*/
         
-             NotManager.registerNot(withDlegate: self)
+            NotManager.registerNot(withDlegate: self)
             let defCenter = NotificationCenter.default;
             defCenter.addObserver(self, selector:#selector(AppDelegate.networkDidReceiveMessage(_:)), name: NSNotification.Name.jpfNetworkDidReceiveMessage, object: nil)
             JPUSHService.setup(withOption: launchOptions, appKey: "78fecb328e06d3d8a7affd04", channel: "Publish channel", apsForProduction: false)
+        UINavigationBar.appearance().backgroundColor = RGB(248, g: 248, b: 248, a: 1);
+        UINavigationBar.appearance().tintColor = UIColor.black
 
         
             

@@ -28,6 +28,7 @@ class UserModel: NSObject {
     var voiceCount : Double = 5
     var loginStatus:UserLoginStatus = UserLoginStatus.bagStatusUnLogin
     var token:String?
+    var toolsInfo:Array<Any>?
     
     
 }
