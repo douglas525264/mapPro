@@ -105,9 +105,13 @@ class DXNavgationBar: UIView {
         }
         didSet{
             var i = 0
+            var currentW : CGFloat = 15.0
             for item in self.rightItems! {
-                item.customView?.frame = CGRect(x: self.frame.width - (15 + 40 * CGFloat(i)), y: (self.frame.height - 20)/2 - 15 + 20, width: 30, height: 30)
+                currentW += (item.customView?.frame.width)!
+                item.customView?.frame = CGRect(x: self.frame.width - currentW, y: (self.frame.height - 20)/2 - 15 + 20, width: (item.customView?.frame.width)!, height: 30)
+                
                 self .addSubview(item.customView!)
+                
                 i += 1
             }
         }

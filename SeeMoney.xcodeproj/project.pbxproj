@@ -63,6 +63,10 @@
 		A5827B0D1D6C2C3000693921 /* DXSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5827B0C1D6C2C3000693921 /* DXSlideViewController.swift */; };
 		A5827B0F1D6C3F6900693921 /* MainNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5827B0E1D6C3F6900693921 /* MainNavViewController.swift */; };
 		A5827B111D6C497900693921 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5827B101D6C497900693921 /* UserManager.swift */; };
+		A592C34A1E1263C100E75525 /* MyToolCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A592C3481E1263C100E75525 /* MyToolCollectionViewCell.xib */; };
+		A592C34C1E12657600E75525 /* MyToolCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A592C34B1E12657600E75525 /* MyToolCollectionViewCell.swift */; };
+		A592C34F1E127C1F00E75525 /* MyToolOneCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A592C34D1E127C1F00E75525 /* MyToolOneCollectionViewCell.swift */; };
+		A592C3501E127C1F00E75525 /* MyToolOneCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A592C34E1E127C1F00E75525 /* MyToolOneCollectionViewCell.xib */; };
 		A59BFC761E09397F00FC39D5 /* DXNewSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59BFC751E09397F00FC39D5 /* DXNewSlideViewController.swift */; };
 		A59F10E01DC051B60023832D /* NotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A59F10DF1DC051B60023832D /* NotManager.m */; };
 /* End PBXBuildFile section */
@@ -154,6 +158,10 @@
 		A5827B0C1D6C2C3000693921 /* DXSlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXSlideViewController.swift; sourceTree = "<group>"; };
 		A5827B0E1D6C3F6900693921 /* MainNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavViewController.swift; sourceTree = "<group>"; };
 		A5827B101D6C497900693921 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		A592C3481E1263C100E75525 /* MyToolCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyToolCollectionViewCell.xib; sourceTree = "<group>"; };
+		A592C34B1E12657600E75525 /* MyToolCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyToolCollectionViewCell.swift; sourceTree = "<group>"; };
+		A592C34D1E127C1F00E75525 /* MyToolOneCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyToolOneCollectionViewCell.swift; sourceTree = "<group>"; };
+		A592C34E1E127C1F00E75525 /* MyToolOneCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyToolOneCollectionViewCell.xib; sourceTree = "<group>"; };
 		A59BFC751E09397F00FC39D5 /* DXNewSlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXNewSlideViewController.swift; sourceTree = "<group>"; };
 		A59F10DE1DC051B60023832D /* NotManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotManager.h; sourceTree = "<group>"; };
 		A59F10DF1DC051B60023832D /* NotManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotManager.m; sourceTree = "<group>"; };
@@ -387,6 +395,10 @@
 				A50288961D6D80E20086CD80 /* DXNavgationBar.swift */,
 				A50E68361D76C59D00891625 /* RedBagHeaderView.swift */,
 				A513F5441D78268D0001EAE8 /* RedBgView.xib */,
+				A592C3481E1263C100E75525 /* MyToolCollectionViewCell.xib */,
+				A592C34B1E12657600E75525 /* MyToolCollectionViewCell.swift */,
+				A592C34D1E127C1F00E75525 /* MyToolOneCollectionViewCell.swift */,
+				A592C34E1E127C1F00E75525 /* MyToolOneCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -694,9 +706,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A50F0F311D658A3D003907F7 /* LaunchScreen.storyboard in Resources */,
+				A592C3501E127C1F00E75525 /* MyToolOneCollectionViewCell.xib in Resources */,
 				A50F0F2E1D658A3D003907F7 /* Assets.xcassets in Resources */,
 				A513F5451D78268D0001EAE8 /* RedBgView.xib in Resources */,
 				A50F0F2C1D658A3D003907F7 /* Main.storyboard in Resources */,
+				A592C34A1E1263C100E75525 /* MyToolCollectionViewCell.xib in Resources */,
 				A5630A361D6AEFF300CB95DC /* redbg2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -789,6 +803,7 @@
 				A50E68351D76C1F000891625 /* RedBagDetailViewController.swift in Sources */,
 				A50E68371D76C59D00891625 /* RedBagHeaderView.swift in Sources */,
 				A542DCEC1D67010500AFE9C1 /* SettingViewController.swift in Sources */,
+				A592C34F1E127C1F00E75525 /* MyToolOneCollectionViewCell.swift in Sources */,
 				A50F0F291D658A3D003907F7 /* ViewController.swift in Sources */,
 				A5827B111D6C497900693921 /* UserManager.swift in Sources */,
 				A50288931D6D54690086CD80 /* LoginViewController.swift in Sources */,
@@ -800,6 +815,7 @@
 				A50288971D6D80E20086CD80 /* DXNavgationBar.swift in Sources */,
 				A50F0FAD1D65ABD0003907F7 /* DXNetWorkTool.swift in Sources */,
 				A542DCE51D67009400AFE9C1 /* DMAlertAction.m in Sources */,
+				A592C34C1E12657600E75525 /* MyToolCollectionViewCell.swift in Sources */,
 				A51B96951DE5451A006E57FC /* ToolModel.swift in Sources */,
 				A56388EE1D66DF290008A8C2 /* MapManager.swift in Sources */,
 				A5827B0F1D6C3F6900693921 /* MainNavViewController.swift in Sources */,

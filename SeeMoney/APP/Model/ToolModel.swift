@@ -24,6 +24,18 @@ class ToolModel: NSObject {
         self.price = json["price"] as! NSInteger!
         self.type = ToolType(rawValue: json["type"] as! Int)!
         self.id =  String(describing: json["id"])
-
+        if json["count"] != nil {
+        self.count = json["count"] as! Int
+        }
+    }
+    func config(Json jsonOne : Dictionary<String, AnyObject>) {
+        self.iconUrl = jsonOne["tooIconUrl"] as! String?
+        self.des = jsonOne["toolName"] as! String!
+        
+        self.type = ToolType(rawValue: jsonOne["toolId"] as! Int)!
+        self.id =  String(describing: jsonOne["toolId"])
+        if jsonOne["count"] != nil {
+            self.count = jsonOne["count"] as! Int
+        }
     }
 }
