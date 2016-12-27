@@ -33,6 +33,6 @@ let getcodeUrl = schema + host + "v1/verification"
 //道具相关
 //List GET
 let toolList = schema + host + "v1/tools/show";
-let buytool = schema + host + "/v1/tools/buy";
+let buytool = schema + host + "v1/tools/buy";
 
 

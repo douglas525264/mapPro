@@ -330,7 +330,7 @@ class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableV
             MainMapViewController.shareInstance?.push(toVC: setVC, animated: true)
             break
         case .SettingCommendAbout:
-            MainMapViewController.shareInstance?.push(toVC: AboutViewController(), animated: true)
+            MainMapViewController.shareInstance?.push(toVC: ToolListViewController(), animated: true)
             break
         case .SettingCommendChangeAvatar:
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {

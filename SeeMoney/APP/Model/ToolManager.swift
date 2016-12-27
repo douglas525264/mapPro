@@ -39,7 +39,7 @@ class ToolManager: NSObject {
         }
     }
     func buyTool(_ type:ToolType, _ count : Int ,finishedBlock : @escaping () -> Void) -> Void {
-        DXNetWorkTool.sharedInstance.post(buytool, body: nil, header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
+        DXNetWorkTool.sharedInstance.post(buytool, body: ["id": type.rawValue as AnyObject, "count" : count as AnyObject], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
             
             
             finishedBlock();
