@@ -62,6 +62,7 @@ class RedBagManager: NSObject {
         print("redId : \(redId)")
         
         DXNetWorkTool.sharedInstance.post(pickRedbagURL, body: ["id":redId as AnyObject,"type":(type == redBagType.redBagTypeMoney ? 1 : 2) as AnyObject], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
+            
             finishedBlock(true,nil)
         }) { (error:SMError) in
             finishedBlock(false,error.des)
