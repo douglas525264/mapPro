@@ -171,6 +171,7 @@ class UserManager: NSObject {
                     me.goldCount = profile!["corn"] as! Double
                     me.distanceView = profile!["dis_v"] as! Double
                     me.toolsInfo = profile!["tools"] as? Array<Any>
+                    me.iconID = profile!["iconUrl"] as? String
                     self.saveModel(me)
                 }
 
@@ -221,6 +222,7 @@ class UserManager: NSObject {
                 me.accountNum = profile!["account"] as! Double
                 me.goldCount = profile!["corn"] as! Double
                 me.distanceView = profile!["dis_v"] as! Double
+                me.iconID = profile!["iconUrl"] as? String
             }
             
             self.saveModel(me)
@@ -253,7 +255,7 @@ class UserManager: NSObject {
                     me.accountNum = profile!["account"] as! Double
                     me.goldCount = profile!["corn"] as! Double
                     me.distanceView = profile!["dis_v"] as! Double
-                    me.iconID = profile!["iconid"] as? String
+                    me.iconID = profile!["iconUrl"] as? String
                 }
             
                 self.saveModel(me)
@@ -318,8 +320,16 @@ class UserManager: NSObject {
             let token = info?["token"] as! String?;
             if token != nil {
                 let qnManager = QNUploadManager()
-                qnManager?.put(UIImagePNGRepresentation(avatar)!, key: "userAvatar", token: token, complete: { (subinfo : QNResponseInfo? ,des : String?, ha : [AnyHashable : Any]?) in
-                    print(subinfo)
+                let date = NSDate()
+                let name = "userAvatar" + String(date.timeIntervalSince1970)
+                qnManager?.put(UIImagePNGRepresentation(avatar)!, key: name, token: token, complete: { (subinfo : QNResponseInfo? ,des : String?, resp : [AnyHashable : Any]?) in
+                    
+                    if subinfo?.statusCode == 200 {
+                        self.updateInfo();
+                    } else {
+                      
+                    }
+                   
                     finishedBlock(true)
                 }, option: nil)
                 

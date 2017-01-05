@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 public protocol SlideViewControllerDelegate : NSObjectProtocol {
     
 
@@ -73,6 +74,12 @@ class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableV
         
         
         headerImageView.frame = CGRect(x: headerView.frame.size.width/2 - 30, y: (headerView.frame.size.height - 20)/2 - 30 + 20 - 30, width: 60, height: 60)
+        if self.me.iconID != nil {
+            
+            headerImageView.setImageWith(URL(string: self.me.iconID!)!, placeholderImage: UIImage(named: "zapya_sidebar_head_superman"));
+        } else {
+            
+        }
         headerImageView.image = UIImage(named: "zapya_sidebar_head_superman")
         let oneTap = UITapGestureRecognizer()
         oneTap.numberOfTapsRequired = 1
@@ -285,9 +292,16 @@ class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableV
         switch me.loginStatus {
         case UserLoginStatus.bagStatusHaslogin:
             loginBtn.setTitle(me.username, for: UIControlState())
+            if me.iconID != nil {
+                
+                headerImageView.setImageWith(URL(string: me.iconID!)!, placeholderImage: UIImage(named: "zapya_sidebar_head_superman"));
+            } else {
+            
+            }
             break
         default:
             loginBtn.setTitle("未登录", for: UIControlState())
+            headerImageView.image = UIImage(named: "zapya_sidebar_head_superman")
             break
         }
         self.tableView.reloadData()
@@ -398,7 +412,10 @@ class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableV
         let image  = info[UIImagePickerControllerEditedImage] as? UIImage;
         if (image != nil)  {
             //上传图片 等待回调刷新UI
-            self.headerImageView.image = image
+            UserManager.shareInstance.uploadAvatar(image!, finishedBlock: { (isOK : Bool) in
+                self.headerImageView.image = image
+            })
+           
         }
         picker.dismiss(animated: true, completion: nil)
     }
