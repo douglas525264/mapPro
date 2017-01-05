@@ -16,6 +16,7 @@ class UserModel: NSObject {
     var username : String?
     var userID : String?
     var iconID : String?
+    var avatarUrlStr : String?
     var psw : String?
     var gender = 0
     var accountNum : Double = 100
@@ -29,6 +30,7 @@ class UserModel: NSObject {
     var loginStatus:UserLoginStatus = UserLoginStatus.bagStatusUnLogin
     var token:String?
     var toolsInfo:Array<Any>?
+    
     
     
 }

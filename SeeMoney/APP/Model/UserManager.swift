@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Qiniu
 protocol UserManagerDlegate : NSObjectProtocol{
     
     func userStatusChange(_ user: UserModel) -> Void
@@ -311,35 +311,24 @@ class UserManager: NSObject {
 
     }
     func uploadAvatar(_ avatar : UIImage, finishedBlock:@escaping (_ isOK : Bool) ->()) -> Void {
-        DXNetWorkTool.sharedInstance.upload(UIImagePNGRepresentation(avatar)!, url: uploadAvatarURL, body: nil, header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
-            
-//            let token = info!["token"];
-//            
-//            let me = self.getMe()
-//            me.token = token as? String
-//            me.psw = psw
-//            me.loginStatus = UserLoginStatus.bagStatusHaslogin
-//            
-//            let profile = info!["profile"] as? Dictionary<String,AnyObject>
-//            
-//            if profile != nil {
-//            
-//            me.userID = profile!["userid"] as? String
-//            me.username = profile!["nick"] as? String
-//            me.gender = profile!["gender"] as! NSInteger
-//            me.accountNum = profile!["account"] as! Double
-//            me.goldCount = profile!["corn"] as! Double
-//            me.distanceView = profile!["dis_v"] as! Double
-//            }
-//            
-//            self.saveModel(me)
-//            self.sendTag()
-            finishedBlock(true)
-            
-            
+        
+    
+      //  let upManager = QNUploadManager()
+        DXNetWorkTool.sharedInstance.get(gettoken, body: nil, header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
+            let token = info?["token"] as! String?;
+            if token != nil {
+                let qnManager = QNUploadManager()
+                qnManager?.put(UIImagePNGRepresentation(avatar)!, key: "userAvatar", token: token, complete: { (subinfo : QNResponseInfo? ,des : String?, ha : [AnyHashable : Any]?) in
+                    print(subinfo)
+                    finishedBlock(true)
+                }, option: nil)
+                
+            }
+        
         }) { (error:SMError) in
             finishedBlock(false)
         }
+
 
     }
     func isLogin() -> Bool {

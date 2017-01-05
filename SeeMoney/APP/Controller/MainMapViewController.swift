@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import MBProgressHUD
+import Qiniu
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
@@ -87,7 +88,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
            
         
         } )*/
-      /*  let  testAvatar = UIImage(named: "zapya_sidebar_head_superman")
+        let  testAvatar = UIImage(named: "zapya_sidebar_head_superman")
         UserManager.shareInstance.uploadAvatar(testAvatar!, finishedBlock: { (isOK : Bool) in
             if isOK {
                 print("上传成功了")
@@ -97,7 +98,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
             }
             
         
-        })*/
+        })
 
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -157,7 +158,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
             if textFiled?.text != nil {
             let num = Float((textFiled?.text)!)
             
-            RedBagManager.sharedInstance.sendRedBag(num!) { (isOK) in
+            RedBagManager.sharedInstance.sendRedBag(num!,10) { (isOK) in
                 if isOK {
                     DXHelper.shareInstance.makeAlert("发送成功", dur: 2, isShake: false)
                     let me = UserManager.shareInstance.getMe()
