@@ -27,6 +27,7 @@ class redbagModel: NSObject, MKAnnotation{
     //来自某个用户
     var from:UserModel?
     var bagType = redBagType.redBagTypeMoney
+    //捡到的列表
     var pickList:Array<Any>?
     
     override func isEqual(_ object: Any?) -> Bool {
@@ -35,6 +36,7 @@ class redbagModel: NSObject, MKAnnotation{
         }
         return false
     }
+    //实际捡到的钱数
     var amount : Double = 0;
     var num : Double = 0
   //  var coordinate: CLLocationCoordinate2D?
