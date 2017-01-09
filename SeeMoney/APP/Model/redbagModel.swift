@@ -40,6 +40,8 @@ class redbagModel: NSObject, MKAnnotation{
     var amount_picked : Double = 0
     var num : Double = 0
     var size : Int = 1
+    var sizepicked : Int = 0
+    var createTime : Double = NSDate().timeIntervalSince1970
   //  var coordinate: CLLocationCoordinate2D?
     var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D()
     
