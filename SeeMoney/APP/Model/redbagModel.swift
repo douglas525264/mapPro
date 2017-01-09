@@ -37,8 +37,9 @@ class redbagModel: NSObject, MKAnnotation{
         return false
     }
     //实际捡到的钱数
-    var amount : Double = 0;
+    var amount_picked : Double = 0
     var num : Double = 0
+    var size : Int = 1
   //  var coordinate: CLLocationCoordinate2D?
     var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D()
     
