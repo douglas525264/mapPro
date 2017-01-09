@@ -27,12 +27,15 @@ class redbagModel: NSObject, MKAnnotation{
     //来自某个用户
     var from:UserModel?
     var bagType = redBagType.redBagTypeMoney
+    var pickList:Array<Any>?
+    
     override func isEqual(_ object: Any?) -> Bool {
         if let other = object as? redbagModel {
             return other.redID == self.redID
         }
         return false
     }
+    var amount : Double = 0;
     var num : Double = 0
   //  var coordinate: CLLocationCoordinate2D?
     var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D()
