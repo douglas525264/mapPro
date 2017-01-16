@@ -10,6 +10,8 @@ import UIKit
 
 class SendRedBagViewController: UIViewController {
     var nav = DXNavgationBar.getNav("发红包")
+    var bagType:redBagType = .redBagTypeMoney
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = bgColor

@@ -79,6 +79,7 @@ class DXNetWorkTool: NSObject {
         manager.requestSerializer = AFJSONRequestSerializer()
         manager.requestSerializer.timeoutInterval = 3
         manager.responseSerializer = AFHTTPResponseSerializer()
+        
         if let header1 = header  {
             for (key,value)  in header1 {
                 manager.requestSerializer.setValue(value as? String, forHTTPHeaderField: key);

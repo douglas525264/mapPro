@@ -139,7 +139,7 @@ class RedBagManager: NSObject {
             
             
         }) { (error : SMError) in
-            
+            finishedBlock([redbagModel]())
         }
     }
     

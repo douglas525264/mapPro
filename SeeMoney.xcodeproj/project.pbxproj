@@ -69,6 +69,10 @@
 		A592C3501E127C1F00E75525 /* MyToolOneCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A592C34E1E127C1F00E75525 /* MyToolOneCollectionViewCell.xib */; };
 		A59BFC761E09397F00FC39D5 /* DXNewSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59BFC751E09397F00FC39D5 /* DXNewSlideViewController.swift */; };
 		A59F10E01DC051B60023832D /* NotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A59F10DF1DC051B60023832D /* NotManager.m */; };
+		A5EB9CA31E2C66CF00269344 /* SendBagTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EB9CA21E2C66CF00269344 /* SendBagTableViewController.swift */; };
+		A5EB9CA51E2C7A9400269344 /* BagNumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EB9CA41E2C7A9400269344 /* BagNumTableViewCell.swift */; };
+		A5EB9CA71E2C7AA300269344 /* BagDesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EB9CA61E2C7AA300269344 /* BagDesTableViewCell.swift */; };
+		A5EB9CA91E2C7ABD00269344 /* BagWayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EB9CA81E2C7ABD00269344 /* BagWayTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +169,10 @@
 		A59BFC751E09397F00FC39D5 /* DXNewSlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXNewSlideViewController.swift; sourceTree = "<group>"; };
 		A59F10DE1DC051B60023832D /* NotManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotManager.h; sourceTree = "<group>"; };
 		A59F10DF1DC051B60023832D /* NotManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotManager.m; sourceTree = "<group>"; };
+		A5EB9CA21E2C66CF00269344 /* SendBagTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendBagTableViewController.swift; sourceTree = "<group>"; };
+		A5EB9CA41E2C7A9400269344 /* BagNumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BagNumTableViewCell.swift; sourceTree = "<group>"; };
+		A5EB9CA61E2C7AA300269344 /* BagDesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BagDesTableViewCell.swift; sourceTree = "<group>"; };
+		A5EB9CA81E2C7ABD00269344 /* BagWayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BagWayTableViewCell.swift; sourceTree = "<group>"; };
 		C2C54D77B21C367F8445FBE6 /* Pods-SeeMoney.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeeMoney.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeeMoney/Pods-SeeMoney.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -399,6 +407,9 @@
 				A592C34B1E12657600E75525 /* MyToolCollectionViewCell.swift */,
 				A592C34D1E127C1F00E75525 /* MyToolOneCollectionViewCell.swift */,
 				A592C34E1E127C1F00E75525 /* MyToolOneCollectionViewCell.xib */,
+				A5EB9CA41E2C7A9400269344 /* BagNumTableViewCell.swift */,
+				A5EB9CA61E2C7AA300269344 /* BagDesTableViewCell.swift */,
+				A5EB9CA81E2C7ABD00269344 /* BagWayTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -581,6 +592,7 @@
 			isa = PBXGroup;
 			children = (
 				A570A1811E1109BA00D0FDCE /* SendRedBagViewController.swift */,
+				A5EB9CA21E2C66CF00269344 /* SendBagTableViewController.swift */,
 			);
 			name = send;
 			sourceTree = "<group>";
@@ -809,10 +821,12 @@
 				A50288931D6D54690086CD80 /* LoginViewController.swift in Sources */,
 				A542DCD61D66FE9800AFE9C1 /* RedBagManager.swift in Sources */,
 				A542DCE31D67009400AFE9C1 /* UIActionSheet+Block.m in Sources */,
+				A5EB9CA51E2C7A9400269344 /* BagNumTableViewCell.swift in Sources */,
 				A5199DDC1DE696CD002DE684 /* ToolListViewController.swift in Sources */,
 				A542DCE41D67009400AFE9C1 /* UIAlertView+Block.m in Sources */,
 				A50288951D6D54740086CD80 /* RegisterViewController.swift in Sources */,
 				A50288971D6D80E20086CD80 /* DXNavgationBar.swift in Sources */,
+				A5EB9CA71E2C7AA300269344 /* BagDesTableViewCell.swift in Sources */,
 				A50F0FAD1D65ABD0003907F7 /* DXNetWorkTool.swift in Sources */,
 				A542DCE51D67009400AFE9C1 /* DMAlertAction.m in Sources */,
 				A592C34C1E12657600E75525 /* MyToolCollectionViewCell.swift in Sources */,
@@ -820,6 +834,8 @@
 				A56388EE1D66DF290008A8C2 /* MapManager.swift in Sources */,
 				A5827B0F1D6C3F6900693921 /* MainNavViewController.swift in Sources */,
 				A50F0F271D658A3D003907F7 /* AppDelegate.swift in Sources */,
+				A5EB9CA91E2C7ABD00269344 /* BagWayTableViewCell.swift in Sources */,
+				A5EB9CA31E2C66CF00269344 /* SendBagTableViewController.swift in Sources */,
 				A50F0F641D65912D003907F7 /* RemoteSever.swift in Sources */,
 				A570A17D1E11096D00D0FDCE /* AboutViewController.swift in Sources */,
 				A50F0F6C1D659697003907F7 /* MainMapViewController.swift in Sources */,
