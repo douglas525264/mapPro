@@ -19,6 +19,7 @@ class MainNavViewController: UINavigationController,UINavigationControllerDelega
     }
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         self.interactivePopGestureRecognizer?.isEnabled = true
+        
     }
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return self.viewControllers.count > 1

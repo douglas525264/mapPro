@@ -147,7 +147,16 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     
     @IBAction func sendAction(_ sender: AnyObject) {
         
-        let alertVc = UIAlertController(title: "提示", message: "发红包", preferredStyle: UIAlertControllerStyle.alert);
+        
+        let mainStory = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let sendVC = mainStory.instantiateViewController(withIdentifier: "SendBagTableViewController")
+        let nav = UINavigationController(rootViewController: sendVC)
+        self.present(nav, animated: true) { 
+            
+        };
+        
+        
+       /* let alertVc = UIAlertController(title: "提示", message: "发红包", preferredStyle: UIAlertControllerStyle.alert);
         alertVc .addTextField { (text:UITextField) in
             text.placeholder = "金额"
             text.isSecureTextEntry = false
@@ -172,6 +181,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
             }
             
         }
+        
         let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.default) { (ac:UIAlertAction) in
             
         }
@@ -179,7 +189,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         alertVc.addAction(cancelAction)
         self.present(alertVc, animated: true, completion: {
             
-        })
+        })*/
     }
     
     func changeSeeDis() -> Void {

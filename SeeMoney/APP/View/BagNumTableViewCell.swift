@@ -11,6 +11,7 @@ import UIKit
 class BagNumTableViewCell: UITableViewCell {
 
     @IBOutlet weak var toolView: UIView!
+    @IBOutlet weak var lastLable: UILabel!
     @IBOutlet weak var nameLable: UILabel!
     @IBOutlet weak var normalTextFiled: UITextField!
     @IBOutlet weak var desLable: UILabel!

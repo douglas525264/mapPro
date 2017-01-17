@@ -11,23 +11,40 @@ import UIKit
 class SendBagTableViewController: UITableViewController {
     var nav = DXNavgationBar.getNav("发红包")
     var bagType:redBagType = .redBagTypeMoney
+    var numCell : BagNumTableViewCell?
+    var moneyCell : BagNumTableViewCell?
+    var playWayCell : BagWayTableViewCell?
+    var desCell : BagDesTableViewCell?
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = bgColor
-        self.view .addSubview(nav)
-        self.nav.addBackBtn(self, backSelector: #selector(SendBagTableViewController.backClick(_:)))
-
+        self.createUI()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    func createUI() -> () {
+        view.backgroundColor = RGB(254, g: 250, b: 245, a: 1)
+        self.navigationController?.navigationBar.barTintColor = RGB(212, g: 78, b: 71, a: 1)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : RGB(254, g: 224, b: 179, a: 1)]
+        self.title = "发红包"
+        let leftBtn = UIButton(type: .custom)
+        leftBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        leftBtn.setTitle("关闭", for: .normal)
+        leftBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        leftBtn.setTitleColor(RGB(254, g: 224, b: 179, a: 1), for: .normal)
+        leftBtn.addTarget(self, action: #selector(SendBagTableViewController.backClick(_:)), for: .touchUpInside)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.tableView.separatorStyle = .none
+        UIApplication.shared.statusBarStyle = .lightContent
+ 
+    }
     func backClick(_ sender:UIButton?) {
-        
-        if self.navigationController?.popViewController(animated: true) != nil {
+        self.dismiss(animated: true) { 
             
-        }
+        };
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -38,23 +55,104 @@ class SendBagTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return bagType == .redBagTypeMoney ? 3:4
     }
-
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.row {
+        case 0:
+            return 66
+        case 1:
+            return 66
+        case 2:
+            return 76
+        default:
+            return 50
+            
+        }
+    }
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {return 50}
+        return 1
+    }
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 40
+    }
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let footer = UIView()
+        footer.frame = CGRect(x: 0, y: 0, width: ScreenWidth!, height: section == 0 ? 50 : 1)
+        footer.backgroundColor = UIColor.clear
+        return footer
+    }
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footer = UIView()
+        footer.frame = CGRect(x: 0, y: 0, width: ScreenWidth!, height: 40)
+        footer.backgroundColor = UIColor.clear
+        if section == 1 {
+            let lable = UILabel(frame: CGRect(x: 20, y: 10, width: ScreenWidth!, height: 20))
+            lable.text = "当前为普通红包,"
+            
+        
+        }
+        return footer
+    }
+    func changeTypeClick() -> () {
+        
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 1
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell:UITableViewCell;
-        switch indexPath.row {
+        switch indexPath.section {
         case 0:
-            cell = tableView.dequeueReusableCell(withIdentifier:"BagNumTableViewCell", for: indexPath)
+            if numCell == nil {
+            numCell = tableView.dequeueReusableCell(withIdentifier:"BagNumTableViewCell", for: indexPath) as? BagNumTableViewCell
+            numCell?.nameLable.text = "红包个数"
+            numCell?.lastLable.text = "个"
+            }
+            
+            cell = numCell!
             
             
             break;
         case 1:
-            cell = tableView.dequeueReusableCell(withIdentifier:"BagNumTableViewCell", for: indexPath)
+            if moneyCell == nil {
+                moneyCell = tableView.dequeueReusableCell(withIdentifier:"BagNumTableViewCell", for: indexPath) as? BagNumTableViewCell
+                moneyCell?.nameLable.text = "金额"
+                moneyCell?.lastLable.text = "元"
+                moneyCell?.normalTextFiled.placeholder = "金额"
+            }
+            
+            cell = moneyCell!
+
+            break;
+        case 2:
+            if bagType == .redBagTypeMoney {
+                if desCell == nil {
+                    desCell = tableView.dequeueReusableCell(withIdentifier: "BagDesTableViewCell", for: indexPath) as? BagDesTableViewCell
+                }
+                cell = desCell!
+            } else {
+            
+                if playWayCell == nil {
+                    playWayCell = tableView.dequeueReusableCell(withIdentifier:"BagWayTableViewCell", for: indexPath) as? BagWayTableViewCell
+                }
+                cell = playWayCell!
+            }
+            
+          
+            break;
+        case 3:
+            
+            if desCell == nil {
+                desCell = tableView.dequeueReusableCell(withIdentifier: "BagDesTableViewCell", for: indexPath) as? BagDesTableViewCell
+            }
+            cell = desCell!
+
             break;
             
         default:
@@ -62,6 +160,9 @@ class SendBagTableViewController: UITableViewController {
             break;
             
         }
+        let bb = UIView()
+        bb.backgroundColor = UIColor.clear
+        cell.selectedBackgroundView = bb
         return cell;
     }
 

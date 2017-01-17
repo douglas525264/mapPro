@@ -10,4 +10,5 @@
 #define Bridging_Header_h
 #import "JPUSHService.h"
 #import "NotManager.h"
+#import "UILabel+ZYTool.h"
 #endif /* Bridging_Header_h */

@@ -43,6 +43,7 @@
 		A51EB2961DBF5676007E25B2 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EB2951DBF5676007E25B2 /* UserNotifications.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A51EB2991DBF6BAC007E25B2 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EB2981DBF6BAC007E25B2 /* libresolv.tbd */; };
 		A51EB29B1DBF6BE4007E25B2 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EB29A1DBF6BE4007E25B2 /* libz.tbd */; };
+		A520FE721E2DEF860043069A /* UILabel+ZYTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A520FE711E2DEF860043069A /* UILabel+ZYTool.m */; };
 		A542DCD31D66FE7800AFE9C1 /* redbagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD21D66FE7800AFE9C1 /* redbagModel.swift */; };
 		A542DCD61D66FE9800AFE9C1 /* RedBagManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD51D66FE9800AFE9C1 /* RedBagManager.swift */; };
 		A542DCD81D66FED400AFE9C1 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD71D66FED400AFE9C1 /* UserModel.swift */; };
@@ -138,6 +139,8 @@
 		A51EB2971DBF670A007E25B2 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		A51EB2981DBF6BAC007E25B2 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		A51EB29A1DBF6BE4007E25B2 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		A520FE701E2DEF860043069A /* UILabel+ZYTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+ZYTool.h"; sourceTree = "<group>"; };
+		A520FE711E2DEF860043069A /* UILabel+ZYTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+ZYTool.m"; sourceTree = "<group>"; };
 		A523240B1DBF123A00FA0543 /* SeeMoney.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeeMoney.entitlements; sourceTree = "<group>"; };
 		A542DCD21D66FE7800AFE9C1 /* redbagModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = redbagModel.swift; sourceTree = "<group>"; };
 		A542DCD51D66FE9800AFE9C1 /* RedBagManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedBagManager.swift; sourceTree = "<group>"; };
@@ -329,6 +332,8 @@
 		A50F0F561D659047003907F7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A520FE701E2DEF860043069A /* UILabel+ZYTool.h */,
+				A520FE711E2DEF860043069A /* UILabel+ZYTool.m */,
 				A50F0F6E1D659874003907F7 /* Manager */,
 			);
 			path = Classes;
@@ -839,6 +844,7 @@
 				A50F0F641D65912D003907F7 /* RemoteSever.swift in Sources */,
 				A570A17D1E11096D00D0FDCE /* AboutViewController.swift in Sources */,
 				A50F0F6C1D659697003907F7 /* MainMapViewController.swift in Sources */,
+				A520FE721E2DEF860043069A /* UILabel+ZYTool.m in Sources */,
 				A542DCD81D66FED400AFE9C1 /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
