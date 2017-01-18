@@ -184,7 +184,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fld-Kr-Nkg" id="0du-r9-nmq">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -350,6 +350,49 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="contentScrollView" destination="IH3-gS-nPM" id="fNh-u9-aVe"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="BuyTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="BuyTableViewCell" rowHeight="130" id="mLp-mW-F1w" customClass="BuyTableViewCell" customModule="SeeMoney" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="262" width="375" height="130"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mLp-mW-F1w" id="leb-zi-Q5i">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="129"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥88.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhX-2m-Hh8">
+                                            <rect key="frame" x="107" y="14" width="144" height="38"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="38" id="Px3-73-uzB"/>
+                                                <constraint firstAttribute="width" constant="144" id="cpQ-nR-3Ut"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mbm-8U-Vev">
+                                            <rect key="frame" x="58" y="76" width="258" height="45"/>
+                                            <color key="backgroundColor" red="1" green="0.04390445268779164" blue="0.044448439341873591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="45" id="1An-Nh-P0R"/>
+                                                <constraint firstAttribute="width" constant="258" id="jw6-DO-l2r"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <state key="normal" title="塞钱进红包">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Mbm-8U-Vev" secondAttribute="bottom" constant="0.5" id="GwP-vD-LD5"/>
+                                        <constraint firstItem="IhX-2m-Hh8" firstAttribute="top" secondItem="leb-zi-Q5i" secondAttribute="topMargin" constant="6" id="a1q-ZO-L8q"/>
+                                        <constraint firstItem="IhX-2m-Hh8" firstAttribute="centerX" secondItem="leb-zi-Q5i" secondAttribute="centerX" constant="-8.5" id="nXa-R9-mMm"/>
+                                        <constraint firstItem="Mbm-8U-Vev" firstAttribute="centerX" secondItem="leb-zi-Q5i" secondAttribute="centerX" id="x5p-PY-7uz"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="moneyLable" destination="IhX-2m-Hh8" id="iqz-Bl-Dan"/>
+                                    <outlet property="payBtn" destination="Mbm-8U-Vev" id="Vd5-t5-nNb"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

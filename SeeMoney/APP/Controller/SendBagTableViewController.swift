@@ -8,13 +8,14 @@
 
 import UIKit
 
-class SendBagTableViewController: UITableViewController {
+class SendBagTableViewController: UITableViewController,UITextFieldDelegate {
     var nav = DXNavgationBar.getNav("发红包")
     var bagType:redBagType = .redBagTypeMoney
     var numCell : BagNumTableViewCell?
     var moneyCell : BagNumTableViewCell?
     var playWayCell : BagWayTableViewCell?
     var desCell : BagDesTableViewCell?
+    var payCell : BuyTableViewCell?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.createUI()
@@ -39,6 +40,8 @@ class SendBagTableViewController: UITableViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         self.tableView.separatorStyle = .none
         UIApplication.shared.statusBarStyle = .lightContent
+        let oneTap = UITapGestureRecognizer(target: self, action: #selector(SendBagTableViewController.oneTapClick))
+        self.tableView.addGestureRecognizer(oneTap)
  
     }
     func backClick(_ sender:UIButton?) {
@@ -55,18 +58,20 @@ class SendBagTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return bagType == .redBagTypeMoney ? 3:4
+        return bagType == .redBagTypeMoney ? 4:5
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.row {
+        switch indexPath.section {
         case 0:
             return 66
         case 1:
             return 66
         case 2:
             return 76
+        case 3:
+            return bagType == .redBagTypeMoney ? 130 : 76
         default:
-            return 50
+            return 130
             
         }
     }
@@ -75,28 +80,55 @@ class SendBagTableViewController: UITableViewController {
         return 1
     }
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if ((self.bagType == .redBagTypeMoney && section == 2) || (self.bagType == .redBagTypePlayMoney && section == 3) ){
+        
+            return 1;
+        }
         return 40
     }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let footer = UIView()
         footer.frame = CGRect(x: 0, y: 0, width: ScreenWidth!, height: section == 0 ? 50 : 1)
         footer.backgroundColor = UIColor.clear
+        
         return footer
     }
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footer = UIView()
-        footer.frame = CGRect(x: 0, y: 0, width: ScreenWidth!, height: 40)
+       
+        var issamll = false
+        issamll = (self.bagType == .redBagTypeMoney && section == 2) || (self.bagType == .redBagTypePlayMoney && section == 3)
+        footer.frame = CGRect(x: 0, y: 0, width: ScreenWidth!, height: issamll ? 1 : 40)
         footer.backgroundColor = UIColor.clear
         if section == 1 {
             let lable = UILabel(frame: CGRect(x: 20, y: 10, width: ScreenWidth!, height: 20))
             lable.text = "当前为普通红包,"
+            lable.adjust(with: UIFont.boldSystemFont(ofSize: 12))
+            let lastLable = UILabel(frame: CGRect(x: 20 + lable.frame.size.width, y: 10, width: ScreenWidth!, height: 20))
+            lastLable.text = "改变红包类型"
+            lastLable.adjust(with: UIFont.boldSystemFont(ofSize: 12))
+
+            let typeBtn = UIButton(type: .custom)
+            
+            typeBtn.frame = lastLable.frame
+            typeBtn.setTitle(lastLable.text, for: .normal)
+            typeBtn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+            typeBtn.setTitleColor(UIColor.blue, for: .normal)
+            typeBtn.addTarget(section, action: #selector(SendBagTableViewController.changeTypeClick), for: .touchUpInside)
+            footer.addSubview(lable)
+            footer.addSubview(typeBtn)
             
         
         }
         return footer
     }
     func changeTypeClick() -> () {
-        
+        if self.bagType == .redBagTypeMoney {
+            self.bagType = .redBagTypePlayMoney
+        } else {
+            self.bagType = .redBagTypeMoney
+        }
+        self.tableView.reloadData()
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
@@ -114,7 +146,10 @@ class SendBagTableViewController: UITableViewController {
             numCell?.nameLable.text = "红包个数"
             numCell?.lastLable.text = "个"
             }
-            
+            numCell?.normalTextFiled.keyboardType = .numberPad
+            numCell?.normalTextFiled.tag = 0;
+            numCell?.normalTextFiled.returnKeyType = .done
+            numCell?.normalTextFiled.delegate = self;
             cell = numCell!
             
             
@@ -125,6 +160,10 @@ class SendBagTableViewController: UITableViewController {
                 moneyCell?.nameLable.text = "金额"
                 moneyCell?.lastLable.text = "元"
                 moneyCell?.normalTextFiled.placeholder = "金额"
+                moneyCell?.normalTextFiled.keyboardType = .decimalPad
+                moneyCell?.normalTextFiled.tag = 1;
+                moneyCell?.normalTextFiled.returnKeyType = .done
+                moneyCell?.normalTextFiled.delegate = self
             }
             
             cell = moneyCell!
@@ -134,6 +173,9 @@ class SendBagTableViewController: UITableViewController {
             if bagType == .redBagTypeMoney {
                 if desCell == nil {
                     desCell = tableView.dequeueReusableCell(withIdentifier: "BagDesTableViewCell", for: indexPath) as? BagDesTableViewCell
+                    desCell?.detailTextFiled.tag = 2;
+                    desCell?.detailTextFiled.returnKeyType = .done
+                    desCell?.detailTextFiled.delegate = self
                 }
                 cell = desCell!
             } else {
@@ -147,12 +189,42 @@ class SendBagTableViewController: UITableViewController {
           
             break;
         case 3:
-            
+            if bagType != .redBagTypeMoney {
             if desCell == nil {
                 desCell = tableView.dequeueReusableCell(withIdentifier: "BagDesTableViewCell", for: indexPath) as? BagDesTableViewCell
+                desCell?.detailTextFiled.tag = 2;
+                desCell?.detailTextFiled.returnKeyType = .done
+                desCell?.detailTextFiled.delegate = self
+                
             }
             cell = desCell!
+            } else {
+                if payCell == nil {
+                    
+                    payCell = tableView.dequeueReusableCell(withIdentifier: "BuyTableViewCell", for: indexPath) as? BuyTableViewCell
+                    payCell?.selectionStyle = .none
+                    payCell?.payBtn.layer.cornerRadius = 5;
+                    payCell?.payBtn.layer.masksToBounds = true
+                    payCell?.payBtn.backgroundColor = RGB(212, g: 78, b: 71, a: 1)
 
+                }
+                cell = payCell!
+            }
+
+            break;
+        case 4:
+            
+            if payCell == nil {
+                
+                payCell = tableView.dequeueReusableCell(withIdentifier: "BuyTableViewCell", for: indexPath) as? BuyTableViewCell
+                payCell?.selectionStyle = .none
+                payCell?.payBtn.layer.cornerRadius = 5;
+                payCell?.payBtn.layer.masksToBounds = true
+                payCell?.payBtn.backgroundColor = RGB(212, g: 78, b: 71, a: 1)
+                
+            }
+            cell = payCell!
+            
             break;
             
         default:
@@ -163,9 +235,53 @@ class SendBagTableViewController: UITableViewController {
         let bb = UIView()
         bb.backgroundColor = UIColor.clear
         cell.selectedBackgroundView = bb
+        cell.selectionStyle = .none
         return cell;
     }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if string == "\n" {
+            self.cancelRegister()
+            return false;
+        }
+        if textField.tag == 1 {
+        var ll = textField.text!
+        if ll != nil && ll != "" {
+            let startIndex = ll.index(ll.startIndex, offsetBy: range.location)
+            let endIndexA = ll.index(startIndex, offsetBy: range.length)
+            ll  = ll.replacingCharacters(in: Range(startIndex ..< endIndexA), with: string)
+ 
+        } else {
+        
+            ll = string
+        }
+            if ll == "" {
+             ll = "0"
+            }
+            let uu = String(format: "￥%.2f", Float(ll)!)
+            payCell?.moneyLable.text = uu
+        }
+        return true;
 
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+
+    }
+    func oneTapClick() -> () {
+        self .cancelRegister()
+    }
+    func cancelRegister() -> () {
+        if numCell != nil {
+            numCell?.normalTextFiled.resignFirstResponder()
+        }
+        if moneyCell != nil {
+            moneyCell?.normalTextFiled.resignFirstResponder()
+        }
+        if desCell != nil {
+            desCell?.detailTextFiled.resignFirstResponder()
+        }
+
+    }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

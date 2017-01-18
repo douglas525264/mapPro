@@ -44,6 +44,7 @@
 		A51EB2991DBF6BAC007E25B2 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EB2981DBF6BAC007E25B2 /* libresolv.tbd */; };
 		A51EB29B1DBF6BE4007E25B2 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EB29A1DBF6BE4007E25B2 /* libz.tbd */; };
 		A520FE721E2DEF860043069A /* UILabel+ZYTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A520FE711E2DEF860043069A /* UILabel+ZYTool.m */; };
+		A520FE741E2E2C120043069A /* BuyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520FE731E2E2C120043069A /* BuyTableViewCell.swift */; };
 		A542DCD31D66FE7800AFE9C1 /* redbagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD21D66FE7800AFE9C1 /* redbagModel.swift */; };
 		A542DCD61D66FE9800AFE9C1 /* RedBagManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD51D66FE9800AFE9C1 /* RedBagManager.swift */; };
 		A542DCD81D66FED400AFE9C1 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD71D66FED400AFE9C1 /* UserModel.swift */; };
@@ -141,6 +142,7 @@
 		A51EB29A1DBF6BE4007E25B2 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		A520FE701E2DEF860043069A /* UILabel+ZYTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+ZYTool.h"; sourceTree = "<group>"; };
 		A520FE711E2DEF860043069A /* UILabel+ZYTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+ZYTool.m"; sourceTree = "<group>"; };
+		A520FE731E2E2C120043069A /* BuyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyTableViewCell.swift; sourceTree = "<group>"; };
 		A523240B1DBF123A00FA0543 /* SeeMoney.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeeMoney.entitlements; sourceTree = "<group>"; };
 		A542DCD21D66FE7800AFE9C1 /* redbagModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = redbagModel.swift; sourceTree = "<group>"; };
 		A542DCD51D66FE9800AFE9C1 /* RedBagManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedBagManager.swift; sourceTree = "<group>"; };
@@ -415,6 +417,7 @@
 				A5EB9CA41E2C7A9400269344 /* BagNumTableViewCell.swift */,
 				A5EB9CA61E2C7AA300269344 /* BagDesTableViewCell.swift */,
 				A5EB9CA81E2C7ABD00269344 /* BagWayTableViewCell.swift */,
+				A520FE731E2E2C120043069A /* BuyTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -837,6 +840,7 @@
 				A592C34C1E12657600E75525 /* MyToolCollectionViewCell.swift in Sources */,
 				A51B96951DE5451A006E57FC /* ToolModel.swift in Sources */,
 				A56388EE1D66DF290008A8C2 /* MapManager.swift in Sources */,
+				A520FE741E2E2C120043069A /* BuyTableViewCell.swift in Sources */,
 				A5827B0F1D6C3F6900693921 /* MainNavViewController.swift in Sources */,
 				A50F0F271D658A3D003907F7 /* AppDelegate.swift in Sources */,
 				A5EB9CA91E2C7ABD00269344 /* BagWayTableViewCell.swift in Sources */,
