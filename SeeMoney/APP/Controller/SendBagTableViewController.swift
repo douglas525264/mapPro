@@ -25,6 +25,7 @@ class SendBagTableViewController: UITableViewController,UITextFieldDelegate {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
     func createUI() -> () {
         view.backgroundColor = RGB(254, g: 250, b: 245, a: 1)
         self.navigationController?.navigationBar.barTintColor = RGB(212, g: 78, b: 71, a: 1)
@@ -39,7 +40,7 @@ class SendBagTableViewController: UITableViewController,UITextFieldDelegate {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
         self.navigationController?.navigationBar.isTranslucent = false
         self.tableView.separatorStyle = .none
-        UIApplication.shared.statusBarStyle = .lightContent
+        
         let oneTap = UITapGestureRecognizer(target: self, action: #selector(SendBagTableViewController.oneTapClick))
         self.tableView.addGestureRecognizer(oneTap)
  
@@ -49,6 +50,7 @@ class SendBagTableViewController: UITableViewController,UITextFieldDelegate {
             
         };
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -182,6 +184,9 @@ class SendBagTableViewController: UITableViewController,UITextFieldDelegate {
             
                 if playWayCell == nil {
                     playWayCell = tableView.dequeueReusableCell(withIdentifier:"BagWayTableViewCell", for: indexPath) as? BagWayTableViewCell
+                    let imagev = UIImageView(frame: CGRect(x: 30, y: 10, width: 40, height: 40))
+                    imagev.image = UIImage(named: "gameicon")
+                    playWayCell?.contentScrollView.addSubview(imagev)
                 }
                 cell = playWayCell!
             }
@@ -206,6 +211,7 @@ class SendBagTableViewController: UITableViewController,UITextFieldDelegate {
                     payCell?.payBtn.layer.cornerRadius = 5;
                     payCell?.payBtn.layer.masksToBounds = true
                     payCell?.payBtn.backgroundColor = RGB(212, g: 78, b: 71, a: 1)
+                    payCell?.payBtn.addTarget(self, action: #selector(SendBagTableViewController.payBtnClick), for: .touchUpInside)
 
                 }
                 cell = payCell!
@@ -221,6 +227,7 @@ class SendBagTableViewController: UITableViewController,UITextFieldDelegate {
                 payCell?.payBtn.layer.cornerRadius = 5;
                 payCell?.payBtn.layer.masksToBounds = true
                 payCell?.payBtn.backgroundColor = RGB(212, g: 78, b: 71, a: 1)
+                payCell?.payBtn.addTarget(self, action: #selector(SendBagTableViewController.payBtnClick), for: .touchUpInside)
                 
             }
             cell = payCell!
@@ -264,11 +271,22 @@ class SendBagTableViewController: UITableViewController,UITextFieldDelegate {
         return true;
 
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        UIApplication.shared.statusBarStyle = .lightContent
+    }
+
     func textFieldDidEndEditing(_ textField: UITextField) {
 
     }
     func oneTapClick() -> () {
         self .cancelRegister()
+    }
+    func payBtnClick() -> () {
+        let mainStory = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let payVC = mainStory.instantiateViewController(withIdentifier: "PayMoneyViewController")
+        self.navigationController?.pushViewController(payVC, animated: true)
     }
     func cancelRegister() -> () {
         if numCell != nil {

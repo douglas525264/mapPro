@@ -65,6 +65,8 @@
 		A5827B0D1D6C2C3000693921 /* DXSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5827B0C1D6C2C3000693921 /* DXSlideViewController.swift */; };
 		A5827B0F1D6C3F6900693921 /* MainNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5827B0E1D6C3F6900693921 /* MainNavViewController.swift */; };
 		A5827B111D6C497900693921 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5827B101D6C497900693921 /* UserManager.swift */; };
+		A5891D251E309B77008B7858 /* PayMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5891D241E309B77008B7858 /* PayMoneyViewController.swift */; };
+		A5891D271E309BE3008B7858 /* PayWayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5891D261E309BE3008B7858 /* PayWayTableViewCell.swift */; };
 		A592C34A1E1263C100E75525 /* MyToolCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A592C3481E1263C100E75525 /* MyToolCollectionViewCell.xib */; };
 		A592C34C1E12657600E75525 /* MyToolCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A592C34B1E12657600E75525 /* MyToolCollectionViewCell.swift */; };
 		A592C34F1E127C1F00E75525 /* MyToolOneCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A592C34D1E127C1F00E75525 /* MyToolOneCollectionViewCell.swift */; };
@@ -167,6 +169,8 @@
 		A5827B0C1D6C2C3000693921 /* DXSlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXSlideViewController.swift; sourceTree = "<group>"; };
 		A5827B0E1D6C3F6900693921 /* MainNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavViewController.swift; sourceTree = "<group>"; };
 		A5827B101D6C497900693921 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		A5891D241E309B77008B7858 /* PayMoneyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayMoneyViewController.swift; sourceTree = "<group>"; };
+		A5891D261E309BE3008B7858 /* PayWayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayWayTableViewCell.swift; sourceTree = "<group>"; };
 		A592C3481E1263C100E75525 /* MyToolCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyToolCollectionViewCell.xib; sourceTree = "<group>"; };
 		A592C34B1E12657600E75525 /* MyToolCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyToolCollectionViewCell.swift; sourceTree = "<group>"; };
 		A592C34D1E127C1F00E75525 /* MyToolOneCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyToolOneCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -418,6 +422,7 @@
 				A5EB9CA61E2C7AA300269344 /* BagDesTableViewCell.swift */,
 				A5EB9CA81E2C7ABD00269344 /* BagWayTableViewCell.swift */,
 				A520FE731E2E2C120043069A /* BuyTableViewCell.swift */,
+				A5891D261E309BE3008B7858 /* PayWayTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -601,6 +606,7 @@
 			children = (
 				A570A1811E1109BA00D0FDCE /* SendRedBagViewController.swift */,
 				A5EB9CA21E2C66CF00269344 /* SendBagTableViewController.swift */,
+				A5891D241E309B77008B7858 /* PayMoneyViewController.swift */,
 			);
 			name = send;
 			sourceTree = "<group>";
@@ -822,6 +828,7 @@
 				A542DCEA1D6700F500AFE9C1 /* SlideViewController.swift in Sources */,
 				A50E68351D76C1F000891625 /* RedBagDetailViewController.swift in Sources */,
 				A50E68371D76C59D00891625 /* RedBagHeaderView.swift in Sources */,
+				A5891D271E309BE3008B7858 /* PayWayTableViewCell.swift in Sources */,
 				A542DCEC1D67010500AFE9C1 /* SettingViewController.swift in Sources */,
 				A592C34F1E127C1F00E75525 /* MyToolOneCollectionViewCell.swift in Sources */,
 				A50F0F291D658A3D003907F7 /* ViewController.swift in Sources */,
@@ -844,6 +851,7 @@
 				A5827B0F1D6C3F6900693921 /* MainNavViewController.swift in Sources */,
 				A50F0F271D658A3D003907F7 /* AppDelegate.swift in Sources */,
 				A5EB9CA91E2C7ABD00269344 /* BagWayTableViewCell.swift in Sources */,
+				A5891D251E309B77008B7858 /* PayMoneyViewController.swift in Sources */,
 				A5EB9CA31E2C66CF00269344 /* SendBagTableViewController.swift in Sources */,
 				A50F0F641D65912D003907F7 /* RemoteSever.swift in Sources */,
 				A570A17D1E11096D00D0FDCE /* AboutViewController.swift in Sources */,
