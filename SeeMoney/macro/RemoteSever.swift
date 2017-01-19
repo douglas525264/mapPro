@@ -36,3 +36,8 @@ let toolList = schema + host + "v1/tools/show";
 let buytool = schema + host + "v1/tools/buy";
 let gettoken = schema + host + "v1/upload/token"
 
+//付款相关
+let getNotURL = schema + host + "v1/pay/fql/notify_url"
+//?type=1&amount=8 parameter
+let getOrderID = schema + host + "v1/order/id"
+
