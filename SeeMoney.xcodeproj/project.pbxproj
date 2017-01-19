@@ -43,6 +43,30 @@
 		A51EB2961DBF5676007E25B2 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EB2951DBF5676007E25B2 /* UserNotifications.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A51EB2991DBF6BAC007E25B2 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EB2981DBF6BAC007E25B2 /* libresolv.tbd */; };
 		A51EB29B1DBF6BE4007E25B2 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EB29A1DBF6BE4007E25B2 /* libz.tbd */; };
+		A51EE3001E30C7F0003AEF06 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A51EE2DF1E30C7F0003AEF06 /* AlipaySDK.bundle */; };
+		A51EE3011E30C7F0003AEF06 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EE2E01E30C7F0003AEF06 /* AlipaySDK.framework */; };
+		A51EE3021E30C7F0003AEF06 /* libAli_Adapter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EE2E11E30C7F0003AEF06 /* libAli_Adapter.a */; };
+		A51EE3031E30C7F0003AEF06 /* libApplePay_Adapter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EE2E31E30C7F0003AEF06 /* libApplePay_Adapter.a */; };
+		A51EE3041E30C7F0003AEF06 /* libUPAPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EE2E41E30C7F0003AEF06 /* libUPAPayPlugin.a */; };
+		A51EE3051E30C7F0003AEF06 /* libFenQiPay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EE2E81E30C7F0003AEF06 /* libFenQiPay.a */; };
+		A51EE3061E30C7F0003AEF06 /* libJDPay_Adapter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EE2EA1E30C7F0003AEF06 /* libJDPay_Adapter.a */; };
+		A51EE3071E30C7F0003AEF06 /* libPaymentControl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EE2EF1E30C7F0003AEF06 /* libPaymentControl.a */; };
+		A51EE3081E30C7F0003AEF06 /* libUP_Adapter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EE2F01E30C7F0003AEF06 /* libUP_Adapter.a */; };
+		A51EE3091E30C7F0003AEF06 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EE2F21E30C7F0003AEF06 /* libWeChatSDK.a */; };
+		A51EE30A1E30C7F0003AEF06 /* libWX_Adapter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EE2F31E30C7F0003AEF06 /* libWX_Adapter.a */; };
+		A51EE30B1E30C7F0003AEF06 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = A51EE2F41E30C7F0003AEF06 /* README.txt */; };
+		A51EE30C1E30C7F0003AEF06 /* libYiBaoPay_Adapter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EE2F91E30C7F0003AEF06 /* libYiBaoPay_Adapter.a */; };
+		A51EE30D1E30C7F0003AEF06 /* FuqianlaRes.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A51EE2FC1E30C7F0003AEF06 /* FuqianlaRes.bundle */; };
+		A51EE30E1E30C7F0003AEF06 /* libFuqianlaPay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EE2FD1E30C7F0003AEF06 /* libFuqianlaPay.a */; };
+		A51EE30F1E30C7F0003AEF06 /* libFuqianlaSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EE2FF1E30C7F0003AEF06 /* libFuqianlaSupport.a */; };
+		A51EE3111E30C809003AEF06 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EE3101E30C809003AEF06 /* MessageUI.framework */; };
+		A51EE3131E30C812003AEF06 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EE3121E30C812003AEF06 /* LocalAuthentication.framework */; };
+		A51EE3151E30C819003AEF06 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EE3141E30C819003AEF06 /* MobileCoreServices.framework */; };
+		A51EE3171E30C823003AEF06 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EE3161E30C823003AEF06 /* CoreMotion.framework */; };
+		A51EE3191E30C834003AEF06 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EE3181E30C834003AEF06 /* libsqlite3.0.tbd */; };
+		A51EE31B1E30C843003AEF06 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EE31A1E30C843003AEF06 /* libc++.tbd */; };
+		A51EE31D1E30C858003AEF06 /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51EE31C1E30C858003AEF06 /* PassKit.framework */; };
+		A51EE31F1E30C8D0003AEF06 /* PayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51EE31E1E30C8D0003AEF06 /* PayManager.swift */; };
 		A520FE721E2DEF860043069A /* UILabel+ZYTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A520FE711E2DEF860043069A /* UILabel+ZYTool.m */; };
 		A520FE741E2E2C120043069A /* BuyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520FE731E2E2C120043069A /* BuyTableViewCell.swift */; };
 		A542DCD31D66FE7800AFE9C1 /* redbagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD21D66FE7800AFE9C1 /* redbagModel.swift */; };
@@ -142,6 +166,37 @@
 		A51EB2971DBF670A007E25B2 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		A51EB2981DBF6BAC007E25B2 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		A51EB29A1DBF6BE4007E25B2 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		A51EE2DF1E30C7F0003AEF06 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		A51EE2E01E30C7F0003AEF06 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		A51EE2E11E30C7F0003AEF06 /* libAli_Adapter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAli_Adapter.a; sourceTree = "<group>"; };
+		A51EE2E31E30C7F0003AEF06 /* libApplePay_Adapter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libApplePay_Adapter.a; sourceTree = "<group>"; };
+		A51EE2E41E30C7F0003AEF06 /* libUPAPayPlugin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPAPayPlugin.a; sourceTree = "<group>"; };
+		A51EE2E51E30C7F0003AEF06 /* UPAPayPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPAPayPlugin.h; sourceTree = "<group>"; };
+		A51EE2E61E30C7F0003AEF06 /* UPAPayPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPAPayPluginDelegate.h; sourceTree = "<group>"; };
+		A51EE2E81E30C7F0003AEF06 /* libFenQiPay.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFenQiPay.a; sourceTree = "<group>"; };
+		A51EE2EA1E30C7F0003AEF06 /* libJDPay_Adapter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libJDPay_Adapter.a; sourceTree = "<group>"; };
+		A51EE2ED1E30C7F0003AEF06 /* UPPaymentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPPaymentControl.h; sourceTree = "<group>"; };
+		A51EE2EF1E30C7F0003AEF06 /* libPaymentControl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPaymentControl.a; sourceTree = "<group>"; };
+		A51EE2F01E30C7F0003AEF06 /* libUP_Adapter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUP_Adapter.a; sourceTree = "<group>"; };
+		A51EE2F21E30C7F0003AEF06 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		A51EE2F31E30C7F0003AEF06 /* libWX_Adapter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWX_Adapter.a; sourceTree = "<group>"; };
+		A51EE2F41E30C7F0003AEF06 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		A51EE2F51E30C7F0003AEF06 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		A51EE2F61E30C7F0003AEF06 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		A51EE2F71E30C7F0003AEF06 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		A51EE2F91E30C7F0003AEF06 /* libYiBaoPay_Adapter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libYiBaoPay_Adapter.a; sourceTree = "<group>"; };
+		A51EE2FB1E30C7F0003AEF06 /* FuqianlaPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuqianlaPay.h; sourceTree = "<group>"; };
+		A51EE2FC1E30C7F0003AEF06 /* FuqianlaRes.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FuqianlaRes.bundle; sourceTree = "<group>"; };
+		A51EE2FD1E30C7F0003AEF06 /* libFuqianlaPay.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFuqianlaPay.a; sourceTree = "<group>"; };
+		A51EE2FF1E30C7F0003AEF06 /* libFuqianlaSupport.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFuqianlaSupport.a; sourceTree = "<group>"; };
+		A51EE3101E30C809003AEF06 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		A51EE3121E30C812003AEF06 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		A51EE3141E30C819003AEF06 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		A51EE3161E30C823003AEF06 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		A51EE3181E30C834003AEF06 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		A51EE31A1E30C843003AEF06 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		A51EE31C1E30C858003AEF06 /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
+		A51EE31E1E30C8D0003AEF06 /* PayManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayManager.swift; sourceTree = "<group>"; };
 		A520FE701E2DEF860043069A /* UILabel+ZYTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+ZYTool.h"; sourceTree = "<group>"; };
 		A520FE711E2DEF860043069A /* UILabel+ZYTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+ZYTool.m"; sourceTree = "<group>"; };
 		A520FE731E2E2C120043069A /* BuyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyTableViewCell.swift; sourceTree = "<group>"; };
@@ -190,18 +245,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A51EE31D1E30C858003AEF06 /* PassKit.framework in Frameworks */,
+				A51EB28A1DBF48DF007E25B2 /* CFNetwork.framework in Frameworks */,
+				A51EB2901DBF48FA007E25B2 /* SystemConfiguration.framework in Frameworks */,
+				A51EE31B1E30C843003AEF06 /* libc++.tbd in Frameworks */,
 				A51EB29B1DBF6BE4007E25B2 /* libz.tbd in Frameworks */,
+				A51EE3191E30C834003AEF06 /* libsqlite3.0.tbd in Frameworks */,
+				A51EB28E1DBF48F2007E25B2 /* CoreTelephony.framework in Frameworks */,
+				A51EE3171E30C823003AEF06 /* CoreMotion.framework in Frameworks */,
+				A51EE3151E30C819003AEF06 /* MobileCoreServices.framework in Frameworks */,
+				A51EE3131E30C812003AEF06 /* LocalAuthentication.framework in Frameworks */,
+				A51EE3111E30C809003AEF06 /* MessageUI.framework in Frameworks */,
 				A51EB2991DBF6BAC007E25B2 /* libresolv.tbd in Frameworks */,
+				A51EE3061E30C7F0003AEF06 /* libJDPay_Adapter.a in Frameworks */,
 				A51EB2961DBF5676007E25B2 /* UserNotifications.framework in Frameworks */,
 				A51EB2941DBF5661007E25B2 /* Security.framework in Frameworks */,
 				A51EB2921DBF5659007E25B2 /* CoreGraphics.framework in Frameworks */,
-				A51EB2901DBF48FA007E25B2 /* SystemConfiguration.framework in Frameworks */,
-				A51EB28E1DBF48F2007E25B2 /* CoreTelephony.framework in Frameworks */,
+				A51EE3051E30C7F0003AEF06 /* libFenQiPay.a in Frameworks */,
+				A51EE30E1E30C7F0003AEF06 /* libFuqianlaPay.a in Frameworks */,
+				A51EE3081E30C7F0003AEF06 /* libUP_Adapter.a in Frameworks */,
+				A51EE30A1E30C7F0003AEF06 /* libWX_Adapter.a in Frameworks */,
+				A51EE30F1E30C7F0003AEF06 /* libFuqianlaSupport.a in Frameworks */,
+				A51EE3031E30C7F0003AEF06 /* libApplePay_Adapter.a in Frameworks */,
+				A51EE3011E30C7F0003AEF06 /* AlipaySDK.framework in Frameworks */,
 				A51EB28C1DBF48E7007E25B2 /* CoreFoundation.framework in Frameworks */,
-				A51EB28A1DBF48DF007E25B2 /* CFNetwork.framework in Frameworks */,
+				A51EE3021E30C7F0003AEF06 /* libAli_Adapter.a in Frameworks */,
 				A5630A3B1D6B03B100CB95DC /* AudioToolbox.framework in Frameworks */,
+				A51EE30C1E30C7F0003AEF06 /* libYiBaoPay_Adapter.a in Frameworks */,
+				A51EE3091E30C7F0003AEF06 /* libWeChatSDK.a in Frameworks */,
 				A50F0F681D659644003907F7 /* MapKit.framework in Frameworks */,
+				A51EE3071E30C7F0003AEF06 /* libPaymentControl.a in Frameworks */,
 				A51EB2881DBF48AE007E25B2 /* jpush-ios-2.2.0.a in Frameworks */,
+				A51EE3041E30C7F0003AEF06 /* libUPAPayPlugin.a in Frameworks */,
 				21925C0FD999D7F08613D103 /* Pods_SeeMoney.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -235,6 +310,13 @@
 		8CD89EB9AC2CD115B7080956 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A51EE31C1E30C858003AEF06 /* PassKit.framework */,
+				A51EE31A1E30C843003AEF06 /* libc++.tbd */,
+				A51EE3181E30C834003AEF06 /* libsqlite3.0.tbd */,
+				A51EE3161E30C823003AEF06 /* CoreMotion.framework */,
+				A51EE3141E30C819003AEF06 /* MobileCoreServices.framework */,
+				A51EE3121E30C812003AEF06 /* LocalAuthentication.framework */,
+				A51EE3101E30C809003AEF06 /* MessageUI.framework */,
 				A51EB29A1DBF6BE4007E25B2 /* libz.tbd */,
 				A51EB2981DBF6BAC007E25B2 /* libresolv.tbd */,
 				A51EB2951DBF5676007E25B2 /* UserNotifications.framework */,
@@ -357,6 +439,7 @@
 		A50F0F581D659047003907F7 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				A51EE2DC1E30C7F0003AEF06 /* fuqianla */,
 				A51EB2851DBF48AE007E25B2 /* Lib */,
 				A51EB2971DBF670A007E25B2 /* Bridging-Header.h */,
 			);
@@ -483,6 +566,7 @@
 				A542DCD41D66FE8200AFE9C1 /* Redbag */,
 				A50F0FAB1D65AB97003907F7 /* NetWork */,
 				A50F0FAA1D65AB91003907F7 /* Map */,
+				A51EE31E1E30C8D0003AEF06 /* PayManager.swift */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -528,6 +612,132 @@
 				A51EB2871DBF48AE007E25B2 /* JPUSHService.h */,
 			);
 			path = Lib;
+			sourceTree = "<group>";
+		};
+		A51EE2DC1E30C7F0003AEF06 /* fuqianla */ = {
+			isa = PBXGroup;
+			children = (
+				A51EE2DD1E30C7F0003AEF06 /* Channels */,
+				A51EE2FA1E30C7F0003AEF06 /* fqlLibs */,
+				A51EE2FE1E30C7F0003AEF06 /* support */,
+			);
+			path = fuqianla;
+			sourceTree = "<group>";
+		};
+		A51EE2DD1E30C7F0003AEF06 /* Channels */ = {
+			isa = PBXGroup;
+			children = (
+				A51EE2DE1E30C7F0003AEF06 /* AlipaySDK */,
+				A51EE2E21E30C7F0003AEF06 /* ApplePay */,
+				A51EE2E71E30C7F0003AEF06 /* FenQi */,
+				A51EE2E91E30C7F0003AEF06 /* JDPay */,
+				A51EE2EB1E30C7F0003AEF06 /* UPPayment */,
+				A51EE2F11E30C7F0003AEF06 /* wxSDK */,
+				A51EE2F81E30C7F0003AEF06 /* YiBaoPay */,
+			);
+			path = Channels;
+			sourceTree = "<group>";
+		};
+		A51EE2DE1E30C7F0003AEF06 /* AlipaySDK */ = {
+			isa = PBXGroup;
+			children = (
+				A51EE2DF1E30C7F0003AEF06 /* AlipaySDK.bundle */,
+				A51EE2E01E30C7F0003AEF06 /* AlipaySDK.framework */,
+				A51EE2E11E30C7F0003AEF06 /* libAli_Adapter.a */,
+			);
+			path = AlipaySDK;
+			sourceTree = "<group>";
+		};
+		A51EE2E21E30C7F0003AEF06 /* ApplePay */ = {
+			isa = PBXGroup;
+			children = (
+				A51EE2E31E30C7F0003AEF06 /* libApplePay_Adapter.a */,
+				A51EE2E41E30C7F0003AEF06 /* libUPAPayPlugin.a */,
+				A51EE2E51E30C7F0003AEF06 /* UPAPayPlugin.h */,
+				A51EE2E61E30C7F0003AEF06 /* UPAPayPluginDelegate.h */,
+			);
+			path = ApplePay;
+			sourceTree = "<group>";
+		};
+		A51EE2E71E30C7F0003AEF06 /* FenQi */ = {
+			isa = PBXGroup;
+			children = (
+				A51EE2E81E30C7F0003AEF06 /* libFenQiPay.a */,
+			);
+			path = FenQi;
+			sourceTree = "<group>";
+		};
+		A51EE2E91E30C7F0003AEF06 /* JDPay */ = {
+			isa = PBXGroup;
+			children = (
+				A51EE2EA1E30C7F0003AEF06 /* libJDPay_Adapter.a */,
+			);
+			path = JDPay;
+			sourceTree = "<group>";
+		};
+		A51EE2EB1E30C7F0003AEF06 /* UPPayment */ = {
+			isa = PBXGroup;
+			children = (
+				A51EE2EC1E30C7F0003AEF06 /* inc */,
+				A51EE2EE1E30C7F0003AEF06 /* libs */,
+				A51EE2F01E30C7F0003AEF06 /* libUP_Adapter.a */,
+			);
+			path = UPPayment;
+			sourceTree = "<group>";
+		};
+		A51EE2EC1E30C7F0003AEF06 /* inc */ = {
+			isa = PBXGroup;
+			children = (
+				A51EE2ED1E30C7F0003AEF06 /* UPPaymentControl.h */,
+			);
+			path = inc;
+			sourceTree = "<group>";
+		};
+		A51EE2EE1E30C7F0003AEF06 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				A51EE2EF1E30C7F0003AEF06 /* libPaymentControl.a */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		A51EE2F11E30C7F0003AEF06 /* wxSDK */ = {
+			isa = PBXGroup;
+			children = (
+				A51EE2F21E30C7F0003AEF06 /* libWeChatSDK.a */,
+				A51EE2F31E30C7F0003AEF06 /* libWX_Adapter.a */,
+				A51EE2F41E30C7F0003AEF06 /* README.txt */,
+				A51EE2F51E30C7F0003AEF06 /* WechatAuthSDK.h */,
+				A51EE2F61E30C7F0003AEF06 /* WXApi.h */,
+				A51EE2F71E30C7F0003AEF06 /* WXApiObject.h */,
+			);
+			path = wxSDK;
+			sourceTree = "<group>";
+		};
+		A51EE2F81E30C7F0003AEF06 /* YiBaoPay */ = {
+			isa = PBXGroup;
+			children = (
+				A51EE2F91E30C7F0003AEF06 /* libYiBaoPay_Adapter.a */,
+			);
+			path = YiBaoPay;
+			sourceTree = "<group>";
+		};
+		A51EE2FA1E30C7F0003AEF06 /* fqlLibs */ = {
+			isa = PBXGroup;
+			children = (
+				A51EE2FB1E30C7F0003AEF06 /* FuqianlaPay.h */,
+				A51EE2FC1E30C7F0003AEF06 /* FuqianlaRes.bundle */,
+				A51EE2FD1E30C7F0003AEF06 /* libFuqianlaPay.a */,
+			);
+			path = fqlLibs;
+			sourceTree = "<group>";
+		};
+		A51EE2FE1E30C7F0003AEF06 /* support */ = {
+			isa = PBXGroup;
+			children = (
+				A51EE2FF1E30C7F0003AEF06 /* libFuqianlaSupport.a */,
+			);
+			path = support;
 			sourceTree = "<group>";
 		};
 		A542DCD41D66FE8200AFE9C1 /* Redbag */ = {
@@ -732,8 +942,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A50F0F311D658A3D003907F7 /* LaunchScreen.storyboard in Resources */,
+				A51EE30B1E30C7F0003AEF06 /* README.txt in Resources */,
 				A592C3501E127C1F00E75525 /* MyToolOneCollectionViewCell.xib in Resources */,
+				A51EE3001E30C7F0003AEF06 /* AlipaySDK.bundle in Resources */,
 				A50F0F2E1D658A3D003907F7 /* Assets.xcassets in Resources */,
+				A51EE30D1E30C7F0003AEF06 /* FuqianlaRes.bundle in Resources */,
 				A513F5451D78268D0001EAE8 /* RedBgView.xib in Resources */,
 				A50F0F2C1D658A3D003907F7 /* Main.storyboard in Resources */,
 				A592C34A1E1263C100E75525 /* MyToolCollectionViewCell.xib in Resources */,
@@ -855,6 +1068,7 @@
 				A5EB9CA31E2C66CF00269344 /* SendBagTableViewController.swift in Sources */,
 				A50F0F641D65912D003907F7 /* RemoteSever.swift in Sources */,
 				A570A17D1E11096D00D0FDCE /* AboutViewController.swift in Sources */,
+				A51EE31F1E30C8D0003AEF06 /* PayManager.swift in Sources */,
 				A50F0F6C1D659697003907F7 /* MainMapViewController.swift in Sources */,
 				A520FE721E2DEF860043069A /* UILabel+ZYTool.m in Sources */,
 				A542DCD81D66FED400AFE9C1 /* UserModel.swift in Sources */,
@@ -1006,12 +1220,26 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: DEWMOBILE USA INC.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/fuqianla/Channels/AlipaySDK",
+				);
 				INFOPLIST_FILE = SeeMoney/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/Lib",
+					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/fuqianla/Channels/AlipaySDK",
+					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/fuqianla/Channels/ApplePay",
+					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/fuqianla/Channels/FenQi",
+					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/fuqianla/Channels/JDPay",
+					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/fuqianla/Channels/UPPayment/libs",
+					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/fuqianla/Channels/UPPayment",
+					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/fuqianla/Channels/wxSDK",
+					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/fuqianla/Channels/YiBaoPay",
+					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/fuqianla/fqlLibs",
+					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/fuqianla/support",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.douglas.seemoney;
@@ -1032,12 +1260,26 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: DEWMOBILE USA INC.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/fuqianla/Channels/AlipaySDK",
+				);
 				INFOPLIST_FILE = SeeMoney/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/Lib",
+					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/fuqianla/Channels/AlipaySDK",
+					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/fuqianla/Channels/ApplePay",
+					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/fuqianla/Channels/FenQi",
+					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/fuqianla/Channels/JDPay",
+					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/fuqianla/Channels/UPPayment/libs",
+					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/fuqianla/Channels/UPPayment",
+					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/fuqianla/Channels/wxSDK",
+					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/fuqianla/Channels/YiBaoPay",
+					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/fuqianla/fqlLibs",
+					"$(PROJECT_DIR)/SeeMoney/Utility/Libs/fuqianla/support",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.douglas.seemoney;

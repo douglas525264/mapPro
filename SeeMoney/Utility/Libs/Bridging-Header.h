@@ -11,4 +11,5 @@
 #import "JPUSHService.h"
 #import "NotManager.h"
 #import "UILabel+ZYTool.h"
+#import "FuqianlaPay.h"
 #endif /* Bridging_Header_h */
