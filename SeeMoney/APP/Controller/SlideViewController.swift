@@ -347,6 +347,7 @@ class SlideViewController: DXNewSlideViewController,UITableViewDelegate,UITableV
             MainMapViewController.shareInstance?.push(toVC: ToolListViewController(), animated: true)
             break
         case .SettingCommendChangeAvatar:
+            UIApplication.shared.statusBarStyle = .default
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
                 self.loadSource(type: .photoLibrary)
             } else {
