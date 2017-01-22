@@ -31,10 +31,7 @@ class PayManager: NSObject {
         
         WXApi.registerApp("wx03565949c4ef222b", withDescription: "seeMoney")
         
-        fManager?.pay(for: subject, order: orderId, body: bb, way: way, amount: CGFloat(money), callBack: { (ss: CEPaymentStatus) in
-            
-        })
-      /*  fManager?.showPayStatusView = false
+        fManager?.showPayStatusView = false
         fManager?.transactionParams = ["app_id":"UOIcpKx4jipj1WM3Wn2Tjw",
                                         "order_no": orderId ,
                                         "pmtTp":NSNumber(value: way.rawValue),
@@ -47,7 +44,7 @@ class PayManager: NSObject {
             callback(status)
             
         }
-        fManager?.myStart()*/
+        fManager?.myStart()
     }
     func getMyNotURL() -> String {
         DXNetWorkTool.sharedInstance.get(getNotURL, body: nil, header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info : Dictionary<String, AnyObject>?, isOK : Bool, code : Int) in
