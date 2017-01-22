@@ -69,6 +69,7 @@
 		A51EE31F1E30C8D0003AEF06 /* PayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51EE31E1E30C8D0003AEF06 /* PayManager.swift */; };
 		A520FE721E2DEF860043069A /* UILabel+ZYTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A520FE711E2DEF860043069A /* UILabel+ZYTool.m */; };
 		A520FE741E2E2C120043069A /* BuyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520FE731E2E2C120043069A /* BuyTableViewCell.swift */; };
+		A52457821E34967400A449E9 /* FuqianlaPay+scheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A52457811E34967400A449E9 /* FuqianlaPay+scheme.m */; };
 		A542DCD31D66FE7800AFE9C1 /* redbagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD21D66FE7800AFE9C1 /* redbagModel.swift */; };
 		A542DCD61D66FE9800AFE9C1 /* RedBagManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD51D66FE9800AFE9C1 /* RedBagManager.swift */; };
 		A542DCD81D66FED400AFE9C1 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD71D66FED400AFE9C1 /* UserModel.swift */; };
@@ -201,6 +202,8 @@
 		A520FE711E2DEF860043069A /* UILabel+ZYTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+ZYTool.m"; sourceTree = "<group>"; };
 		A520FE731E2E2C120043069A /* BuyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyTableViewCell.swift; sourceTree = "<group>"; };
 		A523240B1DBF123A00FA0543 /* SeeMoney.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeeMoney.entitlements; sourceTree = "<group>"; };
+		A52457801E34967400A449E9 /* FuqianlaPay+scheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FuqianlaPay+scheme.h"; sourceTree = "<group>"; };
+		A52457811E34967400A449E9 /* FuqianlaPay+scheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FuqianlaPay+scheme.m"; sourceTree = "<group>"; };
 		A542DCD21D66FE7800AFE9C1 /* redbagModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = redbagModel.swift; sourceTree = "<group>"; };
 		A542DCD51D66FE9800AFE9C1 /* RedBagManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedBagManager.swift; sourceTree = "<group>"; };
 		A542DCD71D66FED400AFE9C1 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -617,6 +620,8 @@
 		A51EE2DC1E30C7F0003AEF06 /* fuqianla */ = {
 			isa = PBXGroup;
 			children = (
+				A52457801E34967400A449E9 /* FuqianlaPay+scheme.h */,
+				A52457811E34967400A449E9 /* FuqianlaPay+scheme.m */,
 				A51EE2DD1E30C7F0003AEF06 /* Channels */,
 				A51EE2FA1E30C7F0003AEF06 /* fqlLibs */,
 				A51EE2FE1E30C7F0003AEF06 /* support */,
@@ -1053,6 +1058,7 @@
 				A5199DDC1DE696CD002DE684 /* ToolListViewController.swift in Sources */,
 				A542DCE41D67009400AFE9C1 /* UIAlertView+Block.m in Sources */,
 				A50288951D6D54740086CD80 /* RegisterViewController.swift in Sources */,
+				A52457821E34967400A449E9 /* FuqianlaPay+scheme.m in Sources */,
 				A50288971D6D80E20086CD80 /* DXNavgationBar.swift in Sources */,
 				A5EB9CA71E2C7AA300269344 /* BagDesTableViewCell.swift in Sources */,
 				A50F0FAD1D65ABD0003907F7 /* DXNetWorkTool.swift in Sources */,
