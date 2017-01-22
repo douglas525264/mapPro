@@ -96,7 +96,12 @@ class DXNetWorkTool: NSObject {
                 let code = infoDic!["code"] as! NSInteger
                 
                 if code == 200 {
-                    completed((infoDic!["json"] as? Dictionary<String,AnyObject>)!,true,200)
+                    if let msg = infoDic?["msg"] {
+                        completed(["msg" : msg],true,200)
+                    
+                    } else {
+                        completed((infoDic!["json"] as? Dictionary<String,AnyObject>)!,true,200)
+                    }
                 } else {
                     let err = SMError()
                     err.code = code

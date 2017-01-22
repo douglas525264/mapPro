@@ -940,6 +940,9 @@
                                 <state key="normal" title="立即支付">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="payBtnClick:" destination="y6t-Fo-FzN" eventType="touchUpInside" id="5es-J3-Pa3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -959,7 +962,6 @@
                         <outlet property="moneyLable" destination="zzG-5m-aTS" id="39F-cH-S4R"/>
                         <outlet property="nameLable" destination="NAf-oj-ut3" id="WeZ-mm-qZF"/>
                         <outlet property="payBtn" destination="MVu-el-hSg" id="pj4-JY-cnR"/>
-                        <outlet property="payBtnClick" destination="MVu-el-hSg" id="wVj-aP-P4o"/>
                         <outlet property="tableView" destination="fKA-9I-Kf9" id="YTD-b4-g2H"/>
                     </connections>
                 </viewController>

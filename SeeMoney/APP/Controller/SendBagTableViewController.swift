@@ -285,7 +285,10 @@ class SendBagTableViewController: UITableViewController,UITextFieldDelegate {
     }
     func payBtnClick() -> () {
         let mainStory = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let payVC = mainStory.instantiateViewController(withIdentifier: "PayMoneyViewController")
+        let payVC = mainStory.instantiateViewController(withIdentifier: "PayMoneyViewController") as! PayMoneyViewController
+        payVC.name = "发红包"
+        payVC.price = Float((moneyCell?.normalTextFiled.text!)!)!
+        payVC.paytype = .payTypeRedBag
         self.navigationController?.pushViewController(payVC, animated: true)
     }
     func cancelRegister() -> () {

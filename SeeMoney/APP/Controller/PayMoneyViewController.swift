@@ -9,19 +9,38 @@
 import UIKit
 
 class PayMoneyViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+    enum payType : Int {
+        case payTypeChongzhi = 0
+        case payTypeRedBag
+    }
     @IBOutlet weak var nameLable: UILabel!
 
     @IBOutlet weak var payBtn: UIButton!
     @IBOutlet weak var moneyLable: UILabel!
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var payBtnClick: UIButton!
+
     var currentIndex = 0
     var nav = DXNavgationBar.getNav("付款方式")
+    
+    var name : String?
+    var price : Float = 0
+    var paytype = payType.payTypeRedBag
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.createUI()
         // Do any additional setup after loading the view.
+    }
+    @IBAction func payBtnClick(_ sender: Any) {
+        
+       PayManager.shareInstance.getOrderId(paytype.rawValue, amount: price) { (isOK :  Bool, orderid : String?) in
+            if (isOK && orderid != nil) {
+                PayManager.shareInstance.pay(sub: self.name!, OrderId: orderid!, body: self.name!, Way: self.currentIndex == 0 ? CEPayType.ptWeixinPay : CEPayType.ptAlipay, amount: self.price, CallBack: { (status : CEPaymentStatus) in
+                    print("status \(status)")
+                })
+            }
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -40,6 +59,8 @@ class PayMoneyViewController: UIViewController,UITableViewDelegate,UITableViewDa
         self.payBtn.backgroundColor = UIColor.black
         self.payBtn.layer.cornerRadius = 5
         self.payBtn.layer.masksToBounds = true
+        self.nameLable.text = self.name
+        self.moneyLable.text = String(format: "￥%.2f", self.price)
         
     }
     func backClick(_ sender:UIButton?) {
@@ -62,6 +83,10 @@ class PayMoneyViewController: UIViewController,UITableViewDelegate,UITableViewDa
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        currentIndex = indexPath.row == 0 ? 0 : 1
+        tableView.reloadData()
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : PayWayTableViewCell = tableView.dequeueReusableCell(withIdentifier: "PayWayTableViewCell", for: indexPath) as! PayWayTableViewCell

@@ -123,6 +123,7 @@ class MoneyViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     }
 
     @IBAction func paybtnClick(_ sender: Any) {
+        
     }
     @IBAction func tixianClick(_ sender: AnyObject) {
     }
