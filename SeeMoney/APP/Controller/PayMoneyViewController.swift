@@ -38,6 +38,15 @@ class PayMoneyViewController: UIViewController,UITableViewDelegate,UITableViewDa
             if (isOK && orderid != nil) {
                 PayManager.shareInstance.pay(sub: self.name!, OrderId: orderid!, body: self.name!, Way: self.currentIndex == 0 ? CEPayType.ptWeixinPay : CEPayType.ptAlipay, amount: self.price, CallBack: { (status : CEPaymentStatus) in
                     print("status \(status)")
+                    switch status {
+                    case .payResultSuccess:
+                        
+                        break
+                    default:
+                        break
+                    }
+
+                    
                 })
             }
         }
@@ -48,6 +57,7 @@ class PayMoneyViewController: UIViewController,UITableViewDelegate,UITableViewDa
         UIApplication.shared.statusBarStyle = .default
     }
     func createUI() -> () {
+        
         self.view .addSubview(self.nav)
         
         self.nav.addBackBtn(self, backSelector: #selector(PayMoneyViewController.backClick(_:)))
