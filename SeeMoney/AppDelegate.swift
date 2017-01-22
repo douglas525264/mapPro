@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,JPUSHRegisterDelegate,UNUs
             JPUSHService.setup(withOption: launchOptions, appKey: "78fecb328e06d3d8a7affd04", channel: "Publish channel", apsForProduction: false)
         UINavigationBar.appearance().backgroundColor = RGB(248, g: 248, b: 248, a: 1);
         UINavigationBar.appearance().tintColor = UIColor.black
-
+        PayManager.shareInstance.getMyNotURL()
         
             
             return true

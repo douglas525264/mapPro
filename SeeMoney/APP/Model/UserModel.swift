@@ -19,8 +19,8 @@ class UserModel: NSObject {
     var avatarUrlStr : String?
     var psw : String?
     var gender = 0
-    var accountNum : Double = 100
-    var goldCount : Double = 100
+    var accountNum : Double = 0
+    var goldCount : Double = 0
     var distanceView : Double = 500
     //ext
     //远程捡取个数
