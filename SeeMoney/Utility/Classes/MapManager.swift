@@ -25,7 +25,7 @@ class MapManager: NSObject,CLLocationManagerDelegate {
     var currentLocation: CLLocationCoordinate2D?
     lazy var mapView:MKMapView = {
         
-        let map = MKMapView(frame:(UIApplication.shared.keyWindow?.frame)!)
+        let map = MKMapView(frame:CGRect(x: 0, y: 0, width: 320, height: 640))
         map.showsUserLocation = true;
         map.userTrackingMode = MKUserTrackingMode.follow
         return map

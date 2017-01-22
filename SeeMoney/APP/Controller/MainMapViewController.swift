@@ -52,6 +52,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         
         MapManager.sharedInstance.getAuthInfo()
         self.mapView = MapManager.sharedInstance.mapView
+        self.mapView?.frame = self.view.bounds
         self.view.addSubview(self.mapView!)
         
         MapManager.sharedInstance.mapView.delegate = self;

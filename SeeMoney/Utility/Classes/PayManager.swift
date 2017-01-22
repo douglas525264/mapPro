@@ -31,7 +31,7 @@ class PayManager: NSObject {
                                         "amount":"0.01",
                                         "subject":subject,
                                         "body":bb,
-                                        "notify_url":notURL == nil ? "http://10.100.140.124:8081/adapter-client/receive/notify.htm" : notURL!]
+                                        "notify_url":notURL == nil ? ("https://api.drqmobile.com/v1/pay/fql/notify_url?uid=" + UserManager.shareInstance.getMe().userID!) : notURL!]
         fManager?.payStatusCallBack = { (_ status : CEPaymentStatus,_ result : String?) -> () in
         
             callback(status)
