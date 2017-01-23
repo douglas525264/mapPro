@@ -9,9 +9,10 @@
 import UIKit
 
 class PayManager: NSObject {
+    typealias payCompletedBlock = (_ payStatus : CEPaymentStatus) -> ()
     static let shareInstance = PayManager()
     var notURL : String?
-    func getOrderId(_ type : Int,amount : Float,finishedBlock : @escaping (_ isOK : Bool , _ orderid : String?) -> () ) -> () {
+    func getOrderId(_ type : Int,amount : Float,finishedBlock : @escaping (_ isOK : Bool , _ orderid : String?) -> ()  ) -> () {
         
         DXNetWorkTool.sharedInstance.get(getOrderID, body: ["type" : type as AnyObject,"amount" : amount as AnyObject], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info : Dictionary<String, AnyObject>?, isOK : Bool, code : Int) in
             if isOK {
@@ -25,7 +26,7 @@ class PayManager: NSObject {
         }
 
     }
-    func pay(sub subject: String,OrderId orderId : String,body bb:String, Way way: CEPayType , amount money : Float ,CallBack callback : @escaping (_ status : CEPaymentStatus) -> ()) -> () {
+    func pay(sub subject: String,OrderId orderId : String,body bb:String, Way way: CEPayType , amount money : Float ,CallBack callback : payCompletedBlock?) {
         
         let fManager = FuqianlaPay.sharedPayManager()
         
@@ -41,7 +42,7 @@ class PayManager: NSObject {
                                         "notify_url":notURL == nil ? ("https://api.drqmobile.com/v1/pay/fql/notify_url?uid=" + UserManager.shareInstance.getMe().userID!) : notURL!]
         fManager?.payStatusCallBack = { (_ status : CEPaymentStatus,_ result : String?) -> () in
         
-            callback(status)
+            callback?(status)
             
         }
         fManager?.myStart()

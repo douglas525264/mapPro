@@ -150,7 +150,13 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         
         
         let mainStory = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let sendVC = mainStory.instantiateViewController(withIdentifier: "SendBagTableViewController")
+        let sendVC = mainStory.instantiateViewController(withIdentifier: "SendBagTableViewController") as! SendBagTableViewController
+        sendVC.payCallBack = {(_ payStatus : CEPaymentStatus) -> () in
+            if payStatus == CEPaymentStatus.payResultSuccess {
+            
+                self.searchRedBag(true)
+            }
+        }
         let nav = UINavigationController(rootViewController: sendVC)
         self.present(nav, animated: true) { 
             

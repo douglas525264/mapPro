@@ -97,7 +97,13 @@ class DXNetWorkTool: NSObject {
                 
                 if code == 200 {
                     if let msg = infoDic?["msg"] {
-                        completed(["msg" : msg],true,200)
+                        var inn = infoDic!["json"] as? Dictionary<String,AnyObject>
+                        if inn != nil {
+                            inn?["msg"] = msg
+                        } else {
+                            inn = ["msg" : msg]
+                        }
+                        completed(inn,true,200)
                     
                     } else {
                         completed((infoDic!["json"] as? Dictionary<String,AnyObject>)!,true,200)

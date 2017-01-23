@@ -16,6 +16,8 @@ class SendBagTableViewController: UITableViewController,UITextFieldDelegate {
     var playWayCell : BagWayTableViewCell?
     var desCell : BagDesTableViewCell?
     var payCell : BuyTableViewCell?
+    typealias payCompletedBlock = (_ payStatus : CEPaymentStatus) -> ()
+    var payCallBack : payCompletedBlock?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.createUI()
@@ -289,6 +291,36 @@ class SendBagTableViewController: UITableViewController,UITextFieldDelegate {
         payVC.name = "发红包"
         payVC.price = Float((moneyCell?.normalTextFiled.text!)!)!
         payVC.paytype = .payTypeRedBag
+        payVC.payCallBack = { (_ payStatus : CEPaymentStatus) -> () in
+            self.payCallBack?(payStatus)
+            switch payStatus {
+            case .payResultSuccess:
+                let pp = Float((self.moneyCell?.normalTextFiled.text!)!)!
+                var name = self.desCell?.detailTextFiled.text
+                if name == "" {
+                    name = "恭喜发财，大吉大利"
+                }
+                let size = Int((self.numCell?.normalTextFiled.text!)!)!
+                let type = self.bagType
+                let sub = 0;
+                RedBagManager.sharedInstance.sendRedBag(pp, size, type: type, title: name!, subType: sub, finishedBlock: { (isOK : Bool) in
+                    if isOK {
+                    
+                        DXHelper.shareInstance.makeAlert("发送成功", dur: 2, isShake: false)
+                        UserManager.shareInstance.updateInfo();
+                        self.navigationController?.dismiss(animated: true, completion: { 
+                            
+                        })
+ 
+                    }
+                })
+                
+                break;
+            default:
+                break;
+            }
+        
+        }
         self.navigationController?.pushViewController(payVC, animated: true)
     }
     func cancelRegister() -> () {

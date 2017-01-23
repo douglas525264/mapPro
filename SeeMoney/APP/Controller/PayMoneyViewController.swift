@@ -13,20 +13,21 @@ class PayMoneyViewController: UIViewController,UITableViewDelegate,UITableViewDa
         case payTypeChongzhi = 0
         case payTypeRedBag
     }
+    
     @IBOutlet weak var nameLable: UILabel!
 
     @IBOutlet weak var payBtn: UIButton!
     @IBOutlet weak var moneyLable: UILabel!
 
     @IBOutlet weak var tableView: UITableView!
-
+    typealias payCompletedBlock = (_ payStatus : CEPaymentStatus) -> ()
     var currentIndex = 0
     var nav = DXNavgationBar.getNav("付款方式")
     
     var name : String?
     var price : Float = 0
     var paytype = payType.payTypeRedBag
-    
+    var payCallBack : payCompletedBlock?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.createUI()
@@ -36,18 +37,7 @@ class PayMoneyViewController: UIViewController,UITableViewDelegate,UITableViewDa
         
        PayManager.shareInstance.getOrderId(paytype.rawValue, amount: price) { (isOK :  Bool, orderid : String?) in
             if (isOK && orderid != nil) {
-                PayManager.shareInstance.pay(sub: self.name!, OrderId: orderid!, body: self.name!, Way: self.currentIndex == 0 ? CEPayType.ptWeixinPay : CEPayType.ptAlipay, amount: self.price, CallBack: { (status : CEPaymentStatus) in
-                    print("status \(status)")
-                    switch status {
-                    case .payResultSuccess:
-                        
-                        break
-                    default:
-                        break
-                    }
-
-                    
-                })
+                PayManager.shareInstance.pay(sub: self.name!, OrderId: orderid!, body: self.name!, Way: self.currentIndex == 0 ? CEPayType.ptWeixinPay : CEPayType.ptAlipay, amount: self.price, CallBack: self.payCallBack)
             }
         }
     }
