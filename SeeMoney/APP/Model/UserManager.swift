@@ -111,31 +111,42 @@ class UserManager: NSObject {
         let userde = UserDefaults.standard
         if user.username != nil {
             userde .setValue(user.username, forKey: UserName)
+        }else {
+           userde.removeObject(forKey: UserName)
         }
         if user.psw != nil {
             userde .setValue(user.psw, forKey: UserPsw)
         }
         if user.token != nil {
             userde .setValue(user.token, forKey: UserToken)
+        }else {
+            userde.removeObject(forKey: UserToken)
         }
+        
         if user.userID != nil {
             userde .setValue(user.userID, forKey: UserID)
+        }else {
+            userde.removeObject(forKey: UserID)
         }
+        
         if user.iconID != nil {
             userde .setValue(user.iconID, forKey: IconID)
+        }else {
+            userde.removeObject(forKey: IconID)
         }
-        if user.accountNum > 0{
+        if user.accountNum >= 0{
             userde .setValue(user.accountNum, forKey: UserAccountNum)
         }
-        if user.goldCount > 0  {
+        
+        if user.goldCount >= 0  {
             
             userde .setValue(user.goldCount, forKey: UserGoldNum)
         }
-        if user.gender > 0  {
+        if user.gender >= 0  {
             
             userde .setValue(user.gender, forKey: UserGender)
         }
-        if user.distanceView > 0  {
+        if user.distanceView >= 0  {
             
             userde .setValue(user.distanceView, forKey: UserSeeDis)
         }
@@ -339,6 +350,19 @@ class UserManager: NSObject {
             finishedBlock(false)
         }
 
+
+    }
+    func logout() -> () {
+        let me = UserManager.shareInstance.getMe()
+        me.loginStatus = UserLoginStatus.bagStatusUnLogin
+        me.accountNum = 0
+        me.goldCount = 0
+        me.token = nil
+        me.avatarUrlStr = nil
+        me.toolsInfo = []
+        me.voiceCount = 0
+        me.iconID = nil
+        UserManager.shareInstance.saveModel(me)
 
     }
     func isLogin() -> Bool {

@@ -34,9 +34,7 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
 
     @IBAction func logoutBtnClick(_ sender: Any) {
-        let me = UserManager.shareInstance.getMe()
-        me.loginStatus = UserLoginStatus.bagStatusUnLogin
-        UserManager.shareInstance.saveModel(me)
+        UserManager.shareInstance.logout()
         self.logouBtn.isHidden = true
     }
     func backClick(_ sender:UIButton?) {
