@@ -124,6 +124,10 @@ class MoneyViewController: UIViewController,UITableViewDelegate,UITableViewDataS
 
     @IBAction func paybtnClick(_ sender: Any) {
         
+        let mainStory = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let lgVC = mainStory.instantiateViewController(withIdentifier: "ChongZhiViewController")
+        self.navigationController?.pushViewController(lgVC, animated: true)
+
     }
     @IBAction func tixianClick(_ sender: AnyObject) {
     }

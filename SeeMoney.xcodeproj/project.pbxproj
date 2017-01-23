@@ -70,6 +70,7 @@
 		A520FE721E2DEF860043069A /* UILabel+ZYTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A520FE711E2DEF860043069A /* UILabel+ZYTool.m */; };
 		A520FE741E2E2C120043069A /* BuyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520FE731E2E2C120043069A /* BuyTableViewCell.swift */; };
 		A52457821E34967400A449E9 /* FuqianlaPay+scheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A52457811E34967400A449E9 /* FuqianlaPay+scheme.m */; };
+		A531A5901E35FED500DEE7EE /* ChongZhiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531A58F1E35FED500DEE7EE /* ChongZhiViewController.swift */; };
 		A542DCD31D66FE7800AFE9C1 /* redbagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD21D66FE7800AFE9C1 /* redbagModel.swift */; };
 		A542DCD61D66FE9800AFE9C1 /* RedBagManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD51D66FE9800AFE9C1 /* RedBagManager.swift */; };
 		A542DCD81D66FED400AFE9C1 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD71D66FED400AFE9C1 /* UserModel.swift */; };
@@ -204,6 +205,7 @@
 		A523240B1DBF123A00FA0543 /* SeeMoney.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeeMoney.entitlements; sourceTree = "<group>"; };
 		A52457801E34967400A449E9 /* FuqianlaPay+scheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FuqianlaPay+scheme.h"; sourceTree = "<group>"; };
 		A52457811E34967400A449E9 /* FuqianlaPay+scheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FuqianlaPay+scheme.m"; sourceTree = "<group>"; };
+		A531A58F1E35FED500DEE7EE /* ChongZhiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChongZhiViewController.swift; sourceTree = "<group>"; };
 		A542DCD21D66FE7800AFE9C1 /* redbagModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = redbagModel.swift; sourceTree = "<group>"; };
 		A542DCD51D66FE9800AFE9C1 /* RedBagManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedBagManager.swift; sourceTree = "<group>"; };
 		A542DCD71D66FED400AFE9C1 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -523,6 +525,7 @@
 		A50F0F5F1D659057003907F7 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				A531A58E1E35FEBB00DEE7EE /* Pay */,
 				A570A17E1E11097200D0FDCE /* FeedBack */,
 				A570A17B1E11095C00D0FDCE /* About */,
 				A5199DDA1DE696B6002DE684 /* Tool */,
@@ -743,6 +746,14 @@
 				A51EE2FF1E30C7F0003AEF06 /* libFuqianlaSupport.a */,
 			);
 			path = support;
+			sourceTree = "<group>";
+		};
+		A531A58E1E35FEBB00DEE7EE /* Pay */ = {
+			isa = PBXGroup;
+			children = (
+				A531A58F1E35FED500DEE7EE /* ChongZhiViewController.swift */,
+			);
+			name = Pay;
 			sourceTree = "<group>";
 		};
 		A542DCD41D66FE8200AFE9C1 /* Redbag */ = {
@@ -1060,6 +1071,7 @@
 				A50288951D6D54740086CD80 /* RegisterViewController.swift in Sources */,
 				A52457821E34967400A449E9 /* FuqianlaPay+scheme.m in Sources */,
 				A50288971D6D80E20086CD80 /* DXNavgationBar.swift in Sources */,
+				A531A5901E35FED500DEE7EE /* ChongZhiViewController.swift in Sources */,
 				A5EB9CA71E2C7AA300269344 /* BagDesTableViewCell.swift in Sources */,
 				A50F0FAD1D65ABD0003907F7 /* DXNetWorkTool.swift in Sources */,
 				A542DCE51D67009400AFE9C1 /* DMAlertAction.m in Sources */,

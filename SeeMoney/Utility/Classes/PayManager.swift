@@ -36,7 +36,7 @@ class PayManager: NSObject {
         fManager?.transactionParams = ["app_id":"UOIcpKx4jipj1WM3Wn2Tjw",
                                         "order_no": orderId ,
                                         "pmtTp":NSNumber(value: way.rawValue),
-                                        "amount":"0.01",
+                                        "amount":String(format: "%.2f", money),
                                         "subject":subject,
                                         "body":bb,
                                         "notify_url":notURL == nil ? ("https://api.drqmobile.com/v1/pay/fql/notify_url?uid=" + UserManager.shareInstance.getMe().userID!) : notURL!]

@@ -10,7 +10,7 @@ import UIKit
 
 class PayMoneyViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     enum payType : Int {
-        case payTypeChongzhi = 0
+        case payTypeChongzhi = 1
         case payTypeRedBag
     }
     
