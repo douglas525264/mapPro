@@ -47,14 +47,16 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     var fetchDis:Double = 100
     static var shareInstance:MainMapViewController?
     lazy var nav1 = DXNavgationBar.getNav("探包宝")
+    var currentCircle: MKCircle?
     override func viewDidLoad() {
         super.viewDidLoad()
         
         MapManager.sharedInstance.getAuthInfo()
         self.mapView = MapManager.sharedInstance.mapView
         self.mapView?.frame = self.view.bounds
-        self.view.addSubview(self.mapView!)
         
+
+        self.view.addSubview(self.mapView!)
         MapManager.sharedInstance.mapView.delegate = self;
 
         self.timer =  Timer.scheduledTimer(timeInterval: 3*60*60, target: self, selector:  #selector(MainMapViewController.bgRefreash), userInfo: nil, repeats: true)
@@ -299,32 +301,11 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
             if redbags?.count > 0 {
                 if self.aplicationInBg {
                     //本地通知
-                    /*
-                     
-                     UILocalNotification*notification = [[UILocalNotification alloc]init];
-                     NSDate * pushDate = [NSDate dateWithTimeIntervalSinceNow:2];
-                     if (notification != nil) {
-                     notification.fireDate = pushDate;
-                     notification.timeZone = [NSTimeZone defaultTimeZone];
-                     notification.repeatInterval = kCFCalendarUnitDay;
-                     notification.soundName = UILocalNotificationDefaultSoundName;
-                     // NSInteger count = [UIApplication sharedApplication].applicationIconBadgeNumber;
-                     notification.applicationIconBadgeNumber = [[ZYConversationManager shareInstance] getUnreadMsgCount] + 1;
-                     
-                     notification.alertBody = [NSString stringWithFormat:@"%@ %@", msgArr.firstObject, msgArr.lastObject];
-                     NSDictionary*info = @{@"type":@"friend_request"};
-                     notification.userInfo = info;
-                     
-                     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
-                     }
-
-                     */
-                    
+    
                     let not = UILocalNotification()
                     let pushDate = Date(timeIntervalSinceNow: 1)
                     not.fireDate = pushDate
                     not.timeZone = TimeZone.current
-                    not.repeatInterval = NSCalendar.Unit.day
                     not.soundName = UILocalNotificationDefaultSoundName
                     not.alertBody = String(format: "发现%ld个红包",(redbags?.count)!)
                     UIApplication.shared.scheduleLocalNotification(not)
@@ -347,6 +328,13 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     }
     //delgate
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        
+        if currentCircle != nil {
+        
+            self.mapView?.remove(self.currentCircle!)
+        }
+        self.currentCircle = MKCircle(center: userLocation.coordinate, radius: 500)
+        self.mapView?.add(self.currentCircle!)
         print("mapView : \(userLocation.coordinate.longitude) \(userLocation.coordinate.latitude)")
        // userLocation.coordinate
         userLocation.title = "我的位置"
@@ -378,6 +366,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         
     }
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
         if (annotation .isKind(of: redbagModel.self)) {
           let mapId = "mapID"
             var mv = mapView.dequeueReusableAnnotationView(withIdentifier: mapId)
@@ -397,11 +386,12 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         return nil
     }
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        if (view.annotation!.isKind(of: redbagModel.self)) {
+        if (view.annotation!.isKind(of: redbagModel.classForCoder())) {
             
             
              self.currentredBg = view.annotation as? redbagModel
             if !self.needGetRedbag() {
+                
             if self.currentLine == nil {
                 let alertVc = UIAlertController(title: "提示", message: "我擦，发现一只大红包", preferredStyle: UIAlertControllerStyle.alert);
                 let goActionAction = UIAlertAction(title: "前往", style: UIAlertActionStyle.default, handler: { (action:UIAlertAction) in
@@ -437,13 +427,15 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
                     
                 })
   
-            }
+                }else {
+                DXHelper.shareInstance.makeAlert("您已经处于导航模式中。。。" , dur: 2, isShake: false)
+                }
             }
             
             
         }else {
         
-           DXHelper.shareInstance.makeAlert("您已经处于导航模式中。。。" , dur: 2, isShake: false)
+           
         }
     }
     func needGetRedbag() -> Bool{
@@ -466,10 +458,23 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
 
     }
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        
+        if overlay .isKind(of: MKCircle.classForCoder()){
+            
+            let circleView = MKCircleRenderer(overlay: overlay)
+            circleView.fillColor = .cyan
+            circleView.strokeColor = .yellow
+            circleView.lineWidth = 2
+            circleView.alpha = 0.1
+            return circleView
+        
+        } else {
         let renderer = MKPolylineRenderer(overlay: overlay)
         renderer.lineWidth = 5.0
         renderer.strokeColor = RGB(60, g: 150, b: 250, a: 0.8)
         return renderer
+        }
+        
     }
     
     func founctionCallBackAtIndex(_ index: NSInteger) {

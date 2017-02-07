@@ -88,6 +88,7 @@
 		A570A17A1E11094E00D0FDCE /* MyToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570A1791E11094E00D0FDCE /* MyToolViewController.swift */; };
 		A570A17D1E11096D00D0FDCE /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570A17C1E11096D00D0FDCE /* AboutViewController.swift */; };
 		A570A1821E1109BA00D0FDCE /* SendRedBagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570A1811E1109BA00D0FDCE /* SendRedBagViewController.swift */; };
+		A571FED61E49B47800750AFF /* DXRadarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571FED51E49B47800750AFF /* DXRadarView.swift */; };
 		A5827B0D1D6C2C3000693921 /* DXSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5827B0C1D6C2C3000693921 /* DXSlideViewController.swift */; };
 		A5827B0F1D6C3F6900693921 /* MainNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5827B0E1D6C3F6900693921 /* MainNavViewController.swift */; };
 		A5827B111D6C497900693921 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5827B101D6C497900693921 /* UserManager.swift */; };
@@ -226,6 +227,7 @@
 		A570A1791E11094E00D0FDCE /* MyToolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyToolViewController.swift; sourceTree = "<group>"; };
 		A570A17C1E11096D00D0FDCE /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		A570A1811E1109BA00D0FDCE /* SendRedBagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendRedBagViewController.swift; sourceTree = "<group>"; };
+		A571FED51E49B47800750AFF /* DXRadarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXRadarView.swift; sourceTree = "<group>"; };
 		A5827B0C1D6C2C3000693921 /* DXSlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXSlideViewController.swift; sourceTree = "<group>"; };
 		A5827B0E1D6C3F6900693921 /* MainNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavViewController.swift; sourceTree = "<group>"; };
 		A5827B101D6C497900693921 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 				A50F0F561D659047003907F7 /* Classes */,
 				A50F0F571D659047003907F7 /* Helpers */,
 				A50F0F581D659047003907F7 /* Libs */,
+				A571FED51E49B47800750AFF /* DXRadarView.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1056,6 +1059,7 @@
 				A59F10E01DC051B60023832D /* NotManager.m in Sources */,
 				A542DCEA1D6700F500AFE9C1 /* SlideViewController.swift in Sources */,
 				A50E68351D76C1F000891625 /* RedBagDetailViewController.swift in Sources */,
+				A571FED61E49B47800750AFF /* DXRadarView.swift in Sources */,
 				A50E68371D76C59D00891625 /* RedBagHeaderView.swift in Sources */,
 				A5891D271E309BE3008B7858 /* PayWayTableViewCell.swift in Sources */,
 				A542DCEC1D67010500AFE9C1 /* SettingViewController.swift in Sources */,
