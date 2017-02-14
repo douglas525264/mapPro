@@ -14,8 +14,8 @@ enum bagStatus {
     case bagStatusHasOpen
 }
 enum redBagType:Int {
-    case redBagTypeGold = 1
-    case redBagTypeMoney = 2
+    case redBagTypeGold = 2
+    case redBagTypeMoney = 1
     case redBagTypePlayMoney = 3
 }
 class redbagModel: NSObject, MKAnnotation{
