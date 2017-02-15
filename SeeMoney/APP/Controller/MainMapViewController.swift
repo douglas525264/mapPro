@@ -77,31 +77,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         self.headerView.isHidden = true;
   
         
-        /*UserManager.shareInstance.getAvatar(iconid: "7000000020", finishedBlock: {(isOK : Bool, info : Dictionary<String,AnyObject>?) in
-            if info != nil {
-                let str : String = info!["thumb"] as! String
-                let data = str.data(using: String.Encoding.utf8)
-                let image = UIImage(data: data!)
-                let imageV = UIImageView(frame: CGRect(x: 100, y: 100, width: 60, height: 60))
-                imageV.image = image;
-                self.view.addSubview(imageV)
-                
-                
-            }
-           
-        
-        } )*/
-       /* let  testAvatar = UIImage(named: "zapya_sidebar_head_superman")
-        UserManager.shareInstance.uploadAvatar(testAvatar!, finishedBlock: { (isOK : Bool) in
-            if isOK {
-                print("上传成功了")
-            } else {
-            
-                print("失败了")
-            }
-            
-        
-        })*/
+
 
     }
     override func viewDidAppear(_ animated: Bool) {
