@@ -19,7 +19,7 @@ class ChongZhiViewController: UIViewController {
         self.view .addSubview(self.nav)
          self.nav.addBackBtn(self, backSelector: #selector(ChongZhiViewController.backClick(_:)))
          self.view.backgroundColor = bgColor
-         self.yueLable.text = String(format: "当前余额:%.2f", me.accountNum)
+         self.yueLable.text = String(format: "当前余额:%.2f", me.accountNum/100.0)
         // Do any additional setup after loading the view.
     }
     
@@ -35,18 +35,18 @@ class ChongZhiViewController: UIViewController {
     @IBAction func cBtnClick(_ sender: Any) {
         let mainStory = UIStoryboard(name: "Main", bundle: Bundle.main)
         let payVC = mainStory.instantiateViewController(withIdentifier: "PayMoneyViewController") as! PayMoneyViewController
-        payVC.name = "发红包"
+        payVC.name = "充值"
         let pric = Double((self.cTextfiled.text!))!
         payVC.price = Float(pric)
         payVC.paytype = .payTypeChongzhi
-        payVC.payCallBack = { (_ payStatus : CEPaymentStatus) -> () in
+        payVC.payCallBack = { (_ payStatus : CEPaymentStatus,_ paytype : Int) -> () in
             
             switch payStatus {
             case .payResultSuccess:
                 DXHelper.shareInstance.makeAlert("充值成功", dur: 1, isShake: false)
                 self.me.accountNum += pric;
                 UserManager.shareInstance.saveModel(self.me)
-                self.yueLable.text = String(format: "当前余额:%.2f", self.me.accountNum)
+                self.yueLable.text = String(format: "当前余额:%.2f", self.me.accountNum/100.0)
                 UserManager.shareInstance.updateInfo()
                 break;
             default:

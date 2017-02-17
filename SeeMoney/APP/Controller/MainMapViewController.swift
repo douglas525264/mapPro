@@ -76,7 +76,9 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         self.headerView.addGestureRecognizer(ftap)
         self.headerView.isHidden = true;
   
-        
+        if (UserManager.shareInstance.isLogin()) {
+            PayManager.shareInstance.getMyNotURL();
+        }
 
 
     }

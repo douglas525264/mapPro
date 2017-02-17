@@ -20,7 +20,7 @@ class PayMoneyViewController: UIViewController,UITableViewDelegate,UITableViewDa
     @IBOutlet weak var moneyLable: UILabel!
 
     @IBOutlet weak var tableView: UITableView!
-    typealias payCompletedBlock = (_ payStatus : CEPaymentStatus) -> ()
+    typealias payCompletedBlock = (_ payStatus : CEPaymentStatus,_ paytype : Int) -> ()
     var currentIndex = 0
     var nav = DXNavgationBar.getNav("付款方式")
     
@@ -37,7 +37,11 @@ class PayMoneyViewController: UIViewController,UITableViewDelegate,UITableViewDa
         
        PayManager.shareInstance.getOrderId(paytype.rawValue, amount: price) { (isOK :  Bool, orderid : String?) in
             if (isOK && orderid != nil) {
-                PayManager.shareInstance.pay(sub: self.name!, OrderId: orderid!, body: self.name!, Way: self.currentIndex == 0 ? CEPayType.ptWeixinPay : CEPayType.ptAlipay, amount: self.price, CallBack: self.payCallBack)
+                if self.currentIndex == 0 {
+                    self.payCallBack!(CEPaymentStatus.payResultSuccess,1);
+                } else {
+                PayManager.shareInstance.pay(sub: self.name!, OrderId: orderid!, body: self.name!, Way: self.currentIndex == 1 ? CEPayType.ptWeixinPay : CEPayType.ptAlipay, amount: self.price, CallBack: self.payCallBack)
+                }
             }
         }
     }
@@ -79,13 +83,13 @@ class PayMoneyViewController: UIViewController,UITableViewDelegate,UITableViewDa
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        currentIndex = indexPath.row == 0 ? 0 : 1
+        currentIndex = indexPath.row
         tableView.reloadData()
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -93,16 +97,23 @@ class PayMoneyViewController: UIViewController,UITableViewDelegate,UITableViewDa
         switch indexPath.row {
         case 0:
             cell.iconImageView.image = UIImage(named:"绿色logo");
-            cell.payNameLable.text = "微信支付";
-            cell.payDesLable.text = "亿万用户选择,更快更安全";
+            cell.payNameLable.text = "余额支付";
+            cell.payDesLable.text = String(format: "账户余额: %.2f元", UserManager.shareInstance.getMe().accountNum/100.0);
 
             break;
         case 1:
+            cell.iconImageView.image = UIImage(named:"绿色logo");
+            cell.payNameLable.text = "微信支付";
+            cell.payDesLable.text = "亿万用户的选择，值得信赖";
+
+            break;
+        case 2:
             cell.iconImageView.image = UIImage(named:"paybaoIcon");
             cell.payNameLable.text = "支付宝支付";
             cell.payDesLable.text = "支付宝支付";
-
+            
             break;
+            
         default:
             break;
         }

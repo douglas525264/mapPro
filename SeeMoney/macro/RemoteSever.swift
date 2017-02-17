@@ -9,7 +9,7 @@
 import Foundation
 
 let schema = "http://"
-let host = "hongbao.api.drqmobile.com/"
+let host = "//hongbao.api.drqmobile.com/"
 //warning : default is POST
 let registerURL = schema + host + "v1/user"
 let loginURL = schema + host + "v1/user/login"

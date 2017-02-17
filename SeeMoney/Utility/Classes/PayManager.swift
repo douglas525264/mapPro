@@ -9,7 +9,7 @@
 import UIKit
 
 class PayManager: NSObject {
-    typealias payCompletedBlock = (_ payStatus : CEPaymentStatus) -> ()
+    typealias payCompletedBlock = (_ payStatus : CEPaymentStatus,_ paytype : Int) -> ()
     static let shareInstance = PayManager()
     var notURL : String?
     func getOrderId(_ type : Int,amount : Float,finishedBlock : @escaping (_ isOK : Bool , _ orderid : String?) -> ()  ) -> () {
@@ -33,16 +33,18 @@ class PayManager: NSObject {
         WXApi.registerApp("wx03565949c4ef222b", withDescription: "seeMoney")
         
         fManager?.showPayStatusView = false
-        fManager?.transactionParams = ["app_id":"UOIcpKx4jipj1WM3Wn2Tjw",
+        
+        let pp = ["app_id":"UOIcpKx4jipj1WM3Wn2Tjw",
                                         "order_no": orderId ,
                                         "pmtTp":NSNumber(value: way.rawValue),
                                         "amount":String(format: "%.2f", money),
                                         "subject":subject,
                                         "body":bb,
-                                        "notify_url":notURL == nil ? ("https://api.drqmobile.com/v1/pay/fql/notify_url?uid=" + UserManager.shareInstance.getMe().userID!) : notURL!]
+                                        "notify_url":notURL == nil ? "https://api.drqmobile.com/v1/pay/fql/callback" : notURL!] as [String : Any]
+        fManager?.transactionParams = pp
         fManager?.payStatusCallBack = { (_ status : CEPaymentStatus,_ result : String?) -> () in
         
-            callback?(status)
+            callback?(status,way == .ptWeixinPay ? 2 : 3)
             
         }
         fManager?.myStart()
@@ -50,7 +52,7 @@ class PayManager: NSObject {
     func getMyNotURL() -> String {
         DXNetWorkTool.sharedInstance.get(getNotURL, body: nil, header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info : Dictionary<String, AnyObject>?, isOK : Bool, code : Int) in
             if isOK {
-            
+                self.notURL = info?["msg"] as! String?;
                 //存储 notURL
             }
         }) { (error : SMError) in

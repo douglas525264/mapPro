@@ -291,7 +291,7 @@ class SendBagTableViewController: UITableViewController,UITextFieldDelegate {
         payVC.name = "发红包"
         payVC.price = Float((moneyCell?.normalTextFiled.text!)!)!
         payVC.paytype = .payTypeRedBag
-        payVC.payCallBack = { (_ payStatus : CEPaymentStatus) -> () in
+        payVC.payCallBack = { (_ payStatus : CEPaymentStatus,_ payType : Int) -> () in
             self.payCallBack?(payStatus)
             switch payStatus {
             case .payResultSuccess:
@@ -303,7 +303,7 @@ class SendBagTableViewController: UITableViewController,UITextFieldDelegate {
                 let size = Int((self.numCell?.normalTextFiled.text!)!)!
                 let type = self.bagType
                 let sub = 0;
-                RedBagManager.sharedInstance.sendRedBag(pp * 100, size, type: type, title: name!, subType: sub, finishedBlock: { (isOK : Bool) in
+                RedBagManager.sharedInstance.sendRedBag(pp * 100, size,payType, type: type, title: name!, subType: sub, finishedBlock: { (isOK : Bool) in
                     if isOK {
                     
                         DXHelper.shareInstance.makeAlert("发送成功", dur: 2, isShake: false)

@@ -80,7 +80,7 @@ class MoneyViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         switch indexPath.section {
         case 0:
             if indexPath.row == 0 {
-                cell?.textLabel?.text = String(format: "账户余额: %.2f元", me.accountNum)
+                cell?.textLabel?.text = String(format: "账户余额: %.2f元", me.accountNum/100.0)
                 
             } else {
                 cell?.textLabel?.text = String(format: "金币个数: %.2f个", me.goldCount)
