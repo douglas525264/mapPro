@@ -326,49 +326,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeeMoney/Utility/Classes/PayManager.swift"
+            timestampString = "509271037.246414"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "getOrderId(_:amount:finishedBlock:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SeeMoney/APP/Controller/SendBagTableViewController.swift"
-            timestampString = "508927814.308385"
+            filePath = "SeeMoney/Utility/Classes/DXNetWorkTool.swift"
+            timestampString = "509271993.053663"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "306"
-            endingLineNumber = "306"
-            landmarkName = "payBtnClick()"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "post(_:body:header:completed:fail:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SeeMoney.SendBagTableViewController.(payBtnClick () -&gt; ()).(closure #1)"
-                  moduleName = "SeeMoney"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/douglas/Desktop/SeeMoney/SeeMoney/APP/Controller/SendBagTableViewController.swift"
-                  timestampString = "508927814.546923"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "306"
-                  endingLineNumber = "306"
-                  offsetFromSymbolStart = "2408">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SeeMoney.SendBagTableViewController.(payBtnClick () -&gt; ()).(closure #1).(closure #1)"
-                  moduleName = "SeeMoney"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/douglas/Desktop/SeeMoney/SeeMoney/APP/Controller/SendBagTableViewController.swift"
-                  timestampString = "508927814.548856"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "307"
-                  endingLineNumber = "307"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -377,13 +361,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SeeMoney/APP/Controller/SendBagTableViewController.swift"
-            timestampString = "508929289.950262"
+            filePath = "SeeMoney/Utility/Classes/DXNetWorkTool.swift"
+            timestampString = "509271995.392291"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "296"
-            endingLineNumber = "296"
-            landmarkName = "payBtnClick()"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "post(_:body:header:completed:fail:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeeMoney/Utility/Classes/DXNetWorkTool.swift"
+            timestampString = "509272047.812188"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "post(_:body:header:completed:fail:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

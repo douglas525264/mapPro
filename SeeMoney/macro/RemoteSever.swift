@@ -9,11 +9,11 @@
 import Foundation
 
 let schema = "http://"
-let host = "//hongbao.api.drqmobile.com/"
+let host = "hongbao.api.drqmobile.com/"
 //warning : default is POST
 let registerURL = schema + host + "v1/user"
 let loginURL = schema + host + "v1/user/login"
-let sendRedbagURL = schema + host + "v1/envolope"
+let sendRedbagURL = schema + host/*"192.168.2.174:9006/"host*/ + "v1/envolope"
 //GET  /v1/envolope/pick
 let searchredBgURl = schema + host + "v1/envolope?lat=%.14f&lnt=%.14f"
 //POST
