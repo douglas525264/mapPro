@@ -15,14 +15,29 @@ class RedBagDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        var num:Float = 0;
         if self.redBag != nil {
+            
+            if self.redBag?.pickList != nil {
+                let me = UserManager.shareInstance.getMe()
+                for info in (self.redBag?.pickList)! {
+                    let jsonInfo = info as? Dictionary<String, AnyObject>
+                    if jsonInfo != nil {
+                        if (me.userID  == (jsonInfo?["uid"] as! String)) {
+                            num = jsonInfo?["pAmount"] as! Float
+                        }
+                    }
+                }
+            }
+            
+            
             switch self.redBag!.bagType {
                 
             case redBagType.redBagTypeGold:
-                self.numLable.text = String(format: "%.0f 个金币", (self.redBag?.num)!)
+                self.numLable.text = String(format: "%.0f 个金币", num)
                 break;
             case redBagType.redBagTypeMoney:
-                self.numLable.text = String(format: "%.2f元", (self.redBag?.num)!)
+                self.numLable.text = String(format: "%.2f元", num/100)
                 break;
                 
             default:

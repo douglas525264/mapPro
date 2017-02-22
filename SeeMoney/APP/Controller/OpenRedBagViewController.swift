@@ -44,23 +44,15 @@ class OpenRedBagViewController: UIViewController {
         if self.parentVc != nil {
             self.bgView?.showBtnAnimation()
             
-            RedBagManager.sharedInstance.pick((self.redBag?.redID)!, type: (redBag?.bagType)! , finishedBlock: { (isOK, info) in
+            RedBagManager.sharedInstance.pick((self.redBag?.redID)!, type: (redBag?.bagType)! , finishedBlock: { (isOK,msg,info) in
                 
                 self.bgView?.stopBtnAnimation({ 
                     if isOK {
                         
-                        let me = UserManager.shareInstance.getMe()
-                        switch self.redBag!.bagType {
-                        case redBagType.redBagTypeGold:
-                            me.goldCount += (self.redBag?.num)!
-                            break
-                        default:
-                            me.accountNum += (self.redBag?.num)!
-                            break
+                        if let arr = info?["pickInfos"] {
                         
+                            self.redBag?.pickList = arr as? Array<Any>;
                         }
-                        
-                        UserManager.shareInstance.saveModel(me)
                         
                         let story = UIStoryboard(name: "Main", bundle: Bundle.main)
                         

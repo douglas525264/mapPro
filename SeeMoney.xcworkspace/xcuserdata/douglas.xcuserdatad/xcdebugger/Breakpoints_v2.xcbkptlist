@@ -342,48 +342,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SeeMoney/Utility/Classes/DXNetWorkTool.swift"
-            timestampString = "509271993.053663"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "post(_:body:header:completed:fail:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SeeMoney/Utility/Classes/DXNetWorkTool.swift"
-            timestampString = "509271995.392291"
+            filePath = "SeeMoney/APP/Controller/OpenRedBagViewController.swift"
+            timestampString = "509439028.360798"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "post(_:body:header:completed:fail:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SeeMoney/Utility/Classes/DXNetWorkTool.swift"
-            timestampString = "509272047.812188"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "post(_:body:header:completed:fail:)"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "openBtnCLick(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

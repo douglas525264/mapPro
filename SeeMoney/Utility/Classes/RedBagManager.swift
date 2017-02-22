@@ -71,15 +71,15 @@ class RedBagManager: NSObject {
         
     }
 
-    func pick(_ redId:String,type:redBagType,finishedBlock:@escaping (_ isOK:Bool,_ info:String?) -> Void) {
+    func pick(_ redId:String,type:redBagType,finishedBlock:@escaping (_ isOK:Bool,_ msg:String?,_ info:Dictionary<String, AnyObject>?) -> Void) {
         
         print("redId : \(redId)")
         
         DXNetWorkTool.sharedInstance.post(pickRedbagURL, body: ["id":redId as AnyObject,"type":type.rawValue as AnyObject] , header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
             
-            finishedBlock(true,nil)
+            finishedBlock(true,nil,info)
         }) { (error:SMError) in
-            finishedBlock(false,error.des)
+            finishedBlock(false,error.des,nil)
         }
     }
     //远程搜索
