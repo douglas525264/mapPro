@@ -78,6 +78,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
   
         if (UserManager.shareInstance.isLogin()) {
             PayManager.shareInstance.getMyNotURL();
+            UserManager.shareInstance.updateInfo()
         }
 
 
