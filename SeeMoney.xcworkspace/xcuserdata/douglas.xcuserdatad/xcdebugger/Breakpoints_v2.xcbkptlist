@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SeeMoney/Utility/Classes/RedBagManager.swift"
-            timestampString = "506834511.147565"
+            timestampString = "509440133.334662"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "remogteSearch(_:finishedBlock:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SeeMoney/Utility/Classes/RedBagManager.swift"
-            timestampString = "506836038.44517"
+            timestampString = "509440133.334662"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "remogteSearch(_:finishedBlock:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -336,22 +336,6 @@
             startingLineNumber = "25"
             endingLineNumber = "25"
             landmarkName = "getOrderId(_:amount:finishedBlock:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SeeMoney/APP/Controller/OpenRedBagViewController.swift"
-            timestampString = "509439028.360798"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "openBtnCLick(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

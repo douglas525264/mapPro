@@ -70,6 +70,7 @@
 		A520FE721E2DEF860043069A /* UILabel+ZYTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A520FE711E2DEF860043069A /* UILabel+ZYTool.m */; };
 		A520FE741E2E2C120043069A /* BuyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520FE731E2E2C120043069A /* BuyTableViewCell.swift */; };
 		A52457821E34967400A449E9 /* FuqianlaPay+scheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A52457811E34967400A449E9 /* FuqianlaPay+scheme.m */; };
+		A52BC20C1E5D7006008B5631 /* PickInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52BC20B1E5D7006008B5631 /* PickInfoModel.swift */; };
 		A531A5901E35FED500DEE7EE /* ChongZhiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531A58F1E35FED500DEE7EE /* ChongZhiViewController.swift */; };
 		A542DCD31D66FE7800AFE9C1 /* redbagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD21D66FE7800AFE9C1 /* redbagModel.swift */; };
 		A542DCD61D66FE9800AFE9C1 /* RedBagManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542DCD51D66FE9800AFE9C1 /* RedBagManager.swift */; };
@@ -206,6 +207,7 @@
 		A523240B1DBF123A00FA0543 /* SeeMoney.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeeMoney.entitlements; sourceTree = "<group>"; };
 		A52457801E34967400A449E9 /* FuqianlaPay+scheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FuqianlaPay+scheme.h"; sourceTree = "<group>"; };
 		A52457811E34967400A449E9 /* FuqianlaPay+scheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FuqianlaPay+scheme.m"; sourceTree = "<group>"; };
+		A52BC20B1E5D7006008B5631 /* PickInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickInfoModel.swift; sourceTree = "<group>"; };
 		A531A58F1E35FED500DEE7EE /* ChongZhiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChongZhiViewController.swift; sourceTree = "<group>"; };
 		A542DCD21D66FE7800AFE9C1 /* redbagModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = redbagModel.swift; sourceTree = "<group>"; };
 		A542DCD51D66FE9800AFE9C1 /* RedBagManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedBagManager.swift; sourceTree = "<group>"; };
@@ -494,6 +496,7 @@
 				A5827B101D6C497900693921 /* UserManager.swift */,
 				A51B96941DE5451A006E57FC /* ToolModel.swift */,
 				A51B96961DE5453A006E57FC /* ToolManager.swift */,
+				A52BC20B1E5D7006008B5631 /* PickInfoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1053,6 +1056,7 @@
 				A542DCEE1D67010F00AFE9C1 /* MoneyViewController.swift in Sources */,
 				A50E68321D76C1D700891625 /* OpenRedBagViewController.swift in Sources */,
 				A50E682F1D76AF8000891625 /* SMError.swift in Sources */,
+				A52BC20C1E5D7006008B5631 /* PickInfoModel.swift in Sources */,
 				A56388EC1D66B7630008A8C2 /* DxDeveiceCommon.swift in Sources */,
 				A570A17A1E11094E00D0FDCE /* MyToolViewController.swift in Sources */,
 				A570A1821E1109BA00D0FDCE /* SendRedBagViewController.swift in Sources */,

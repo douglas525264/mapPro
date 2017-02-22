@@ -45,7 +45,7 @@ class RedBagManager: NSObject {
     }
     //发红包
     func sendRedBag(_ num:Float,_ size : Int ,_ paytype : Int ,finishedBlock:@escaping (_ isOK:Bool) -> Void) -> Void {
-        print("sendredBagURL: + \(sendRedbagURL)")
+        print("sendRedBag: + \(sendRedbagURL)")
         let location = MapManager.sharedInstance.getmapView().userLocation.coordinate
         
         DXNetWorkTool.sharedInstance.post(sendRedbagURL, body:["type":1 as AnyObject,"paytype":paytype as AnyObject,"size" : size as AnyObject,"amount":num as AnyObject,"lat":(location.latitude as AnyObject),"lnt":(location.longitude as AnyObject),"title":"测试红包" as AnyObject], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
@@ -58,7 +58,7 @@ class RedBagManager: NSObject {
         
     }
     func sendRedBag(_ num:Float,_ size : Int ,_ paytype : Int, type : redBagType ,title : String, subType : Int,finishedBlock:@escaping (_ isOK:Bool) -> Void) -> Void {
-        print("sendredBagURL: + \(sendRedbagURL)")
+        print("sendRedBag: + \(sendRedbagURL)")
         let location = MapManager.sharedInstance.getmapView().userLocation.coordinate
         
         DXNetWorkTool.sharedInstance.post(sendRedbagURL, body:["type":type.rawValue as AnyObject,"paytype" : paytype as AnyObject,"size" : size as AnyObject,"amount":num as AnyObject,"lat":(location.latitude as AnyObject),"lnt":(location.longitude as AnyObject),"title":title as AnyObject, "subtype" : subType as AnyObject], header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info:Dictionary<String, AnyObject>?, isOK:Bool, code:Int) in
@@ -86,7 +86,7 @@ class RedBagManager: NSObject {
     func remogteSearch(_ location:CLLocationCoordinate2D,finishedBlock:@escaping (_ redbags:[redbagModel]?) -> Void) {
         
         let search = String(format: searchredBgURl, location.latitude,location.longitude)
-        print("sendredBagURL: + \(search)")
+        print("searchRedBag: + \(search)")
         DXNetWorkTool.sharedInstance.get(search, body:  Dictionary<String, AnyObject>(), header: DxDeveiceCommon.getDeviceCommonHeader(), completed: { (info : Dictionary<String, AnyObject>?, isOK : Bool, code:Int) in
             
             let a = info!["es"] as? [AnyObject]
@@ -101,15 +101,9 @@ class RedBagManager: NSObject {
                         // let type = dic!["type"] as! NSInteger
                         
                         let redbag = redbagModel(redId: dic!["id"] as? String, title: dic!["title"] as? String, subTitle: "", image: UIImage(named: "redbg2"), coo: CLLocationCoordinate2DMake(locationInfo!["lat"] as! CLLocationDegrees, locationInfo!["lnt"] as! CLLocationDegrees));
-                        //                    if type == 1 {
-                        
                         redbag.bagType = redBagType.redBagTypeMoney
-                        //                    } else {
-                        //                        redbag.bagType = redBagType.redBagTypeGold
-                        //
-                        //                    }
                         redbag.num = dic!["amount"] as! Double
-                        
+                        redbag.pickList = dic?["pickInfos"] as? Array<Any>
                         if (!self.redbags.contains(redbag)) {
                             self.redbags .append(redbag)
                         }
