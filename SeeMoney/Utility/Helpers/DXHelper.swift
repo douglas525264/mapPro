@@ -29,4 +29,5 @@ class DXHelper: NSObject {
         if isShake { makeShake() }
         
     }
+    
 }

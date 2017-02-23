@@ -13,4 +13,5 @@
 #import "UILabel+ZYTool.h"
 #import "FuqianlaPay+scheme.h"
 #import "WXApi.h"
+#import "ShareSDK/ShareSDK.h"
 #endif /* Bridging_Header_h */

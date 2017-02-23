@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "89C6A6ED90EC9F8C09B70499ABE2C607"
+               BlueprintIdentifier = "94BE40212FF92237E404936CA70D2075"
                BuildableName = "ATMHud_dhoerl.framework"
                BlueprintName = "ATMHud@dhoerl"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "89C6A6ED90EC9F8C09B70499ABE2C607"
+            BlueprintIdentifier = "94BE40212FF92237E404936CA70D2075"
             BuildableName = "ATMHud_dhoerl.framework"
             BlueprintName = "ATMHud@dhoerl"
             ReferencedContainer = "container:Pods.xcodeproj">
