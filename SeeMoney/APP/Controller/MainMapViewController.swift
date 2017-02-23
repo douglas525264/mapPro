@@ -35,6 +35,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     
     @IBOutlet weak var headerView: UIView!
     var currentlocation:CLLocationCoordinate2D?
+    var lastLocation:CLLocationCoordinate2D?
     var currentredBg:redbagModel?
     var currentLine:MKPolyline?
     var mapView:MKMapView?
@@ -48,6 +49,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
     static var shareInstance:MainMapViewController?
     lazy var nav1 = DXNavgationBar.getNav("探包宝")
     var currentCircle: MKCircle?
+    var hasRegin = false
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -320,6 +322,24 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         userLocation.title = "我的位置"
         let center = userLocation.location?.coordinate
         self.currentlocation = center
+        
+        
+        if !hasRegin {
+            
+            let coordinateSpan = MKCoordinateSpan(latitudeDelta: 0.0005, longitudeDelta: 0.0005)
+            let region = MKCoordinateRegion(center: center!, span: coordinateSpan)
+            mapView.setRegion(region, animated:true)
+            hasRegin = true
+            lastLocation = userLocation.location?.coordinate
+        } else {
+            
+            if MapManager.sharedInstance.getDistance(from: (userLocation.location?.coordinate)!, to: self.lastLocation!) > 50 {
+            
+                let coordinateSpan = MKCoordinateSpan(latitudeDelta: 0.0005, longitudeDelta: 0.0005)
+                let region = MKCoordinateRegion(center: center!, span: coordinateSpan)
+                mapView.setRegion(region, animated:true)
+            }
+        }
         if !hasSearch {
             self.bgRefreash()
         }
@@ -335,9 +355,6 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         RedBagManager.sharedInstance.scanRedbag(center!) { (redbags) in
             if redbags?.count > 0 {
                 DXHelper.shareInstance.makeAlert(String(format: "发现%ld个红包",(redbags?.count)!), dur: 1, isShake: true)
-                let coordinateSpan = MKCoordinateSpan(latitudeDelta: 0.0005, longitudeDelta: 0.0005)
-                let region = MKCoordinateRegion(center: center!, span: coordinateSpan)
-                mapView.setRegion(region, animated:true)
                 MapManager.sharedInstance.addRedbags(redBags: redbags!)
                 
                 
@@ -358,15 +375,25 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
             
             //mv?.canShowCallout = true
             mv?.frame = CGRect(x: 0, y: 0, width: 35, height: 50.5)
+            
             return mv
             
             
             
         }
-        var  mv2 = MKAnnotationView(annotation: annotation, reuseIdentifier: "user")
+        let mv2 = MKAnnotationView(annotation: annotation, reuseIdentifier: "user")
         mv2.image = UIImage(named:"ar_avatar_background")
-        
+        mv2.frame = CGRect(x: 0, y: 0, width: 36.5, height: 54.5)
         return mv2
+    }
+    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+        for annotationView in views {
+            let endframe = annotationView.frame
+            annotationView.frame = CGRect(x: endframe.origin.x, y: endframe.origin.y - 230, width: endframe.size.width, height: endframe.size.height)
+            UIView.animate(withDuration: 0.45, animations: { 
+                annotationView.frame = endframe;
+            });
+        }
     }
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if (view.annotation!.isKind(of: redbagModel.classForCoder())) {
