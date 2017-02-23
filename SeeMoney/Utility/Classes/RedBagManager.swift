@@ -100,7 +100,7 @@ class RedBagManager: NSObject {
                         let locationInfo = dic!["loc"] as? Dictionary<String, AnyObject>
                         // let type = dic!["type"] as! NSInteger
                         
-                        let redbag = redbagModel(redId: dic!["id"] as? String, title: dic!["title"] as? String, subTitle: "", image: UIImage(named: "redbg2"), coo: CLLocationCoordinate2DMake(locationInfo!["lat"] as! CLLocationDegrees, locationInfo!["lnt"] as! CLLocationDegrees));
+                        let redbag = redbagModel(redId: dic!["id"] as? String, title: dic!["title"] as? String, subTitle: "", image: UIImage(named: "ar_normal_envelope"), coo: CLLocationCoordinate2DMake(locationInfo!["lat"] as! CLLocationDegrees, locationInfo!["lnt"] as! CLLocationDegrees));
                         redbag.bagType = redBagType.redBagTypeMoney
                         redbag.num = dic!["amount"] as! Double
                         redbag.pickList = dic?["pickInfos"] as? Array<Any>
@@ -130,7 +130,7 @@ class RedBagManager: NSObject {
                         } else {
                             title = "" as AnyObject?
                         }
-                        let redbag = redbagModel(redId: dic!["id"] as? String, title: title as? String , subTitle: "", image: UIImage(named: "redbg2"), coo: CLLocationCoordinate2DMake(locationInfo!["lat"] as! CLLocationDegrees, locationInfo!["lnt"] as! CLLocationDegrees));
+                        let redbag = redbagModel(redId: dic!["id"] as? String, title: title as? String , subTitle: "", image: UIImage(named: "ar_normal_envelope"), coo: CLLocationCoordinate2DMake(locationInfo!["lat"] as! CLLocationDegrees, locationInfo!["lnt"] as! CLLocationDegrees));
                         /*    if type == 1 {
                          
                          redbag.bagType = redBagType.redBagTypeMoney

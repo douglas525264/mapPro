@@ -314,6 +314,7 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
         }
         self.currentCircle = MKCircle(center: userLocation.coordinate, radius: 500)
         self.mapView?.add(self.currentCircle!)
+        self.mapView?.camera = MKMapCamera(lookingAtCenter: userLocation.coordinate, fromDistance: 2000, pitch: 45, heading: 0);
         print("mapView : \(userLocation.coordinate.longitude) \(userLocation.coordinate.latitude)")
        // userLocation.coordinate
         userLocation.title = "我的位置"
@@ -356,13 +357,16 @@ class MainMapViewController: UIViewController,MKMapViewDelegate,SlideViewControl
             mv?.image = model.image
             
             //mv?.canShowCallout = true
-            mv?.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+            mv?.frame = CGRect(x: 0, y: 0, width: 35, height: 50.5)
             return mv
             
             
             
         }
-        return nil
+        var  mv2 = MKAnnotationView(annotation: annotation, reuseIdentifier: "user")
+        mv2.image = UIImage(named:"ar_avatar_background")
+        
+        return mv2
     }
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if (view.annotation!.isKind(of: redbagModel.classForCoder())) {

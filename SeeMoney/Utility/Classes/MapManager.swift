@@ -23,11 +23,18 @@ class MapManager: NSObject,CLLocationManagerDelegate {
     }()
     
     var currentLocation: CLLocationCoordinate2D?
+   // @available(iOS 9.0, *)
     lazy var mapView:MKMapView = {
         
         let map = MKMapView(frame:(UIApplication.shared.keyWindow?.frame)!)
         map.showsUserLocation = true;
         map.userTrackingMode = MKUserTrackingMode.follow
+        map.showsBuildings = true
+        
+        map.mapType = .standard
+        map.showsCompass = true
+        map.isZoomEnabled = false;
+        map.isScrollEnabled = false
         return map
 
     }()
